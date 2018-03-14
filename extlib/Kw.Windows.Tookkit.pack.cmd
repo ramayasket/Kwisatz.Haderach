@@ -1,0 +1,1 @@
+..\..\..\bin\ilrepack /ver:2.4.0.0 /union /ndebug /copyattrs /target:library /out:Kw.Windows.Toolkit.dll Xceed.Wpf.DataGrid.dll Xceed.Wpf.Toolkit.dll 

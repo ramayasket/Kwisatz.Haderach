@@ -1,0 +1,8 @@
+Kw.Common.dll has most common classes which are not area-specific.
+Kw.Aspects.dll has general-purpose PostSharp aspects.
+Kw.Networking.dll relates to network data exchange and HTTP protocol.
+Kw.ServiceProcess.dll makes easier to build a Windows service fast.
+Kw.Storage.Utilities.dll is a collection of database-related helper classes.
+Kw.WinAPI.dll contains DllImport'ed extern WinAPI functions and WinAPI structures.
+Kw.Windows.dll has some helpful classes for WPF applications.
+Kw.Windows.Forms.dll features keyboard and mouse hooks which use Windows.Forms.
