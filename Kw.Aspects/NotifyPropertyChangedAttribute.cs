@@ -10,6 +10,7 @@ namespace Kw.Aspects
 	[Serializable]
 	[IntroduceInterface(typeof(INotifyPropertyChanged), OverrideAction = InterfaceOverrideAction.Ignore)]
 	[MulticastAttributeUsage(MulticastTargets.Class, Inheritance = MulticastInheritance.Strict)]
+	[LinesOfCodeAvoided(5)]
 	public sealed class NotifyPropertyChangedAttribute : InstanceLevelAspect, INotifyPropertyChanged
 	{
 		[ImportMember("OnPropertyChanged", IsRequired = false)]
