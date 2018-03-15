@@ -15,6 +15,7 @@ namespace Kw.Common.Test
 			Assert.AreEqual("ru-RU", ruRU.Name);
 			//
 			Assert.AreEqual("ru-RU", ruRU.IetfLanguageTag);
+
 			Assert.IsFalse(ruRU.IsNeutralCulture);
 			Assert.AreEqual(0x419, ruRU.KeyboardLayoutId);
 		}
