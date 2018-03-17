@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="CultureIssues.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Singleton\Singletoned.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
