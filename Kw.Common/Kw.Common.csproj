@@ -104,6 +104,7 @@
     <Compile Include="RethrowException.cs" />
     <Compile Include="Runtime.cs" />
     <Compile Include="Functions.cs" />
+    <Compile Include="Singleton.cs" />
     <Compile Include="TemporaryFiles.cs" />
     <Compile Include="Threading\Event.cs" />
     <Compile Include="Threading\IPreparable.cs" />
