@@ -10,7 +10,7 @@
 
 		public static T Instance
 		{
-			get => _instance;
+			get { return _instance; }
 			set
 			{
 				if(null != _instance && null != value)

@@ -55,6 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\etc\Kwisatz.Haderach.cs">
+      <Link>Properties\Kwisatz.Haderach.cs</Link>
+    </Compile>
     <Compile Include="Accessors\Accessors.cs" />
     <Compile Include="AdoNet.cs" />
     <Compile Include="Aspects.cs" />

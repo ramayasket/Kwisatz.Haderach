@@ -59,6 +59,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\etc\Kwisatz.Haderach.cs">
+      <Link>Properties\Kwisatz.Haderach.cs</Link>
+    </Compile>
     <Compile Include="Arrows\ArrowEnds.cs" />
     <Compile Include="Arrows\ArrowLine.cs" />
     <Compile Include="Arrows\ArrowLineBase.cs" />

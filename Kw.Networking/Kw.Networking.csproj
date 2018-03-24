@@ -65,6 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\etc\Kwisatz.Haderach.cs">
+      <Link>Properties\Kwisatz.Haderach.cs</Link>
+    </Compile>
     <Compile Include="Communications\Protocol.cs" />
     <Compile Include="Communications\SerialExchangeClient.cs" />
     <Compile Include="Communications\SerialExchangeServer.cs" />

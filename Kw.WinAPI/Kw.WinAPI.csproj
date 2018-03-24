@@ -63,6 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\etc\Kwisatz.Haderach.cs">
+      <Link>Properties\Kwisatz.Haderach.cs</Link>
+    </Compile>
     <Compile Include="Advapi32.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="FileAttributes.cs" />

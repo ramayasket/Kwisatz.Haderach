@@ -65,6 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\etc\Kwisatz.Haderach.cs">
+      <Link>Properties\Kwisatz.Haderach.cs</Link>
+    </Compile>
     <Compile Include="GlobalEventProvider.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -56,6 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\etc\Kwisatz.Haderach.cs">
+      <Link>Properties\Kwisatz.Haderach.cs</Link>
+    </Compile>
     <Compile Include="IServiceProxy.cs" />
     <Compile Include="LocalServiceProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
