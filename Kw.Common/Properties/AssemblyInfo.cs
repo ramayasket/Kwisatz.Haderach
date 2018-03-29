@@ -6,7 +6,7 @@ using Kw.Common;
 
 [assembly: AssemblyTitle("Kw.Common")]
 [assembly: AssemblyDescription("")]
-[assembly: Guid("3e10445d-28a3-48d6-a447-15c1e14e5265")]
+[assembly: Guid("00000000-0001-11e8-9876-00055d74a52d")]
 
 [assembly: InternalsVisibleTo("Kw.Aspects", AllInternalsVisible = true)]
 

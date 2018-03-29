@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kw.Common.Test", "Test\Kw.C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packaging", "Packaging", "{937A7608-E505-4B19-8B51-C18C9405DD03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kw.Shell", "Kw.Shell\Kw.Shell.csproj", "{19FD169C-D667-49C4-9B85-6430F22808E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,6 +102,12 @@ Global
 		{90059A23-0C4D-46A0-BC5D-8395E98F5EDC}.Neutral|Any CPU.Build.0 = Release|Any CPU
 		{90059A23-0C4D-46A0-BC5D-8395E98F5EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90059A23-0C4D-46A0-BC5D-8395E98F5EDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19FD169C-D667-49C4-9B85-6430F22808E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19FD169C-D667-49C4-9B85-6430F22808E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19FD169C-D667-49C4-9B85-6430F22808E6}.Neutral|Any CPU.ActiveCfg = Release|Any CPU
+		{19FD169C-D667-49C4-9B85-6430F22808E6}.Neutral|Any CPU.Build.0 = Release|Any CPU
+		{19FD169C-D667-49C4-9B85-6430F22808E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19FD169C-D667-49C4-9B85-6430F22808E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

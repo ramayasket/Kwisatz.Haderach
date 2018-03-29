@@ -11,5 +11,11 @@ namespace Kw.WinAPI
 	{
 		[DllImport("rpcrt4.dll", SetLastError = true)]
 		public static extern int UuidCreateSequential(out Guid guid);
+
+		public static Guid UuidCreateSequential()
+		{
+			UuidCreateSequential(out Guid id);
+			return id;
+		}
 	}
 }
