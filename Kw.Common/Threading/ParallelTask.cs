@@ -44,23 +44,11 @@ namespace Kw.Common.Threading
 		
 		protected readonly ParallelPool _pool;
 
-		internal protected string ThreadName
-		{
-			get
-			{
-				return Target.Method.Name;//this.GetType().FullName ?? 
-			}
-		}
+		protected internal string ThreadName => Target.Method.Name;
 
-		public WaitHandle Waitable
-		{
-			get { return _done.Waitable; }
-		}
+		public WaitHandle Waitable => _done.Waitable;
 
-		public Event Finished
-		{
-			get { return _done; }
-		}
+		public Event Finished => _done;
 
 		/// <summary>
 		/// Преобразование к типу WaitHandle.
