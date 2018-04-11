@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Kw.Common
@@ -64,6 +65,17 @@ namespace Kw.Common
 			}
 
 			return new TA[0];
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static MethodBase GetCurrentMethod()
+		{
+			StackTrace st = new StackTrace();
+			StackFrame sf = st.GetFrame(1);
+
+			var m = sf.GetMethod();
+
+			return m;
 		}
 	}
 }

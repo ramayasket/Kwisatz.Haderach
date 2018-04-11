@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kw.Common;
 using Kw.WinAPI;
 
 namespace Kw.Shell
@@ -11,7 +12,8 @@ namespace Kw.Shell
 	{
 		static void Main(string[] args)
 		{
-			var u = Rpcrt4.UuidCreateSequential();
+			var mb = ReflectionExtensions.GetCurrentMethod();
+			var type = mb.DeclaringType;
 		}
 	}
 }

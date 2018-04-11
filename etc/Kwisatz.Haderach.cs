@@ -14,7 +14,8 @@ using System.Runtime.InteropServices;
 	Date		Version		Comments
 	===============================================================================
 	24.03.2018	1.0.0.1		Start of versioning
-	29.03.2018	1.0.0.2		NuGet packaging
+	29.03.2018	1.0.0.2		NuGet packaging preparation
+	07.04.2018	1.0.0.3		GetCurrentMethod()
 */
 
-[assembly: AssemblyVersion("1.0.0.2")]
+[assembly: AssemblyVersion("1.0.0.3")]
