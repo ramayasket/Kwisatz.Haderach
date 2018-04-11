@@ -99,6 +99,7 @@
     <Compile Include="INamed.cs" />
     <Compile Include="IncorrectSomethingException.cs" />
     <Compile Include="InstanceTracker.cs" />
+    <Compile Include="IoExtensions.cs" />
     <Compile Include="Literals.cs" />
     <Compile Include="MRUTracker.cs" />
     <Compile Include="OverridableLiteral.cs" />

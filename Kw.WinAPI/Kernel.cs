@@ -56,6 +56,31 @@ namespace Kw.WinAPI
 		[DllImport("kernel32.dll")]
 		public static extern int GetCurrentProcessId();
 
+		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+		public struct FILE_ID_BOTH_DIR_INFO
+		{
+			public uint NextEntryOffset;
+			public uint FileIndex;
+			public ulong CreationTime;
+			public ulong LastAccessTime;
+			public ulong LastWriteTime;
+			public ulong ChangeTime;
+			public ulong EndOfFile;
+			public ulong AllocationSize;
+			public uint FileAttributes;
+			public uint FileNameLength;
+			public uint EaSize;
+			public char ShortNameLength;
+			[MarshalAsAttribute(UnmanagedType.ByValTStr, SizeConst = 12)]
+			public string ShortName;
+			public ulong FileId;
+			[MarshalAsAttribute(UnmanagedType.ByValTStr, SizeConst = 1)]
+			public string FileName;
+		}
+
+		[DllImport("kernel32.dll", SetLastError = true)]
+		public static extern bool GetFileInformationByHandleEx(IntPtr hFile, FILE_INFO_BY_HANDLE_CLASS infoClass, out FILE_ID_BOTH_DIR_INFO dirInfo, uint dwBufferSize);
+
 		[DllImport("kernel32.dll", SetLastError = true, CallingConvention = CallingConvention.Winapi, CharSet = CharSet.Auto)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		public static extern bool CloseHandle(IntPtr hObject);
