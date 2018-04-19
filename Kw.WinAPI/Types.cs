@@ -5,9 +5,55 @@ using System.Runtime.InteropServices;
 
 namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI
 {
-	///
-	///	ReSharper disable InconsistentNaming
-	///
+	public enum FILE_ID_TYPE
+	{
+		FileIdType = 0,
+		ObjectIdType = 1,
+		ExtendedFileIdType = 2,
+		MaximumFileIdType
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public struct FILE_OBJECTID_BUFFER
+	{
+		public struct Union
+		{
+			[MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+			public byte[] BirthVolumeId;
+
+			[MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+			public byte[] BirthObjectId;
+
+			[MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+			public byte[] DomainId;
+		}
+
+		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+		public byte[] ObjectId;
+
+		public Union BirthInfo;
+
+		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+		public byte[] ExtendedInfo;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public struct FILE_ID_DESCRIPTOR
+	{
+		[FieldOffset(0)]
+		public uint dwSize;  // Size of the struct
+		[FieldOffset(4)]
+		public FILE_ID_TYPE type; // Describes the type of identifier passed in. 0 == Use the FileId member of the union. 
+		[FieldOffset(8)]
+		public Guid guid; // A EXT_FILE_ID_128 structure containing the 128-bit file ID of the file. This is used on ReFS file systems.
+
+		public FILE_ID_DESCRIPTOR(uint dwSize, FILE_ID_TYPE type, Guid guid) : this()
+		{
+			this.dwSize = dwSize;
+			this.type = type;
+			this.guid = guid;
+		}
+	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public struct POINT

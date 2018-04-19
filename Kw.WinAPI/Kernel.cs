@@ -58,6 +58,10 @@ namespace Kw.WinAPI
 		[DllImport("kernel32.dll")]
 		public static extern int GetCurrentProcessId();
 
+		public const int GenericRead = unchecked((int)0x80000000),
+			FileFlagBackupSemantics = 0x02000000,
+			OpenExisting = 3;
+
 		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		public static extern SafeFileHandle CreateFile(
 			string fileName,
