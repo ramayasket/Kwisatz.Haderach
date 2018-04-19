@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Kw.WinAPI;
+using Microsoft.Win32.SafeHandles;
 
 namespace Kw.WinAPI
 {
@@ -55,6 +57,28 @@ namespace Kw.WinAPI
 
 		[DllImport("kernel32.dll")]
 		public static extern int GetCurrentProcessId();
+
+		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+		public static extern SafeFileHandle CreateFile(
+			string fileName,
+			int dwDesiredAccess,
+			FileShare dwShareMode,
+			IntPtr securityAttrsMustBeZero,
+			FileMode dwCreationDisposition,
+			int dwFlagsAndAttributes,
+			IntPtr hTemplateFileMustBeZero
+		);
+
+		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+		public static extern SafeFileHandle CreateFileW(
+			string fileName,
+			int dwDesiredAccess,
+			FileShare dwShareMode,
+			IntPtr securityAttrsMustBeZero,
+			FileMode dwCreationDisposition,
+			int dwFlagsAndAttributes,
+			IntPtr hTemplateFileMustBeZero
+		);
 
 		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
 		public struct FILE_ID_BOTH_DIR_INFO
