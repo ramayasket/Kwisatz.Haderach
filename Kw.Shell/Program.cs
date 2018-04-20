@@ -14,6 +14,8 @@ namespace Kw.Shell
 		{
 			var mb = ReflectionExtensions.GetCurrentMethod();
 			var type = mb.DeclaringType;
+
+			var streams = AdsUtils.ListAlternateDataStreams("C:\\zlp");
 		}
 	}
 }

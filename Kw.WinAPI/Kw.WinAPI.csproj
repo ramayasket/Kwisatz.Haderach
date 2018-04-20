@@ -67,6 +67,7 @@
     <Compile Include="..\etc\Kwisatz.Haderach.cs">
       <Link>Properties\Kwisatz.Haderach.cs</Link>
     </Compile>
+    <Compile Include="AdsUtils.cs" />
     <Compile Include="Advapi32.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="FileAttributes.cs" />
@@ -74,9 +75,13 @@
     <Compile Include="Kernel.cs" />
     <Compile Include="Msi.cs" />
     <Compile Include="Netapi32.cs" />
+    <Compile Include="NtfsUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.cs" />
     <Compile Include="Rpcrt4.cs" />
+    <Compile Include="SafeHGlobalHandle.cs" />
     <Compile Include="Shell32.cs" />
+    <Compile Include="StreamName.cs" />
     <Compile Include="Types.cs" />
     <Compile Include="User.cs" />
     <Compile Include="VK.cs" />
