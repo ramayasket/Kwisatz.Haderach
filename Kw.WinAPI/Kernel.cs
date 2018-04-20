@@ -364,8 +364,34 @@ namespace Kw.WinAPI
 		}
 
 		#endregion
+
+		public const uint GENERIC_WRITE = 0x40000000;
+		public const uint GENERIC_READ = 0x80000000;
+
+		public const uint FILE_SHARE_READ = 0x00000001;
+		public const uint FILE_SHARE_WRITE = 0x00000002;
+
+		public const uint CREATE_NEW = 1;
+		public const uint CREATE_ALWAYS = 2;
+		public const uint OPEN_EXISTING = 3;
+		public const uint OPEN_ALWAYS = 4;
+
+		[System.Runtime.InteropServices.DllImport("kernel32", SetLastError = true)]
+		public static extern uint ReadFile(SafeFileHandle handle,
+			byte[] buffer,
+			uint byteToRead,
+			ref uint bytesRead,
+			IntPtr lpOverlapped);
+
+		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+		public static extern bool WriteFile(SafeFileHandle handle,
+			byte[] lpBuffer,
+			uint nNumberOfBytesToWrite,
+			ref uint lpNumberOfBytesWritten,
+			IntPtr lpOverlapped);
+
 		[DllImport("kernel32.dll", CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-		private static extern int FormatMessage(
+		public static extern int FormatMessage(
 			int dwFlags,
 			IntPtr lpSource,
 			int dwMessageId,
@@ -375,11 +401,14 @@ namespace Kw.WinAPI
 			IntPtr vaListArguments);
 
 		[DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
-		private static extern int GetFileAttributes(string fileName);
+		public static extern int GetFileAttributes(string fileName);
 
 		[DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
 		[return: MarshalAs(UnmanagedType.Bool)]
-		private static extern bool GetFileSizeEx(SafeFileHandle handle, out LargeInteger size);
+		public static extern bool GetFileSizeEx(SafeFileHandle handle, out LargeInteger size);
+
+		[System.Runtime.InteropServices.DllImport("kernel32", SetLastError = true)]
+		public static extern uint GetFileSize(SafeFileHandle handle, IntPtr size);
 
 		[DllImport("kernel32.dll")]
 		private static extern int GetFileType(SafeFileHandle handle);
@@ -457,7 +486,7 @@ namespace Kw.WinAPI
 		[DllImport("kernel32.dll")]
 		public static extern int GetCurrentProcessId();
 
-		public const int GenericRead = unchecked((int)0x80000000),
+		public const uint GenericRead = unchecked((uint)0x80000000),
 			FileFlagBackupSemantics = 0x02000000,
 			OpenExisting = 3;
 
@@ -485,11 +514,11 @@ namespace Kw.WinAPI
 		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		public static extern SafeFileHandle CreateFile(
 			string fileName,
-			int dwDesiredAccess,
+			uint dwDesiredAccess,
 			FileShare dwShareMode,
 			IntPtr securityAttrsMustBeZero,
 			FileMode dwCreationDisposition,
-			int dwFlagsAndAttributes,
+			uint dwFlagsAndAttributes,
 			IntPtr hTemplateFileMustBeZero
 		);
 
