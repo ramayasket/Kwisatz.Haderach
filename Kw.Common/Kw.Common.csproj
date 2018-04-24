@@ -113,6 +113,13 @@
     <Compile Include="Threading\Event.cs" />
     <Compile Include="Threading\IPreparable.cs" />
     <Compile Include="Threading\ThreadingUtils.cs" />
+    <Compile Include="ThreeStateMachine.cs" />
+    <Compile Include="ThreeStateMachine.Proc.cs">
+      <DependentUpon>ThreeStateMachine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreeStateMachine.Transitions.cs">
+      <DependentUpon>ThreeStateMachine.cs</DependentUpon>
+    </Compile>
     <Compile Include="TimeExtensions.cs" />
     <Compile Include="DebugOutput.cs" />
     <Compile Include="ExceptionCatcher.cs" />
