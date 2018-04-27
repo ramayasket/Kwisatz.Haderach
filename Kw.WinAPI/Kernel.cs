@@ -376,6 +376,10 @@ namespace Kw.WinAPI
 		public const uint OPEN_EXISTING = 3;
 		public const uint OPEN_ALWAYS = 4;
 
+
+		[DllImport("kernel32.dll")]
+		public static extern bool TerminateThread(IntPtr hThread, uint dwExitCode);
+
 		[System.Runtime.InteropServices.DllImport("kernel32", SetLastError = true)]
 		public static extern uint ReadFile(SafeFileHandle handle,
 			byte[] buffer,
