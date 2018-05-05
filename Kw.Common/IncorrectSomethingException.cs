@@ -50,5 +50,12 @@ namespace Kw.Common
 		protected IncorrectTypeException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 		public IncorrectTypeException(string message, Exception innerException) : base(message, innerException) { }
 	}
+
+	[Serializable]
+	public class NotReachableException : Exception
+	{
+		public NotReachableException() : base("Not supposed to reach this exception.") { }
+		protected NotReachableException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+	}
 }
 
