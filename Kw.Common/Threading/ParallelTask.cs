@@ -15,6 +15,8 @@ namespace Kw.Common.Threading
 	{
 		protected static readonly HashSet<ParallelTask> _activeTasks = new HashSet<ParallelTask>();
 
+		protected const bool IS_BACKGROUND = true;
+
 		/// <summary>
 		/// Код выполнения в потоке.
 		/// </summary>
@@ -33,7 +35,7 @@ namespace Kw.Common.Threading
 		/// <summary>
 		/// ID потока.
 		/// </summary>
-		public int NativeThreadId { get; protected set; }
+		public IntPtr NativeThreadId { get; protected set; }
 
 		public Exception Error { get; protected set; }
 
@@ -101,13 +103,13 @@ namespace Kw.Common.Threading
 		public ParallelTask(Action target)
 		{
 			Target = target;
-			Thread = new Thread(ThreadProc) {Name = ThreadName};
+			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = IS_BACKGROUND };
 		}
 
 		internal ParallelTask(Action target, ParallelPool pool) : this(pool)
 		{
 			Target = target;
-			Thread = new Thread(ThreadProc) { Name = ThreadName };
+			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = IS_BACKGROUND };
 		}
 
 		/// <summary>
@@ -139,7 +141,7 @@ namespace Kw.Common.Threading
 		private void ThreadProc()
 		{
 			ManagedThreadId = Thread.CurrentThread.ManagedThreadId;
-			NativeThreadId = WinAPI.GetCurrentThreadId();
+			NativeThreadId = new IntPtr(WinAPI.GetCurrentThreadId());
 
 			lock (_activeTasks)
 			{
@@ -293,7 +295,7 @@ namespace Kw.Common.Threading
 		public ParallelTask(Action<T> action, ParallelPool pool = null) : base(pool)
 		{
 			Target = action;
-			Thread = new Thread(ThreadProc) { Name = ThreadName };
+			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = IS_BACKGROUND };
 		}
 
 		/// <summary>
@@ -411,7 +413,7 @@ namespace Kw.Common.Threading
 		public ParallelTask(Func<T, R> action, ParallelPool pool = null) : base(pool)
 		{
 			Target = action;
-			Thread = new Thread(ThreadProc) { Name = ThreadName };
+			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = IS_BACKGROUND };
 		}
 
 		[DebuggerNonUserCode]
