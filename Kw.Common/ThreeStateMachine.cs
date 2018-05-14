@@ -34,7 +34,7 @@ namespace Kw.Common
 			CreateTransitionMatrix();
 
 			_stateChanged = new ManualResetEvent(false);
-			_runnerTask = ParallelTask.StartNew(MachineProc);
+			_runnerTask = InstructionThread.StartNew(MachineProc);
 		}
 
 		/// <summary>
@@ -159,6 +159,6 @@ namespace Kw.Common
 		protected bool _shutdown = false;
 
 		protected readonly ManualResetEvent _stateChanged;
-		protected readonly ParallelTask _runnerTask;
+		protected readonly InstructionThread _runnerTask;
 	}
 }

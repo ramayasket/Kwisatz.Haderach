@@ -20,7 +20,7 @@ namespace Kw.Common
 		/// Запуск процесса (управляемый переход).
 		/// </summary>
 		/// <returns>Флаг подтверждения перехода.</returns>
-		public virtual bool Run()
+		public virtual bool Running()
 		{
 			return true;
 		}
@@ -29,7 +29,7 @@ namespace Kw.Common
 		/// Остановка процесса (управляемый переход).
 		/// </summary>
 		/// <returns>Флаг подтверждения перехода.</returns>
-		public virtual bool Stop()
+		public virtual bool Stopping()
 		{
 			return true;
 		}
@@ -38,7 +38,7 @@ namespace Kw.Common
 		/// Перевод процесса в состояние неисправности (неуправляемый переход).
 		/// </summary>
 		/// <returns></returns>
-		public virtual void Fail()
+		public virtual void Failing()
 		{
 		}
 
@@ -120,12 +120,12 @@ namespace Kw.Common
 
 		private void RunTransition()
 		{
-			ConditionalTransition(Run);
+			ConditionalTransition(Running);
 		}
 
 		private void StopTransition()
 		{
-			ConditionalTransition(Stop);
+			ConditionalTransition(Stopping);
 		}
 
 		private void FailTransition()
@@ -135,7 +135,7 @@ namespace Kw.Common
 			//
 			try
 			{
-				Fail();
+				Failing();
 			}
 			catch { /* ignored */ }
 
