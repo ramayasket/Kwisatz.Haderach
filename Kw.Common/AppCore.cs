@@ -181,7 +181,7 @@ namespace Kw.Common
 
 			var sw = Stopwatch.StartNew();
 
-			var killed = InstructionThread.KillActiveTasks(KillTimeout);
+			var killed = ParallelTask.KillActiveTasks(KillTimeout);
 
 			sw.Stop();
 

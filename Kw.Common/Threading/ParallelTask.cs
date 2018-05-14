@@ -107,7 +107,7 @@ namespace Kw.Common.Threading
 		internal ParallelTask(Action target, ParallelPool pool) : this(pool)
 		{
 			Target = target;
-			Thread = new Thread(ThreadProc) { Name = ThreadName };
+			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = true };
 		}
 
 		/// <summary>
@@ -293,7 +293,7 @@ namespace Kw.Common.Threading
 		public ParallelTask(Action<T> action, ParallelPool pool = null) : base(pool)
 		{
 			Target = action;
-			Thread = new Thread(ThreadProc) { Name = ThreadName };
+			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = true };
 		}
 
 		/// <summary>
@@ -411,7 +411,7 @@ namespace Kw.Common.Threading
 		public ParallelTask(Func<T, R> action, ParallelPool pool = null) : base(pool)
 		{
 			Target = action;
-			Thread = new Thread(ThreadProc) { Name = ThreadName };
+			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = true };
 		}
 
 		[DebuggerNonUserCode]
