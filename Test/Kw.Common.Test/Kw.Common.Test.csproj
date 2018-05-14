@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CultureIssues.cs" />
+    <Compile Include="LinqExtensions\ArrayEqualsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singleton\Singletoned.cs" />
   </ItemGroup>

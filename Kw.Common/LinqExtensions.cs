@@ -20,7 +20,24 @@ namespace Kw.Common
 			return !collection.Any(predicate);
 		}
 
-		/// <summary>
+		public static bool ArrayEquals<T>(this IEnumerable<T> collection, params T[] that)
+		{
+			var source = collection.ToArray();
+
+			if (that.Length == source.Length)
+			{
+				for (int i = 0; i < that.Length; i++)
+				{
+					if (!source[i].Equals(that[i])) return false;
+				}
+
+				return true;
+			}
+
+			return false;
+		}
+
+	/// <summary>
 		/// Проверяет вхождение заданного элемента в коллекцию.
 		/// </summary>
 		/// <typeparam name="T">Тип элемента коллекции</typeparam>
