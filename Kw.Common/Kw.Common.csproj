@@ -134,8 +134,8 @@
     <Compile Include="DunamicResources\DynamicResourcePool`1.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Threading\Interruptable.cs" />
-    <Compile Include="Threading\ParallelTask.cs" />
-    <Compile Include="Threading\ParallelPool.cs" />
+    <Compile Include="Threading\ExecutionThread.cs" />
+    <Compile Include="Threading\ExecutionThreads.cs" />
     <Compile Include="Threading\Waitable.cs" />
     <Compile Include="TolerableException.cs" />
     <Compile Include="TurmoilException.cs" />

@@ -13,7 +13,7 @@ namespace Kw.Networking.Communications
 	public abstract class SerialExchangeServer
 	{
 		private TcpListener _listener;
-		protected ParallelTask _listenerTask;
+		protected ExecutionThread _listenerTask;
 
 		/// <summary>
 		/// Номер порта провайдера
@@ -76,7 +76,7 @@ namespace Kw.Networking.Communications
 				AppCore.WriteLine("@PX Accepted connection from {0}", client.Client.LocalEndPoint);
 			}
 
-			ParallelTask.StartNew(RequestProc, client);
+			ExecutionThread.StartNew(RequestProc, client);
 		}
 
 		protected virtual bool NoAcceptMessage
@@ -180,7 +180,7 @@ namespace Kw.Networking.Communications
 
 		public void Start()
 		{
-			ParallelTask.StartNew(ListenerProc);
+			ExecutionThread.StartNew(ListenerProc);
 		}
 
 		public void Stop()

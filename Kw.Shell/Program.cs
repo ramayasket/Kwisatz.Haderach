@@ -32,7 +32,7 @@ namespace Kw.Shell
 
 		public static void Main(string[] arguments)
 		{
-			var t = ParallelTask.StartNew(f);
+			var t = ExecutionThread.StartNew(f);
 
 			var w1 = t.WaitOne(200);
 

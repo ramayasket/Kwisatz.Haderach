@@ -10,10 +10,10 @@ namespace Kw.Common.Threading
 	/// <summary>
 	/// Пул потоков для параллельного выполнения задач.
 	/// </summary>
-	public class ParallelPool
+	public class ExecutionThreads
 	{
-		private readonly Queue<ParallelTask> _queuedTasks = new Queue<ParallelTask>();
-		private readonly HashSet<ParallelTask> _activeTasks = new HashSet<ParallelTask>();
+		private readonly Queue<ExecutionThread> _queuedTasks = new Queue<ExecutionThread>();
+		private readonly HashSet<ExecutionThread> _activeTasks = new HashSet<ExecutionThread>();
 		private readonly ManualResetEvent _empty = new ManualResetEvent(true);
 
 		private readonly List<Exception> _errors = new List<Exception>();
@@ -26,39 +26,24 @@ namespace Kw.Common.Threading
 		/// <summary>
 		/// Коллекция исключений в функциях потоков.
 		/// </summary>
-		public Exception[] Errors
-		{
-			get { return _errors.ToArray(); }
-		}
+		public Exception[] Errors => _errors.ToArray();
 
 		/// <summary>
 		/// Рекомендуемое количество потоков.
 		/// </summary>
-		public static int AdviseCapacity
-		{
-			get { return Environment.ProcessorCount; }
-		}
+		public static int AdviseCapacity => Environment.ProcessorCount;
 
-		public int QueueLength
-		{
-			get { return _queuedTasks.Count; }
-		}
+		public int QueueLength => _queuedTasks.Count;
 
-		public int ActiveTasks
-		{
-			get { return _activeTasks.Count; }
-		}
+		public int ActiveTasks => _activeTasks.Count;
 
-		public int TotalLoad
-		{
-			get { return _activeTasks.Count + _queuedTasks.Count; }
-		}
+		public int TotalLoad => _activeTasks.Count + _queuedTasks.Count;
 
 		/// <summary>
 		/// Иницилизирует объект пула.
 		/// </summary>
 		/// <param name="capacity">Количество потоков.</param>
-		public ParallelPool(int capacity = 0)
+		public ExecutionThreads(int capacity = 0)
 		{
 			if (capacity < 0) throw new ArgumentOutOfRangeException("capacity", "Expected positive number or zero.");
 
@@ -102,10 +87,10 @@ namespace Kw.Common.Threading
 		/// Ставит в очередь задачу.
 		/// </summary>
 		/// <param name="action">Метод задачи.</param>
-		/// <returns>Объект ParallelTask.</returns>
-		public ParallelTask Enqueue(Action action)
+		/// <returns>Объект ExecutionThread.</returns>
+		public ExecutionThread Enqueue(Action action)
 		{
-			var task = new ParallelTask(action, this);
+			var task = new ExecutionThread(action, this);
 
 			Synchronous(p => p.InternalEnqueue(task));
 
@@ -118,10 +103,10 @@ namespace Kw.Common.Threading
 		/// <typeparam name="T">Тип входных данных задачи.</typeparam>
 		/// <param name="action">Метод задачи.</param>
 		/// <param name="parameter">Входные данные задачи.</param>
-		/// <returns>Объект ParallelTask.</returns>
-		public ParallelTask Enqueue<T>(Action<T> action, T parameter) where T : class
+		/// <returns>Объект ExecutionThread.</returns>
+		public ExecutionThread Enqueue<T>(Action<T> action, T parameter) where T : class
 		{
-			var task = new ParallelTask<T>(action, this) { Parameter = parameter };
+			var task = new ExecutionThread<T>(action, this) { Parameter = parameter };
 
 			Synchronous(p => p.InternalEnqueue(task));
 
@@ -135,10 +120,10 @@ namespace Kw.Common.Threading
 		/// <typeparam name="R">Тип выходных данных задачи.</typeparam>
 		/// <param name="action">Метод задачи.</param>
 		/// <param name="parameter">Входные данные задачи.</param>
-		/// <returns>Объект ParallelTask.</returns>
-		public ParallelTask<T,R> Enqueue<T, R>(Func<T, R> action, T parameter) where T : class
+		/// <returns>Объект ExecutionThread.</returns>
+		public ExecutionThread<T,R> Enqueue<T, R>(Func<T, R> action, T parameter) where T : class
 		{
-			var task = new ParallelTask<T, R>(action, this) { Parameter = parameter };
+			var task = new ExecutionThread<T, R>(action, this) { Parameter = parameter };
 
 			Synchronous(p => p.InternalEnqueue(task));
 
@@ -191,7 +176,7 @@ namespace Kw.Common.Threading
 			if (0 == data.Length)
 				return new Exception[0];
 
-			var pool = new ParallelPool(capacity);
+			var pool = new ExecutionThreads(capacity);
 			var threads = pool.Capacity;
 			var portions = Distribute(threads, data, minSize);
 
@@ -263,12 +248,12 @@ namespace Kw.Common.Threading
 			return portions.Where(p => 0 != p.Count).ToArray();
 		}
 
-		internal void Unregister(ParallelTask task)
+		internal void Unregister(ExecutionThread task)
 		{
 			Synchronous(p => p.InternalUnregister(task));
 		}
 
-		private void InternalUnregister(ParallelTask task)
+		private void InternalUnregister(ExecutionThread task)
 		{
 			_activeTasks.Remove(task);
 
@@ -286,7 +271,7 @@ namespace Kw.Common.Threading
 			}
 		}
 
-		private void InternalEnqueue(ParallelTask task)
+		private void InternalEnqueue(ExecutionThread task)
 		{
 			_empty.Reset();
 			Empty?.Invoke(false);
@@ -307,7 +292,7 @@ namespace Kw.Common.Threading
 			}
 		}
 
-		private void Synchronous(Action<ParallelPool> deed)
+		private void Synchronous(Action<ExecutionThreads> deed)
 		{
 			lock (this)
 			{

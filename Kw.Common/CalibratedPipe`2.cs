@@ -21,7 +21,7 @@ namespace Kw.Common
 			_resolution = ONEK / throughput;
 			_portion = 1;
 
-			ParallelTask.StartNew(CalibratedTransfer);
+			ExecutionThread.StartNew(CalibratedTransfer);
 		}
 
 		public void Dispose()

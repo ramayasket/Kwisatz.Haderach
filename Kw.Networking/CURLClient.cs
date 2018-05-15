@@ -33,7 +33,7 @@ namespace Kw.Networking
 		/// Входные данные: CURLDialogue.
 		/// Выходные данные: код возврата CURL.EXE.
 		/// </summary>
-		public class CURLInvoker : ParallelTask<CURLDialogue, int>
+		public class CURLInvoker : ExecutionThread<CURLDialogue, int>
 		{
 			/// <summary>
 			/// Отменяет задачу (прерывает процесс).

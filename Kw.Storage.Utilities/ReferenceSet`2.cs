@@ -197,7 +197,7 @@ namespace Kw.Storage.Utilities
 
 			if (Background)
 			{
-				var refresher = new ParallelTask(RefresherTask);
+				var refresher = new ExecutionThread(RefresherTask);
 				refresher.Start();
 			}
 		}

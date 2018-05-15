@@ -11,9 +11,9 @@ namespace Kw.Common.Threading
 	/// <summary>
 	/// Параллельно выполняемая задача на основе System.Threading.Thread.
 	/// </summary>
-	public class ParallelTask //	: InstanceTracker<ParallelTask>
+	public class ExecutionThread //	: InstanceTracker<ExecutionThread>
 	{
-		protected static readonly HashSet<ParallelTask> _activeTasks = new HashSet<ParallelTask>();
+		protected static readonly HashSet<ExecutionThread> _activeTasks = new HashSet<ExecutionThread>();
 
 		protected const bool IS_BACKGROUND = true;
 
@@ -44,7 +44,7 @@ namespace Kw.Common.Threading
 		protected readonly Event _started = new Event();
 		protected readonly Event _done = new Event();
 		
-		protected readonly ParallelPool _pool;
+		protected readonly ExecutionThreads _pool;
 
 		protected internal string ThreadName => Target.Method.Name;
 
@@ -55,9 +55,9 @@ namespace Kw.Common.Threading
 		/// <summary>
 		/// Преобразование к типу WaitHandle.
 		/// </summary>
-		/// <param name="p">Объект ParallelTask.</param>
+		/// <param name="p">Объект ExecutionThread.</param>
 		/// <returns>WaitHandle.</returns>
-		public static implicit operator WaitHandle(ParallelTask p)
+		public static implicit operator WaitHandle(ExecutionThread p)
 		{
 			return p._done.Waitable;
 		}
@@ -70,9 +70,9 @@ namespace Kw.Common.Threading
 		/// <summary>
 		/// Преобразование к типу Thread.
 		/// </summary>
-		/// <param name="p">Объект ParallelTask.</param>
+		/// <param name="p">Объект ExecutionThread.</param>
 		/// <returns>Thread.</returns>
-		public static implicit operator Thread(ParallelTask p)
+		public static implicit operator Thread(ExecutionThread p)
 		{
 			return p.Thread;
 		}
@@ -80,14 +80,11 @@ namespace Kw.Common.Threading
 		/// <summary>
 		/// Время выполнения потока.
 		/// </summary>
-		public TimeSpan Elapsed
-		{
-			get { return _sw.Elapsed; }
-		}
+		public TimeSpan Elapsed => _sw.Elapsed;
 
 		public ThreadPriority Priority { get; set; }
 
-		public ParallelTask(ParallelPool pool)
+		public ExecutionThread(ExecutionThreads pool)
 		{
 			_pool = pool;
 		}
@@ -100,13 +97,13 @@ namespace Kw.Common.Threading
 			}
 		}
 
-		public ParallelTask(Action target)
+		public ExecutionThread(Action target)
 		{
 			Target = target;
 			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = IS_BACKGROUND };
 		}
 
-		internal ParallelTask(Action target, ParallelPool pool) : this(pool)
+		internal ExecutionThread(Action target, ExecutionThreads pool) : this(pool)
 		{
 			Target = target;
 			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = IS_BACKGROUND };
@@ -182,10 +179,7 @@ namespace Kw.Common.Threading
 				_activeTasks.Remove(this);
 			}
 
-			if (null != _pool)
-			{
-				_pool.Unregister(this);
-			}
+			_pool?.Unregister(this);
 
 			_done.Happen();
 
@@ -235,10 +229,10 @@ namespace Kw.Common.Threading
 		/// </summary>
 		/// <param name="action">Код потока.</param>
 		/// <param name="priority"></param>
-		/// <returns>Объект ParallelTask.</returns>
-		public static ParallelTask StartNew(Action action, ThreadPriority priority)
+		/// <returns>Объект ExecutionThread.</returns>
+		public static ExecutionThread StartNew(Action action, ThreadPriority priority)
 		{
-			var p = new ParallelTask(action) { Priority = priority };
+			var p = new ExecutionThread(action) { Priority = priority };
 
 			p.Start();
 			return p;
@@ -248,8 +242,8 @@ namespace Kw.Common.Threading
 		/// Создает и запускает новый поток.
 		/// </summary>
 		/// <param name="action">Код потока.</param>
-		/// <returns>Объект ParallelTask.</returns>
-		public static ParallelTask StartNew(Action action)
+		/// <returns>Объект ExecutionThread.</returns>
+		public static ExecutionThread StartNew(Action action)
 		{
 			return StartNew(action, ThreadPriority.Normal);
 		}
@@ -258,10 +252,10 @@ namespace Kw.Common.Threading
 		/// </summary>
 		/// <param name="action">Код потока.</param>
 		/// <param name="parameter">Параметр потока.</param>
-		/// <returns>Объект ParallelTask.</returns>
-		public static ParallelTask<T> StartNew<T>(Action<T> action, T parameter) where T:class
+		/// <returns>Объект ExecutionThread.</returns>
+		public static ExecutionThread<T> StartNew<T>(Action<T> action, T parameter) where T:class
 		{
-			var p = new ParallelTask<T>(action);
+			var p = new ExecutionThread<T>(action);
 			p.Start(parameter);
 			return p;
 		}
@@ -271,28 +265,28 @@ namespace Kw.Common.Threading
 		/// </summary>
 		/// <param name="action">Код потока.</param>
 		/// <param name="parameter">Параметр потока.</param>
-		/// <returns>Объект ParallelTask.</returns>
-		public static ParallelTask<T, R> StartNew<T, R>(Func<T, R> action, T parameter) where T : class
+		/// <returns>Объект ExecutionThread.</returns>
+		public static ExecutionThread<T, R> StartNew<T, R>(Func<T, R> action, T parameter) where T : class
 		{
-			var p = new ParallelTask<T, R>(action);
+			var p = new ExecutionThread<T, R>(action);
 			p.Start(parameter);
 			return p;
 		}
 
 		public override string ToString()
 		{
-			return "ParallelTask." + Thread.Name;
+			return "ExecutionThread." + Thread.Name;
 		}
 	}
 
 	/// <summary>
 	/// Поток исполнения на основе System.Threading.Thread с параметром T.
 	/// </summary>
-	public class ParallelTask<T> : ParallelTask where T:class
+	public class ExecutionThread<T> : ExecutionThread where T:class
 	{
-		protected ParallelTask(ParallelPool pool) : base(pool) { }
+		protected ExecutionThread(ExecutionThreads pool) : base(pool) { }
 
-		public ParallelTask(Action<T> action, ParallelPool pool = null) : base(pool)
+		public ExecutionThread(Action<T> action, ExecutionThreads pool = null) : base(pool)
 		{
 			Target = action;
 			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = IS_BACKGROUND };
@@ -394,7 +388,7 @@ namespace Kw.Common.Threading
 	/// <summary>
 	/// Поток исполнения на основе System.Threading.Thread с параметром T и типом возвращаемого значения R.
 	/// </summary>
-	public class ParallelTask<T, R> : ParallelTask<T> where T : class
+	public class ExecutionThread<T, R> : ExecutionThread<T> where T : class
 	{
 		R _result;
 
@@ -410,7 +404,7 @@ namespace Kw.Common.Threading
 			}
 		}
 
-		public ParallelTask(Func<T, R> action, ParallelPool pool = null) : base(pool)
+		public ExecutionThread(Func<T, R> action, ExecutionThreads pool = null) : base(pool)
 		{
 			Target = action;
 			Thread = new Thread(ThreadProc) { Name = ThreadName, IsBackground = IS_BACKGROUND };

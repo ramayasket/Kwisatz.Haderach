@@ -80,13 +80,13 @@ namespace Kw.Common
 			//    Commands.Clear();
 			//}
 
-			//var tasks = new List<ParallelTask>();
+			//var tasks = new List<ExecutionThread>();
 
 			//foreach (var command in killables)
 			//{
 			//    var _cmd = command;
 
-			//    var task = new ParallelTask(() =>
+			//    var task = new ExecutionThread(() =>
 			//    {
 			//        try
 			//        {
