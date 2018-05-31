@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Kw.Common;
 using Kw.Common.Threading;
@@ -13,49 +16,91 @@ using Kw.WinAPI;
 
 namespace Kw.Shell
 {
+	//	ReSharper disable EmptyGeneralCatchClause
+	#pragma warning disable 4014
+
 	partial class Program
 	{
-		static void f()
+		private static readonly object _lock = new object();
+
+		private const int KILO = 1000;
+		private const int MIO = KILO * KILO;
+
+		private static int _actual;
+		private static int _switched;
+		private static TimeSpan _switchTime;
+
+		private static void thread()
 		{
-			// ReSharper disable once EmptyEmbeddedStatement
-			//while (true)
-			Console.ReadLine();
+			Interlocked.Increment(ref _actual);
 
-			//IPAddress ipAddress = Dns.Resolve("localhost").AddressList[0];
-			//TcpListener tcpl = new TcpListener(ipAddress, 49152);
-			//tcpl.Start();
+			while (true)
+			{
+				var sw = Stopwatch.StartNew();
 
-			//Socket newSocket = tcpl.AcceptSocket();
+				lock (_lock)
+				{
+					sw.Stop();
 
-			Debug.WriteLine("f ended");
+					if (_switched < TEST_VOLUME)
+					{
+						_switched++;
+						_switchTime += sw.Elapsed;
+					}
+					else
+						return;
+				}
+			}
 		}
+
+		private static void Report()
+		{
+			Console.WriteLine($"{_switched} switches over {_actual} threads has taken {_switchTime.TotalMilliseconds} ms. (avg. {_switchTime.TotalMilliseconds/ _switched} ms. per switch)");
+		}
+
+		private const int TEST_VOLUME = 10 * MIO;
+		private const int TEST_THREADS = 8;
 
 		public static void Main(string[] arguments)
 		{
-			var t = ExecutionThread.StartNew(f);
+			_actual = 0;
+			_switched = 0;
+			_switchTime = TimeSpan.Zero;
 
-			var w1 = t.WaitOne(200);
+			var threads = new WaitHandle[TEST_THREADS];
 
-			t.Thread.Interrupt();
-			t.Thread.Abort();
+			for (int i = 0; i < threads.Length; i++)
+			{
+				threads[i] = ExecutionThread.StartNew(thread);
+			}
 
-			Kernel.TerminateThread(t.NativeThreadId, 0);
-			//t.Thread
+			threads.WaitAll();
 
+			Report();
 
+			_actual = 0;
+			_switched = 0;
+			_switchTime = TimeSpan.Zero;
 
-			var w2 = t.WaitOne();
+			//Task.
 
-			//var axes = Instance.Whiteboard;
-			//var rnd = new Random();
+			var tasks = new Task[TEST_THREADS];
 
-			//for (int i = 0; i < 30; i++)
-			//{
-			//	Debug.WriteLine(new Random().Next(0,2));
-			//}
+			for (int i = 0; i < tasks.Length; i++)
+			{
+				tasks[i] = Task.Run((Action)thread);
+			}
 
-			Console.WriteLine("Press ENTER to quit...");
+			Task.WaitAll(tasks);
+
+			Report();
+
+			Console.WriteLine("\nPress ENTER to quit...");
 			Console.ReadLine();
+
+			//Console.WriteLine("Main thread is terminating...");
 		}
 	}
+
+	#pragma warning restore 4014
 }

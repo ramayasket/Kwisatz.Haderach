@@ -84,7 +84,7 @@ namespace Kw.Common.Threading
 
 		public ThreadPriority Priority { get; set; }
 
-		public ExecutionThread(ExecutionThreads pool)
+		internal ExecutionThread(ExecutionThreads pool)
 		{
 			_pool = pool;
 		}
