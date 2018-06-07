@@ -29,7 +29,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <DocumentationFile>..\bin\Kw.Aspects.xml</DocumentationFile>
     <NoWarn>1591,1574</NoWarn>
-    <PostSharpDisabledMessages>LA0036;</PostSharpDisabledMessages>
+    <PostSharpDisabledMessages>LA0036;PS0267;PS0220;</PostSharpDisabledMessages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -43,7 +43,7 @@
     <DocumentationFile>..\bin\Kw.Aspects.xml</DocumentationFile>
     <NoWarn>1591,1574</NoWarn>
     <SkipPostSharp>True</SkipPostSharp>
-    <PostSharpDisabledMessages>LA0036;</PostSharpDisabledMessages>
+    <PostSharpDisabledMessages>LA0036;PS0267;PS0220;</PostSharpDisabledMessages>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PostSharp, Version=5.0.48.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
