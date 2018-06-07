@@ -95,6 +95,7 @@
     <Compile Include="ExecutionTimingInfo.cs" />
     <Compile Include="ExecutionTimings.cs" />
     <Compile Include="FormattedValue.cs" />
+    <Compile Include="FrameworkUtils.cs" />
     <Compile Include="HRESULT.cs" />
     <Compile Include="INamed.cs" />
     <Compile Include="IncorrectSomethingException.cs" />

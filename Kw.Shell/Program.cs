@@ -21,86 +21,36 @@ namespace Kw.Shell
 
 	partial class Program
 	{
-		private static readonly object _lock = new object();
-
-		private const int KILO = 1000;
-		private const int MIO = KILO * KILO;
-
-		private static int _actual;
-		private static int _switched;
-		private static TimeSpan _switchTime;
-
-		private static void thread()
+		static void m0()
 		{
-			Interlocked.Increment(ref _actual);
+			var m_0 = FrameworkUtils.GetStackMethod(0);
+			var m_1 = FrameworkUtils.GetStackMethod(1);
 
-			while (true)
-			{
-				var sw = Stopwatch.StartNew();
-
-				lock (_lock)
-				{
-					sw.Stop();
-
-					if (_switched < TEST_VOLUME)
-					{
-						_switched++;
-						_switchTime += sw.Elapsed;
-					}
-					else
-						return;
-				}
-			}
+			m1();
 		}
 
-		private static void Report()
+		static void m1()
 		{
-			Console.WriteLine($"{_switched} switches over {_actual} threads has taken {_switchTime.TotalMilliseconds} ms. (avg. {_switchTime.TotalMilliseconds/ _switched} ms. per switch)");
+			var m_0 = FrameworkUtils.GetStackMethod(0);
+			var m_1 = FrameworkUtils.GetStackMethod(1);
+			var m_2 = FrameworkUtils.GetStackMethod(2);
+
+			m2();
 		}
 
-		private const int TEST_VOLUME = 10 * MIO;
-		private const int TEST_THREADS = 8;
+		static void m2()
+		{
+		}
 
 		public static void Main(string[] arguments)
 		{
-			_actual = 0;
-			_switched = 0;
-			_switchTime = TimeSpan.Zero;
+			var m_0 = FrameworkUtils.GetStackMethod(0);
+			var m_1 = FrameworkUtils.GetStackMethod(1);
 
-			var threads = new WaitHandle[TEST_THREADS];
-
-			for (int i = 0; i < threads.Length; i++)
-			{
-				threads[i] = ExecutionThread.StartNew(thread);
-			}
-
-			threads.WaitAll();
-
-			Report();
-
-			_actual = 0;
-			_switched = 0;
-			_switchTime = TimeSpan.Zero;
-
-			//Task.
-
-			var tasks = new Task[TEST_THREADS];
-
-			for (int i = 0; i < tasks.Length; i++)
-			{
-				tasks[i] = Task.Run((Action)thread);
-			}
-
-			Task.WaitAll(tasks);
-
-			Report();
+			m0();
 
 			Console.WriteLine("\nPress ENTER to quit...");
 			Console.ReadLine();
-
-			//Console.WriteLine("Main thread is terminating...");
 		}
 	}
-
-	#pragma warning restore 4014
 }

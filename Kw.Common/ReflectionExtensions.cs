@@ -66,17 +66,6 @@ namespace Kw.Common
 
 			return new TA[0];
 		}
-
-		[MethodImpl(MethodImplOptions.NoInlining)]
-		public static MethodBase GetCurrentMethod()
-		{
-			StackTrace st = new StackTrace();
-			StackFrame sf = st.GetFrame(1);
-
-			var m = sf.GetMethod();
-
-			return m;
-		}
 	}
 }
 

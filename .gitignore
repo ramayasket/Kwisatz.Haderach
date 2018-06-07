@@ -38,3 +38,5 @@ bld/
 /Kw.Windows.Forms/obj
 /MySql.Data/bin
 /MySql.Data/obj
+
+*.user
