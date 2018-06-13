@@ -44,10 +44,7 @@ namespace Kw.Shell
 
 		public static void Main(string[] arguments)
 		{
-			var m_0 = FrameworkUtils.GetStackMethod(0);
-			var m_1 = FrameworkUtils.GetStackMethod(1);
-
-			m0();
+			DebugOutput.WriteLine("ZLP!!!");
 
 			Console.WriteLine("\nPress ENTER to quit...");
 			Console.ReadLine();

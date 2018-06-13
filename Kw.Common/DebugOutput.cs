@@ -24,7 +24,7 @@ namespace Kw.Common
 		/// Функция API: вывод отладочной информации
 		/// </summary>
 		/// <param name="outputString">Строка для вывода</param>
-		[DllImport("kernel32.dll", EntryPoint = "OutputDebugString")] static extern void Output(string outputString);
+		[DllImport("kernel32.dll", EntryPoint = "OutputDebugString", CharSet = CharSet.Unicode)] static extern void Output(string outputString);
 
 		/// <summary>
 		/// Вывод отладочной информации с префиксом и переводом строки
