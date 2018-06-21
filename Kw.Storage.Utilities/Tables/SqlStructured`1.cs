@@ -29,10 +29,13 @@ namespace Kw.Storage.Utilities.Tables
 		[DebuggerNonUserCode]
 		public virtual SqlParameter Introduce(SqlConnection conn)
 		{
+			var key = GetType().ToString() + "." + conn.ConnectionString;
+
+			if (IntroducedTypes.Contains(key))
+				return Parameter;
+
 			lock (IntroducedTypes)
 			{
-				var key = GetType().ToString() + "." + conn.ConnectionString;
-
 				if (!IntroducedTypes.Contains(key))
 				{
 					var installed = IsTypeInstalled(conn);
