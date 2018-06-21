@@ -71,20 +71,17 @@ namespace Kw.Common.Threading
 			{
 				state.ThrowUnless(_targetType);
 			}
-			
+
+			if (HasHappened)
+				throw new IncorrectOperationException("Event cannot happen twice.");
+
 			lock (this)
 			{
-				if (HasHappened)
-					throw new IncorrectOperationException("Event cannot happen twice.");
-
 				_happened = DateTime.Now;
 				_state = state;
 				_waitable.Set();
 
-				if (null != OnHappened)
-				{
-					OnHappened(this);
-				}
+				OnHappened?.Invoke(this);
 			}
 		}
 

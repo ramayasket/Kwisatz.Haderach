@@ -60,11 +60,11 @@ namespace Kw.Common
 		{
 			ValidateControlledChange(state);
 
+			if (_state == state)    //	нет изменения.
+				return;
+
 			lock (this)
 			{
-				if (_state == state)	//	нет изменения.
-					return;
-
 				if (null != _stateChanging)
 					throw new InvalidOperationException("State change already in progress.");
 

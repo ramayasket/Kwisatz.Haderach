@@ -92,11 +92,11 @@ namespace Kw.Common.DunamicResources
 		/// </summary>
 		internal static void FreeResource()
 		{
+			if (null == _resource)
+				throw new InvalidOperationException($@"Resource '{typeof(T).FullName}' hasn't been allocated for the current thread.");
+
 			lock (_guard)
 			{
-				if (null == _resource)
-					throw new InvalidOperationException($@"Resource '{typeof (T).FullName}' hasn't been allocated for the current thread.");
-
 				_instances[_resource] = null;
 
 				_resource = null;
