@@ -44,7 +44,7 @@ namespace Kw.Shell
 
 		public static void Main(string[] arguments)
 		{
-			DebugOutput.WriteLine("ZLP!!!");
+			TaskbarUtils.RefreshNotificationArea();
 
 			Console.WriteLine("\nPress ENTER to quit...");
 			Console.ReadLine();

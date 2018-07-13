@@ -11,6 +11,15 @@ namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI
 	/// </summary>
 	public static class User
 	{
+		[DllImport("user32.dll", SetLastError = true)]
+		public static extern IntPtr FindWindowEx(IntPtr parentHandle, IntPtr childAfter, string className, string windowTitle);
+
+		[DllImport("user32.dll")]
+		public static extern bool GetClientRect(IntPtr handle, out RECT rect);
+
+		[DllImport("user32.dll", CharSet = CharSet.Auto)]
+		public static extern IntPtr SendMessage(IntPtr handle, UInt32 message, Int32 wParam, Int32 lParam);
+
 		[DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
 		public static extern int CallNextHookEx(int idHook, int nCode, WM wParam, IntPtr lParam);
 

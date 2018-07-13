@@ -84,6 +84,7 @@
     <Compile Include="SafeHGlobalHandle.cs" />
     <Compile Include="Shell32.cs" />
     <Compile Include="StreamName.cs" />
+    <Compile Include="TaskbarUtils.cs" />
     <Compile Include="Types.cs" />
     <Compile Include="User.cs" />
     <Compile Include="VK.cs" />
