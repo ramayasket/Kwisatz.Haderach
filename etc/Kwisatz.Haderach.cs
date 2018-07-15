@@ -21,6 +21,7 @@ using System.Runtime.InteropServices;
 	15.07.2018	1.0.0.6		Changed description & icon
 	15.07.2018	1.0.0.7		Guarded
 	15.07.2018	1.0.0.8		Execite -> SafeExecute
+	15.07.2018	1.0.0.9		WinAPI package
 */
 
-[assembly: AssemblyVersion("1.0.0.8")]
+[assembly: AssemblyVersion("1.0.0.9")]

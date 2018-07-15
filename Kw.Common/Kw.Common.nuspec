@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Kw.Common</id>
-    <version>1.0.0.8</version>
+    <version>1.0.0.9</version>
     <title>Kw.Common</title>
     <authors>Andrei Samoylov</authors>
     <owners>Andrei Samoylov</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/etc/Kwisatz.Haderach.ico?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>All purpose shared classes</description>
-    <releaseNotes>Created NuGet package.</releaseNotes>
+    <!--<releaseNotes></releaseNotes>-->
     <copyright>Copyright © Andrei Samoylov 2012-2018</copyright>
     <tags></tags>
   </metadata>
