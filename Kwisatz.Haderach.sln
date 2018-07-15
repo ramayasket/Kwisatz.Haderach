@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "etc", "etc", "{D511970B-EFB4-4E06-8352-1902B1324CDC}"
 	ProjectSection(SolutionItems) = preProject
 		guids.txt = guids.txt
+		etc\Kwisatz.Haderach.ico = etc\Kwisatz.Haderach.ico
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kw.Windows.Forms", "Kw.Windows.Forms\Kw.Windows.Forms.csproj", "{985A8E6C-D22D-4D28-9359-9A01B4B89809}"

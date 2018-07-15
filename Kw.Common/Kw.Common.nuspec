@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
-    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <id>{00000000-0001-11e8-9876-00055d74a52d}</id>
+    <version>1.0.0.4</version>
+    <title>Kw.Common</title>
+    <authors>Andrei Samoylov</authors>
+    <owners>Andrei Samoylov</owners>
+    <licenseUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ramayasket/Kwisatz.Haderach</projectUrl>
+    <iconUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/etc/Kwisatz.Haderach.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-    <copyright>Copyright 2018</copyright>
-    <tags>Tag1 Tag2</tags>
+    <description>Common purpose shared classes</description>
+    <releaseNotes>Created NuGet package.</releaseNotes>
+    <copyright>Copyright © Andrei Samoylov 2012-2018</copyright>
+    <tags></tags>
   </metadata>
 </package>

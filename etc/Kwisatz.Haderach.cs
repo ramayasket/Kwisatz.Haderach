@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyCompany("Andrique")]
+[assembly: AssemblyCompany("Andrei Samoylov")]
 [assembly: AssemblyProduct("Kwisatz.Haderach")]
 [assembly: AssemblyCopyright("Copyright © Andrei Samoylov 2012-2018")]
 [assembly: ComVisible(false)]
@@ -15,7 +15,8 @@ using System.Runtime.InteropServices;
 	===============================================================================
 	24.03.2018	1.0.0.1		Start of versioning
 	29.03.2018	1.0.0.2		NuGet packaging preparation
-	07.04.2018	1.0.0.3		GetCurrentMethod()
+	07.04.2018	1.0.0.3		FrameworkUtils
+	15.07.2018	1.0.0.4		Kw.Common as NuGet package
 */
 
-[assembly: AssemblyVersion("1.0.0.3")]
+[assembly: AssemblyVersion("1.0.0.4")]

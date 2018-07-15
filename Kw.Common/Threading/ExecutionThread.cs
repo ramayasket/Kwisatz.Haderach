@@ -9,7 +9,7 @@ using Kw.Common.Containers;
 namespace Kw.Common.Threading
 {
 	/// <summary>
-	/// Параллельно выполняемая задача на основе System.Threading.Thread.
+	/// System.Threading.Thread wrapper.
 	/// </summary>
 	public class ExecutionThread //	: InstanceTracker<ExecutionThread>
 	{
