@@ -17,6 +17,8 @@ using System.Runtime.InteropServices;
 	29.03.2018	1.0.0.2		NuGet packaging preparation
 	07.04.2018	1.0.0.3		FrameworkUtils
 	15.07.2018	1.0.0.4		Kw.Common as NuGet package
+	15.07.2018	1.0.0.5		Removed unneeded dependency
+	15.07.2018	1.0.0.6		Changed description & icon
 */
 
-[assembly: AssemblyVersion("1.0.0.4")]
+[assembly: AssemblyVersion("1.0.0.6")]

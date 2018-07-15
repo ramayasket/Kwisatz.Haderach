@@ -40,3 +40,4 @@ bld/
 /MySql.Data/obj
 
 *.user
+*.nupkg

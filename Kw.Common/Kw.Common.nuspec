@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>{00000000-0001-11e8-9876-00055d74a52d}</id>
-    <version>1.0.0.4</version>
+    <id>Kw.Common</id>
+    <version>1.0.0.6</version>
     <title>Kw.Common</title>
     <authors>Andrei Samoylov</authors>
     <owners>Andrei Samoylov</owners>
     <licenseUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/ramayasket/Kwisatz.Haderach</projectUrl>
-    <iconUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/etc/Kwisatz.Haderach.ico</iconUrl>
+    <iconUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/etc/Kwisatz.Haderach.ico?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Common purpose shared classes</description>
+    <description>All purpose shared classes</description>
     <releaseNotes>Created NuGet package.</releaseNotes>
     <copyright>Copyright © Andrei Samoylov 2012-2018</copyright>
     <tags></tags>

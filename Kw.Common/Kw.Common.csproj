@@ -96,6 +96,7 @@
     <Compile Include="ExecutionTimings.cs" />
     <Compile Include="FormattedValue.cs" />
     <Compile Include="FrameworkUtils.cs" />
+    <Compile Include="Guarded.cs" />
     <Compile Include="HRESULT.cs" />
     <Compile Include="INamed.cs" />
     <Compile Include="IncorrectSomethingException.cs" />
@@ -164,7 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Kw.Common.nuspec" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
