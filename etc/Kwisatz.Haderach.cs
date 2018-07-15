@@ -19,6 +19,7 @@ using System.Runtime.InteropServices;
 	15.07.2018	1.0.0.4		Kw.Common as NuGet package
 	15.07.2018	1.0.0.5		Removed unneeded dependency
 	15.07.2018	1.0.0.6		Changed description & icon
+	15.07.2018	1.0.0.7		Guarded
 */
 
-[assembly: AssemblyVersion("1.0.0.6")]
+[assembly: AssemblyVersion("1.0.0.7")]
