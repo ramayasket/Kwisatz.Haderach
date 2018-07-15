@@ -13,7 +13,7 @@ namespace Kw.Common
 	/// ReSharper disable InconsistentNaming
 	public static class Guarded
 	{
-		public static void Execute(this Action action)
+		public static void SafeExecute(this Action action)
 		{
 			try
 			{
@@ -24,7 +24,7 @@ namespace Kw.Common
 			}
 		}
 
-		public static void Execute<T>(this Action<T> action, T t)
+		public static void SafeExecute<T>(this Action<T> action, T t)
 		{
 			try
 			{
@@ -35,7 +35,7 @@ namespace Kw.Common
 			}
 		}
 
-		public static R Execute<R>(this Func<R> action)
+		public static R SafeExecute<R>(this Func<R> action)
 		{
 			try
 			{
@@ -47,7 +47,7 @@ namespace Kw.Common
 			}
 		}
 
-		public static R Execute<T, R>(this Func<T, R> action, T t)
+		public static R SafeExecute<T, R>(this Func<T, R> action, T t)
 		{
 			try
 			{
