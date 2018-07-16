@@ -8,6 +8,8 @@ using System.Text;
 
 namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI
 {
+	/// ReSharper disable InconsistentNaming
+
 	/// <summary>
 	/// Imports for user32.dll
 	/// </summary>
