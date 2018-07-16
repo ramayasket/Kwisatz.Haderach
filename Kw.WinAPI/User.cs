@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting;
 using System.Text;
 
 namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI
@@ -11,6 +13,26 @@ namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI
 	/// </summary>
 	public static class User
 	{
+		[DllImport("user32.dll", SetLastError = true)]
+		[return: MarshalAs(UnmanagedType.Bool)]
+		public static extern bool GetCursorPos(out POINT lpPoint);
+
+		public static Point GetCursorPos()
+		{
+			if (GetCursorPos(out POINT lpPoint))
+			{
+				return lpPoint;
+			}
+
+			return default(Point);
+		}
+
+		[DllImport("user32.dll")]
+		public static extern IntPtr WindowFromPoint(Point p);
+
+		[DllImport("user32.dll")]
+		public static extern bool SetForegroundWindow(IntPtr hWnd);
+
 		[DllImport("user32.dll", SetLastError = true)]
 		public static extern IntPtr FindWindowEx(IntPtr parentHandle, IntPtr childAfter, string className, string windowTitle);
 

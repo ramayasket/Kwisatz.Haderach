@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 
 namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI
 {
+	///	ReSharper disable InconsistentNaming
+
 	/// <summary>
 	/// Represents the attributes of a file stream.
 	/// </summary>
@@ -290,12 +292,12 @@ namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI
 
 		public POINT(Point pt) : this(pt.X, pt.Y) { }
 
-		public static implicit operator System.Drawing.Point(POINT p)
+		public static implicit operator Point(POINT p)
 		{
-			return new System.Drawing.Point(p.X, p.Y);
+			return new Point(p.X, p.Y);
 		}
 
-		public static implicit operator POINT(System.Drawing.Point p)
+		public static implicit operator POINT(Point p)
 		{
 			return new POINT(p.X, p.Y);
 		}
