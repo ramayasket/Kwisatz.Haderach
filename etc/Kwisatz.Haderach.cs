@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
 	15.07.2018	1.0.0.8		Execite -> SafeExecute
 	15.07.2018	1.0.0.9		WinAPI package
 	15.07.2018	1.0.0.10	Package tags
-	16.07.2018	1.0.0.11	More WinAPI imports: GetCursorPos, etc.
+	16.07.2018	1.0.0.12	More WinAPI imports: GetCursorPos, etc.
 */
 
-[assembly: AssemblyVersion("1.0.0.11")]
+[assembly: AssemblyVersion("1.0.0.12")]
