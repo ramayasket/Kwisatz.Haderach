@@ -376,6 +376,16 @@ namespace Kw.WinAPI
 		public const uint OPEN_EXISTING = 3;
 		public const uint OPEN_ALWAYS = 4;
 
+		[DllImport("kernel32.dll")]
+		[return: MarshalAs(UnmanagedType.Bool)]
+		public static extern bool AllocConsole();
+
+		[DllImport("kernel32.dll")]
+		public static extern IntPtr GetConsoleWindow();
+
+		[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+		public static extern bool FreeConsole();
+
 
 		[DllImport("kernel32.dll")]
 		public static extern bool TerminateThread(IntPtr hThread, uint dwExitCode);

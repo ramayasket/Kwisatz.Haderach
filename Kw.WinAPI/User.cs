@@ -15,6 +15,12 @@ namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI
 	/// </summary>
 	public static class User
 	{
+		[DllImport("user32.dll")]
+		public static extern bool AllowSetForegroundWindow(int dwProcessId);
+
+		[DllImport("user32.dll", SetLastError = true)]
+		public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, SetWindowPosFlags uFlags);
+
 		[DllImport("user32.dll", SetLastError = true)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		public static extern bool GetCursorPos(out POINT lpPoint);

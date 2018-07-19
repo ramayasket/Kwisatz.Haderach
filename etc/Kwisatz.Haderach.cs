@@ -24,6 +24,7 @@ using System.Runtime.InteropServices;
 	15.07.2018	1.0.0.9		WinAPI package
 	15.07.2018	1.0.0.10	Package tags
 	16.07.2018	1.0.0.12	More WinAPI imports: GetCursorPos, etc.
+	20.07.2018	1.0.0.13	More WinAPI imports: SetWindowPos, etc.
 */
 
-[assembly: AssemblyVersion("1.0.0.12")]
+[assembly: AssemblyVersion("1.0.0.13")]
