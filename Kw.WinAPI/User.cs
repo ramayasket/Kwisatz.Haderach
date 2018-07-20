@@ -16,6 +16,9 @@ namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI
 	public static class User
 	{
 		[DllImport("user32.dll")]
+		public static extern IntPtr GetForegroundWindow();
+
+		[DllImport("user32.dll")]
 		public static extern bool AllowSetForegroundWindow(int dwProcessId);
 
 		[DllImport("user32.dll", SetLastError = true)]
