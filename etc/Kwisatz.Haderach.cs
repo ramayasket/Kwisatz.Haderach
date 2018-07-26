@@ -25,6 +25,7 @@ using System.Runtime.InteropServices;
 	15.07.2018	1.0.0.10	Package tags
 	16.07.2018	1.0.0.12	More WinAPI imports: GetCursorPos, etc.
 	20.07.2018	1.0.0.14	More WinAPI imports: SetWindowPos, etc.
+	20.07.2018	1.0.0.15	Kw.Windows.Forms as NuGet package
 */
 
-[assembly: AssemblyVersion("1.0.0.14")]
+[assembly: AssemblyVersion("1.0.0.15")]

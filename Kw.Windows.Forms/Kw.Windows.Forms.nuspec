@@ -1,17 +1,16 @@
 <?xml version="1.0"?>
 <package >
 	<metadata>
-		<id>Kw.WinAPI</id>
+		<id>Kw.Windows.Forms</id>
 		<version>1.0.0.15</version>
-		<title>Kw.WinAPI</title>
+		<title>Kw.Windows.Forms</title>
 		<authors>Andrei Samoylov</authors>
 		<owners>Andrei Samoylov</owners>
 		<licenseUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/LICENSE</licenseUrl>
 		<projectUrl>https://github.com/ramayasket/Kwisatz.Haderach</projectUrl>
 		<iconUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/etc/Kwisatz.Haderach.ico?raw=true</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description>WinAPI imports</description>
-		<!--<releaseNotes></releaseNotes>-->
+		<description>Windows Forms utility classes</description>
 		<copyright>Copyright © Andrei Samoylov 2012-2018</copyright>
 		<tags>Kwisatz.Haderach</tags>
 		<dependencies>
