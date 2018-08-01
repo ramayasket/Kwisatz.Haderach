@@ -27,6 +27,7 @@ using System.Runtime.InteropServices;
 	20.07.2018	1.0.0.14	More WinAPI imports: SetWindowPos, etc.
 	20.07.2018	1.0.0.15	Kw.Windows.Forms as NuGet package
 	01.08.2018	1.0.1.0		Signed Kw.Common
+	01.08.2018	1.0.1.1		Signed Kw.Common w/o password
 */
 
 [assembly: AssemblyVersion("1.0.1.0")]
