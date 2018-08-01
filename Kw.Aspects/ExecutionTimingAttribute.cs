@@ -41,7 +41,7 @@ namespace Kw.Aspects
 		public sealed override void OnInvoke(MethodInterceptionArgs args)
 		{
 			Action wrapped = args.Proceed;
-			ExecutionTimings.InternalMeasuredCall(wrapped, Token, _method);
+			ExecutionTimings.MeasuredCall(wrapped, Token, _method);
 		}
 	}
 }

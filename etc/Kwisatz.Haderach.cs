@@ -20,12 +20,13 @@ using System.Runtime.InteropServices;
 	15.07.2018	1.0.0.5		Removed unneeded dependency
 	15.07.2018	1.0.0.6		Changed description & icon
 	15.07.2018	1.0.0.7		Guarded
-	15.07.2018	1.0.0.8		Execite -> SafeExecute
+	15.07.2018	1.0.0.8		Execute -> SafeExecute
 	15.07.2018	1.0.0.9		WinAPI package
 	15.07.2018	1.0.0.10	Package tags
 	16.07.2018	1.0.0.12	More WinAPI imports: GetCursorPos, etc.
 	20.07.2018	1.0.0.14	More WinAPI imports: SetWindowPos, etc.
 	20.07.2018	1.0.0.15	Kw.Windows.Forms as NuGet package
+	01.08.2018	1.0.1.0		Signed Kw.Common
 */
 
-[assembly: AssemblyVersion("1.0.0.15")]
+[assembly: AssemblyVersion("1.0.1.0")]

@@ -56,7 +56,7 @@ namespace Kw.Common
 
 		public static bool ReportTimings { get; set; }
 
-		internal static TimeSpan InternalMeasuredCall(Action wrapped, string token, MethodBase minfo)
+		public static TimeSpan MeasuredCall(Action wrapped, string token, MethodBase minfo)
 		{
 			if (wrapped == null) throw new ArgumentNullException(nameof(wrapped));
 			if (minfo == null) throw new ArgumentNullException(nameof(minfo));
@@ -100,7 +100,7 @@ namespace Kw.Common
 		
 		public static void MeasuredCall(Action method, string token = null)
 		{
-			InternalMeasuredCall(method, token, method.Method);
+			MeasuredCall(method, token, method.Method);
 		}
 
 		public static TResult MeasuredCall<TResult>(Func<TResult> method, string token = null)
@@ -108,7 +108,7 @@ namespace Kw.Common
 			var result = default(TResult);
 			Action wrapped = () => { result = method(); };
 
-			InternalMeasuredCall(wrapped, token, method.Method);
+			MeasuredCall(wrapped, token, method.Method);
 
 			return result;
 		}
@@ -117,7 +117,7 @@ namespace Kw.Common
 		{
 			Action wrapped = () => method(param);
 
-			InternalMeasuredCall(wrapped, token, method.Method);
+			MeasuredCall(wrapped, token, method.Method);
 		}
 
 		public static TR MeasuredCall<TP, TR>(Func<TP, TR> method, TP param, string token = null)
@@ -125,7 +125,7 @@ namespace Kw.Common
 			var result = default(TR);
 			Action wrapped = () => { result = method(param); };
 
-			InternalMeasuredCall(wrapped, token, method.Method);
+			MeasuredCall(wrapped, token, method.Method);
 			
 			return result;
 		}

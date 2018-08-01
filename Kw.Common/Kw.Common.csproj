@@ -61,6 +61,12 @@
     <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
     <NoWarn>1591,1574</NoWarn>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -165,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Kw.Common.nuspec" />
+    <None Include="Kwisatz.Haderach.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
