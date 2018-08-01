@@ -28,6 +28,7 @@ using System.Runtime.InteropServices;
 	20.07.2018	1.0.0.15	Kw.Windows.Forms as NuGet package
 	01.08.2018	1.0.1.0		Signed Kw.Common
 	01.08.2018	1.0.1.1		Signed Kw.Common w/o password
+	01.08.2018	1.0.1.2		Signed Kw.Common w/password again
 */
 
-[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyVersion("1.0.1.2")]

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Kw.Common
 {
+	/// <summary>
+	/// Framework utilities
+	/// </summary>
 	public static class FrameworkUtils
 	{
 		/// <summary>
