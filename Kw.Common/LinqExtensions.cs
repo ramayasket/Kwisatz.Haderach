@@ -118,5 +118,13 @@ namespace Kw.Common
 
 			return portions.ToArray();
 		}
+
+		/// <summary>
+		/// Concatenates single value and a collection.
+		/// </summary>
+		public static IEnumerable<T> Append<T>(this T first, IEnumerable<T> others)
+		{
+			return (new[] {first}).Concat(others);
+		}
 	}
 }

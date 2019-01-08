@@ -29,6 +29,7 @@ using System.Runtime.InteropServices;
 	01.08.2018	1.0.1.0		Signed Kw.Common
 	01.08.2018	1.0.1.1		Signed Kw.Common w/o password
 	01.08.2018	1.0.1.2		Signed Kw.Common w/password again
+	13.11.2018	1.0.1.4		Concat()
 */
 
-[assembly: AssemblyVersion("1.0.1.2")]
+[assembly: AssemblyVersion("1.0.1.4")]

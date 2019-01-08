@@ -41,3 +41,4 @@ bld/
 
 *.user
 *.nupkg
+/Kw.Reference/Kwisatz-Haderach.chm
