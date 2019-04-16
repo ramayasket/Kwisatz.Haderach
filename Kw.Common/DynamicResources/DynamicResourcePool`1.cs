@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Kw.Common.DunamicResources
+namespace Kw.Common.DynamicResources
 {
 	/// <summary>
 	/// Динамический пул разделяемых между потоками ресурсов.

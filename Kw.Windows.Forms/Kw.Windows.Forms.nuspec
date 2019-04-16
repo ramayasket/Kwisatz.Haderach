@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>Kw.Windows.Forms</id>
-		<version>1.0.1.2</version>
+		<version>1.0.1.5</version>
 		<title>Kw.Windows.Forms</title>
 		<authors>Andrei Samoylov</authors>
 		<owners>Andrei Samoylov</owners>
@@ -11,10 +11,10 @@
 		<iconUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/etc/Kwisatz.Haderach.ico?raw=true</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Windows Forms utility classes</description>
-		<copyright>Copyright © Andrei Samoylov 2012-2018</copyright>
+		<copyright>Copyright © Andrei Samoylov 2012-2019</copyright>
 		<tags>Kwisatz.Haderach</tags>
 		<dependencies>
-			<dependency id="Kw.Common" version="1.0.1.2" />
+			<dependency id="Kw.Common" version="1.0.1.5" />
 		</dependencies>
 	</metadata>
 </package>

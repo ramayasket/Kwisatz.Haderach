@@ -1,6 +1,6 @@
 using System;
 
-namespace Kw.Common.DunamicResources
+namespace Kw.Common.DynamicResources
 {
 	/// <summary>
 	/// Аллокатор ресурса для динамического пула.

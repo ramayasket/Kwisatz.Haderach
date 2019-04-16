@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("Andrei Samoylov")]
 [assembly: AssemblyProduct("Kwisatz.Haderach")]
-[assembly: AssemblyCopyright("Copyright © Andrei Samoylov 2012-2018")]
+[assembly: AssemblyCopyright("Copyright © Andrei Samoylov 2012-2019")]
 [assembly: ComVisible(false)]
 
 /*
@@ -30,6 +30,7 @@ using System.Runtime.InteropServices;
 	01.08.2018	1.0.1.1		Signed Kw.Common w/o password
 	01.08.2018	1.0.1.2		Signed Kw.Common w/password again
 	13.11.2018	1.0.1.4		Concat()
+	16.04.2019	1.0.1.5		DynamicResources
 */
 
-[assembly: AssemblyVersion("1.0.1.4")]
+[assembly: AssemblyVersion("1.0.1.5")]

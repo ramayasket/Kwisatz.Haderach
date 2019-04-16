@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>Kw.WinAPI</id>
-		<version>1.0.1.2</version>
+		<version>1.0.1.5</version>
 		<title>Kw.WinAPI</title>
 		<authors>Andrei Samoylov</authors>
 		<owners>Andrei Samoylov</owners>
@@ -12,10 +12,10 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>WinAPI imports</description>
 		<!--<releaseNotes></releaseNotes>-->
-		<copyright>Copyright © Andrei Samoylov 2012-2018</copyright>
+		<copyright>Copyright © Andrei Samoylov 2012-2019</copyright>
 		<tags>Kwisatz.Haderach</tags>
 		<dependencies>
-			<dependency id="Kw.Common" version="1.0.1.2" />
+			<dependency id="Kw.Common" version="1.0.1.5" />
 		</dependencies>
 	</metadata>
 </package>
