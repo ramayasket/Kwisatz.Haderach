@@ -83,6 +83,7 @@
     <Compile Include="Msi.cs" />
     <Compile Include="Netapi32.cs" />
     <Compile Include="NtfsUtils.cs" />
+    <Compile Include="NTSTATUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PsApi.cs" />
     <Compile Include="Resources.cs" />

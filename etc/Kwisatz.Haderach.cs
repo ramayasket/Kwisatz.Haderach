@@ -31,6 +31,7 @@ using System.Runtime.InteropServices;
 	01.08.2018	1.0.1.2		Signed Kw.Common w/password again
 	13.11.2018	1.0.1.4		Concat()
 	16.04.2019	1.0.1.5		DynamicResources
+	19.04.2019	1.0.1.6		NTSTATUS
 */
 
-[assembly: AssemblyVersion("1.0.1.5")]
+[assembly: AssemblyVersion("1.0.1.6")]
