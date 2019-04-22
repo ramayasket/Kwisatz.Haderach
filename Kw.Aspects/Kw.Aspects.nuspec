@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>Kw.Aspects</id>
+		<version>1.0.1.7</version>
+		<title>Kw.Aspects</title>
+		<authors>Andrei Samoylov</authors>
+		<owners>Andrei Samoylov</owners>
+		<licenseUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/ramayasket/Kwisatz.Haderach</projectUrl>
+		<iconUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/etc/Kwisatz.Haderach.ico?raw=true</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>All purpose aspects</description>
+		<!--<releaseNotes></releaseNotes>-->
+		<copyright>Copyright © Andrei Samoylov 2012-2019</copyright>
+		<tags>Kwisatz.Haderach</tags>
+		<dependencies>
+			<dependency id="Kw.Common" version="1.0.1.5" />
+		</dependencies>
+	</metadata>
+</package>

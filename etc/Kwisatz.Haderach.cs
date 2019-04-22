@@ -32,6 +32,7 @@ using System.Runtime.InteropServices;
 	13.11.2018	1.0.1.4		Concat()
 	16.04.2019	1.0.1.5		DynamicResources
 	19.04.2019	1.0.1.6		NTSTATUS
+	22.04.2019	1.0.1.7		NonNullArgument
 */
 
-[assembly: AssemblyVersion("1.0.1.6")]
+[assembly: AssemblyVersion("1.0.1.7")]
