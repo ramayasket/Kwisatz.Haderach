@@ -36,5 +36,3 @@ using System.Runtime.InteropServices;
 	23.04.2019	1.0.1.8		Signed Kw.Aspects
 	23.04.2019	1.0.2.0		Fixed references
 */
-
-[assembly: AssemblyVersion("1.0.2.0")]
