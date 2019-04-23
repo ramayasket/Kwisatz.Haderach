@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Kw.Aspects;
 using Kw.Common;
 using Kw.WinAPI;
+using PostSharp.Aspects;
 
 namespace Kw.Shell
 {
 	//	ReSharper disable EmptyGeneralCatchClause
-	#pragma warning disable 4014
+#pragma warning disable 4014
 
 	partial class Program
 	{
@@ -40,8 +42,13 @@ namespace Kw.Shell
 			public string code;
 		}
 
+		[SynchronizedProperty]
+		public object Value => null;
+
 		public static void Main(string[] arguments)
 		{
+			var v = new Program().Value;
+
 			//const string LINE = "#define DBG_COMMAND_EXCEPTION            ((NTSTATUS)0x40010009L)    // winnt";
 
 			var rx = new Regex(@"#define\s+(?<name>\S+)\s+\(\(NTSTATUS\)(?<code>.+)\).*", RegexOptions.Compiled);

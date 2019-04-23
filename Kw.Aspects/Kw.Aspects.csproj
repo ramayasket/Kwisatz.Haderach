@@ -73,6 +73,8 @@
     <Compile Include="NonNullArgumentAttribute.cs" />
     <Compile Include="NotifyPropertyChangedAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SynchronizedMethodAttribute.cs" />
+    <Compile Include="SynchronizedPropertyAttribute.cs" />
     <Compile Include="TraceInOutAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
