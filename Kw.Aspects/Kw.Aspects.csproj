@@ -2,6 +2,9 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\PostSharp.6.1.17\build\PostSharp.props" Condition="Exists('..\packages\PostSharp.6.1.17\build\PostSharp.props')" />
   <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
@@ -44,6 +47,9 @@
     <NoWarn>1591,1574</NoWarn>
     <SkipPostSharp>True</SkipPostSharp>
     <PostSharpDisabledMessages>LA0036;PS0267;PS0220;</PostSharpDisabledMessages>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PostSharp, Version=6.1.17.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">

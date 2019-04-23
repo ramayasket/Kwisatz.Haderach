@@ -33,6 +33,7 @@ using System.Runtime.InteropServices;
 	16.04.2019	1.0.1.5		DynamicResources
 	19.04.2019	1.0.1.6		NTSTATUS
 	22.04.2019	1.0.1.7		NonNullArgument
+	22.04.2019	1.0.1.8		Signed Kw.Aspects
 */
 
-[assembly: AssemblyVersion("1.0.1.7")]
+[assembly: AssemblyVersion("1.0.1.8")]
