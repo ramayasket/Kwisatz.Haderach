@@ -1,12 +1,4 @@
-﻿////
-////  FUNDAMENTA MATHEMATICAE ET COGITATIONIS
-////  by Andrei Samoylov of MIREA (C) 2013–2019
-////
-////  http://mixed.systems
-////  as@andrique.ru
-////
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
 using PostSharp.Aspects;
