@@ -9,7 +9,7 @@ using PostSharp.Aspects;
 namespace Kw.Aspects
 {
 	[Serializable]
-	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
+	[AttributeUsage(AttributeTargets.Method, Inherited = false)]
 	public class TraceInOutAttribute : MethodInterceptionAspect
 	{
 		public override bool CompileTimeValidate(MethodBase method)
@@ -28,9 +28,6 @@ namespace Kw.Aspects
 			AppCore.WriteLine("@PX Entering method {0}::{1}", Type, Token);
 			args.Proceed();
 			AppCore.WriteLine("@PX Exited method {0}::{1}", Type, Token);
-
-
-
 		}
 	}
 }

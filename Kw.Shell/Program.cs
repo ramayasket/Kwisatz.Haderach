@@ -32,6 +32,7 @@ namespace Kw.Shell
 			m2();
 		}
 
+		[TraceInOut]
 		static void m2()
 		{
 		}
@@ -47,6 +48,8 @@ namespace Kw.Shell
 
 		public static void Main(string[] arguments)
 		{
+			m2();
+
 			var v = new Program().Value;
 
 			//const string LINE = "#define DBG_COMMAND_EXCEPTION            ((NTSTATUS)0x40010009L)    // winnt";
