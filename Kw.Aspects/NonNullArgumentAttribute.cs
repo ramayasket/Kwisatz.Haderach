@@ -9,8 +9,8 @@ namespace Kw.Aspects   // ReSharper disable PossibleNullReferenceException
 	/// Guards a method call against null arguments.
 	/// </summary>
 	[Serializable]
-	[AttributeUsage(AttributeTargets.Method, Inherited = false)]
-	public class NonNullArgumentAttribute : MethodInterceptionAspect
+	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false)]
+	public class NonNullArgumentAttribute : OnMethodBoundaryAspect
 	{
 		private readonly string[] _arguments;
 		private string[] _names;
@@ -35,7 +35,7 @@ namespace Kw.Aspects   // ReSharper disable PossibleNullReferenceException
 			// see that all names are legal
 			foreach (var argument in _arguments)
 			{
-				if(!_names.Contains(argument))
+				if (!_names.Contains(argument))
 					throw new ArgumentException($"Parameter '{argument}' not found in {method.DeclaringType.Name}.{method.Name} method.");
 			}
 
@@ -47,7 +47,7 @@ namespace Kw.Aspects   // ReSharper disable PossibleNullReferenceException
 		/// </summary>
 		/// <param name="args">Advice arguments.</param>
 		/// <exception cref="ArgumentNullException">Guarded argument is null.</exception>
-		public sealed override void OnInvoke(MethodInterceptionArgs args)
+		public override void OnEntry(MethodExecutionArgs args)
 		{
 			object argument(int i) => args.Arguments[i];
 
@@ -70,8 +70,6 @@ namespace Kw.Aspects   // ReSharper disable PossibleNullReferenceException
 					}
 				}
 			}
-
-			args.Proceed();
 		}
 	}
 }
