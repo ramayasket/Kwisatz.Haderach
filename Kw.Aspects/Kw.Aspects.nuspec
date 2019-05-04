@@ -2,11 +2,12 @@
 <package >
 	<metadata>
 		<id>Kw.Aspects</id>
-		<version>1.0.2.4</version>
+		<version>1.0.2.5</version>
 		<title>Kw.Aspects</title>
 		<authors>Andrei Samoylov</authors>
 		<owners>Andrei Samoylov</owners>
-		<licenseUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/LICENSE</licenseUrl>
+		<!--<licenseUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/LICENSE</licenseUrl>-->
+		<license type="expression">LGPL-3.0-or-later</license>
 		<projectUrl>https://github.com/ramayasket/Kwisatz.Haderach</projectUrl>
 		<iconUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/etc/Kwisatz.Haderach.ico?raw=true</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using Kw.Common;
 using PostSharp.Aspects;
 
 namespace Kw.Aspects   // ReSharper disable PossibleNullReferenceException

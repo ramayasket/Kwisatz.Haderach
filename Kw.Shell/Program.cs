@@ -29,11 +29,11 @@ namespace Kw.Shell
 			var m_1 = FrameworkUtils.GetStackMethod(1);
 			var m_2 = FrameworkUtils.GetStackMethod(2);
 
-			m2();
+			m2(null);
 		}
 
-		[TraceInOut]
-		static void m2()
+		[NonNullArgument()]
+		static void m2(object zlp)
 		{
 		}
 
@@ -48,7 +48,7 @@ namespace Kw.Shell
 
 		public static void Main(string[] arguments)
 		{
-			m2();
+			m2(null);
 
 			var v = new Program().Value;
 
