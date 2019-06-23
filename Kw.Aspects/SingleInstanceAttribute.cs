@@ -15,7 +15,7 @@ namespace Kw.Aspects
 	/// <summary>
 	/// Returns single instance for the declaring class.
 	/// </summary>
-	[PSerializable]
+	[Serializable]
 	[AttributeUsage(AttributeTargets.Property)]
 	[MulticastAttributeUsage(MulticastTargets.Property)]
 	public class SingleInstanceValueAttribute : LocationInterceptionAspect
@@ -40,7 +40,7 @@ namespace Kw.Aspects
 	/// <summary>
 	/// Makes a class singletone.
 	/// </summary>
-	[PSerializable]
+	[Serializable]
 	[AttributeUsage(AttributeTargets.Class)]
 	[MulticastAttributeUsage(MulticastTargets.Class, Inheritance = MulticastInheritance.Strict)]
 	public class SingleInstanceAttribute : InstanceLevelAspect

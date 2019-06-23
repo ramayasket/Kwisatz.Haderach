@@ -46,8 +46,19 @@ namespace Kw.Shell
 		[SynchronizedProperty]
 		public object Value => null;
 
+		[CatchReturn]
+		private static object fff()
+		{
+			throw new Exception("!fff()!");
+			return "fff()";
+		}
+
 		public static void Main(string[] arguments)
 		{
+			var f = fff();
+
+			return;
+
 			m2(null);
 
 			var v = new Program().Value;

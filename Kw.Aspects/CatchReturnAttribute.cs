@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using PostSharp.Aspects;
-using Kw.Common;
+using PostSharp.Serialization;
 
 namespace Kw.Aspects
 {
-	/// <summary>
-	/// Cleans up memory upon executing attributed method.
-	/// </summary>
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
-	public class GetTotalMemoryAttribute : MethodInterceptionAspect
+	public class CatchReturnAttribute : MethodInterceptionAspect
 	{
 		public sealed override void OnInvoke(MethodInterceptionArgs args)
 		{
@@ -20,10 +21,6 @@ namespace Kw.Aspects
 			catch (Exception x)
 			{
 				args.ReturnValue = x;
-			}
-			finally
-			{
-				GC.GetTotalMemory(true);
 			}
 		}
 	}
