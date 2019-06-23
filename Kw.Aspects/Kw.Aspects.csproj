@@ -85,7 +85,7 @@
     <Compile Include="SynchronizedMethodAttribute.cs" />
     <Compile Include="SynchronizedPropertyAttribute.cs" />
     <Compile Include="TraceInOutAttribute.cs" />
-    <Compile Include="CatchReturnAttribute.cs" />
+    <Compile Include="GuardedAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kw.Common\Kw.Common.csproj">

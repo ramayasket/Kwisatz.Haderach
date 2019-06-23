@@ -46,7 +46,7 @@ namespace Kw.Shell
 		[SynchronizedProperty]
 		public object Value => null;
 
-		[CatchReturn]
+		[Guarded]
 		private static object fff()
 		{
 			throw new Exception("!fff()!");

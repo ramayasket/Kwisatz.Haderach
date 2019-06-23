@@ -10,7 +10,7 @@ namespace Kw.Aspects
 {
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
-	public class CatchReturnAttribute : MethodInterceptionAspect
+	public class GuardedAttribute : MethodInterceptionAspect
 	{
 		public sealed override void OnInvoke(MethodInterceptionArgs args)
 		{
