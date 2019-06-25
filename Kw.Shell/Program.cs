@@ -12,6 +12,7 @@ namespace Kw.Shell
 {
 	//	ReSharper disable EmptyGeneralCatchClause
 #pragma warning disable 4014
+#pragma warning disable 0162
 
 	partial class Program
 	{
@@ -46,8 +47,22 @@ namespace Kw.Shell
 		[SynchronizedProperty]
 		public object Value => null;
 
-		[Guarded]
-		private static object fff()
+		[Serializable]
+		public class MyHandler : GuardedHandler
+		{
+			/// <inheritdoc />
+			public override void Catch(object source, Exception x)
+			{
+			}
+		}
+
+		[Serializable]
+		public class MyHandler1
+		{
+		}
+
+		[Guarded(typeof(MyHandler))]
+		private object fff()
 		{
 			throw new Exception("!fff()!");
 			return "fff()";
@@ -55,7 +70,7 @@ namespace Kw.Shell
 
 		public static void Main(string[] arguments)
 		{
-			var f = fff();
+			var f0 = new Program().fff();
 
 			return;
 
