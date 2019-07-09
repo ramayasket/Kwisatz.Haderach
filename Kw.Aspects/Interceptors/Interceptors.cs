@@ -21,7 +21,6 @@ namespace Kw.Aspects.Interceptors // ReSharper disable PossibleNullReferenceExce
 		/// <inheritdoc />
 		public override void Invoke(MethodInterceptionArgs args)
 		{
-			Debug.WriteLine("GetTotalMemory:Enter");
 			try
 			{
 				Next.Invoke(args);
@@ -30,7 +29,6 @@ namespace Kw.Aspects.Interceptors // ReSharper disable PossibleNullReferenceExce
 			{
 				GC.GetTotalMemory(true);
 			}
-			Debug.WriteLine("GetTotalMemory:Exit");
 		}
 	}
 
@@ -45,7 +43,6 @@ namespace Kw.Aspects.Interceptors // ReSharper disable PossibleNullReferenceExce
 		/// <inheritdoc />
 		public override void Invoke(MethodInterceptionArgs args)
 		{
-			Debug.WriteLine("Guard:Enter");
 			try
 			{
 				Next.Invoke(args);
@@ -54,7 +51,6 @@ namespace Kw.Aspects.Interceptors // ReSharper disable PossibleNullReferenceExce
 			{
 				args.ReturnValue = x;
 			}
-			Debug.WriteLine("Guard:Exit");
 		}
 
 		/// <inheritdoc />
@@ -77,16 +73,12 @@ namespace Kw.Aspects.Interceptors // ReSharper disable PossibleNullReferenceExce
 		/// <inheritdoc />
 		public override void Invoke(MethodInterceptionArgs args)
 		{
-			Debug.WriteLine("Synchronized:Enter");
-
 			if (null != args.Instance)
 				lock (args.Instance)
 					Next.Invoke(args);
 
 			else
 				Next.Invoke(args);
-
-			Debug.WriteLine("Synchronized:Exit");
 		}
 
 		/// <inheritdoc />
@@ -107,8 +99,6 @@ namespace Kw.Aspects.Interceptors // ReSharper disable PossibleNullReferenceExce
 		/// <inheritdoc />
 		public override void Invoke(MethodInterceptionArgs args)
 		{
-			Debug.WriteLine("NonNullArgument:Enter");
-
 			var arguments = args.Method.QuerySingleAttribute<NonNullable>(true)?.Arguments ?? new string[0];
 			var names = args.Method.GetParameters().Select(p => p.Name).ToArray();
 
@@ -135,8 +125,6 @@ namespace Kw.Aspects.Interceptors // ReSharper disable PossibleNullReferenceExce
 			}
 
 			Next.Invoke(args);
-
-			Debug.WriteLine("NonNullArgument:Exit");
 		}
 
 		/// <inheritdoc />
