@@ -11,7 +11,7 @@ using PostSharp.Serialization;
 namespace Kw.Aspects
 {
 	[Serializable]
-	public abstract class GuardedHandler
+	public abstract class ProtectionHandler
 	{
 		public abstract void Catch(object source, Exception x);
 	}
@@ -19,17 +19,17 @@ namespace Kw.Aspects
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
 	[LinesOfCodeAvoided(13)]
-	public class GuardedAttribute : MethodInterceptionAspect
+	public class ProtectionAttribute : MethodInterceptionAspect
 	{
 		private readonly Type _handlerType;
-		private GuardedHandler _handler;
+		private ProtectionHandler _handler;
 
-		public GuardedAttribute(Type handlerType)
+		public ProtectionAttribute(Type handlerType)
 		{
 			_handlerType = handlerType;
 		}
 
-		public GuardedAttribute()
+		public ProtectionAttribute()
 		{
 		}
 
@@ -38,10 +38,10 @@ namespace Kw.Aspects
 		{
 			if (null != _handlerType)
 			{
-				if (!typeof(GuardedHandler).IsAssignableFrom(_handlerType))
+				if (!typeof(ProtectionHandler).IsAssignableFrom(_handlerType))
 					throw new IncorrectTypeException($"Type {_handlerType.Name} isn't (but must be) derived from GuardedHandler.");
 
-				_handler = (GuardedHandler)Activator.CreateInstance(_handlerType);
+				_handler = (ProtectionHandler)Activator.CreateInstance(_handlerType);
 			}
 
 

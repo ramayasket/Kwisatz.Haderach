@@ -36,7 +36,7 @@ namespace Kw.Shell
 			m2(null);
 		}
 
-		[NonNullArgument()]
+		[NonNullability()]
 		static void m2(object zlp)
 		{
 		}
@@ -50,7 +50,7 @@ namespace Kw.Shell
 		[SynchronizedProperty]
 		public object Value => null;
 
-		[Intercepted(typeof(Protection),typeof(Nullability),typeof(Synchronization)),NonNullable("f")]
+		[Intercepted(typeof(Protection),typeof(NonNullability),typeof(Synchronization)),NonNullable("f")]
 		private object fff(string f = "zlp")
 		{
 			Debug.WriteLine("fff.");

@@ -80,14 +80,14 @@
     <Compile Include="GetTotalMemoryAttribute.cs" />
     <Compile Include="InterceptedAttribute.cs" />
     <Compile Include="Interceptors\Interceptors.cs" />
-    <Compile Include="NonNullArgumentAttribute.cs" />
+    <Compile Include="NonNullabilityAttribute.cs" />
     <Compile Include="NotifyPropertyChangedAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleInstanceAttribute.cs" />
     <Compile Include="SynchronizedMethodAttribute.cs" />
     <Compile Include="SynchronizedPropertyAttribute.cs" />
     <Compile Include="TraceInOutAttribute.cs" />
-    <Compile Include="GuardedAttribute.cs" />
+    <Compile Include="ProtectionAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kw.Common\Kw.Common.csproj">

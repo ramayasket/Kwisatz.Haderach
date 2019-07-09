@@ -99,10 +99,10 @@ namespace Kw.Aspects.Interceptors // ReSharper disable PossibleNullReferenceExce
 		}
 	}
 
-	public class Nullability : Interceptor
+	public class NonNullability : Interceptor
 	{
 		/// <inheritdoc />
-		public Nullability(Interceptor next) : base(next) { }
+		public NonNullability(Interceptor next) : base(next) { }
 
 		/// <inheritdoc />
 		public override void Invoke(MethodInterceptionArgs args)

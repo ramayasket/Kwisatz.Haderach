@@ -12,16 +12,16 @@ namespace Kw.Aspects   // ReSharper disable PossibleNullReferenceException
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false)]
 	[LinesOfCodeAvoided(25)]
-	public class NonNullArgumentAttribute : OnMethodBoundaryAspect
+	public class NonNullabilityAttribute : OnMethodBoundaryAspect
 	{
 		private readonly string[] _arguments;
 		private string[] _names;
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="NonNullArgumentAttribute"/> class.
+		/// Initializes a new instance of <see cref="NonNullabilityAttribute"/> class.
 		/// </summary>
 		/// <param name="arguments">Guarded argument names.</param>
-		public NonNullArgumentAttribute(params string[] arguments)
+		public NonNullabilityAttribute(params string[] arguments)
 		{
 			_arguments = arguments;
 		}
