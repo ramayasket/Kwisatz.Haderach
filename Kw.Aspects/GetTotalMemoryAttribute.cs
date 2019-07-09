@@ -9,6 +9,7 @@ namespace Kw.Aspects
 	/// </summary>
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
+	[LinesOfCodeAvoided(18)]
 	public class GetTotalMemoryAttribute : MethodInterceptionAspect
 	{
 		public sealed override void OnInvoke(MethodInterceptionArgs args)
@@ -16,10 +17,6 @@ namespace Kw.Aspects
 			try
 			{
 				args.Proceed();
-			}
-			catch (Exception x)
-			{
-				args.ReturnValue = x;
 			}
 			finally
 			{

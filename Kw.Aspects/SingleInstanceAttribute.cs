@@ -18,6 +18,7 @@ namespace Kw.Aspects
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Property)]
 	[MulticastAttributeUsage(MulticastTargets.Property)]
+	[LinesOfCodeAvoided(1)]
 	public class SingleInstanceValueAttribute : LocationInterceptionAspect
 	{
 		private Type _declaringType;
@@ -43,6 +44,7 @@ namespace Kw.Aspects
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Class)]
 	[MulticastAttributeUsage(MulticastTargets.Class, Inheritance = MulticastInheritance.Strict)]
+	[LinesOfCodeAvoided(10)]
 	public class SingleInstanceAttribute : InstanceLevelAspect
 	{
 		private static readonly ConcurrentDictionary<Type, object> _instances = new ConcurrentDictionary<Type, object>();

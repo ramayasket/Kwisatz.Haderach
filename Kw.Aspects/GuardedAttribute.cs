@@ -18,6 +18,7 @@ namespace Kw.Aspects
 
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
+	[LinesOfCodeAvoided(13)]
 	public class GuardedAttribute : MethodInterceptionAspect
 	{
 		private readonly Type _handlerType;

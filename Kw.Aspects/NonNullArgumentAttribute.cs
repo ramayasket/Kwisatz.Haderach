@@ -11,6 +11,7 @@ namespace Kw.Aspects   // ReSharper disable PossibleNullReferenceException
 	/// </summary>
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false)]
+	[LinesOfCodeAvoided(25)]
 	public class NonNullArgumentAttribute : OnMethodBoundaryAspect
 	{
 		private readonly string[] _arguments;
@@ -71,6 +72,12 @@ namespace Kw.Aspects   // ReSharper disable PossibleNullReferenceException
 					}
 				}
 			}
+		}
+
+		/// <inheritdoc />
+		public override void OnExit(MethodExecutionArgs args)
+		{
+			base.OnExit(args);
 		}
 	}
 }

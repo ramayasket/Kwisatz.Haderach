@@ -11,7 +11,7 @@ namespace Kw.Aspects
 {
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
-	[LinesOfCodeAvoided(1)]
+	[LinesOfCodeAvoided(5)]
 	public class ExecutionTimingAttribute : MethodInterceptionAspect
 	{
 		private MethodBase _method;

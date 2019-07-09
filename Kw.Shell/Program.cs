@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Kw.Aspects;
+using Kw.Aspects.Interceptors;
 using Kw.Common;
 using Kw.WinAPI;
 using PostSharp.Aspects;
@@ -47,30 +50,32 @@ namespace Kw.Shell
 		[SynchronizedProperty]
 		public object Value => null;
 
-		[Serializable]
-		public class MyHandler : GuardedHandler
+		[Intercepted(typeof(Protection),typeof(Nullability),typeof(Synchronization)),NonNullable("f")]
+		private object fff(string f = "zlp")
 		{
-			/// <inheritdoc />
-			public override void Catch(object source, Exception x)
-			{
-			}
-		}
-
-		[Serializable]
-		public class MyHandler1
-		{
-		}
-
-		[Guarded(typeof(MyHandler))]
-		private object fff()
-		{
+			Debug.WriteLine("fff.");
 			throw new Exception("!fff()!");
 			return "fff()";
+		}
+
+		class MyInterceptor : Interceptor
+		{
+			/// <inheritdoc />
+			public MyInterceptor(Interceptor next) : base(next) { }
+
+			/// <inheritdoc />
+			public override void Invoke(MethodInterceptionArgs args)
+			{
+				Debug.WriteLine("Entering interception.");
+				Next.Invoke(args);
+				Debug.WriteLine("Exiting interception.");
+			}
 		}
 
 		public static void Main(string[] arguments)
 		{
 			var f0 = new Program().fff();
+			Debug.WriteLine("Intercepted function.");
 
 			return;
 

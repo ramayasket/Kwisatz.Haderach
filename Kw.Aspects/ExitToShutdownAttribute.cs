@@ -11,6 +11,7 @@ namespace Kw.Aspects
 {
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
+	[LinesOfCodeAvoided(1)]
 	public class ExitToShutdownAttribute : MethodInterceptionAspect
 	{
 		public sealed override void OnInvoke(MethodInterceptionArgs args)

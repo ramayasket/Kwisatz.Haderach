@@ -78,6 +78,8 @@
     <Compile Include="ExecutionTimingAttribute.cs" />
     <Compile Include="ExitToShutdownAttribute.cs" />
     <Compile Include="GetTotalMemoryAttribute.cs" />
+    <Compile Include="InterceptedAttribute.cs" />
+    <Compile Include="Interceptors\Interceptors.cs" />
     <Compile Include="NonNullArgumentAttribute.cs" />
     <Compile Include="NotifyPropertyChangedAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +98,7 @@
   <ItemGroup>
     <None Include="Kw.Aspects.nuspec" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

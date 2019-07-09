@@ -34,7 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PostSharpDisabledMessages>LA0036</PostSharpDisabledMessages>
+    <PostSharpDisabledMessages>PS0114;PS0124;LA0036</PostSharpDisabledMessages>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>

@@ -10,6 +10,7 @@ namespace Kw.Aspects
 {
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method, Inherited = false)]
+	[LinesOfCodeAvoided(14)]
 	public class SynchronizedMethodAttribute : MethodInterceptionAspect
 	{
 		public sealed override void OnInvoke(MethodInterceptionArgs args)

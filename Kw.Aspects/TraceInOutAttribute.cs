@@ -10,6 +10,7 @@ namespace Kw.Aspects
 {
 	[Serializable]
 	[AttributeUsage(AttributeTargets.Method, Inherited = false)]
+	[LinesOfCodeAvoided(6)]
 	public class TraceInOutAttribute : MethodInterceptionAspect
 	{
 		public override bool CompileTimeValidate(MethodBase method)
