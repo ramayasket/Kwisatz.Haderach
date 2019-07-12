@@ -73,11 +73,5 @@ namespace Kw.Aspects   // ReSharper disable PossibleNullReferenceException
 				}
 			}
 		}
-
-		/// <inheritdoc />
-		public override void OnExit(MethodExecutionArgs args)
-		{
-			base.OnExit(args);
-		}
 	}
 }

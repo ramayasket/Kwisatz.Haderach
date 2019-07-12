@@ -59,9 +59,9 @@ namespace Kw.Aspects
 					if(!type.Is<Interceptor>() || type.IsAbstract)
 						throw new ArgumentException($"Expected an array of concrete types inherited from Interceptor, but {type.Name} is not.");
 
-			var compile = CreateInterceptors(null);
+			var current = CreateInterceptors(null);
 
-			do compile = compile.Compile(method); while (null != compile);
+			do current = current.Compile(method); while (null != current);
 
 			base.CompileTimeInitialize(method, aspectInfo);
 		}

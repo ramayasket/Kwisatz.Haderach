@@ -48,14 +48,16 @@ namespace Kw.Shell
 		}
 
 		[SynchronizedProperty]
-		public object Value => null;
+		public object Value => 1;
 
-		[Intercepted(typeof(Protection),typeof(NonNullability),typeof(Synchronization)),NonNullable("f")]
-		private object fff(string f = "zlp")
+		//[Intercepted(typeof(NonNullCondition))]
+		//[WhenNonNull("Value")]
+		private string fff(string f = "zlp")
 		{
 			Debug.WriteLine("fff.");
-			throw new Exception("!fff()!");
-			return "fff()";
+			return "zlp!";
+			//throw new Exception("!fff()!");
+			//return "fff()";
 		}
 
 		class MyInterceptor : Interceptor
@@ -74,7 +76,11 @@ namespace Kw.Shell
 
 		public static void Main(string[] arguments)
 		{
-			var f0 = new Program().fff();
+			var p = new Program().fff();
+			dynamic dp = p;
+
+			DynamicMetaObject @do = dp;
+
 			Debug.WriteLine("Intercepted function.");
 
 			return;
