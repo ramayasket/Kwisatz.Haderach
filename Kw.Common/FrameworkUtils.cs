@@ -23,7 +23,7 @@ namespace Kw.Common
 		public static MethodBase GetStackMethod(int offset = 0)
 		{
 			if (0 > offset)
-				throw new ArgumentOutOfRangeException(nameof(offset), "Expected integer not less than 1.");
+				throw new ArgumentOutOfRangeException(nameof(offset), "Expected integer not less than 0.");
 
 			StackTrace st = new StackTrace();
 			StackFrame sf = st.GetFrame(offset + 1);

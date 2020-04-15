@@ -135,7 +135,7 @@ namespace Kw.Common
 			return combined;
 #else
 #error `Any CPU` is not defined!
-			throw new InvalidOpenationException("`Any CPU` is not defined!");
+			throw new InvalidOperationException("`Any CPU` is not defined!");
 #endif
 		}
 

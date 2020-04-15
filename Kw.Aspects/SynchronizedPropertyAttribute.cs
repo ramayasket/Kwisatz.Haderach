@@ -11,6 +11,7 @@ namespace Kw.Aspects
 	/// Makes property of field synchronized.
 	/// </summary>
 	[Serializable]
+	[AttributeUsage(AttributeTargets.Property)]
 	[LinesOfCodeAvoided(28)]
 	public class SynchronizedPropertyAttribute : LocationInterceptionAspect
 	{

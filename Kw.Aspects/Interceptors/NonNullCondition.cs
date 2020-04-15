@@ -6,7 +6,7 @@ using PostSharp.Aspects;
 namespace Kw.Aspects.Interceptors // ReSharper disable PossibleNullReferenceException
 {
 	/// <summary>
-	/// Forces full garbage collection upon exiting the method.
+	/// Allows execution of method when a property value is not null.
 	/// </summary>
 	public class NonNullCondition : Interceptor
 	{

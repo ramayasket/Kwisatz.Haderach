@@ -25,6 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PostSharpDisabledMessages>LA0036</PostSharpDisabledMessages>
+    <CodeAnalysisRuleSet>..\..\local\etc\mathematica.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PostSharpDisabledMessages>PS0114;PS0124;LA0036</PostSharpDisabledMessages>
+    <CodeAnalysisRuleSet>..\..\local\etc\mathematica.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>

@@ -4,10 +4,13 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading;
 using Kw.Aspects;
 using Kw.Aspects.Interceptors;
 using Kw.Common;
+using Kw.Common.Threading;
 using Kw.WinAPI;
 using PostSharp.Aspects;
 
@@ -74,8 +77,205 @@ namespace Kw.Shell
 			}
 		}
 
+		private static readonly object locker = new object();
+
+		public static void f()
+		{
+			var ct = Thread.CurrentThread; // get the f() thread
+
+			void guard(object e) { // guardian thread method
+
+				if (!((ManualResetEvent)e).WaitOne(1000)) ct.Abort(); // kill the f() thread if overtimed
+			}
+
+			var evt = new ManualResetEvent(false); // serves as wait handle
+			new Thread(guard).Start(evt); // start guardian thread
+
+			lock (locker)
+			{
+				Thread.Sleep(60000);
+			}
+
+			evt.Set(); // notify the guardian thread we're done
+		}
+
+		public enum TemperatureMeasure
+		{
+			Kelvin,
+			Celsius,
+			Fahrenheit
+		}
+
+		public static double Convert<T>(double value, T from, T to) where T:Enum
+		{
+			return 0;
+		}
+
+		public abstract class ConvertibleMeasurement
+		{
+			internal abstract bool CanConvert<T>() where T: ConvertibleMeasurement;
+			internal abstract double InternalConvert<T>(double value) where T : ConvertibleMeasurement;
+
+			public double Convert<T>(double value) where T : ConvertibleMeasurement
+			{
+				if (CanConvert<T>())
+					return InternalConvert<T>(value);
+
+				throw new ArgumentException();
+			}
+
+		}
+
+		public class Kelvin : ConvertibleMeasurement
+		{
+			internal override bool CanConvert<T>() => typeof(T).In(typeof(Celsius), typeof(Fahrenheit));
+
+			internal override double InternalConvert<T>(double value)
+			{
+				var t = typeof(T);
+
+				if (typeof(Celsius) == t) return value - 273.15;
+				if (typeof(Fahrenheit) == t) return value * 1.8 - 459.67;
+
+				throw new ArgumentException();
+			}
+		}
+
+		public class Celsius : ConvertibleMeasurement
+		{
+			internal override bool CanConvert<T>() => typeof(T).In(typeof(Kelvin), typeof(Fahrenheit));
+
+			internal override double InternalConvert<T>(double value)
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public class Fahrenheit : ConvertibleMeasurement
+		{
+			internal override bool CanConvert<T>() => typeof(T).In(typeof(Kelvin), typeof(Celsius));
+
+			internal override double InternalConvert<T>(double value)
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		class Survey
+		{
+			public double RealMeasuredDepth;
+			public double TrueVerticalDepth;
+
+			/// <inheritdoc />
+			public override string ToString() => $"{TrueVerticalDepth} : {RealMeasuredDepth}";
+		}
+
+		private static List<Survey> Surveys = new List<Survey>();
+
+		private static class Limits
+		{
+			public static double CompareTolerance = 100;
+			public static double DefaultValue = 0;
+		}
+
+		/// <summary>
+		/// Получить TVD (вертикальная глубина) по MD (измеренная глубина).
+		/// </summary> 
+		public static double GetTvd(double md)
+		{
+			var lastSurvey = Surveys.LastOrDefault(survey => survey.RealMeasuredDepth <= md);
+			var nextSurvey = Surveys.FirstOrDefault(survey => survey.RealMeasuredDepth > md);
+
+			if (lastSurvey != null && nextSurvey != null)
+			{
+				var md1 = lastSurvey.RealMeasuredDepth;
+				var md2 = nextSurvey.RealMeasuredDepth;
+				var tvdl = lastSurvey.TrueVerticalDepth;
+				var tvd2 = nextSurvey.TrueVerticalDepth;
+
+				if (Math.Abs(md2 - md1) < Limits.CompareTolerance)
+					return tvdl;
+
+				var k = (tvd2 - tvdl) / (md2 - md1);
+				var b = tvd2 - md2 * (tvd2 - tvdl) / (md2 - md1);
+				var tvd = k * md + b;
+
+				return tvd;
+			}
+
+			return Limits.DefaultValue;
+		}
+
+		public static int Bisect<T>(IList<T> list, Func<T, bool> bisector)
+		{
+			int min = -1;
+			int max = list.Count;
+
+			while (max - min > 1)
+			{
+				int mid = (max + min) / 2;
+				T midItem = list[mid];
+				bool midVal = bisector(midItem);
+
+				if (midVal)
+					max = mid;
+				else
+					min = mid;
+
+				Console.WriteLine($"max {max} min {min}");
+			}
+
+			return max;
+		}
+
 		public static void Main(string[] arguments)
 		{
+			IList<string> list = new List<string>();
+
+			for (var i = 0; i < 10; i++)
+			{
+				list.Add(new string((char)('A'+i), 10));
+			}
+
+			for (var i = 0; i < 10; i++)
+			{
+				var cc = list.Count > i ? list[i][0] : 'X';
+				Func<string, bool> f = s => s.Contains(cc);
+
+				var b = Bisect(list, f);
+				Console.WriteLine($"Looking for '{cc}': result {b}");
+			}
+
+
+
+			return;
+
+			for (double d = 1; d < 100; d += 1.0)
+			{
+				var s = new Survey { TrueVerticalDepth = d, RealMeasuredDepth = d * Math.PI / 2 };
+				Surveys.Add(s);
+			}
+
+			var qmd = 20.0;
+			var qtvd = GetTvd(qmd);
+
+			return;
+
+			var k = 300.0;
+			var c = new Kelvin().Convert<Celsius>(k);
+
+			return;
+
+			using (var wc = new WebClient())
+			{
+				var s = wc.DownloadString("https://www.andrique.ru/favicon.png");
+				var parser = new HtmlParser(s);
+				while (parser.ParseNext("a", out HtmlTag tag))
+					Console.WriteLine(tag.Name);
+			}
+
+			return;
+
 			var p = new Program().fff();
 			dynamic dp = p;
 

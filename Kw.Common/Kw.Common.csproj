@@ -104,6 +104,7 @@
     <Compile Include="FrameworkUtils.cs" />
     <Compile Include="Guarded.cs" />
     <Compile Include="HRESULT.cs" />
+    <Compile Include="HtmlParser.cs" />
     <Compile Include="INamed.cs" />
     <Compile Include="IncorrectSomethingException.cs" />
     <Compile Include="InstanceTracker.cs" />
