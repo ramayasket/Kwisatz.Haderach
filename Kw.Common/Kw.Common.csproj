@@ -115,6 +115,7 @@
     <Compile Include="PrimeComputer.cs" />
     <Compile Include="Reinterpret.cs" />
     <Compile Include="RethrowException.cs" />
+    <Compile Include="RijndaelCrypting.cs" />
     <Compile Include="Runtime.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="Singleton.cs" />
