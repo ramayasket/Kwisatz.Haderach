@@ -11,7 +11,7 @@
 		<iconUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/etc/Kwisatz.Haderach.ico?raw=true</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>All purpose shared classes</description>
-		<copyright>Copyright © Andrei Samoylov 2012-2019</copyright>
+		<copyright>Copyright © Andrei Samoylov 2012-2020</copyright>
 		<tags>Kwisatz.Haderach</tags>
 	</metadata>
 </package>

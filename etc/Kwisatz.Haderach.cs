@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("Andrei Samoylov")]
 [assembly: AssemblyProduct("Kwisatz.Haderach")]
-[assembly: AssemblyCopyright("Copyright © Andrei Samoylov 2012-2019")]
+[assembly: AssemblyCopyright("Copyright © Andrei Samoylov 2012-2020")]
 [assembly: ComVisible(false)]
 
 /*
