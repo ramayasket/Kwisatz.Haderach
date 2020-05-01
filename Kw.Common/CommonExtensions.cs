@@ -339,10 +339,7 @@ namespace Kw.Common
 			/// <summary>
 			/// Ссылка на метод.
 			/// </summary>
-			public Action<T> Action
-			{
-				get { return _action; }
-			}
+			public Action<T> Action => _action;
 
 			/// <summary>Ссылка на метод.</summary>
 			private readonly Action<T> _action;
@@ -350,9 +347,7 @@ namespace Kw.Common
 			/// <param name="action">Ссылка на метод.</param>
 			public ActionWrapper(Action<T> action)
 			{
-				if (action == null) throw new ArgumentNullException("action");
-
-				_action = action;
+				_action = action ?? throw new ArgumentNullException(nameof(action));
 			}
 
 			/// <summary>
@@ -373,7 +368,7 @@ namespace Kw.Common
 			/// <param name="data">Коллекция входных данных.</param>
 			public void ProcessMany(IEnumerable<T> data)
 			{
-				if (data == null) throw new ArgumentNullException("data");
+				if (data == null) throw new ArgumentNullException(nameof(data));
 
 				foreach (T t in data)
 				{

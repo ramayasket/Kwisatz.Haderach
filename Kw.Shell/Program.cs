@@ -10,6 +10,7 @@ using System.Threading;
 using Kw.Aspects;
 using Kw.Aspects.Interceptors;
 using Kw.Common;
+using Kw.Common.Collections;
 using Kw.Common.Threading;
 using Kw.WinAPI;
 using PostSharp.Aspects;
@@ -230,6 +231,13 @@ namespace Kw.Shell
 
 		public static void Main(string[] arguments)
 		{
+			var ring = new Ring<int>(1, 2, 3, 4, 5);
+
+			foreach (var i in ring)
+			{
+				Console.WriteLine(i);
+			}
+
 			IList<string> list = new List<string>();
 
 			for (var i = 0; i < 10; i++)
