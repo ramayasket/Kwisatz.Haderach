@@ -8,6 +8,14 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 /*
+	New version scheme as of 1.5.2020:
+
+	Concept.Product.Classes.Minor
+
+	Concept:	conceptual/strategic changes
+	Product:	product-wide changes
+	Classes:	new classes or APIs
+	Minor:		minor changes
 
 	Kwisatz.Haderach change history
 	===============================================================================
@@ -35,4 +43,6 @@ using System.Runtime.InteropServices;
 	22.04.2019	1.0.1.7		NonNullArgument
 	23.04.2019	1.0.1.8		Signed Kw.Aspects
 	23.04.2019	1.0.2.0		Fixed references
+	15.04.2020	1.0.3.0		HTML parser
+	01.05.2020	1.1.0.0		New version scheme + AES (Rijndael) crypting
 */
