@@ -45,4 +45,5 @@ using System.Runtime.InteropServices;
 	23.04.2019	1.0.2.0		Fixed references
 	15.04.2020	1.0.3.0		HTML parser
 	01.05.2020	1.1.0.0		New version scheme + AES (Rijndael) crypting
+	02.05.2020	1.1.0.1		Rijndael crypting changed from strings to byte[]
 */

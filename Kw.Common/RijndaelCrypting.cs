@@ -17,14 +17,12 @@ namespace Kw.Common
         // This constant determines the number of iterations for the password bytes generation function.
         private const int DerivationIterations = 1000;
 
-        public static byte[] Encrypt(string input, string passPhrase)
+        public static byte[] Encrypt(byte[] input, string passPhrase)
         {
             // Salt and IV is randomly generated each time, but is prepended to encrypted cipher text
             // so that the same Salt and IV values can be used when decrypting.  
             var saltStringBytes = Generate256BitsOfRandomEntropy();
             var ivStringBytes = Generate256BitsOfRandomEntropy();
-
-            var plainTextBytes = Encoding.UTF8.GetBytes(input);
 
             using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations))
             {
@@ -42,19 +40,19 @@ namespace Kw.Common
                         {
                             using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
                             {
-                                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                                cryptoStream.Write(input, 0, input.Length);
                                 cryptoStream.FlushFinalBlock();
 
                                 // Create the final bytes as a concatenation of the random salt bytes, the random iv bytes and the cipher bytes.
-                                var cipherTextBytes = saltStringBytes;
+                                var output = saltStringBytes;
 
-                                cipherTextBytes = cipherTextBytes.Concat(ivStringBytes).ToArray();
-                                cipherTextBytes = cipherTextBytes.Concat(memoryStream.ToArray()).ToArray();
+                                output = output.Concat(ivStringBytes).ToArray();
+                                output = output.Concat(memoryStream.ToArray()).ToArray();
 
                                 memoryStream.Close();
                                 cryptoStream.Close();
 
-                                return cipherTextBytes;
+                                return output;
                             }
                         }
                     }
@@ -62,7 +60,7 @@ namespace Kw.Common
             }
         }
 
-        public static string Decrypt(byte[] input, string passPhrase)
+        public static byte[] Decrypt(byte[] input, string passPhrase)
         {
             // input is expected to be:
             // [32 bytes of Salt] + [32 bytes of IV] + [n bytes of CipherText]
@@ -90,11 +88,16 @@ namespace Kw.Common
                         {
                             using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
                             {
-                                var plainTextBytes = new byte[cipherTextBytes.Length];
-                                var decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+                                var output = new byte[cipherTextBytes.Length];
+
+                                var decryptedByteCount = cryptoStream.Read(output, 0, output.Length);
+
                                 memoryStream.Close();
                                 cryptoStream.Close();
-                                return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+
+                                output = output.Take(decryptedByteCount).ToArray();
+
+                                return output;
                             }
                         }
                     }
