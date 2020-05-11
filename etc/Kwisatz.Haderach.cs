@@ -46,4 +46,5 @@ using System.Runtime.InteropServices;
 	15.04.2020	1.0.3.0		HTML parser
 	01.05.2020	1.1.0.0		New version scheme + AES (Rijndael) crypting
 	02.05.2020	1.1.0.1		Rijndael crypting changed from strings to byte[]
+	11.05.2020	1.2.0.0		Framework version 4.7 + added Kw.Common.BitStringConverter
 */
