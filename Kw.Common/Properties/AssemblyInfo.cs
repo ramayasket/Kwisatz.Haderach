@@ -14,3 +14,17 @@ using Kw.Common;
 //
 [assembly: Constitution]
 
+/// <summary>
+/// Module initialization.
+/// </summary>
+// ReSharper disable once InconsistentNaming
+// ReSharper disable once CheckNamespace
+// ReSharper disable once UnusedMember.Global
+internal class __init
+{
+#if DEBUG
+    public const string BUILT_AS = "Debug";
+#else
+    public const string BUILT_AS = "Release";
+#endif 
+}
