@@ -114,6 +114,7 @@
     <Compile Include="MRUTracker.cs" />
     <Compile Include="OverridableLiteral.cs" />
     <Compile Include="PrimeComputer.cs" />
+    <Compile Include="Randomizer.cs" />
     <Compile Include="Reinterpret.cs" />
     <Compile Include="RethrowException.cs" />
     <Compile Include="RijndaelCrypting.cs" />
