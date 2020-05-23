@@ -48,4 +48,5 @@ using System.Runtime.InteropServices;
 	02.05.2020	1.1.0.1		Rijndael crypting changed from strings to byte[]
 	11.05.2020	1.2.0.0		Framework version 4.7 + added Kw.Common.BitStringConverter
 	18.05.2020	1.2.1.0		Typed randomizer
+	23.05.2020	1.2.2.0		Stream helper
 */
