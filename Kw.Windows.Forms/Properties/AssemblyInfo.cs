@@ -2,6 +2,17 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Kw.Windows.Forms")]
-[assembly: AssemblyVersion("1.0.2.0")]
+[assembly: AssemblyVersion("1.2.0.2")]
 [assembly: AssemblyDescription("Windows Forms utility classes")]
 [assembly: Guid("00000000-0008-11e8-9876-00055d74a52d")]
+
+/*
+    Kw.Windows.Forms change history
+    ===============================================================================
+    Date		Version		Comments
+    ===============================================================================
+    29.05.2020	1.2.0.0		New version scheme + Kw.Common 1.2.0.0 + Mouse hook error fix
+    29.05.2020	1.2.0.1		Old icon tag is back
+    29.05.2020	1.2.0.2		No icon whatsoever
+    
+*/

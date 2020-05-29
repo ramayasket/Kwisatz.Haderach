@@ -1,17 +1,16 @@
 <?xml version="1.0"?>
 <package >
-	<metadata>
-		<id>Kw.Common</id>
-		<version>1.2.2.0</version>
-		<title>Kw.Common</title>
-		<authors>Andrei Samoylov</authors>
-		<owners>Andrei Samoylov</owners>
-		<license type="expression">LGPL-3.0-or-later</license>
-		<projectUrl>https://github.com/ramayasket/Kwisatz.Haderach</projectUrl>
-		<iconUrl>https://github.com/ramayasket/Kwisatz.Haderach/blob/master/etc/Kwisatz.Haderach.ico?raw=true</iconUrl>
-		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description>All purpose shared classes</description>
-		<copyright>Copyright © Andrei Samoylov 2012-2020</copyright>
-		<tags>Kwisatz.Haderach</tags>
-	</metadata>
+    <metadata>
+        <id>Kw.Common</id>
+        <version>1.2.2.3</version>
+        <title>Kw.Common</title>
+        <authors>Andrei Samoylov</authors>
+        <owners>Andrei Samoylov</owners>
+        <license type="expression">LGPL-3.0-or-later</license>
+        <projectUrl>https://github.com/ramayasket/Kwisatz.Haderach</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>All purpose shared classes</description>
+        <copyright>Copyright © Andrei Samoylov 2012-2020</copyright>
+        <tags>Kwisatz.Haderach</tags>
+    </metadata>
 </package>

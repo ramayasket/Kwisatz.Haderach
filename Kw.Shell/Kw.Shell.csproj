@@ -27,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
     <PostSharpDisabledMessages>LA0036</PostSharpDisabledMessages>
     <CodeAnalysisRuleSet>..\..\local\etc\mathematica.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,6 +39,7 @@
     <WarningLevel>4</WarningLevel>
     <PostSharpDisabledMessages>PS0114;PS0124;LA0036</PostSharpDisabledMessages>
     <CodeAnalysisRuleSet>..\..\local\etc\mathematica.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -51,6 +53,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,6 +80,10 @@
     <ProjectReference Include="..\Kw.WinAPI\Kw.WinAPI.csproj">
       <Project>{5cc6d2fa-6713-47b9-9675-633091841364}</Project>
       <Name>Kw.WinAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kw.Windows.Forms\Kw.Windows.Forms.csproj">
+      <Project>{985a8e6c-d22d-4d28-9359-9a01b4b89809}</Project>
+      <Name>Kw.Windows.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
