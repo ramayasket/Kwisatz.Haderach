@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using Kw.Common;
 
 [assembly: AssemblyTitle("Kw.Common")]
-[assembly: AssemblyVersion("1.2.2.3")]
+[assembly: AssemblyVersion("1.2.3.0")]
 [assembly: AssemblyDescription("All purpose shared classes")]
 [assembly: Guid("00000000-0001-11e8-9876-00055d74a52d")]
 
@@ -19,6 +19,7 @@ using Kw.Common;
     29.05.2020	1.2.2.1		New icon format
     29.05.2020	1.2.2.2		Old icon format back
     29.05.2020	1.2.2.3		No icon whatsoever
+    29.05.2020	1.2.3.0		GZip helper
 */
 
 //

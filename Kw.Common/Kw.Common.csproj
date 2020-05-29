@@ -104,6 +104,7 @@
     <Compile Include="FormattedValue.cs" />
     <Compile Include="FrameworkUtils.cs" />
     <Compile Include="Guarded.cs" />
+    <Compile Include="GZipHelper.cs" />
     <Compile Include="HRESULT.cs" />
     <Compile Include="HtmlParser.cs" />
     <Compile Include="INamed.cs" />
