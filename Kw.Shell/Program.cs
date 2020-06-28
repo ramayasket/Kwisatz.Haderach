@@ -65,7 +65,7 @@ namespace Kw.Shell
 
             var js = JsonConvert.SerializeObject(s);
 
-            dynamic jd = new Dynamic(js);
+            dynamic jd = new JDynamic(js);
 
             jd.Payload = double.PositiveInfinity;
             var jdp = jd.Payload;

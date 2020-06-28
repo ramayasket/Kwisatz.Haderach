@@ -11,13 +11,13 @@ namespace Kw.Common
     /// Динамический объект на основе JSON.
     /// </summary>
     /// ReSharper disable PossibleNullReferenceException
-    public class Dynamic : DynamicObject
+    public class JDynamic : DynamicObject
     {
         private readonly JObject _object;
 
-        public Dynamic(string json) : this((JObject) JsonConvert.DeserializeObject(json)) { }
+        public JDynamic(string json) : this((JObject) JsonConvert.DeserializeObject(json)) { }
 
-        public Dynamic(JObject @object) => _object = @object;
+        public JDynamic(JObject @object) => _object = @object;
 
         /// <inheritdoc />
         public override IEnumerable<string> GetDynamicMemberNames() => _object.Properties().Select(p => p.Name);
@@ -35,6 +35,9 @@ namespace Kw.Common
 
             var value = property.Value;
             result = TokenToObject(value);
+
+            if (result is double @double)
+                result = Convert.ToDecimal(@double);
 
             return true;
         }
@@ -60,7 +63,6 @@ namespace Kw.Common
         {
             switch (value)
             {
-
                 case JValue jvalue:
                 {
                     dynamic v = jvalue.Value;
@@ -71,12 +73,19 @@ namespace Kw.Common
                             v = Convert.FromBase64String(s);
                         }
                         // ReSharper disable once EmptyGeneralCatchClause
-                        catch { }
+                        catch
+                        {
+                            try
+                            {
+                                v = Guid.Parse(s);
+                            }
+                            catch { }
+                        }
 
                     return v;
                 }
 
-                case JObject jobject: return new Dynamic(jobject);
+                case JObject jobject: return new JDynamic(jobject);
 
                 case JArray jarray:
                 {
