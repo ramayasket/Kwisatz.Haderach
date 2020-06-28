@@ -1,15 +1,22 @@
+using Kw.Common;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-using Kw.Common;
-
 [assembly: AssemblyTitle("Kw.Common")]
-[assembly: AssemblyVersion("1.2.3.0")]
+[assembly: AssemblyVersion("1.3.0.0")]
 [assembly: AssemblyDescription("All purpose shared classes")]
 [assembly: Guid("00000000-0001-11e8-9876-00055d74a52d")]
 
 /*
+    New version scheme as of 1.5.2020:
+
+    Concept.Product.Classes.Minor
+
+    Concept:	conceptual/strategic changes
+    Product:	product-wide changes
+    Classes:	new classes or APIs
+    Minor:		minor changes
+
     Kw.Common change history
     ===============================================================================
     Date		Version		Comments
@@ -20,6 +27,8 @@ using Kw.Common;
     29.05.2020	1.2.2.2		Old icon format back
     29.05.2020	1.2.2.3		No icon whatsoever
     29.05.2020	1.2.3.0		GZip helper
+    24.06.2020	1.3.0.0		signing changed to .SNK
+    28.06.2020	1.3.0.0		NetStandard 2.0
 */
 
 //

@@ -1,195 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F837E57E-34C4-473F-8CC8-6512ACDE6836}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kw.Common</RootNamespace>
-    <AssemblyName>Kw.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <PermissionLevel>3</PermissionLevel>
-    <ConnectionString />
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>4.0</OldToolsVersion>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\bin\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;ANYCPU</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>..\etc\Kwisatz.Haderach.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
-    <NoWarn>1591,1574</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\bin\</OutputPath>
-    <DefineConstants>TRACE;ANYCPU</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>..\etc\Kwisatz.Haderach.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
-    <NoWarn>1591,1574</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.pfx</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\etc\Kwisatz.Haderach.cs">
-      <Link>Properties\Kwisatz.Haderach.cs</Link>
-    </Compile>
-    <Compile Include="AppConfig.cs" />
-    <Compile Include="AppCore.cs" />
-    <Compile Include="AppSetting.cs" />
-    <Compile Include="Assignable`1.cs" />
-    <Compile Include="BitStringConverter.cs" />
-    <Compile Include="CalibratedPipe`2.cs" />
-    <Compile Include="Collections\ExpandableArray.cs" />
-    <Compile Include="Collections\Ring.cs" />
-    <Compile Include="ContextScope.cs" />
-    <Compile Include="DbCommandRegistry.cs" />
-    <Compile Include="CommonExtensions.cs" />
-    <Compile Include="Containers\Casing`1.cs" />
-    <Compile Include="Containers\Int64Pair.cs" />
-    <Compile Include="Containers\Triplet`3.cs" />
-    <Compile Include="Containers\Pair`2.cs" />
-    <Compile Include="DataRecordExtensions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DynamicResources\DynamicResourceAllocator`1.cs" />
-    <Compile Include="EnumHelper.cs" />
-    <Compile Include="ExecutionStepMeter.cs" />
-    <Compile Include="ExecutionTimingInfo.cs" />
-    <Compile Include="ExecutionTimings.cs" />
-    <Compile Include="FormattedValue.cs" />
-    <Compile Include="FrameworkUtils.cs" />
-    <Compile Include="Guarded.cs" />
-    <Compile Include="GZipHelper.cs" />
-    <Compile Include="HRESULT.cs" />
-    <Compile Include="HtmlParser.cs" />
-    <Compile Include="INamed.cs" />
-    <Compile Include="IncorrectSomethingException.cs" />
-    <Compile Include="InstanceTracker.cs" />
-    <Compile Include="IoExtensions.cs" />
-    <Compile Include="Literals.cs" />
-    <Compile Include="MRUTracker.cs" />
-    <Compile Include="OverridableLiteral.cs" />
-    <Compile Include="PrimeComputer.cs" />
-    <Compile Include="Randomizer.cs" />
-    <Compile Include="Reinterpret.cs" />
-    <Compile Include="RethrowException.cs" />
-    <Compile Include="RijndaelCrypting.cs" />
-    <Compile Include="Runtime.cs" />
-    <Compile Include="Functions.cs" />
-    <Compile Include="Singleton.cs" />
-    <Compile Include="StreamHelper.cs" />
-    <Compile Include="TemporaryFiles.cs" />
-    <Compile Include="Threading\Event.cs" />
-    <Compile Include="Threading\IPreparable.cs" />
-    <Compile Include="Threading\ThreadingUtils.cs" />
-    <Compile Include="ThreeStateMachine.cs" />
-    <Compile Include="ThreeStateMachine.Proc.cs">
-      <DependentUpon>ThreeStateMachine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ThreeStateMachine.Transitions.cs">
-      <DependentUpon>ThreeStateMachine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TimeExtensions.cs" />
-    <Compile Include="DebugOutput.cs" />
-    <Compile Include="ExceptionCatcher.cs" />
-    <Compile Include="ExceptionExtensions.cs" />
-    <Compile Include="LinqExtensions.cs" />
-    <Compile Include="ComparableExtensions.cs" />
-    <Compile Include="MappingAttribute.cs" />
-    <Compile Include="MultiDisposable.cs" />
-    <Compile Include="Printing.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReflectionExtensions.cs" />
-    <Compile Include="DynamicResources\DynamicResourcePool`1.cs" />
-    <Compile Include="StringExtensions.cs" />
-    <Compile Include="Threading\Interruptable.cs" />
-    <Compile Include="Threading\ExecutionThread.cs" />
-    <Compile Include="Threading\ExecutionThreads.cs" />
-    <Compile Include="Threading\Waitable.cs" />
-    <Compile Include="TolerableException.cs" />
-    <Compile Include="TurmoilException.cs" />
-    <Compile Include="TwoStates.cs" />
-    <Compile Include="WinAPI.cs" />
-    <Compile Include="XBase.cs" />
-    <Compile Include="XSetInt64.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Kw.Common.nuspec">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-	   Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Configurations>debug;release</Configurations>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
+        <RootNamespace>Kw.Common</RootNamespace>
+        <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+        <LangVersion>8.0</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|AnyCPU'">
+      <OutputPath>..\bin\</OutputPath>
+      <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
+      <NoWarn>1701;1702;CS1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|AnyCPU'">
+      <OutputPath>..\bin\</OutputPath>
+      <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <NoWarn>1701;1702;CS1591</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="..\etc\Kwisatz.Haderach.cs" Link="Properties\Kwisatz.Haderach.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    </ItemGroup>
+
 </Project>

@@ -1,16 +1,15 @@
+using Kw.Common.Threading;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Kw.Common.Threading;
 
 namespace Kw.Common
 {
 
-	[AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false)]
 	public class ConstitutionAttribute : Attribute { }
 
 	public static class Constitution
@@ -175,7 +174,7 @@ namespace Kw.Common
 			if (null != Stopping)
 				Stopping();
 
-			DbCommandRegistry.KillThemAll();
+			////DbCommandRegistry.KillThemAll();
 
 			Exiting = true;
 
