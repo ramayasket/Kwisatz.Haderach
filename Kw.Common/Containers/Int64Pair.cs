@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Kw.Common.Containers
 {
-	public struct Int64Pair
-	{
-		public Int64 Left, Right;
-	}
+    public struct Int64Pair
+    {
+        public Int64 Left, Right;
+    }
 }
 

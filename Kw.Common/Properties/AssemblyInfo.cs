@@ -12,28 +12,28 @@ using System.Runtime.InteropServices;
 
     Concept.Product.Classes.Minor
 
-    Concept:	conceptual/strategic changes
-    Product:	product-wide changes
-    Classes:	new classes or APIs
-    Minor:		minor changes
+    Concept:    conceptual/strategic changes
+    Product:    product-wide changes
+    Classes:    new classes or APIs
+    Minor:        minor changes
 
     Kw.Common change history
     ===============================================================================
-    Date		Version		Comments
+    Date        Version        Comments
     ===============================================================================
-    18.05.2020	1.2.1.0		Typed randomizer
-    23.05.2020	1.2.2.0		Stream helper
-    29.05.2020	1.2.2.1		New icon format
-    29.05.2020	1.2.2.2		Old icon format back
-    29.05.2020	1.2.2.3		No icon whatsoever
-    29.05.2020	1.2.3.0		GZip helper
-    24.06.2020	1.3.0.0		signing changed to .SNK
-    28.06.2020	1.3.0.0		NetStandard 2.0
-    28.06.2020	1.3.1.0		Dynamic -> JDynamic
+    18.05.2020    1.2.1.0        Typed randomizer
+    23.05.2020    1.2.2.0        Stream helper
+    29.05.2020    1.2.2.1        New icon format
+    29.05.2020    1.2.2.2        Old icon format back
+    29.05.2020    1.2.2.3        No icon whatsoever
+    29.05.2020    1.2.3.0        GZip helper
+    24.06.2020    1.3.0.0        signing changed to .SNK
+    28.06.2020    1.3.0.0        NetStandard 2.0
+    28.06.2020    1.3.1.0        Dynamic -> JDynamic
 */
 
 //
-//	This assembly is subject to constitution checks.
+//    This assembly is subject to constitution checks.
 //
 [assembly: Constitution]
 

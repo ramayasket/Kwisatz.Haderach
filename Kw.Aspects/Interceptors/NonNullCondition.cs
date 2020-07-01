@@ -5,49 +5,49 @@ using PostSharp.Aspects;
 
 namespace Kw.Aspects.Interceptors // ReSharper disable PossibleNullReferenceException
 {
-	/// <summary>
-	/// Allows execution of method when a property value is not null.
-	/// </summary>
-	public class NonNullCondition : Interceptor
-	{
-		/// <inheritdoc />
-		public NonNullCondition(Interceptor next) : base(next) { }
+    /// <summary>
+    /// Allows execution of method when a property value is not null.
+    /// </summary>
+    public class NonNullCondition : Interceptor
+    {
+        /// <inheritdoc />
+        public NonNullCondition(Interceptor next) : base(next) { }
 
-		/// <inheritdoc />
-		public override void Invoke(MethodInterceptionArgs args)
-		{
-			var property = args.Method.QuerySingleAttribute<NonNullConditionAttribute>(true)?.Property;
+        /// <inheritdoc />
+        public override void Invoke(MethodInterceptionArgs args)
+        {
+            var property = args.Method.QuerySingleAttribute<NonNullConditionAttribute>(true)?.Property;
 
-			object value;
+            object value;
 
-			try
-			{
-				value = args.Instance.GetType().GetProperty(property).GetValue(args.Instance);
-			}
-			catch
-			{
-				value = null;
-			}
+            try
+            {
+                value = args.Instance.GetType().GetProperty(property).GetValue(args.Instance);
+            }
+            catch
+            {
+                value = null;
+            }
 
-			if (null != value)
-				args.Proceed();
-		}
+            if (null != value)
+                args.Proceed();
+        }
 
-		/// <inheritdoc />
-		public override Interceptor Compile(MethodBase method)
-		{
-			var att = method.QuerySingleAttribute<NonNullConditionAttribute>(true);
+        /// <inheritdoc />
+        public override Interceptor Compile(MethodBase method)
+        {
+            var att = method.QuerySingleAttribute<NonNullConditionAttribute>(true);
 
-			if(null == att)
-				throw new Exception($"Attribute [NonNullCondition] is required but not applied to {method.Name} method.");
+            if(null == att)
+                throw new Exception($"Attribute [NonNullCondition] is required but not applied to {method.Name} method.");
 
-			if (null == att.Property)
-				throw new Exception($"Attribute [NonNullCondition] does not specify property name.");
+            if (null == att.Property)
+                throw new Exception($"Attribute [NonNullCondition] does not specify property name.");
 
-			if(null == method.DeclaringType.GetProperty(att.Property))
-				throw new Exception($"Property {att.Property} isn't declared in {method.DeclaringType.Name} type.");
+            if(null == method.DeclaringType.GetProperty(att.Property))
+                throw new Exception($"Property {att.Property} isn't declared in {method.DeclaringType.Name} type.");
 
-			return Next;
-		}
-	}
+            return Next;
+        }
+    }
 }

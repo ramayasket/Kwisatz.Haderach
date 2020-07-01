@@ -8,24 +8,24 @@ using PostSharp.Aspects;
 
 namespace Kw.Aspects
 {
-	[Serializable]
-	[AttributeUsage(AttributeTargets.Method, Inherited = false)]
-	[LinesOfCodeAvoided(14)]
-	public class SynchronizedMethodAttribute : MethodInterceptionAspect
-	{
-		public sealed override void OnInvoke(MethodInterceptionArgs args)
-		{
-			if (null != args.Instance)
-			{
-				lock (args.Instance)
-				{
-					args.Proceed();
-				}
-			}
-			else
-			{
-				args.Proceed();
-			}
-		}
-	}
+    [Serializable]
+    [AttributeUsage(AttributeTargets.Method, Inherited = false)]
+    [LinesOfCodeAvoided(14)]
+    public class SynchronizedMethodAttribute : MethodInterceptionAspect
+    {
+        public sealed override void OnInvoke(MethodInterceptionArgs args)
+        {
+            if (null != args.Instance)
+            {
+                lock (args.Instance)
+                {
+                    args.Proceed();
+                }
+            }
+            else
+            {
+                args.Proceed();
+            }
+        }
+    }
 }

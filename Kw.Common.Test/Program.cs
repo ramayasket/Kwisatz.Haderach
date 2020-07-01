@@ -8,6 +8,8 @@
 
             test.Construction();
             test.Alteration();
+            test.ListMembers();
+            //test.QueryMembers();
         }
     }
 }

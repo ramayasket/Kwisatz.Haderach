@@ -6,99 +6,99 @@ using System.Text;
 
 namespace Kw.Networking
 {
-	public class NetworkResourceRequestItem
-	{
-		public string Name { get; private set; }
-		public string Value { get; private set; }
+    public class NetworkResourceRequestItem
+    {
+        public string Name { get; private set; }
+        public string Value { get; private set; }
 
-		public NetworkResourceRequestItem(string name, string value)
-		{
-			Name = name;
-			Value = value;
-		}
+        public NetworkResourceRequestItem(string name, string value)
+        {
+            Name = name;
+            Value = value;
+        }
 
-		public NetworkResourceRequestItem(string element)
-		{
-			var parts = element.Split('=');
+        public NetworkResourceRequestItem(string element)
+        {
+            var parts = element.Split('=');
 
-			if (parts.Length != 2)
-				throw new ArgumentException("Expected name=value string.");
+            if (parts.Length != 2)
+                throw new ArgumentException("Expected name=value string.");
 
-			Name = parts[0];
-			Value = parts[1];
-		}
-	}
+            Name = parts[0];
+            Value = parts[1];
+        }
+    }
 
-	public class NetworkResourceRequestItems : IEnumerable<NetworkResourceRequestItem>
-	{
-		readonly Dictionary<string, NetworkResourceRequestItem> _items = new Dictionary<string, NetworkResourceRequestItem>();
+    public class NetworkResourceRequestItems : IEnumerable<NetworkResourceRequestItem>
+    {
+        readonly Dictionary<string, NetworkResourceRequestItem> _items = new Dictionary<string, NetworkResourceRequestItem>();
 
-		public NetworkResourceRequestItems()
-		{
-			
-		}
+        public NetworkResourceRequestItems()
+        {
+            
+        }
 
-		public NetworkResourceRequestItems(Uri @from)
-		{
-			if (@from == null) throw new ArgumentNullException("from");
+        public NetworkResourceRequestItems(Uri @from)
+        {
+            if (@from == null) throw new ArgumentNullException("from");
 
-			var items = from.Query.Split(new[] { '?', '&' }, StringSplitOptions.RemoveEmptyEntries);
+            var items = from.Query.Split(new[] { '?', '&' }, StringSplitOptions.RemoveEmptyEntries);
 
-			foreach (var item in items)
-			{
-				Add(new NetworkResourceRequestItem(item));
-			}
-		}
+            foreach (var item in items)
+            {
+                Add(new NetworkResourceRequestItem(item));
+            }
+        }
 
-		public void Add(NetworkResourceRequestItem item)
-		{
-			_items.Add(item.Name, item);
-		}
+        public void Add(NetworkResourceRequestItem item)
+        {
+            _items.Add(item.Name, item);
+        }
 
-		public string this[string name]
-		{
-			get { return _items.ContainsKey(name) ? _items[name].Value : null; }
-		}
+        public string this[string name]
+        {
+            get { return _items.ContainsKey(name) ? _items[name].Value : null; }
+        }
 
-		public void Remove(string name)
-		{
-			if (_items.ContainsKey(name))
-			{
-				_items.Remove(name);
-			}
-		}
+        public void Remove(string name)
+        {
+            if (_items.ContainsKey(name))
+            {
+                _items.Remove(name);
+            }
+        }
 
-		public IEnumerator<NetworkResourceRequestItem> GetEnumerator()
-		{
-			return _items.Values.GetEnumerator();
-		}
+        public IEnumerator<NetworkResourceRequestItem> GetEnumerator()
+        {
+            return _items.Values.GetEnumerator();
+        }
 
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return GetEnumerator();
-		}
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
-		public IEnumerable<string> Elements
-		{
-			get
-			{
-				var elements = new List<string>();
-				foreach (var item in _items.Values.OrderBy(i => i.Name))
-				{
-					elements.Add(item.Name);
-					elements.Add(item.Value);
-				}
+        public IEnumerable<string> Elements
+        {
+            get
+            {
+                var elements = new List<string>();
+                foreach (var item in _items.Values.OrderBy(i => i.Name))
+                {
+                    elements.Add(item.Name);
+                    elements.Add(item.Value);
+                }
 
-				return elements;
-			}
-		}
-	}
+                return elements;
+            }
+        }
+    }
 
-	public abstract class NetworkResourceRequest
-	{
-		protected readonly NetworkResourceRequestItems _items = new NetworkResourceRequestItems();
+    public abstract class NetworkResourceRequest
+    {
+        protected readonly NetworkResourceRequestItems _items = new NetworkResourceRequestItems();
 
-		public abstract string RequestBase { get; }
+        public abstract string RequestBase { get; }
 
         public virtual string MakeRequest()
         {
@@ -114,7 +114,7 @@ namespace Kw.Networking
             return request;
         }
 
-		public string RequestUri { get; set; }
-	}
+        public string RequestUri { get; set; }
+    }
 }
 

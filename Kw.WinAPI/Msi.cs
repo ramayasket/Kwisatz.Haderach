@@ -7,7 +7,7 @@
     using System.Text;
     using System.Windows.Forms;
 
-    #region	Constants
+    #region    Constants
     /// <summary>
     /// Internal class containing constants for the <c>script</c> parameter of <see cref="MsiInterop.MsiAdvertiseProduct"/> or <see cref="MsiInterop.MsiAdvertiseProductEx"/>.
     /// This class cannot be inherited.
@@ -15,16 +15,16 @@
     /// </summary>
     internal static class MsiAdvertiseProductFlag
     {
-        #region	Constants (Static Fields)
+        #region    Constants (Static Fields)
         /// <summary>Set to advertise a per-machine installation of the product available to all users.</summary>
         public static readonly string MachineAssign = ((char)0).ToString();
         /// <summary>Set to advertise a per-user installation of the product available to a particular user.</summary>
         public static readonly string UserAssign = ((char)1).ToString();
-        #endregion	Constants (Static Fields)
+        #endregion    Constants (Static Fields)
 
-        #region	Construction / Destruction
+        #region    Construction / Destruction
 
-        #endregion	Construction / Destruction
+        #endregion    Construction / Destruction
     }
 
     /// <summary>
@@ -34,7 +34,7 @@
     /// </summary>
     internal static class MsiDatabaseTable
     {
-        #region	Constants
+        #region    Constants
         /// <summary>The _Columns table is a read-only system table that contains the column catalog. It lists the columns for all the tables. You can query this table to find out if a given column exists.</summary>
         /// <remarks>Please refer to the MSDN documentation for more information.</remarks>
         public const string _Columns = "_Columns";
@@ -441,11 +441,11 @@
         /// <summary>The Verb table contains command-verb information associated with file extensions that must be generated as a part of product advertisement. Each row generates a set of registry keys and values.</summary>
         /// <remarks>Please refer to the MSDN documentation for more information.</remarks>
         public const string Verb = "Verb";
-        #endregion	Constants
+        #endregion    Constants
 
-        #region	Construction / Destruction
+        #region    Construction / Destruction
 
-        #endregion	Construction / Destruction
+        #endregion    Construction / Destruction
     }
 
     /// <summary>
@@ -455,8 +455,8 @@
     /// </summary>
     internal static class MsiInstallerProperty
     {
-        #region	Constants (Static Fields)
-        #region	Component Location
+        #region    Constants (Static Fields)
+        #region    Component Location
         /// <summary>The installer sets the OriginalDatabase property to the launched-from database, the database on the source, or the cached database.</summary>
         public const string OriginalDatabase = "OriginalDatabase";
 
@@ -465,9 +465,9 @@
 
         /// <summary>Specifies the root destination directory for the installation. During an administrative installation this property is the location to copy the installation package.</summary>
         public const string TARGETDIR = "TARGETDIR";
-        #endregion	Component Location
+        #endregion    Component Location
 
-        #region	Configuration Properties
+        #region    Configuration Properties
         /// <summary>Initial action called after the installer is initialized.</summary>
         public const string ACTION = "ACTION";
 
@@ -587,17 +587,17 @@
 
         /// <summary>Setting the TRANSFORMSECURE property to 1 informs the installer that transforms are to be cached locally on the user's computer in a location where the user does not have write access.</summary>
         public const string TRANSFORMSSECURE = "TRANSFORMSSECURE";
-        #endregion	Configuration Properties
+        #endregion    Configuration Properties
 
-        #region	Date / Time
+        #region    Date / Time
         /// <summary>The current date.</summary>
         public const string Date = "Date";
 
         /// <summary>The current time.</summary>
         public const string Time = "Time";
-        #endregion	Date / Time
+        #endregion    Date / Time
 
-        #region	Feature Installation Options
+        #region    Feature Installation Options
         /// <summary>List of features (delimited by commas) to be installed in their default configuration.</summary>
         public const string ADDDEFAULT = "ADDDEFAULT";
 
@@ -636,9 +636,9 @@
 
         /// <summary>List of features (delimited by commas) to be removed.</summary>
         public const string REMOVE = "REMOVE";
-        #endregion	Feature Installation Options
+        #endregion    Feature Installation Options
 
-        #region	Hardware
+        #region    Hardware
         /// <summary>Numeric processor level if running on an Alpha processor. </summary>
         public const string Alpha = "Alpha";
 
@@ -674,9 +674,9 @@
 
         /// <summary>Amount of available page file space in megabytes.</summary>
         public const string VirtualMemory = "VirtualMemory";
-        #endregion	Hardware
+        #endregion    Hardware
 
-        #region	Installation Status
+        #region    Installation Status
         /// <summary>Indicates current installation follows a reboot invoked by the ForceReboot action.</summary>
         public const string AFTERREBOOT = "AFTERREBOOT";
 
@@ -739,9 +739,9 @@
 
         /// <summary>The installer sets this property to the version of Windows Installer run during the installation.</summary>
         public const string VersionMsi = "VersionMsi";
-        #endregion	Installation Status
+        #endregion    Installation Status
 
-        #region	Operating System
+        #region    Operating System
         /// <summary>Set on Microsoft Windows NT/Windows 2000 if the user has administrator privileges.</summary>
         public const string AdminUser = "AdminUser";
 
@@ -822,9 +822,9 @@
 
         /// <summary>Build number of the operating system.</summary>
         public const string WindowsBuild = "WindowsBuild";
-        #endregion	Operating System
+        #endregion    Operating System
 
-        #region	Product Information
+        #region    Product Information
         /// <summary>Internet address, or URL, for technical support.</summary>
         public const string ARPHELPLINK = "ARPHELPLINK";
 
@@ -920,9 +920,9 @@
 
         /// <summary>VersionMinor</summary>
         public const string VersionMinor = "VersionMinor";
-        #endregion	Product Information
+        #endregion    Product Information
 
-        #region	Summary Information Update
+        #region    Summary Information Update
         /// <summary>The value of this property is written to the Revision Number Summary Property.</summary>
         public const string PATCHNEWPACKAGECODE = "PATCHNEWPACKAGECODE";
 
@@ -931,9 +931,9 @@
 
         /// <summary>The value of this property is written to the Subject Summary Property.</summary>
         public const string PATCHNEWSUMMARYSUBJECT = "PATCHNEWSUMMARYSUBJECT";
-        #endregion	Summary Information Update
+        #endregion    Summary Information Update
 
-        #region	System Folders
+        #region    System Folders
         /// <summary>Full path to the directory containing administrative tools for an individual user.</summary>
         public const string AdminToolsFolder = "AdminToolsFolder";
 
@@ -1005,9 +1005,9 @@
 
         /// <summary>The volume of the Windows folder.</summary>
         public const string WindowsVolume = "WindowsVolume";
-        #endregion	System Folders
+        #endregion    System Folders
 
-        #region	User Information
+        #region    User Information
         /// <summary>List of properties (separated by semicolons) set during an administration installation.</summary>
         public const string AdminProperties = "AdminProperties";
 
@@ -1034,22 +1034,22 @@
 
         /// <summary>Set by the installer to the user's security identifier (SID).</summary>
         public const string UserSID = "UserSID";
-        #endregion	User Information
+        #endregion    User Information
 
         /// <summary>AssignmentType</summary>
         public const string AssignmentType = "AssignmentType";
 
         /// <summary>PackageCode</summary>
         public const string PackageCode = "PackageCode";
-        #endregion	Constants (Static Fields)
+        #endregion    Constants (Static Fields)
 
-        #region	Construction / Destruction
+        #region    Construction / Destruction
 
-        #endregion	Construction / Destruction
+        #endregion    Construction / Destruction
     }
-    #endregion	Constants
+    #endregion    Constants
 
-    #region	Enumerations
+    #region    Enumerations
     /// <summary>Bit-flags of extra advertisment options.</summary>
     internal enum MsiAdvertismentOptions : uint
     {
@@ -1132,7 +1132,7 @@
         /// <summary>This is a combination of the right-to-left reading order <see cref="RTLRO"/>, the <see cref="RightAligned"/>, and <see cref="LeftScroll"/> attributes.</summary>
         BiDi = RTLRO | RightAligned | LeftScroll,
 
-        //	text controls
+        //    text controls
 
         /// <summary>If the Transparent Control bit is set on a text control, the control is displayed transparently with the background showing through the control where there are no characters. If this bit is not set the text control is opaque.</summary>
         Transparent = 0x00010000,
@@ -1145,19 +1145,19 @@
         /// <summary>If this bit flag is set, fonts are created using the user's default UI code page. If the bit flag is not set, fonts are created using the database code page.</summary>
         UsersLanguage = 0x00100000,
 
-        //	edit controls
+        //    edit controls
 
         /// <summary>If this bit is set on an Edit control, the installer creates a multiple line edit control with a vertical scroll bar.</summary>
         MultiLine = 0x00001000,
         /// <summary>PasswordInput</summary>
         PasswordInput = 0x00200000,
 
-        //	progress bar
+        //    progress bar
 
         /// <summary>If this bit is set on a ProgressBar control, the bar is drawn as a series of small rectangles in Microsoft Windows 95-style. If this bit is not set, the progress indicator bar is drawn as a single continuous rectangle.</summary>
         Progress95 = 0x00001000,
 
-        //	volume select combo and directory combo
+        //    volume select combo and directory combo
 
         /// <summary>If this bit is set, the control shows all the volumes involved in the current installation plus all the removable volumes. If this bit is not set, the control lists volumes in the current installation.</summary>
         RemovableVolume = 0x00010000,
@@ -1172,18 +1172,18 @@
         /// <summary>If the FloppyVolume Control bit is set, the control shows all the volumes involved in the current installation plus all the floppy volumes. If this bit is not set, the control lists volumes in the current installation. </summary>
         FloppyVolume = 0x00200000,
 
-        //	volume list controls
+        //    volume list controls
 
         /// <summary>ShowRollbackCost</summary>
         ShowRollbackCost = 0x00400000,
 
-        //	list box / combo box
+        //    list box / combo box
         /// <summary>If this bit is set, the items listed in the control are displayed in a specified order. If the bit is not set, items are displayed in alphabetical order.</summary>
         Sorted = 0x00010000,
         /// <summary>If the ComboList Control bit is set on a combo box, the edit field is replaced by a static text field. This prevents a user from entering a new value and requires the user to choose only one of the predefined values. If this bit is not set, the combo box has an edit field.</summary>
         ComboList = 0x00020000,
 
-        //	picture buttons
+        //    picture buttons
 
         /// <summary>ImageHandle</summary>
         ImageHandle = 0x00010000,
@@ -1202,7 +1202,7 @@
         /// <summary>The first 48x48 image is loaded.</summary>
         IconSize48 = 0x00600000,
 
-        //	radio buttons
+        //    radio buttons
         /// <summary>If this bit is set, the RadioButtonGroup has text and a border displayed around it. If the style bit is not set, the border is not displayed and no text is displayed on the group.</summary>
         HasBorder = 0x01000000,
     }
@@ -2035,9 +2035,9 @@
         ByRef = 0x4000,
         TypeMask = 0xfff,
     }
-    #endregion	Enumerations
+    #endregion    Enumerations
 
-    #region	Structures
+    #region    Structures
     /// <summary>The <c>FILETIME</c> structure is a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC).</summary>
     [StructLayout(LayoutKind.Sequential)]
     internal struct FILETIME
@@ -2047,16 +2047,16 @@
         /// <summary>High-order part of the file time.</summary>
         public uint HighDateTime;
     }
-    #endregion	Structures
+    #endregion    Structures
 
-    #region	Delegates
+    #region    Delegates
     /// <summary>The <c>INSTALLUI_HANDLER</c> delegate defines a callback function that the installer calls for progress notification and error messages.</summary>
     /// <remarks>
     /// The <c>messageType</c> parameter specifies a combination of one message box style, one message box icon type, one default button, and one installation message type.
     /// </remarks>
     internal delegate int MsiInstallUIHandler(IntPtr context,
         uint messageType, [MarshalAs(UnmanagedType.LPTStr)] string message);
-    #endregion	Delegates
+    #endregion    Delegates
 
     /// <summary>
     /// Internal class supporting direct MSI API.
@@ -2073,7 +2073,7 @@
     [SecurityPermission(SecurityAction.Demand, UnmanagedCode = true)]
     internal static class MsiInterop
     {
-        #region	Constants
+        #region    Constants
         private const string MSI_LIB = "msi";
 
         /// <summary>Maximum chars in feature name (same as string GUID)</summary>
@@ -2086,15 +2086,15 @@
         public const uint MessageTypeMask = 0xff000000;
 
         /// <summary>Represents a "null" integer.</summary>
-        public const int MsiNullInteger = Int32.MinValue;   //	0x80000000
-        #endregion	Constants
+        public const int MsiNullInteger = Int32.MinValue;   //    0x80000000
+        #endregion    Constants
 
-        #region	Construction / Destruction
+        #region    Construction / Destruction
 
-        #endregion	Construction / Destruction
+        #endregion    Construction / Destruction
 
-        #region	Interop Methods
-        #region	Installer Functions
+        #region    Interop Methods
+        #region    Installer Functions
         /// <summary>The <c>MsiAdvertiseProduct</c> function generates an advertise script or advertises a product to the computer. The <c>MsiAdvertiseProduct</c> function enables the installer to write to a script the registry and shortcut information used to assign or publish a product. The script can be written to be consistent with a specified platform by using <see cref="MsiAdvertiseProductEx"/>.</summary>
         /// <param name="path">The full path to the package of the product being advertised.</param>
         /// <param name="script">The full path to script file that will be created with the advertise information. To advertise the product locally to the computer, set <see cref="MsiAdvertiseProductFlag.MachineAssign"/> or <see cref="MsiAdvertiseProductFlag.UserAssign"/>.</param>
@@ -2897,9 +2897,9 @@
         /// </returns>
         [DllImport(MSI_LIB, CharSet = CharSet.Auto)]
         public static extern MsiError MsiVerifyPackage(string path);
-        #endregion	Installer Functions
+        #endregion    Installer Functions
 
-        #region	Database Functions
+        #region    Database Functions
         /// <summary>The <c>MsiCreateRecord</c> function creates a new record object with the specified number of fields. This function returns a handle that should be closed using <see cref="MsiCloseHandle"/>.</summary>
         /// <param name="count">Specifies the number of fields the record will have. The maximum number of fields in a record is limited to 65535.</param>
         /// <returns>
@@ -3543,7 +3543,7 @@
         public static extern MsiError MsiSetFeatureAttributes(IntPtr install,
             string feature, MsiInstallFeatureAttribute attributes);
 
-        /// <summary>The <c>	MsiSetFeatureState</c> function sets a feature to a specified state.</summary>
+        /// <summary>The <c>    MsiSetFeatureState</c> function sets a feature to a specified state.</summary>
         /// <param name="install">Handle to the installation provided to a DLL custom action or obtained through <see cref="MsiOpenPackage"/>, <see cref="MsiOpenPackageEx"/>, or <see cref="MsiOpenProduct"/>.</param>
         /// <param name="feature">Specifies the feature name within the product.</param>
         /// <param name="state">Specifies the state to set.</param>
@@ -3769,7 +3769,7 @@
         [DllImport(MSI_LIB, CharSet = CharSet.Auto)]
         public static extern MsiError MsiViewModify(IntPtr view, MsiModify mode,
             IntPtr record);
-        #endregion	Database Functions
-        #endregion	Interop Methods
+        #endregion    Database Functions
+        #endregion    Interop Methods
     }
 }

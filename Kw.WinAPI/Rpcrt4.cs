@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Kw.WinAPI
 {
-	public static class Rpcrt4
-	{
-		[DllImport("rpcrt4.dll", SetLastError = true)]
-		public static extern int UuidCreateSequential(out Guid guid);
+    public static class Rpcrt4
+    {
+        [DllImport("rpcrt4.dll", SetLastError = true)]
+        public static extern int UuidCreateSequential(out Guid guid);
 
-		public static Guid UuidCreateSequential()
-		{
-			UuidCreateSequential(out Guid id);
-			return id;
-		}
-	}
+        public static Guid UuidCreateSequential()
+        {
+            UuidCreateSequential(out Guid id);
+            return id;
+        }
+    }
 }

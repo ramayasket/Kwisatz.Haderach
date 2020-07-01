@@ -7,30 +7,30 @@ using Kw.Windows.Commands;
 
 namespace Kw.Windows.Controls
 {
-	public class CommandCheckBox : CheckBox, ICommandHandle
-	{
-		public override void EndInit()
-		{
-			base.EndInit();
+    public class CommandCheckBox : CheckBox, ICommandHandle
+    {
+        public override void EndInit()
+        {
+            base.EndInit();
 
-			var command = (UICommand)Command;
+            var command = (UICommand)Command;
 
-			if (null != command)
-			{
-				FromCommand(command);
-			}
-		}
+            if (null != command)
+            {
+                FromCommand(command);
+            }
+        }
 
-		public void FromCommand(UICommand command)
-		{
-			command.RegisterHandle(this);
+        public void FromCommand(UICommand command)
+        {
+            command.RegisterHandle(this);
 
-			ToolTip = command.Help;
-			Content = command.Text;
+            ToolTip = command.Help;
+            Content = command.Text;
 
-			IsChecked = command.State;
-		}
-	}
+            IsChecked = command.State;
+        }
+    }
 }
 
 

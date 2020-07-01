@@ -21,7 +21,7 @@ using System.Windows.Forms;
 
 namespace Kw.Shell
 {
-    //	ReSharper disable EmptyGeneralCatchClause
+    //    ReSharper disable EmptyGeneralCatchClause
 #pragma warning disable 4014
 #pragma warning disable 0162
 
@@ -67,10 +67,14 @@ namespace Kw.Shell
 
             dynamic jd = new JDynamic(js);
 
-            jd.Payload = double.PositiveInfinity;
-            var jdp = jd.Payload;
+            //jd.Payload = double.NaN;
+            //var jdp = jd.Payload;
 
             var jdc = jd.Child;
+
+            jdc = jd["Child"];
+            jd["Payload"] = 80053;
+            var jdp = jd.Payload;
 
             var jdps = jd.GetDynamicMemberNames();
             var jdcps = jdc.GetDynamicMemberNames();

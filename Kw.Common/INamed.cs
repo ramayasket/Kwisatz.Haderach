@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Kw.Common
 {
-	/// <summary>
-	/// Контракт чего-либо с именем.
-	/// </summary>
-	public interface INamed
-	{
-		string Name { get; }
-	}
+    /// <summary>
+    /// Контракт чего-либо с именем.
+    /// </summary>
+    public interface INamed
+    {
+        string Name { get; }
+    }
 }
 

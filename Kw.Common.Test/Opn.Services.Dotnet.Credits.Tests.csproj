@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.11.0" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="coverlet.msbuild" Version="2.8.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FluentAssertions" Version="5.10.0" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Moq" Version="4.13.1" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Opn.Lib.Dotnet.GraphQL.Client" Version="9.3.0" />
+    <PackageReference Include="Opn.Lib.Dotnet.Logging" Version="7.4.0" />
+    <PackageReference Include="Shouldly" Version="3.0.2" />
+    <PackageReference Include="GraphQL.Client" Version="2.0.0-alpha.3" />
+    <PackageReference Include="GraphQL.IntrospectionModel" Version="0.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.6" />
+    <PackageReference Include="Opn.Sdk.App" Version="14.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Opn.Services.Dotnet.Credits.GraphQL\Opn.Services.Dotnet.Credits.GraphQL.csproj" />
+    <ProjectReference Include="..\Opn.Services.Dotnet.Credits.Host\Opn.Services.Dotnet.Credits.Host.csproj" />
+    <ProjectReference Include="..\Opn.Services.Dotnet.Credits.Providers\Opn.Services.Dotnet.Credits.Providers.csproj" />
+  </ItemGroup>
+
+</Project>

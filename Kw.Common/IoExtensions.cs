@@ -7,45 +7,45 @@ using System.Threading.Tasks;
 
 namespace Kw.Common
 {
-	public static class IoExtensions
-	{
-		private static string ToFullPath(FileInfo info)
-		{
-			var sinfo = info.ToString();
+    public static class IoExtensions
+    {
+        private static string ToFullPath(FileInfo info)
+        {
+            var sinfo = info.ToString();
 
-			if ("" == info.Name && "" == info.Extension && 2 == sinfo.Length)
-			{
-				return sinfo + "\\";
-			}
+            if ("" == info.Name && "" == info.Extension && 2 == sinfo.Length)
+            {
+                return sinfo + "\\";
+            }
 
-			return info.FullName;
-		}
+            return info.FullName;
+        }
 
-		public static bool HasReparsePoints(string path)
-		{
-			path = path.TrimEnd('\\');
+        public static bool HasReparsePoints(string path)
+        {
+            path = path.TrimEnd('\\');
 
-			var info = new FileInfo(path);
-			var fullname = ToFullPath(info);
+            var info = new FileInfo(path);
+            var fullname = ToFullPath(info);
 
-			if (ReparseCheck(info.Attributes))
-				return true;
+            if (ReparseCheck(info.Attributes))
+                return true;
 
-			var parts = fullname.Split("\\", StringSplitOptions.RemoveEmptyEntries);
+            var parts = fullname.Split("\\", StringSplitOptions.RemoveEmptyEntries);
 
-			if (parts.Length < 2)
-			{
-				return false;
-			}
+            if (parts.Length < 2)
+            {
+                return false;
+            }
 
-			var subpath = string.Join("\\", parts.Take(parts.Length - 1));
+            var subpath = string.Join("\\", parts.Take(parts.Length - 1));
 
-			return HasReparsePoints(subpath);
+            return HasReparsePoints(subpath);
 
-			//
-			//	Локальная проверка
-			//
-			bool ReparseCheck(FileAttributes attr) => attr.HasFlag(FileAttributes.ReparsePoint);
-		}
-	}
+            //
+            //    Локальная проверка
+            //
+            bool ReparseCheck(FileAttributes attr) => attr.HasFlag(FileAttributes.ReparsePoint);
+        }
+    }
 }

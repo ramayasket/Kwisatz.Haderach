@@ -356,8 +356,8 @@ namespace Kw.Windows.Forms
                 s_KeyboardDelegate = KeyboardHookProc;
 
                 //
-                //	Here was the code to get module.
-                //	It was removed and instance replaced with IntPtr.Zero
+                //    Here was the code to get module.
+                //    It was removed and instance replaced with IntPtr.Zero
                 //
 
                 //install hook

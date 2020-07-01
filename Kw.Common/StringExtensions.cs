@@ -168,26 +168,26 @@ namespace Kw.Common
             return input.Replace(Environment.NewLine, string.Empty).Replace("\n", string.Empty).Replace("\r\n", string.Empty);
         }
         //
-        //	
+        //    
         //
         private static int LevenshteinDistance(string source, string target)
         {
             //
-            //	Degenerate cases.
+            //    Degenerate cases.
             //
             if (source == target) return 0;
             if (source.Length == 0) return target.Length;
             if (target.Length == 0) return source.Length;
 
             //
-            //	Create two work vectors of integer distances.
+            //    Create two work vectors of integer distances.
             //
             int[] previous = new int[target.Length + 1], current = new int[target.Length + 1];
 
             //
-            //	Initialize previous row of distances.
-            //	This row is A[0][i]: edit distance for an empty source
-            //	the distance is just the number of characters to delete from target
+            //    Initialize previous row of distances.
+            //    This row is A[0][i]: edit distance for an empty source
+            //    the distance is just the number of characters to delete from target
             for (int i = 0; i < previous.Length; i++)
                 previous[i] = i;
 

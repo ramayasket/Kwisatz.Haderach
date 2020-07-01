@@ -6,13 +6,13 @@ using System.Threading;
 
 namespace Kw.Common.Threading
 {
-	/// <summary>
-	/// Интерфейс подготавливаемабельного объекта.
-	/// </summary>
-	public interface IPreparable
-	{
-		WaitHandle Ready { get; }
-		Event ReadyEvent { get; }
-	}
+    /// <summary>
+    /// Интерфейс подготавливаемабельного объекта.
+    /// </summary>
+    public interface IPreparable
+    {
+        WaitHandle Ready { get; }
+        Event ReadyEvent { get; }
+    }
 }
 

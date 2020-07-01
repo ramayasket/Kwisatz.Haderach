@@ -224,7 +224,7 @@ namespace Kw.Common
                 Type tnull = null;
 
                 //
-                //	ReSharper disable once ExpressionIsAlwaysNull
+                //    ReSharper disable once ExpressionIsAlwaysNull
                 //
                 if (tnull.In(target, examplar))
                 {

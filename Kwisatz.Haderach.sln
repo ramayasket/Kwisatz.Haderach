@@ -34,7 +34,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packaging", "Packaging", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kw.Shell", "Kw.Shell\Kw.Shell.csproj", "{19FD169C-D667-49C4-9B85-6430F22808E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kw.Common.Test", "Kw.Common.Test\Kw.Common.Test.csproj", "{F105F1ED-A350-4159-84DA-F1C52D6EC385}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.Common.Test", "Kw.Common.Test\Kw.Common.Test.csproj", "{F105F1ED-A350-4159-84DA-F1C52D6EC385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kw.Library", "Kw.Library\Kw.Library.csproj", "{20350898-E51E-43A2-8560-DEFC082708CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -102,6 +104,12 @@ Global
 		{F105F1ED-A350-4159-84DA-F1C52D6EC385}.neutral|Any CPU.Build.0 = Debug|Any CPU
 		{F105F1ED-A350-4159-84DA-F1C52D6EC385}.release|Any CPU.ActiveCfg = Release|Any CPU
 		{F105F1ED-A350-4159-84DA-F1C52D6EC385}.release|Any CPU.Build.0 = Release|Any CPU
+		{20350898-E51E-43A2-8560-DEFC082708CC}.debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20350898-E51E-43A2-8560-DEFC082708CC}.debug|Any CPU.Build.0 = Debug|Any CPU
+		{20350898-E51E-43A2-8560-DEFC082708CC}.neutral|Any CPU.ActiveCfg = Debug|Any CPU
+		{20350898-E51E-43A2-8560-DEFC082708CC}.neutral|Any CPU.Build.0 = Debug|Any CPU
+		{20350898-E51E-43A2-8560-DEFC082708CC}.release|Any CPU.ActiveCfg = Release|Any CPU
+		{20350898-E51E-43A2-8560-DEFC082708CC}.release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

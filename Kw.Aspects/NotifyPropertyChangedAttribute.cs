@@ -7,41 +7,41 @@ using PostSharp.Reflection;
 
 namespace Kw.Aspects
 {
-	[Serializable]
-	[IntroduceInterface(typeof(INotifyPropertyChanged), OverrideAction = InterfaceOverrideAction.Ignore)]
-	[MulticastAttributeUsage(MulticastTargets.Class, Inheritance = MulticastInheritance.Strict)]
-	[LinesOfCodeAvoided(5)]
-	public sealed class NotifyPropertyChangedAttribute : InstanceLevelAspect, INotifyPropertyChanged
-	{
-		[ImportMember("OnPropertyChanged", IsRequired = false)]
-		public Action<string> BaseOnPropertyChanged;
+    [Serializable]
+    [IntroduceInterface(typeof(INotifyPropertyChanged), OverrideAction = InterfaceOverrideAction.Ignore)]
+    [MulticastAttributeUsage(MulticastTargets.Class, Inheritance = MulticastInheritance.Strict)]
+    [LinesOfCodeAvoided(5)]
+    public sealed class NotifyPropertyChangedAttribute : InstanceLevelAspect, INotifyPropertyChanged
+    {
+        [ImportMember("OnPropertyChanged", IsRequired = false)]
+        public Action<string> BaseOnPropertyChanged;
 
-		[IntroduceMember(Visibility = Visibility.Family, IsVirtual = true, OverrideAction = MemberOverrideAction.Ignore)]
-		public void OnPropertyChanged(string propertyName)
-		{
-			PropertyChanged?.Invoke(Instance, new PropertyChangedEventArgs(propertyName));
-		}
+        [IntroduceMember(Visibility = Visibility.Family, IsVirtual = true, OverrideAction = MemberOverrideAction.Ignore)]
+        public void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(Instance, new PropertyChangedEventArgs(propertyName));
+        }
 
-		[IntroduceMember(OverrideAction = MemberOverrideAction.Ignore)]
-		public event PropertyChangedEventHandler PropertyChanged;
+        [IntroduceMember(OverrideAction = MemberOverrideAction.Ignore)]
+        public event PropertyChangedEventHandler PropertyChanged;
 
-		[OnLocationSetValueAdvice]
-		[MulticastPointcut(Targets = MulticastTargets.Property)]
-		public void OnPropertySet(LocationInterceptionArgs args)
-		{
-			if (args.Value == args.GetCurrentValue()) return;
+        [OnLocationSetValueAdvice]
+        [MulticastPointcut(Targets = MulticastTargets.Property)]
+        public void OnPropertySet(LocationInterceptionArgs args)
+        {
+            if (args.Value == args.GetCurrentValue()) return;
 
-			args.ProceedSetValue();
+            args.ProceedSetValue();
 
-			if (BaseOnPropertyChanged != null)
-			{
-				BaseOnPropertyChanged(args.Location.PropertyInfo.Name);
-			}
-			else
-			{
-				OnPropertyChanged(args.Location.PropertyInfo.Name);
-			}
-		}
-	}
+            if (BaseOnPropertyChanged != null)
+            {
+                BaseOnPropertyChanged(args.Location.PropertyInfo.Name);
+            }
+            else
+            {
+                OnPropertyChanged(args.Location.PropertyInfo.Name);
+            }
+        }
+    }
 }
 

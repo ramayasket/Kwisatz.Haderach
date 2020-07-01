@@ -6,105 +6,105 @@ using Kw.Common;
 
 namespace Kw.Networking
 {
-	public class HttpClient : WebClient, INetworkResourceWebClient
-	{
-		private static readonly int CommonTimeout;
-		private static readonly bool Reporting;
+    public class HttpClient : WebClient, INetworkResourceWebClient
+    {
+        private static readonly int CommonTimeout;
+        private static readonly bool Reporting;
 
-		public string ProxyUri
-		{
-			get { return (null != Proxy) ? Proxy.ToString() : null; }
-			set { Proxy = (null == value) ? null : new WebProxy(value); }
-		}
+        public string ProxyUri
+        {
+            get { return (null != Proxy) ? Proxy.ToString() : null; }
+            set { Proxy = (null == value) ? null : new WebProxy(value); }
+        }
 
-		static HttpClient()
-		{
-			ServicePointManager.DefaultConnectionLimit = 2048;
+        static HttpClient()
+        {
+            ServicePointManager.DefaultConnectionLimit = 2048;
 
-			CommonTimeout = AppConfig.Setting("http_timeout", 60000);
-			Reporting = AppConfig.Setting("http_reporting", false);
-		}
+            CommonTimeout = AppConfig.Setting("http_timeout", 60000);
+            Reporting = AppConfig.Setting("http_reporting", false);
+        }
 
-		private static bool proxy_reported = false;
+        private static bool proxy_reported = false;
 
-		public HttpClient()
-		{
-			Headers[HttpRequestHeader.AcceptEncoding] = "gzip";
+        public HttpClient()
+        {
+            Headers[HttpRequestHeader.AcceptEncoding] = "gzip";
 
-			var proxy = AppConfig.Setting("http_proxy");
+            var proxy = AppConfig.Setting("http_proxy");
 
-			if (!string.IsNullOrEmpty(proxy))
-			{
-				Proxy = new WebProxy(proxy);
+            if (!string.IsNullOrEmpty(proxy))
+            {
+                Proxy = new WebProxy(proxy);
 
-				if(!proxy_reported)
-				{
-					proxy_reported = true;
-					AppCore.WriteLine("@PX Proxy {0}", proxy);
-				}
-			}
-		}
+                if(!proxy_reported)
+                {
+                    proxy_reported = true;
+                    AppCore.WriteLine("@PX Proxy {0}", proxy);
+                }
+            }
+        }
 
-		public int Timeout = 0;
+        public int Timeout = 0;
 
-		protected override WebRequest GetWebRequest(Uri address)
-		{
-			var request = base.GetWebRequest(address) as HttpWebRequest;
+        protected override WebRequest GetWebRequest(Uri address)
+        {
+            var request = base.GetWebRequest(address) as HttpWebRequest;
 
-			Debug.Assert(null != request);
+            Debug.Assert(null != request);
 
-			request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
 
-			if(0 != Timeout)
-			{
-				request.Timeout = Timeout;
-			}
+            if(0 != Timeout)
+            {
+                request.Timeout = Timeout;
+            }
 
-			request.Proxy = Proxy;
+            request.Proxy = Proxy;
 
-			return request;
-		}
+            return request;
+        }
 
-		[DebuggerNonUserCode]
-		public byte[] DownloadBytes(string url, int timeout = 0, int stumbling = 0)
-		{
-			byte[] result = null;
+        [DebuggerNonUserCode]
+        public byte[] DownloadBytes(string url, int timeout = 0, int stumbling = 0)
+        {
+            byte[] result = null;
 
-			Timeout = (timeout == 0) ? CommonTimeout : timeout;
+            Timeout = (timeout == 0) ? CommonTimeout : timeout;
 
-			var sw = Stopwatch.StartNew();
+            var sw = Stopwatch.StartNew();
 
-			try
-			{
-				result = DownloadData(url);
-				sw.Stop();
+            try
+            {
+                result = DownloadData(url);
+                sw.Stop();
 
-				ReportOperation(true, sw.Elapsed, url);
+                ReportOperation(true, sw.Elapsed, url);
 
-				return result;
-			}
-			catch (Exception x)
-			{
-				sw.Stop();
-				ReportOperation(false, sw.Elapsed, x.Message);
-				throw;
-			}
-		}
+                return result;
+            }
+            catch (Exception x)
+            {
+                sw.Stop();
+                ReportOperation(false, sw.Elapsed, x.Message);
+                throw;
+            }
+        }
 
-		private static object _this = new object();
+        private static object _this = new object();
 
-		private static void ReportOperation(bool ok, TimeSpan ts, string url)
-		{
-			if (!Reporting)
-				return;
+        private static void ReportOperation(bool ok, TimeSpan ts, string url)
+        {
+            if (!Reporting)
+                return;
 
-			lock (_this)
-			{
-				using (var w = new StreamWriter("HttpClient.log", true))
-				{
-					w.WriteLine("{0} ({1}) {2}", ok ? "ok":"nok", (long)ts.TotalMilliseconds, url);
-				}
-			}
-		}
-	}
+            lock (_this)
+            {
+                using (var w = new StreamWriter("HttpClient.log", true))
+                {
+                    w.WriteLine("{0} ({1}) {2}", ok ? "ok":"nok", (long)ts.TotalMilliseconds, url);
+                }
+            }
+        }
+    }
 }

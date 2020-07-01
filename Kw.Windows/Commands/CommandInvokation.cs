@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Kw.Windows.Commands
 {
-	public struct CommandInvokation
-	{
-		public UICommand Command;
-		public ICommandHandle Handle;
-	}
+    public struct CommandInvokation
+    {
+        public UICommand Command;
+        public ICommandHandle Handle;
+    }
 }
 
 

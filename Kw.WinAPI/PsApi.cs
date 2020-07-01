@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Kw.WinAPI
 {
-	public static class PsApi
-	{
-		[DllImport("psapi.dll")]
-		public static extern uint GetProcessImageFileName(IntPtr hProcess, [Out] StringBuilder lpImageFileName, [In] [MarshalAs(UnmanagedType.U4)] int nSize);
-	}
+    public static class PsApi
+    {
+        [DllImport("psapi.dll")]
+        public static extern uint GetProcessImageFileName(IntPtr hProcess, [Out] StringBuilder lpImageFileName, [In] [MarshalAs(UnmanagedType.U4)] int nSize);
+    }
 }

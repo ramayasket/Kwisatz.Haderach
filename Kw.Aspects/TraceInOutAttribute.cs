@@ -8,28 +8,28 @@ using PostSharp.Aspects;
 
 namespace Kw.Aspects
 {
-	[Serializable]
-	[AttributeUsage(AttributeTargets.Method, Inherited = false)]
-	[LinesOfCodeAvoided(6)]
-	public class TraceInOutAttribute : MethodInterceptionAspect
-	{
-		public override bool CompileTimeValidate(MethodBase method)
-		{
-			Type = method.DeclaringType;
-			Token = method.Name;
+    [Serializable]
+    [AttributeUsage(AttributeTargets.Method, Inherited = false)]
+    [LinesOfCodeAvoided(6)]
+    public class TraceInOutAttribute : MethodInterceptionAspect
+    {
+        public override bool CompileTimeValidate(MethodBase method)
+        {
+            Type = method.DeclaringType;
+            Token = method.Name;
 
-			return base.CompileTimeValidate(method);
-		}
+            return base.CompileTimeValidate(method);
+        }
 
-		public string Token { get; private set; }
-		public Type Type { get; private set; }
+        public string Token { get; private set; }
+        public Type Type { get; private set; }
 
-		public sealed override void OnInvoke(MethodInterceptionArgs args)
-		{
-			AppCore.WriteLine("@PX Entering method {0}::{1}", Type, Token);
-			args.Proceed();
-			AppCore.WriteLine("@PX Exited method {0}::{1}", Type, Token);
-		}
-	}
+        public sealed override void OnInvoke(MethodInterceptionArgs args)
+        {
+            AppCore.WriteLine("@PX Entering method {0}::{1}", Type, Token);
+            args.Proceed();
+            AppCore.WriteLine("@PX Exited method {0}::{1}", Type, Token);
+        }
+    }
 }
 

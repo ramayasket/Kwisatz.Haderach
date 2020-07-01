@@ -6,10 +6,10 @@ using System.Windows.Input;
 
 namespace Kw.Windows.Commands
 {
-	public interface ICommandHandle
-	{
-		void FromCommand(UICommand command);
-	}
+    public interface ICommandHandle
+    {
+        void FromCommand(UICommand command);
+    }
 }
 
 

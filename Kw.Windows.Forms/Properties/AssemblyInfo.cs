@@ -9,11 +9,11 @@ using System.Runtime.InteropServices;
 /*
     Kw.Windows.Forms change history
     ===============================================================================
-    Date		Version		Comments
+    Date        Version        Comments
     ===============================================================================
-    29.05.2020	1.2.0.0		New version scheme + Kw.Common 1.2.0.0 + Mouse hook error fix
-    29.05.2020	1.2.0.1		Old icon tag is back
-    29.05.2020	1.2.0.2		No icon whatsoever
-    24.06.2020	1.3.0.0		signing changed to .SNK
+    29.05.2020    1.2.0.0        New version scheme + Kw.Common 1.2.0.0 + Mouse hook error fix
+    29.05.2020    1.2.0.1        Old icon tag is back
+    29.05.2020    1.2.0.2        No icon whatsoever
+    24.06.2020    1.3.0.0        signing changed to .SNK
     
 */
