@@ -80,6 +80,7 @@
     <Compile Include="FileAttributes.cs" />
     <Compile Include="Handle.cs" />
     <Compile Include="Kernel.cs" />
+    <Compile Include="INPUT.cs" />
     <Compile Include="Msi.cs" />
     <Compile Include="Netapi32.cs" />
     <Compile Include="NtfsUtils.cs" />

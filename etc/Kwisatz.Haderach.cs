@@ -14,8 +14,8 @@ using System.Runtime.InteropServices;
 
     Concept:    conceptual/strategic changes
     Product:    product-wide changes
-    Classes:    new classes or APIs
-    Minor:        minor changes
+    Classes:    new/changed classes or APIs
+    Minor:      minor changes
 
     Kwisatz.Haderach change history
     ===============================================================================
