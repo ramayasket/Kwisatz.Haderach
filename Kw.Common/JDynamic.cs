@@ -1,11 +1,9 @@
-﻿using Microsoft.CSharp.RuntimeBinder;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace Kw.Common
 {
@@ -13,25 +11,26 @@ namespace Kw.Common
     /// Динамический объект на основе JSON.
     /// </summary>
     /// ReSharper disable PossibleNullReferenceException
-    /// ReSharper disable EmptyGeneralCatchClause
     public class JDynamic : DynamicObject
     {
         private readonly JObject _object;
 
-        public JDynamic(string json) : this((JObject) JsonConvert.DeserializeObject(json)) { }
+        public JDynamic(string json) : this((JObject)JsonConvert.DeserializeObject(json)) { }
 
         public JDynamic(JObject @object) => _object = @object;
 
         /// <inheritdoc />
-        public override IEnumerable<string> GetDynamicMemberNames() => _object.Properties().Select(p => p.Name);
+        public override IEnumerable<string> GetDynamicMemberNames()
+        {
+            return _object.Properties().Select(p => p.Name);
+        }
 
         /// <inheritdoc />
         public override bool TryGetMember(GetMemberBinder binder, out dynamic result)
         {
             var property = _object.Property(binder.Name);
 
-            if (null == property)
-            {
+            if (null == property) {
                 result = null;
                 return false;
             }
@@ -39,25 +38,8 @@ namespace Kw.Common
             var value = property.Value;
             result = TokenToObject(value);
 
-            switch (result)
-            {
-                case double @double:
-                {
-                    try {
-                        result = Convert.ToDecimal(@double);
-                    }
-                    catch { }
-                    break;
-                }
-
-                case long @long: {
-                    try {
-                        result = Convert.ToInt32(@long);
-                    }
-                    catch { }
-                    break;
-                }
-            }
+            if (result is double @double)
+                result = Convert.ToDecimal(@double);
 
             return true;
         }
@@ -74,30 +56,6 @@ namespace Kw.Common
         }
 
         /// <inheritdoc />
-        public override bool TryGetIndex(GetIndexBinder binder, object[] indexes, out object result)
-        {
-            if (indexes.Length == 1 && indexes[0] is string s)
-            {
-                result = GetMember(s);
-                return true;
-            }
-
-            result = null;
-            return false;
-        }
-
-        /// <inheritdoc />
-        public override bool TrySetIndex(SetIndexBinder binder, object[] indexes, object value)
-        {
-            if (indexes.Length == 1 && indexes[0] is string s) {
-                SetMember(s, value);
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <inheritdoc />
         public override string ToString() => _object.ToString();
 
         /// <summary>
@@ -105,62 +63,39 @@ namespace Kw.Common
         /// </summary>
         private dynamic TokenToObject(JToken value)
         {
-            switch (value)
-            {
-                case JValue jvalue:
-                {
-                    dynamic v = jvalue.Value;
+            switch (value) {
+                case JValue jvalue: {
+                        dynamic v = jvalue.Value;
 
-                    if (v is string s)
-                        try
-                        {
-                            v = Convert.FromBase64String(s);
-                        }
-                        catch
-                        {
-                            try
-                            {
-                                v = Guid.Parse(s);
+                        if (v is string s)
+                            try {
+                                v = Convert.FromBase64String(s);
                             }
-                            catch { }
-                        }
+                            // ReSharper disable once EmptyGeneralCatchClause
+                            catch {
+                                try {
+                                    v = Guid.Parse(s);
+                                }
+                                catch { }
+                            }
 
-                    return v;
-                }
+                        return v;
+                    }
 
                 case JObject jobject: return new JDynamic(jobject);
 
-                case JArray jarray:
-                {
-                    var list = new List<dynamic>();
+                case JArray jarray: {
+                        var list = new List<dynamic>();
 
-                    foreach (var item in jarray)
-                        list.Add(TokenToObject(item));
+                        foreach (var item in jarray)
+                            list.Add(TokenToObject(item));
 
-                    return list.ToArray();
-                }
+                        return list.ToArray();
+                    }
 
                 default:
                     throw new NotImplementedException(value.Type.ToString());
             }
-        }
-
-        private static readonly CSharpArgumentInfo _argument = CSharpArgumentInfo.Create(0, null);
-
-        private object GetMember(string name)
-        {
-            var site = CallSite<Func<CallSite, dynamic, object>>
-                .Create(Binder.GetMember(0, name, GetType(), new[] { _argument }));
-
-            return site.Target(site, this);
-        }
-
-        private void SetMember(string name, object value)
-        {
-            var site = CallSite<Action<CallSite, dynamic, object>>
-                .Create(Binder.SetMember(0, name, GetType(), new[] { _argument, _argument }));
-
-            site.Update(site, this, value);
         }
     }
 }

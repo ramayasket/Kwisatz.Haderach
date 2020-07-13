@@ -8,6 +8,7 @@ using Kw.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PostSharp.Aspects;
+using Syncfusion.Licensing;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -44,6 +45,8 @@ namespace Kw.Shell
         [STAThread]
         public static void Main(string[] arguments)
         {
+            var x = SyncfusionLicenseProvider.ValidateLicense(Platform.WPF, out string xs);
+
             var t = new DateTime(2020, 6, 25);
             t = DateTime.SpecifyKind(t, DateTimeKind.Utc);
 

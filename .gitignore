@@ -19,26 +19,7 @@ bld/
 
 /packages
 
-/Kw.Aspects/bin
-/Kw.Aspects/obj
-/Kw.Common/obj
-/Kw.Common/bin
-/Kw.Networking/obj
-/Kw.Networking/bin
-/Kw.Reference/Help
-/Kw.ServiceProcess/bin
-/Kw.ServiceProcess/obj
-/Kw.Storage.Utilities/bin
-/Kw.Storage.Utilities/obj
-/Kw.WinAPI/bin
-/Kw.WinAPI/obj
-/Kw.Windows/bin
-/Kw.Windows/obj
-/Kw.Windows.Forms/bin
-/Kw.Windows.Forms/obj
-/MySql.Data/bin
-/MySql.Data/obj
-
 *.user
 *.nupkg
 /Kw.Reference/Kwisatz-Haderach.chm
+/Kw.Reference/Help

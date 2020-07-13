@@ -95,7 +95,6 @@
     <Compile Include="TaskbarUtils.cs" />
     <Compile Include="Types.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="VK.cs" />
     <Compile Include="WH.cs" />
     <Compile Include="WM.cs" />
     <Compile Include="WtsApi32.cs" />
