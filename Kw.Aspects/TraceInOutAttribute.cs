@@ -1,10 +1,10 @@
+using Kw.Common;
+using PostSharp.Aspects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Kw.Common;
-using PostSharp.Aspects;
 
 namespace Kw.Aspects
 {
@@ -26,9 +26,9 @@ namespace Kw.Aspects
 
         public sealed override void OnInvoke(MethodInterceptionArgs args)
         {
-            AppCore.WriteLine("@PX Entering method {0}::{1}", Type, Token);
+            Kwisarath.WriteLine("Entering method {0}::{1}", Type, Token);
             args.Proceed();
-            AppCore.WriteLine("@PX Exited method {0}::{1}", Type, Token);
+            Kwisarath.WriteLine("Exited method {0}::{1}", Type, Token);
         }
     }
 }

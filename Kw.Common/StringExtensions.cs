@@ -11,6 +11,11 @@ namespace Kw.Common
     /// </summary>
     public static class StringExtensions
     {
+        public static string Apart(this string line)
+        {
+            return Environment.NewLine + line + Environment.NewLine;
+        }
+
         /// <summary>
         /// Преобразует строку в нотации PASCAL во фразу с расставленными пробелами.
         /// </summary>

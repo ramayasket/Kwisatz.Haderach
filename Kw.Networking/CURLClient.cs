@@ -1,11 +1,11 @@
+using Kw.Common;
+using Kw.Common.Threading;
+using Kw.WinAPI;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
-using Kw.Common;
-using Kw.Common.Threading;
-using Kw.WinAPI;
 
 namespace Kw.Networking
 {
@@ -22,7 +22,6 @@ namespace Kw.Networking
             set { }
         }
 
-        private const Printing SPECIAL_PRINTING = Printing.Debug | Printing.Console | Printing.File ;
         private const string TEMPORARY_FILE_FORMAT = ".curl-{0}.tmp";
 
         private readonly TemporaryFile OutputFile;
@@ -107,7 +106,6 @@ namespace Kw.Networking
                 }
                 catch (Exception x)
                 {
-                    AppCore.ReportException(x);
                     return -1;
                 }
                 finally
@@ -141,7 +139,6 @@ namespace Kw.Networking
                         }
                         catch (Exception x)
                         {
-                            AppCore.WriteLine(SPECIAL_PRINTING, "@PX ReadAllBytes() failed with {0}", x.Message);
                             return -1;
                         }
                     }
@@ -150,7 +147,6 @@ namespace Kw.Networking
                 }
                 catch(Exception x)
                 {
-                    AppCore.ReportException(x);
                     return -1;
                 }
             }

@@ -1,16 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <IsPackable>false</IsPackable>
+        <LangVersion>8.0</LangVersion>
+        <SignAssembly>true</SignAssembly>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <StartupObject>Kw.Common.Test.Program</StartupObject>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.1.0" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />
-    <PackageReference Include="coverlet.collector" Version="1.2.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+        <PackageReference Include="MSTest.TestAdapter" Version="2.1.0" />
+        <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />
+        <PackageReference Include="coverlet.collector" Version="1.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Kw.Common\Kw.Common.csproj" />
+    </ItemGroup>
 
 </Project>

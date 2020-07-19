@@ -1,12 +1,9 @@
+using Kw.Common;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.ServiceProcess;
-using System.Text;
-using Kw.Common;
 
 namespace Kw.ServiceProcess
 {
@@ -115,16 +112,16 @@ namespace Kw.ServiceProcess
 
         protected override void OnPause()
         {
-            AppCore.WriteLine("@PX {0} has received external PAUSE request.", Name);
+            Kwisarath.WriteLine("{0} has received external PAUSE request.", Name);
 
-            AppCore.Paused = true;
+            Kwisarath.Paused = true;
         }
 
         protected override void OnContinue()
         {
-            AppCore.WriteLine("@PX {0} has received external CONTINUE request.", Name);
+            Kwisarath.WriteLine("{0} has received external CONTINUE request.", Name);
 
-            AppCore.Paused = false;
+            Kwisarath.Paused = false;
         }
 
         #endregion
@@ -133,7 +130,7 @@ namespace Kw.ServiceProcess
 
         bool InternalConfigure()
         {
-            AppCore.WriteLine("@PX Reading configuration...");
+            Kwisarath.WriteLine("Reading configuration...");
 
             try
             {
@@ -142,25 +139,25 @@ namespace Kw.ServiceProcess
             }
             catch(Exception x)
             {
-                AppCore.ReportException(x);
+                Kwisarath.WriteLine(x.Message);
                 return false;
             }
         }
 
         bool InternalInitialize(params string[] parameters)
         {
-            AppCore.WriteLine("@PX {0} is initializing...", Name);
+            Kwisarath.WriteLine("{0} is initializing...", Name);
 
             try
             {
                 Initialize(parameters);
 
-                AppCore.WriteLine("@PX {0} has completed initialization.", Name);
+                Kwisarath.WriteLine("{0} has completed initialization.", Name);
                 return true;
             }
             catch (Exception x)
             {
-                AppCore.ReportException(x);
+                Kwisarath.WriteLine(x.Message);
                 ExitCode = int.MinValue;
                 return false;
             }
@@ -168,11 +165,11 @@ namespace Kw.ServiceProcess
 
         void InternalCleanup()
         {
-            AppCore.WriteLine("@PX {0} has received external STOP request.", Name);
+            Kwisarath.WriteLine("{0} has received external STOP request.", Name);
 
-            AppCore.Exiting = true;
+            Kwisarath.Exiting = true;
 
-            AppCore.WriteLine("@PX {0} is cleaning up...", Name);
+            Kwisarath.WriteLine("{0} is cleaning up...", Name);
 
             try
             {
@@ -180,7 +177,7 @@ namespace Kw.ServiceProcess
             }
             catch (Exception x)
             {
-                AppCore.ReportException(x);
+                Kwisarath.WriteLine(x.Message);
             }
         }
 
@@ -188,15 +185,13 @@ namespace Kw.ServiceProcess
         {
             IsService = isService;
 
-            AppCore.WriteLine("@PX {0} is running in {1} mode", Assembly.GetEntryAssembly().FullName, IsService ? "service" : "console");
+            Kwisarath.WriteLine("{0} is running in {1} mode", Assembly.GetEntryAssembly().FullName, IsService ? "service" : "console");
             //    Environment.UserDomainName
 
             var domain = Environment.GetEnvironmentVariable("USERDOMAIN");
             var name = Environment.GetEnvironmentVariable("USERNAME");
             var direct = Environment.CurrentDirectory;
             var host = Environment.MachineName;
-            var lpath = AppCore.PrintingFilePath;
-            var lname = AppCore.PrintingFileName;
 
             if (string.IsNullOrEmpty(host))
             {
@@ -213,26 +208,10 @@ namespace Kw.ServiceProcess
                 name = "*CURRENT_USER";
             }
 
-            if (string.IsNullOrEmpty(lpath))
-            {
-                lpath = ".";
-            }
-
-            if (string.IsNullOrEmpty(lname))
-            {
-                lname = "*?";
-            }
-
             var user = Path.Combine(domain, name);
-            var log = Path.Combine(lpath, lname);
 
-            AppCore.WriteLine("@PX {0} is running on the '{1}' box under '{2}' account.", Name, host, user);
-            AppCore.WriteLine("@PX Current directory is '{0}'", direct);
-
-            if ((AppCore.Printing & Printing.File) == Printing.File)
-            {
-                AppCore.WriteLine("@PX Log file path is '{0}'", log);
-            }
+            Kwisarath.WriteLine("{0} is running on the '{1}' box under '{2}' account.", Name, host, user);
+            Kwisarath.WriteLine("Current directory is '{0}'", direct);
         }
 
         #endregion

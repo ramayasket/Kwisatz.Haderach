@@ -1,11 +1,11 @@
+using Kw.Common;
+using PostSharp.Aspects;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Kw.Common;
-using PostSharp.Aspects;
 
 namespace Kw.Aspects
 {
@@ -27,7 +27,7 @@ namespace Kw.Aspects
 
             if (ExecutionTimings.ReportTimings)
             {
-                AppCore.WriteLine("CompileTimeValidate(): name = '{0}'", name);
+                Kwisarath.WriteLine("CompileTimeValidate(): name = '{0}'", name);
             }
 
             Token = name;

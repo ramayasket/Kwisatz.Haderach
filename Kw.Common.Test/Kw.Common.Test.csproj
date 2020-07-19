@@ -1,27 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
-        <IsPackable>false</IsPackable>
-        <!--<Configurations>debug;release</Configurations>-->
-        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <SignAssembly>true</SignAssembly>
+        <!--<Configurations>Debug;Release</Configurations>-->
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
-        <RootNamespace>Kw.Common.Test</RootNamespace>
-        <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
-        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <IsPackable>false</IsPackable>
         <LangVersion>8.0</LangVersion>
         <OutputType>Exe</OutputType>
+        <RootNamespace>Kw.Common.Test</RootNamespace>
+        <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+        <SignAssembly>true</SignAssembly>
         <StartupObject>Kw.Common.Test.Program</StartupObject>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|AnyCPU'">
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
       <OutputPath>..\bin\</OutputPath>
       <NoWarn>1701;1702;CS1591</NoWarn>
       <PlatformTarget>AnyCPU</PlatformTarget>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|AnyCPU'">
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
       <OutputPath>..\bin\</OutputPath>
       <DefineConstants>DEBUG;TRACE</DefineConstants>
       <NoWarn>1701;1702;CS1591</NoWarn>

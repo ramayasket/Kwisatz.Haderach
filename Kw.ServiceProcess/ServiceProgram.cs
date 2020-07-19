@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.ExceptionServices;
-using System.ServiceProcess;
-using System.Text;
 using Kw.Common;
 using Kw.WinAPI;
+using System;
+using System.Linq;
+using System.Reflection;
+using System.ServiceProcess;
 
 namespace Kw.ServiceProcess
 {
@@ -17,9 +13,7 @@ namespace Kw.ServiceProcess
 
         public ServiceProgram(ServiceRunner runner)
         {
-            if (runner == null) throw new ArgumentNullException("runner");
-
-            Runner = runner;
+            Runner = runner ?? throw new ArgumentNullException("runner");
         }
 
         /// <summary>
@@ -45,9 +39,6 @@ namespace Kw.ServiceProcess
             {
                 AppDomain.CurrentDomain.UnhandledException += handler;
             }
-
-            AppCore.PrintingPrivate = true;
-            AppCore.Initialize();
 
             var consoleMode = false;
 
@@ -90,7 +81,7 @@ namespace Kw.ServiceProcess
                 ServiceBase.Run(Runner);
             }
 
-            AppCore.Write($"@PX {Runner.Name} has finished with exit code {Runner.ExitCode}.");
+            Kwisarath.Write($"{Runner.Name} has finished with exit code {Runner.ExitCode}.");
 
             KernelUtils.TerminateCurrentProcess((uint)Runner.ExitCode);
 
@@ -100,8 +91,8 @@ namespace Kw.ServiceProcess
 
         private void ReportFatalError(object sender, UnhandledExceptionEventArgs fatal)
         {
-            AppCore.WriteLine("@PX ******* FATAL ERROR  *******");
-            AppCore.WriteLine("@PX {0}", ((Exception)fatal.ExceptionObject).Message);
+            Kwisarath.WriteLine("******* FATAL ERROR  *******");
+            Kwisarath.WriteLine("{0}", ((Exception)fatal.ExceptionObject).Message);
 
             KernelUtils.TerminateCurrentProcess();
         }

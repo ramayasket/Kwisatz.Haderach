@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
+﻿using Kw.Common.Threading;
+using System.Diagnostics;
 using System.Threading;
-using Kw.Common.Threading;
 
 namespace Kw.Common
 {
@@ -36,7 +36,7 @@ namespace Kw.Common
 
             MachineProcEnter();
 
-            while (!AppCore.Exiting && !_shutdown)
+            while (!Kwisarath.Exiting && !_shutdown)
             {
                 //
                 //    Ждём в цикле 10 порциями по 100 мс.

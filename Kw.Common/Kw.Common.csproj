@@ -1,21 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <Configurations>debug;release</Configurations>
-        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <SignAssembly>true</SignAssembly>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
-        <RootNamespace>Kw.Common</RootNamespace>
-        <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
-        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
-        <LangVersion>8.0</LangVersion>
-        <OutputPath>..\bin\</OutputPath>
+        <CodeAnalysisRuleSet>..\etc\Kwisatz.Haderach.ruleset</CodeAnalysisRuleSet>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
-        <NoWarn>1701;1702;CS1591</NoWarn>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <LangVersion>8.0</LangVersion>
+        <NoWarn>CS1591;</NoWarn>
+        <OutputPath>..\bin\</OutputPath>
+        <RootNamespace>Kw.Common</RootNamespace>
+        <SignAssembly>true</SignAssembly>
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|AnyCPU'">
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
       <DefineConstants>DEBUG;TRACE</DefineConstants>
     </PropertyGroup>
 

@@ -1,9 +1,9 @@
+using Kw.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading;
-using Kw.Common;
 
 namespace Kw.Networking
 {
@@ -110,7 +110,7 @@ namespace Kw.Networking
             if (0 == waitedChannel.Client.Dialogue.ExitCode)
             {
                 bytes = waitedChannel.Client.Dialogue.OutputBytes;
-                AppCore.WriteLine("@PX Request serviced by {0} in {1}", waitedChannel.Client.Dialogue.ProxyInfo, elapsed);
+                Kwisarath.WriteLine("Request serviced by {0} in {1}", waitedChannel.Client.Dialogue.ProxyInfo, elapsed);
             }
             else
                 throw new Win32Exception(waitedChannel.Client.Dialogue.ExitCode);

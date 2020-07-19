@@ -1,132 +1,35 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\PostSharp.6.6.10\build\PostSharp.props" Condition="Exists('..\packages\PostSharp.6.6.10\build\PostSharp.props')" />
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.pfx</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Include="..\LICENSE" Pack="true" PackagePath="" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{64BA6D17-8987-4E1B-BEE0-7347C10E5FD3}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kw.Aspects</RootNamespace>
-    <AssemblyName>Kw.Aspects</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <SkipPostSharp>True</SkipPostSharp>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>..\bin\Kw.Aspects.xml</DocumentationFile>
-    <NoWarn>1591,1574</NoWarn>
-    <PostSharpDisabledMessages>LA0036;PS0267;PS0220;</PostSharpDisabledMessages>
-    <CodeAnalysisRuleSet>..\etc\Kwisatz.Haderach.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DebugSymbols>true</DebugSymbols>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>..\bin\Kw.Aspects.xml</DocumentationFile>
-    <NoWarn>1591,1574</NoWarn>
-    <SkipPostSharp>True</SkipPostSharp>
-    <PostSharpDisabledMessages>LA0036;PS0267;PS0220;</PostSharpDisabledMessages>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="PostSharp, Version=6.6.10.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
-      <HintPath>..\packages\PostSharp.Redist.6.6.10\lib\net45\PostSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\etc\Kwisatz.Haderach.cs">
-      <Link>Properties\Kwisatz.Haderach.cs</Link>
-    </Compile>
-    <Compile Include="Admixing.cs" />
-    <Compile Include="ExecutionTimingAttribute.cs" />
-    <Compile Include="ExitToShutdownAttribute.cs" />
-    <Compile Include="GetTotalMemoryAttribute.cs" />
-    <Compile Include="InterceptedAttribute.cs" />
-    <Compile Include="Interceptors\GetTotalMemory.cs" />
-    <Compile Include="Interceptors\Interceptors.cs" />
-    <Compile Include="Interceptors\NonNullability.cs" />
-    <Compile Include="Interceptors\NonNullCondition.cs" />
-    <Compile Include="Interceptors\Protection.cs" />
-    <Compile Include="Interceptors\Synchronization.cs" />
-    <Compile Include="NonNullabilityAttribute.cs" />
-    <Compile Include="NotifyPropertyChangedAttribute.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingleInstanceAttribute.cs" />
-    <Compile Include="SynchronizedMethodAttribute.cs" />
-    <Compile Include="SynchronizedPropertyAttribute.cs" />
-    <Compile Include="TraceInOutAttribute.cs" />
-    <Compile Include="ProtectionAttribute.cs" />
-    <Compile Include="WhenNotNullAttribute.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Kw.Common\Kw.Common.csproj">
-      <Project>{F837E57E-34C4-473F-8CC8-6512ACDE6836}</Project>
-      <Name>Kw.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Kw.Aspects.nuspec" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
+        <CodeAnalysisRuleSet>..\etc\Kwisatz.Haderach.ruleset</CodeAnalysisRuleSet>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <DocumentationFile>..\bin\Kw.Aspects.xml</DocumentationFile>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <LangVersion>8.0</LangVersion>
+        <NoWarn>CS1591;</NoWarn>
+        <OutputPath>..\bin\</OutputPath>
+        <PostSharpDisabledMessages>LA0108;</PostSharpDisabledMessages>
+        <RootNamespace>Kw.Aspects</RootNamespace>
+        <SignAssembly>true</SignAssembly>
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\PostSharp.6.6.10\build\PostSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PostSharp.6.6.10\build\PostSharp.props'))" />
-    <Error Condition="!Exists('..\packages\PostSharp.6.6.10\build\PostSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PostSharp.6.6.10\build\PostSharp.targets'))" />
-  </Target>
-  <Import Project="..\packages\PostSharp.6.6.10\build\PostSharp.targets" Condition="Exists('..\packages\PostSharp.6.6.10\build\PostSharp.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="..\etc\Kwisatz.Haderach.cs" Link="Properties\Kwisatz.Haderach.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="PostSharp" Version="6.6.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Kw.Common\Kw.Common.csproj" />
+    </ItemGroup>
+
 </Project>

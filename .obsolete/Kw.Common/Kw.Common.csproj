@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Configurations>Debug;Release</Configurations>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
+        <RootNamespace>Kw.Common</RootNamespace>
+        <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <LangVersion>8.0</LangVersion>
+        <OutputPath>..\bin\</OutputPath>
+        <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
+        <NoWarn>1701;1702;CS1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="..\etc\Kwisatz.Haderach.cs" Link="Properties\Kwisatz.Haderach.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    </ItemGroup>
+
+</Project>

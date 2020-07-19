@@ -1,3 +1,5 @@
+using Kw.Common;
+using Kw.Common.Threading;
 using System;
 using System.IO;
 using System.Net;
@@ -5,8 +7,6 @@ using System.Net.Sockets;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
-using Kw.Common;
-using Kw.Common.Threading;
 
 namespace Kw.Networking.Communications
 {
@@ -53,10 +53,10 @@ namespace Kw.Networking.Communications
             }
             catch(Exception x)
             {
-                AppCore.WriteLine("@PX Cannot listen to {0}: {1}", Port, x.Message);
+                Kwisarath.WriteLine("Cannot listen to {0}: {1}", Port, x.Message);
             }
 
-            while (AppCore.Runnable)
+            while (Kwisarath.Runnable)
             {
                 if (_listener.Pending())    //    проверка наличия входящего соединения
                 {
@@ -73,7 +73,7 @@ namespace Kw.Networking.Communications
 
             if(!NoAcceptMessage)
             {
-                AppCore.WriteLine("@PX Accepted connection from {0}", client.Client.LocalEndPoint);
+                Kwisarath.WriteLine("Accepted connection from {0}", client.Client.LocalEndPoint);
             }
 
             ExecutionThread.StartNew(RequestProc, client);
@@ -130,7 +130,7 @@ namespace Kw.Networking.Communications
                         {
                             if(!NoRequestMessage)
                             {
-                                AppCore.WriteLine("@PX Request `{0}` received from {1}", request.GetType().Name, client.Client.LocalEndPoint);
+                                Kwisarath.WriteLine("Request `{0}` received from {1}", request.GetType().Name, client.Client.LocalEndPoint);
                             }
 
                             //
@@ -155,7 +155,7 @@ namespace Kw.Networking.Communications
 
                     try
                     {
-                        if (!AppCore.Exiting)
+                        if (!Kwisarath.Exiting)
                         {
                             //
                             //    Отправляем ответ
@@ -167,10 +167,6 @@ namespace Kw.Networking.Communications
                     {
                     }
                 }
-            }
-            catch (Exception x)    //    handled
-            {
-                AppCore.ReportException(x);
             }
             finally
             {

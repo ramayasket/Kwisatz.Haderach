@@ -82,7 +82,7 @@ namespace Kw.Common
 
             if (ReportTimings)
             {
-                AppCore.WriteLine("@PX Execution timing '{0}.{1}': {2}", typeName, token, sw.Elapsed);
+                Kwisarath.WriteLine("Execution timing '{0}.{1}': {2}", typeName, token, sw.Elapsed);
             }
 
             return sw.Elapsed;

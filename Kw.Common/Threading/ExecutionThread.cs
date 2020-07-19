@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using Kw.Common.Containers;
 
 namespace Kw.Common.Threading
 {
@@ -114,7 +112,7 @@ namespace Kw.Common.Threading
         /// </summary>
         public virtual int Start()
         {
-            if (AppCore.Exiting)
+            if (Kwisarath.Exiting)
             {
                 _started.Happen();
                 _done.Happen();
@@ -193,7 +191,7 @@ namespace Kw.Common.Threading
         /// <returns></returns>
         public static int KillActiveTasks(int? wait = null)
         {
-            if(!AppCore.Exiting)
+            if(!Kwisarath.Exiting)
                 throw new IncorrectOperationException("AppCore.Exiting must be True.");
 
             int i = 0;

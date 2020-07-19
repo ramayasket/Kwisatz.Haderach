@@ -1,8 +1,8 @@
+using Kw.Common;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using Kw.Common;
 
 namespace Kw.Networking
 {
@@ -40,7 +40,7 @@ namespace Kw.Networking
                 if(!proxy_reported)
                 {
                     proxy_reported = true;
-                    AppCore.WriteLine("@PX Proxy {0}", proxy);
+                    Kwisarath.WriteLine("Proxy {0}", proxy);
                 }
             }
         }

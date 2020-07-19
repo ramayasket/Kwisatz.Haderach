@@ -5,7 +5,7 @@
     using System.Security;
     using System.Security.Permissions;
     using System.Text;
-    using System.Windows.Forms;
+    ////using System.Windows.Forms;
 
     #region    Constants
     /// <summary>
@@ -3362,7 +3362,6 @@
         /// <returns>
         /// <para><b>-1</b> An invalid parameter or handle was supplied.</para>
         /// <para><b>0</b> No action was taken.</para>
-        /// <para>A <see cref="DialogResult"/>.</para>
         /// </returns>
         /// <remarks>Please refer to the MSDN documentation for more information.</remarks>
         [DllImport(MSI_LIB, CharSet = CharSet.Auto)]

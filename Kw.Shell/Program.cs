@@ -45,6 +45,8 @@ namespace Kw.Shell
         [STAThread]
         public static void Main(string[] arguments)
         {
+            var writer = Console.Out;
+
             var x = SyncfusionLicenseProvider.ValidateLicense(Platform.WPF, out string xs);
 
             var t = new DateTime(2020, 6, 25);

@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace Kw.Common.Threading
@@ -20,14 +17,7 @@ namespace Kw.Common.Threading
             /// Истекло заданное время
             /// </summary>
             Elapsed = 0,
-            /// <summary>
-            /// Приложение было остановлено
-            /// </summary>
-            Shutdown,
-            /// <summary>
-            /// Приложение было приостановлено
-            /// </summary>
-            Pause,
+
             /// <summary>
             /// Сигнал, определяемый приложением.
             /// </summary>
@@ -45,16 +35,6 @@ namespace Kw.Common.Threading
         {
             for (int i = 0; i < period / sleep; i++)
             {
-                if (AppCore.Exiting)
-                {
-                    return Signal.Shutdown;
-                }
-
-                if (AppCore.Paused)
-                {
-                    return Signal.Pause;
-                }
-
                 if (null != appSignal && appSignal())
                 {
                     return Signal.Application;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Runtime.Remoting;
+////using System.Runtime.Remoting;
 using System.Text;
 
 namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI

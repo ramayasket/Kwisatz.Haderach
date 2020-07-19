@@ -1,11 +1,11 @@
+using Kw.Common;
+using Kw.Common.Threading;
+using PostSharp.Aspects;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using Kw.Common;
-using Kw.Common.Threading;
-using PostSharp.Aspects;
 
 namespace Kw.Aspects
 {
@@ -18,7 +18,7 @@ namespace Kw.Aspects
         {
             args.Proceed();
             
-            AppCore.Exiting = true;
+            Kwisarath.Exiting = true;
         }
     }
 }
