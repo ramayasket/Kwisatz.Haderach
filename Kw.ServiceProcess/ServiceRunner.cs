@@ -112,16 +112,16 @@ namespace Kw.ServiceProcess
 
         protected override void OnPause()
         {
-            Kwisarath.WriteLine("{0} has received external PAUSE request.", Name);
+            Qizarate.Output?.WriteLine("{0} has received external PAUSE request.", Name);
 
-            Kwisarath.Paused = true;
+            Qizarate.Paused = true;
         }
 
         protected override void OnContinue()
         {
-            Kwisarath.WriteLine("{0} has received external CONTINUE request.", Name);
+            Qizarate.Output?.WriteLine("{0} has received external CONTINUE request.", Name);
 
-            Kwisarath.Paused = false;
+            Qizarate.Paused = false;
         }
 
         #endregion
@@ -130,7 +130,7 @@ namespace Kw.ServiceProcess
 
         bool InternalConfigure()
         {
-            Kwisarath.WriteLine("Reading configuration...");
+            Qizarate.Output?.WriteLine("Reading configuration...");
 
             try
             {
@@ -139,25 +139,25 @@ namespace Kw.ServiceProcess
             }
             catch(Exception x)
             {
-                Kwisarath.WriteLine(x.Message);
+                Qizarate.Output?.WriteLine(x.Message);
                 return false;
             }
         }
 
         bool InternalInitialize(params string[] parameters)
         {
-            Kwisarath.WriteLine("{0} is initializing...", Name);
+            Qizarate.Output?.WriteLine("{0} is initializing...", Name);
 
             try
             {
                 Initialize(parameters);
 
-                Kwisarath.WriteLine("{0} has completed initialization.", Name);
+                Qizarate.Output?.WriteLine("{0} has completed initialization.", Name);
                 return true;
             }
             catch (Exception x)
             {
-                Kwisarath.WriteLine(x.Message);
+                Qizarate.Output?.WriteLine(x.Message);
                 ExitCode = int.MinValue;
                 return false;
             }
@@ -165,11 +165,11 @@ namespace Kw.ServiceProcess
 
         void InternalCleanup()
         {
-            Kwisarath.WriteLine("{0} has received external STOP request.", Name);
+            Qizarate.Output?.WriteLine("{0} has received external STOP request.", Name);
 
-            Kwisarath.Exiting = true;
+            Qizarate.Exiting = true;
 
-            Kwisarath.WriteLine("{0} is cleaning up...", Name);
+            Qizarate.Output?.WriteLine("{0} is cleaning up...", Name);
 
             try
             {
@@ -177,7 +177,7 @@ namespace Kw.ServiceProcess
             }
             catch (Exception x)
             {
-                Kwisarath.WriteLine(x.Message);
+                Qizarate.Output?.WriteLine(x.Message);
             }
         }
 
@@ -185,7 +185,7 @@ namespace Kw.ServiceProcess
         {
             IsService = isService;
 
-            Kwisarath.WriteLine("{0} is running in {1} mode", Assembly.GetEntryAssembly().FullName, IsService ? "service" : "console");
+            Qizarate.Output?.WriteLine("{0} is running in {1} mode", Assembly.GetEntryAssembly().FullName, IsService ? "service" : "console");
             //    Environment.UserDomainName
 
             var domain = Environment.GetEnvironmentVariable("USERDOMAIN");
@@ -210,8 +210,8 @@ namespace Kw.ServiceProcess
 
             var user = Path.Combine(domain, name);
 
-            Kwisarath.WriteLine("{0} is running on the '{1}' box under '{2}' account.", Name, host, user);
-            Kwisarath.WriteLine("Current directory is '{0}'", direct);
+            Qizarate.Output?.WriteLine("{0} is running on the '{1}' box under '{2}' account.", Name, host, user);
+            Qizarate.Output?.WriteLine("Current directory is '{0}'", direct);
         }
 
         #endregion

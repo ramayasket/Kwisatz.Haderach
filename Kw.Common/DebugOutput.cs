@@ -6,6 +6,7 @@ namespace Kw.Common
     /// <summary>
     /// Обеспечивает вывод отладочной информации независимо от конфигурации проекта
     /// </summary>
+    /// TODO English comments
     public static class DebugOutput
     {
         /// <summary>
@@ -24,6 +25,7 @@ namespace Kw.Common
         /// Функция API: вывод отладочной информации
         /// </summary>
         /// <param name="outputString">Строка для вывода</param>
+        /// TODO move to WinAPI
         [DllImport("kernel32.dll", EntryPoint = "OutputDebugString", CharSet = CharSet.Unicode)] static extern void Output(string outputString);
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace Kw.Common
         /// <summary>
         /// Вывод отладочной информации с форматированием
         /// </summary>
-        /// <param name="format">Фоматная строка</param>
+        /// <param name="format">Форматная строка</param>
         /// <param name="arguments">Объекты для вывода</param>
         public static void WriteLine(string format, params object[] arguments)
         {

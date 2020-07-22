@@ -36,7 +36,7 @@ namespace Kw.Common
 
             MachineProcEnter();
 
-            while (!Kwisarath.Exiting && !_shutdown)
+            while (!Qizarate.Exiting && !_shutdown)
             {
                 //
                 //    Ждём в цикле 10 порциями по 100 мс.

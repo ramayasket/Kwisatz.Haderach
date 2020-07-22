@@ -7,6 +7,7 @@ namespace Kw.Common
     /// <summary>
     /// Conversions between whole numeric types and bit form strings.
     /// </summary>
+    /// TODO add byte[]
     public static class BitStringConverter
     {
         private static readonly Type[] AllowedTypes =

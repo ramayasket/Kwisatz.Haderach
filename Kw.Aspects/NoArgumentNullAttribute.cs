@@ -1,4 +1,5 @@
 ﻿using PostSharp.Aspects;
+using PostSharp.Aspects.Dependencies;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -10,17 +11,17 @@ namespace Kw.Aspects // ReSharper disable PossibleNullReferenceException
     /// </summary>
     [Serializable]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false)]
-    [LinesOfCodeAvoided(25)]
-    public class NonNullabilityAttribute : OnMethodBoundaryAspect
+    [ProvideAspectRole(BasicRoles.Validation)]
+    public class NoArgumentNullAttribute : OnMethodBoundaryAspect
     {
         private readonly string[] _arguments;
         private string[] _names;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="NonNullabilityAttribute"/> class.
+        /// Initializes a new instance of <see cref="NoArgumentNullAttribute"/> class.
         /// </summary>
         /// <param name="arguments">Guarded argument names.</param>
-        public NonNullabilityAttribute(params string[] arguments)
+        public NoArgumentNullAttribute(params string[] arguments)
         {
             _arguments = arguments;
         }

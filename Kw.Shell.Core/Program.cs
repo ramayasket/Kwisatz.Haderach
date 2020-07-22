@@ -1,24 +1,8 @@
-﻿using Kw.Aspects;
-using Kw.Aspects.Interceptors;
-using Kw.Common;
-using Kw.Common.Collections;
-using Kw.Common.Threading;
-using Kw.WinAPI;
+﻿using Kw.Common;
 using Kw.Windows.Forms;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PostSharp.Aspects;
 using Syncfusion.Licensing;
-//using Syncfusion.Licensing;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Dynamic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Kw.Shell
@@ -45,6 +29,8 @@ namespace Kw.Shell
         [STAThread]
         public static void Main(string[] arguments)
         {
+            Qizarate.Output?.WriteLine(true);
+
             ////HookManager.MouseMoveExt += HookManagerOnMouseMoveExt;
             //HookManager.MouseMove += OnMouseMove;
 

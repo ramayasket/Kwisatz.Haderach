@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2020.3.6.0" projectFile="C:\home\dev\Kwisatz.Haderach\Kw.Reference\Kw.Reference.shfbproj" started="22.07.2020 15:59:11">
+<buildStep step="Initializing">
+Finding tools...
+The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
+Searching for HTML Help 1 compiler...
+Found HTML Help 1 compiler in &#39;C:\Program Files (x86)\HTML Help Workshop\&#39;
+Locating components in the following folder(s):
+    C:\home\dev\Kwisatz.Haderach\Kw.Reference
+    C:\ProgramData\EWSoftware\Sandcastle Help File Builder\Components and Plug-Ins\
+    C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\
+Using framework reflection data for &#39;.NET Framework 4.7.2&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\Data\.NETFramework&#39;
+Using presentation style &#39;VS2013&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013&#39;
+Loading and initializing plug-ins...
+Lightweight Website Style Version 2020.3.6.0
+Copyright &#169; 2006-2020, Eric Woodruff, All Rights Reserved
+Portions Copyright &#169; 2014, Sam Harwell, All Rights Reserved
+</buildStep>
+<buildStep step="ValidatingDocumentationSources">
+Validating and copying documentation source information
+Source: C:\home\dev\Kwisatz.Haderach\bin\Kw.Common.dll
+    Found assembly &#39;C:\home\dev\Kwisatz.Haderach\bin\Kw.Common.dll&#39;
+Source: C:\home\dev\Kwisatz.Haderach\bin\Kw.Common.xml
+
+Copying XML comments files
+    C:\home\dev\Kwisatz.Haderach\bin\Kw.Common.xml -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Kw.Common.xml
+</buildStep>
+<buildStep step="GenerateSharedContent">
+Generating shared content files (en-US, English (United States))...
+<plugIn name="Lightweight Website Style" behavior="After" priority="1000">
+</plugIn>    Last step completed in 00:00:00,0055
+</buildStep>
+<buildStep step="GenerateApiFilter">
+Generating API filter for MRefBuilder...
+    Last step completed in 00:00:00,0010
+</buildStep>
+<buildStep step="GenerateReflectionInfo">
+Generating reflection information...
+[C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe - GenerateRefInfo.proj]
+Build started 22.07.2020 15:59:13.
+Project &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\GenerateRefInfo.proj&quot; on node 1 (default targets).
+PrepareForBuild:
+  Creating directory &quot;obj\Debug\&quot;.
+GenerateBindingRedirects:
+  No suggested binding redirects from ResolveAssemblyReferences.
+GenerateRefInfo:
+  MRefBuilder (v2020.3.6.0)
+  Copyright c 2006-2020, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2020, Eric Woodruff, All Rights Reserved.
+  No source code context base path specified.  Source context information is unavailable.
+  Loaded 1 assemblies for reflection and 1 dependency assemblies.
+  Wrote information on 5 namespaces, 87 types, and 495 members
+  Copying file from &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\reflection.org&quot; to &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\reflection.all&quot;.
+  XslTransform (v2020.3.6.0)
+  Copyright c 2006-2020, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2020, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
+Done Building Project &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\GenerateRefInfo.proj&quot; (default targets).
+    Last step completed in 00:00:02,3802
+</buildStep>
+<buildStep step="TransformReflectionInfo">
+Transforming reflection output...
+[C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe - TransformManifest.proj]
+Build started 22.07.2020 15:59:15.
+Project &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\TransformManifest.proj&quot; on node 1 (default targets).
+TransformManifest:
+  XslTransform (v2020.3.6.0)
+  Copyright c 2006-2020, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2020, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\ApplyVSDocModel.xsl&#39;.
+  Copying file from &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\reflection.xml&quot; to &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\reflection.nofilenames&quot;.
+  XslTransform (v2020.3.6.0)
+  Copyright c 2006-2020, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2020, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\AddFilenames.xsl&#39;.
+    Unique name M_Kw_Common_BitStringConverter_ToBitString_1 generated for M:Kw.Common.BitStringConverter.ToBitString(System.Int16)
+    Unique name M_Kw_Common_BitStringConverter_ToBitString_2 generated for M:Kw.Common.BitStringConverter.ToBitString(System.Int32)
+    Unique name M_Kw_Common_BitStringConverter_ToBitString_3 generated for M:Kw.Common.BitStringConverter.ToBitString(System.Int64)
+    Unique name M_Kw_Common_BitStringConverter_ToBitString_4 generated for M:Kw.Common.BitStringConverter.ToBitString(System.SByte)
+    Unique name M_Kw_Common_BitStringConverter_ToBitString_5 generated for M:Kw.Common.BitStringConverter.ToBitString(System.UInt16)
+    Unique name M_Kw_Common_BitStringConverter_ToBitString_6 generated for M:Kw.Common.BitStringConverter.ToBitString(System.UInt32)
+    Unique name M_Kw_Common_BitStringConverter_ToBitString_7 generated for M:Kw.Common.BitStringConverter.ToBitString(System.UInt64)
+    Unique name M_Kw_Common_CommonExtensions_Clone__1_1 generated for M:Kw.Common.CommonExtensions.Clone``1(``0[])
+    Unique name M_Kw_Common_CommonExtensions_InCase__1_1 generated for M:Kw.Common.CommonExtensions.InCase``1(``0,``0,``0)
+    Unique name M_Kw_Common_CommonExtensions_Is__1_1 generated for M:Kw.Common.CommonExtensions.Is``1(System.Type)
+    Unique name M_Kw_Common_CommonExtensions_Is_1 generated for M:Kw.Common.CommonExtensions.Is(System.Type,System.Type,System.Boolean)
+    Unique name M_Kw_Common_CommonExtensions_NonEmpty__1_1 generated for M:Kw.Common.CommonExtensions.NonEmpty``1(``0[])
+    Unique name M_Kw_Common_CommonExtensions_ThrowUnless__1_1 generated for M:Kw.Common.CommonExtensions.ThrowUnless``1(System.Type,System.String)
+    Unique name M_Kw_Common_CommonExtensions_ThrowUnless_1 generated for M:Kw.Common.CommonExtensions.ThrowUnless(System.Type,System.Type,System.String)
+    Unique name M_Kw_Common_EnumHelper_GetValues_1 generated for M:Kw.Common.EnumHelper.GetValues(System.Type,System.Boolean)
+    Unique name M_Kw_Common_ExecutionTimings_MeasuredCall_1 generated for M:Kw.Common.ExecutionTimings.MeasuredCall(System.Action,System.String,System.Reflection.MethodBase)
+    Unique name M_Kw_Common_ExecutionTimings_MeasuredCall__1_1 generated for M:Kw.Common.ExecutionTimings.MeasuredCall``1(System.Func{``0},System.String)
+    Unique name M_Kw_Common_FormattedValue_1_ToFormat_1 generated for M:Kw.Common.FormattedValue`1.ToFormat(`0)
+    Unique name M_Kw_Common_Function_On__2_1 generated for M:Kw.Common.Function.On``2(``0,``1)
+    Unique name M_Kw_Common_Function_Otherwise__2_1 generated for M:Kw.Common.Function.Otherwise``2(Kw.Common.FunctionNode{``0,``1},``1,``0)
+    Unique name M_Kw_Common_Guarded_SafeExecute__1_1 generated for M:Kw.Common.Guarded.SafeExecute``1(System.Func{``0})
+    Unique name M_Kw_Common_HRESULT__ctor_1 generated for M:Kw.Common.HRESULT.#ctor(System.UInt32)
+    Unique name M_Kw_Common_HRESULT_op_Implicit_1 generated for M:Kw.Common.HRESULT.op_Implicit(Kw.Common.HRESULT)~System.UInt32
+    Unique name M_Kw_Common_HRESULT_op_Implicit_2 generated for M:Kw.Common.HRESULT.op_Implicit(System.Int32)~Kw.Common.HRESULT
+    Unique name M_Kw_Common_HRESULT_op_Implicit_3 generated for M:Kw.Common.HRESULT.op_Implicit(System.UInt32)~Kw.Common.HRESULT
+    Unique name M_Kw_Common_HtmlParser_Move_1 generated for M:Kw.Common.HtmlParser.Move(System.Int32)
+    Unique name M_Kw_Common_HtmlParser_Peek_1 generated for M:Kw.Common.HtmlParser.Peek(System.Int32)
+    Unique name M_Kw_Common_HtmlParser_Reset_1 generated for M:Kw.Common.HtmlParser.Reset(System.String)
+    Unique name M_Kw_Common_IncorrectConfigurationException__ctor_1 generated for M:Kw.Common.IncorrectConfigurationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    Unique name M_Kw_Common_IncorrectConfigurationException__ctor_2 generated for M:Kw.Common.IncorrectConfigurationException.#ctor(System.String)
+    Unique name M_Kw_Common_IncorrectConfigurationException__ctor_3 generated for M:Kw.Common.IncorrectConfigurationException.#ctor(System.String,System.Exception)
+    Unique name M_Kw_Common_IncorrectDataException__ctor_1 generated for M:Kw.Common.IncorrectDataException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    Unique name M_Kw_Common_IncorrectDataException__ctor_2 generated for M:Kw.Common.IncorrectDataException.#ctor(System.String)
+    Unique name M_Kw_Common_IncorrectDataException__ctor_3 generated for M:Kw.Common.IncorrectDataException.#ctor(System.String,System.Exception)
+    Unique name M_Kw_Common_IncorrectEnvironmentException__ctor_1 generated for M:Kw.Common.IncorrectEnvironmentException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    Unique name M_Kw_Common_IncorrectEnvironmentException__ctor_2 generated for M:Kw.Common.IncorrectEnvironmentException.#ctor(System.String)
+    Unique name M_Kw_Common_IncorrectEnvironmentException__ctor_3 generated for M:Kw.Common.IncorrectEnvironmentException.#ctor(System.String,System.Exception)
+    Unique name M_Kw_Common_IncorrectOperationException__ctor_1 generated for M:Kw.Common.IncorrectOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    Unique name M_Kw_Common_IncorrectOperationException__ctor_2 generated for M:Kw.Common.IncorrectOperationException.#ctor(System.String)
+    Unique name M_Kw_Common_IncorrectOperationException__ctor_3 generated for M:Kw.Common.IncorrectOperationException.#ctor(System.String,System.Exception)
+    Unique name M_Kw_Common_IncorrectTypeException__ctor_1 generated for M:Kw.Common.IncorrectTypeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    Unique name M_Kw_Common_IncorrectTypeException__ctor_2 generated for M:Kw.Common.IncorrectTypeException.#ctor(System.String)
+    Unique name M_Kw_Common_IncorrectTypeException__ctor_3 generated for M:Kw.Common.IncorrectTypeException.#ctor(System.String,System.Exception)
+    Unique name M_Kw_Common_JDynamic__ctor_1 generated for M:Kw.Common.JDynamic.#ctor(System.String)
+    Unique name M_Kw_Common_LinqExtensions_Empty__1_1 generated for M:Kw.Common.LinqExtensions.Empty``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})
+    Unique name M_Kw_Common_LinqExtensions_In__1_1 generated for M:Kw.Common.LinqExtensions.In``1(``0,System.Linq.IQueryable{``0})
+    Unique name M_Kw_Common_LinqExtensions_In__1_2 generated for M:Kw.Common.LinqExtensions.In``1(``0,``0[])
+    Unique name M_Kw_Common_LinqExtensions_Out__1_1 generated for M:Kw.Common.LinqExtensions.Out``1(``0,System.Linq.IQueryable{``0})
+    Unique name M_Kw_Common_LinqExtensions_Out__1_2 generated for M:Kw.Common.LinqExtensions.Out``1(``0,``0[])
+    Unique name M_Kw_Common_NotReachableException__ctor_1 generated for M:Kw.Common.NotReachableException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    Unique name M_Kw_Common_StringExtensions_InvariantString_1 generated for M:Kw.Common.StringExtensions.InvariantString(System.Int16)
+    Unique name M_Kw_Common_StringExtensions_InvariantString_2 generated for M:Kw.Common.StringExtensions.InvariantString(System.Int32)
+    Unique name M_Kw_Common_StringExtensions_InvariantString_3 generated for M:Kw.Common.StringExtensions.InvariantString(System.Int64)
+    Unique name M_Kw_Common_StringExtensions_InvariantString_4 generated for M:Kw.Common.StringExtensions.InvariantString(System.Single)
+    Unique name M_Kw_Common_TemporaryFile_Create_1 generated for M:Kw.Common.TemporaryFile.Create(System.Int32)
+    Unique name M_Kw_Common_TemporaryFile_Create_2 generated for M:Kw.Common.TemporaryFile.Create(System.Int32,System.IO.FileOptions)
+    Unique name M_Kw_Common_TemporaryFile_Dispose_1 generated for M:Kw.Common.TemporaryFile.Dispose(System.Boolean)
+    Unique name M_Kw_Common_TemporaryFile_Open_1 generated for M:Kw.Common.TemporaryFile.Open(System.IO.FileMode,System.IO.FileAccess)
+    Unique name M_Kw_Common_TemporaryFile_Open_2 generated for M:Kw.Common.TemporaryFile.Open(System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+    Unique name M_Kw_Common_TemporaryFolder_Dispose_1 generated for M:Kw.Common.TemporaryFolder.Dispose(System.Boolean)
+    Unique name M_Kw_Common_TimeExtensions_RoundSeconds_1 generated for M:Kw.Common.TimeExtensions.RoundSeconds(System.TimeSpan)
+    Unique name M_Kw_Common_TolerableException__ctor_1 generated for M:Kw.Common.TolerableException.#ctor(System.String,System.Exception)
+    Unique name M_Kw_Common_TolerableException__ctor_2 generated for M:Kw.Common.TolerableException.#ctor(System.String,System.Exception[])
+    Unique name M_Kw_Common_TurmoilException__ctor_1 generated for M:Kw.Common.TurmoilException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    Unique name M_Kw_Common_TurmoilException__ctor_2 generated for M:Kw.Common.TurmoilException.#ctor(System.String)
+    Unique name M_Kw_Common_TurmoilException__ctor_3 generated for M:Kw.Common.TurmoilException.#ctor(System.String,System.Exception)
+    Unique name M_Kw_Common_XBase_GetProperty_1 generated for M:Kw.Common.XBase.GetProperty(System.Type,System.String)
+    Unique name M_Kw_Common_XBase_SetAttribute_1 generated for M:Kw.Common.XBase.SetAttribute(System.String,System.String)
+    Unique name M_Kw_Common_XBase_SetProperty_1 generated for M:Kw.Common.XBase.SetProperty(System.String,System.String)
+    Unique name M_Kw_Common_XBaseExtensions_Replace_1 generated for M:Kw.Common.XBaseExtensions.Replace(System.Xml.Linq.XElement,Kw.Common.XBase[])
+    Unique name M_Kw_Common_XBaseExtensions_StickyCopyXml__1_1 generated for M:Kw.Common.XBaseExtensions.StickyCopyXml``1(``0,Kw.Common.XBase)
+    Unique name M_Kw_Common_XSetInt64__ctor_1 generated for M:Kw.Common.XSetInt64.#ctor(System.String)
+    Unique name M_Kw_Common_Collections_Ring_1__ctor_1 generated for M:Kw.Common.Collections.Ring`1.#ctor(`0[])
+    Unique name M_Kw_Common_Collections_RingEnumerator_1__ctor_1 generated for M:Kw.Common.Collections.RingEnumerator`1.#ctor(`0[])
+    Unique name M_Kw_Common_Containers_Casing_1__ctor_1 generated for M:Kw.Common.Containers.Casing`1.#ctor(Kw.Common.Containers.Casing{`0})
+    Unique name M_Kw_Common_Containers_Casing_1__ctor_2 generated for M:Kw.Common.Containers.Casing`1.#ctor(`0)
+    Unique name M_Kw_Common_Containers_Casing_1_op_Implicit_1 generated for M:Kw.Common.Containers.Casing`1.op_Implicit(`0)~Kw.Common.Containers.Casing{`0}
+    Unique name M_Kw_Common_Threading_ExecutionThread_op_Implicit_1 generated for M:Kw.Common.Threading.ExecutionThread.op_Implicit(Kw.Common.Threading.ExecutionThread)~System.Threading.Thread
+    Unique name M_Kw_Common_Threading_ExecutionThread_StartNew_1 generated for M:Kw.Common.Threading.ExecutionThread.StartNew(System.Action,System.Threading.ThreadPriority)
+    Unique name M_Kw_Common_Threading_ExecutionThread_1__ctor_1 generated for M:Kw.Common.Threading.ExecutionThread`1.#ctor(System.Action{`0},Kw.Common.Threading.ExecutionThreads)
+    Unique name M_Kw_Common_Threading_ExecutionThread_1_Start_1 generated for M:Kw.Common.Threading.ExecutionThread`1.Start(`0)
+    Unique name M_Kw_Common_Threading_ExecutionThreads_EnqueueProcess__1_1 generated for M:Kw.Common.Threading.ExecutionThreads.EnqueueProcess``1(``0[],System.Action{``0},System.Int32)
+    Unique name M_Kw_Common_Threading_ExecutionThreads_Process__1_1 generated for M:Kw.Common.Threading.ExecutionThreads.Process``1(System.Int32,``0[],System.Action{``0},System.Int32)
+    Unique name M_Kw_Common_Threading_ExecutionThreads_Process__1_2 generated for M:Kw.Common.Threading.ExecutionThreads.Process``1(``0[],System.Action{``0[]},System.Int32)
+    Unique name M_Kw_Common_Threading_ExecutionThreads_Process__1_3 generated for M:Kw.Common.Threading.ExecutionThreads.Process``1(``0[],System.Action{``0},System.Int32)
+    Unique name M_Kw_Common_Threading_Waitable_WaitAll_1 generated for M:Kw.Common.Threading.Waitable.WaitAll(System.Threading.WaitHandle[],System.Int32)
+  XslTransform (v2020.3.6.0)
+  Copyright c 2006-2020, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2020, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
+Done Building Project &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\TransformManifest.proj&quot; (default targets).
+    Last step completed in 00:00:01,0626
+</buildStep>
+<buildStep step="GenerateNamespaceSummaries">
+Generating namespace summary information...
+    Last step completed in 00:00:00,0370
+</buildStep>
+<buildStep step="GenerateInheritedDocumentation">
+Generating inherited documentation...
+[C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe - GenerateInheritedDocs.proj]
+Sandcastle Help File Builder and Tools, version 2020.3.6.0
+Copyright c 2006-2020, Eric Woodruff, All Rights Reserved
+E-Mail: Eric@EWoodruff.us
+
+Reflection information will be retrieved from &#39;reflection.xml&#39;
+Inherited documentation will be written to &#39;_InheritedDocs_.xml&#39;
+Indexing C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\*.xml
+Indexing C:\home\dev\Kwisatz.Haderach\Help\Working\Kw.Common.xml
+Indexed 158891 members in 128 file(s).  1 file(s) to scan for &lt;inheritdoc /&gt; tags.
+Merging inherited documentation...
+
+
+Documentation merged successfully
+    Last step completed in 00:00:01,1096
+</buildStep>
+<buildStep step="CopyConceptualContent">
+Copying conceptual content...
+Copying standard token shared content file...
+Checking for other token files...
+Checking for code snippets files...
+Copying images and creating the media map file...
+    C:\home\dev\Kwisatz.Haderach\Kw.Reference\icons\help.png -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\media\help.png
+    C:\home\dev\Kwisatz.Haderach\Kw.Reference\icons\help.png -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\media\help.png (Always copied)
+Generating conceptual topic files
+    Parsing topic file &#39;C:\home\dev\Kwisatz.Haderach\Kw.Reference\Content\Welcome.aml&#39;
+    C:\home\dev\Kwisatz.Haderach\Kw.Reference\Content\Welcome.aml -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\ddueXml\eb52d335-1302-4418-b2b8-79d4e592b906.xml
+    Parsing topic file &#39;C:\home\dev\Kwisatz.Haderach\Kw.Reference\Content\VersionHistory\VersionHistory.aml&#39;
+    C:\home\dev\Kwisatz.Haderach\Kw.Reference\Content\VersionHistory\VersionHistory.aml -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\ddueXml\46474d4f-c311-4fd4-befa-a3425f9cf1b7.xml
+    Parsing topic file &#39;C:\home\dev\Kwisatz.Haderach\Kw.Reference\Content\VersionHistory\v1.0.0.0.aml&#39;
+    C:\home\dev\Kwisatz.Haderach\Kw.Reference\Content\VersionHistory\v1.0.0.0.aml -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\ddueXml\d5eaafca-b4e4-408d-b9a3-781e4fcd6d60.xml
+    Last step completed in 00:00:00,0380
+</buildStep>
+<buildStep step="CreateConceptualTopicConfigs">
+Creating conceptual topic configuration files...
+    Companion files
+    _ContentMetadata_.xml
+    Merging topic IDs into manifest.xml
+    Last step completed in 00:00:00,0075
+</buildStep>
+<buildStep step="CopyAdditionalContent">
+Copying additional content files...
+C:\home\dev\Kwisatz.Haderach\Kw.Reference\icons\Help.png -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\Help.png
+    Last step completed in 00:00:00,0025
+</buildStep>
+<buildStep step="MergeTablesOfContents">
+Merging conceptual and additional tables of contents...
+    Last step completed in 00:00:00,0005
+</buildStep>
+<buildStep step="GenerateIntermediateTableOfContents">
+Generating intermediate table of contents file...
+[C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe - GenerateIntermediateTOC.proj]
+Build started 22.07.2020 15:59:17.
+Project &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\GenerateIntermediateTOC.proj&quot; on node 1 (default targets).
+GenerateIntermediateTOC:
+  XslTransform (v2020.3.6.0)
+  Copyright c 2006-2020, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2020, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
+Done Building Project &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\GenerateIntermediateTOC.proj&quot; (default targets).
+Generating conceptual content intermediate TOC file...
+    Last step completed in 00:00:00,2675
+</buildStep>
+<buildStep step="CreateBuildAssemblerConfigs">
+Creating Sandcastle configuration files...
+    sandcastle.config
+    Last step completed in 00:00:00,1712
+</buildStep>
+<buildStep step="MergeCustomConfigs">
+Merging custom build component configurations
+C:\home\dev\Kwisatz.Haderach\Help\Working\sandcastle.config
+  Updating reference topic configurations.
+  Updating conceptual topic configurations.
+    Removing unused ExampleComponent.
+    Last step completed in 00:00:00,0040
+</buildStep>
+<buildStep step="BuildTopics">
+Building help topics...
+[C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe - BuildTopics.proj]
+Build started 22.07.2020 15:59:18.
+Project &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\BuildTopics.proj&quot; on node 1 (default targets).
+BuildTopics:
+  BuildAssembler (v2020.3.6.0)
+  Copyright c 2006-2020, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2020, Eric Woodruff, All Rights Reserved.
+  Loading configuration...
+  Processing topics...
+  Processed 808 topic(s)
+  CopyFromIndexComponent: &quot;metadata&quot; in-memory cache entries used: 1 of 15.
+  ResolveArtLinksComponent: Copying media files...
+  CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 14 of 15.
+  CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 5 of 30.
+Done Building Project &quot;C:\home\dev\Kwisatz.Haderach\Help\Working\BuildTopics.proj&quot; (default targets).
+    Last step completed in 00:00:10,6545
+</buildStep>
+<buildStep step="CombiningIntermediateTocFiles">
+Combining conceptual and API intermediate TOC files...
+    Last step completed in 00:00:00,0105
+</buildStep>
+<buildStep step="ExtractingHtmlInfo">
+Extracting HTML info for HTML Help 1 and/or website...
+[C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe - ExtractHtmlInfo.proj]
+Sandcastle Help File Builder and Tools, version 2020.3.6.0
+Copyright c 2006-2020, Eric Woodruff, All Rights Reserved
+E-Mail: Eric@EWoodruff.us
+
+Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
+
+Processing Help 1 files in C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1
+Processed 808 HTML files
+Sorting keywords and generating See Also indices
+Saving HTML Help 1 keyword index to C:\home\dev\Kwisatz.Haderach\Help\Working\Kwisatz.Haderach.hhk
+Saving HTML Help 1 table of contents to C:\home\dev\Kwisatz.Haderach\Help\Working\Kwisatz.Haderach.hhc
+    Last step completed in 00:00:01,5985
+</buildStep>
+<buildStep step="CopyStandardHelpContent">
+Copying standard help content...
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertCaution.png -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\AlertCaution.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertNote.png -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\AlertNote.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertSecurity.png -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\AlertSecurity.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CFW.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\CFW.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CodeExample.png -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\CodeExample.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\favicon.ico -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\favicon.ico
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privclass.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\privclass.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privdelegate.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\privdelegate.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privenumeration.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\privenumeration.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privevent.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\privevent.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privextension.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\privextension.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privfield.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\privfield.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privinterface.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\privinterface.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privmethod.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\privmethod.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privproperty.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\privproperty.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privstructure.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\privstructure.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protclass.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protclass.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protdelegate.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protdelegate.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protenumeration.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protenumeration.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protevent.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protevent.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protextension.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protextension.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protfield.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protfield.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protinterface.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protinterface.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protmethod.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protmethod.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protoperator.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protoperator.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protproperty.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protproperty.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protstructure.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\protstructure.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubclass.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\pubclass.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubdelegate.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\pubdelegate.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubenumeration.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\pubenumeration.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubevent.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\pubevent.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubextension.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\pubextension.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubfield.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\pubfield.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubinterface.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\pubinterface.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubmethod.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\pubmethod.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\puboperator.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\puboperator.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubproperty.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\pubproperty.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubstructure.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\pubstructure.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\SectionCollapsed.png -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\SectionCollapsed.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\SectionExpanded.png -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\SectionExpanded.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\slMobile.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\slMobile.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\static.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\static.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\xna.gif -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\icons\xna.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\scripts\branding.js -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\scripts\branding.js
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-cs-CZ.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-cs-CZ.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-de-DE.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-de-DE.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-en-US.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-en-US.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-es-ES.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-es-ES.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-fr-FR.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-fr-FR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Help1.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-Help1.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-HelpViewer.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-HelpViewer.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-it-IT.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-it-IT.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ja-JP.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-ja-JP.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ko-KR.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-ko-KR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pl-PL.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-pl-PL.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pt-BR.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-pt-BR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ru-RU.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-ru-RU.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-tr-TR.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-tr-TR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Website.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-Website.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-zh-CN.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding-zh-TW.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\styles\branding.css
+    Last step completed in 00:00:00,2973
+</buildStep>
+<buildStep step="GenerateHelpFormatTableOfContents">
+Generating HTML Help 1 table of contents file...
+    Last step completed in 00:00:00,0005
+</buildStep>
+<buildStep step="GenerateHelpFileIndex">
+Generating HTML Help 1 index file...
+    Last step completed in 00:00:00,0005
+</buildStep>
+<buildStep step="GenerateHelpProject">
+Generating HTML Help 1 project file...
+SHFB: Warning BE0060: The file path &#39;C:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\&#39; contains a comma or &#39;.h&#39; which may cause the Help 1 compiler to fail.
+SHFB: Warning BE0060: The HtmlHelpName property value &#39;Kwisatz.Haderach&#39; contains a comma or &#39;.h&#39; which may cause the Help 1 compiler to fail.
+    Last step completed in 00:00:00,0115
+</buildStep>
+<buildStep step="CompilingHelpFile">
+Compiling HTML Help 1 file...
+[C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe - Build1xHelpFile.proj]
+  Microsoft HTML Help Compiler 4.74.8702
+  
+  
+  
+  Compiling c:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\Kwisatz.Haderach.chm
+  
+  
+  
+HHC3004 : warning : AlertCaution.png : The HTML tag &quot;•YгьЇш18ҐBББ`КIEND&#174;B`‚&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3002 : warning : CFW.gif : The HTML tag &quot;T&quot; is missing a closing angle bracket. [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3002 : warning : CodeExample.png : The HTML tag &quot;G&quot; is missing a closing angle bracket. [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;:::::::::^;;;s™7S;^::]]::::::+#7::::::...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;]::::(M:]]:-r_*&lt;:::::&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;&#39;lQC)-}/:::X&#39;?&#39;4„dE,–e:13_?H	Ђ...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;Нe1Сk8Тm;Оj7ОqCфеЮяяячкгЕі&#169;сЬРьцуяяяъЫЛЯyFа|JЫvDУm...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;ЩВ&#182;щлгЬ–rЙ^(Мf3Мg4Мg4Йe4АY&#39;Ш&#171;•шюяъоз&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;Пj7Мf3Мf3Мf3Нd0Гi&lt;М№&#176;ыяяъсмШ‰bК`+Нh4Оj7Лe2ОyOфпмяя...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;Рh4Ьvяяяяяьk^WхШИяююяюэтЈ{йЂLЯwDПxLФ&#181;&#164;пШНЮ™wЙ\Лa...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;яѕ_/яї`0яА`0яВa1яГb1яВj&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;хЩЛзьфряъъъячччяфффяеКјяДd4яДc3яЗe4яЙf4яЛg5яМg5яН...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;яМf3яМf3яМf3яМf3яМf3яМf3яНg4яНg5яМg5яКf4яЗe3яДc2яВ...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;яТn&lt;яТm;яРk8яОi6яНg4яМf3яМf3яМf3яМf3яМf3яМf3яМf3яМ...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;яСl9яПi6яНg4яМf3яМf3яМf3яМf3яМf3яМf3яМf3яМf3яМf3я&#187;...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;яРk8яОh5яМf3яМf3яМf3яМf3яМf3яМf3яМf3яМf3яМf3яМf3яМ...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;яЧr?яШtAяЧsAяФq@яЧTяюхсяяяяяяяяяяююяшгШя‰vkБ`)пЙ...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : favicon.ico : The HTML tag &quot;яЩЇљяАX#я№V$яХЇџячяяяфвЩяSKFИЊ&quot;џЏ†2тбЧяшяяяЗ}Xя&#187;E...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : Help.png : The HTML tag &quot;ЛsОвeрдЬ&#39;гЌ9ѕЊ‘`зш№2ѕ&amp;cѓtI†@Жoд&#177;|N6(’Ь.жsSdl...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : Help.png : The HTML tag &quot;™вћR‘тTАTћ&#167;ъ&#167;ЦҐѕNMЫџц)=&amp;Ѕ=—‘qTH&#166;	ы2&#181;3у2‡іМіЉ...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : Help.png : The HTML tag &quot;™qM&#173;ѕS“&#177;Ј‚&#177;bЮ7&#176;’Ћ&#173;ЁкхAV$&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : Help.png : The HTML tag &quot;)Хщ/кеи&#169;W™&#176;)ЃёЗЋДЃяEБ&#169;&#171;=хж;*I™Га/&#183;P&#169;Э-Ў)[й...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : privclass.gif : The HTML tag &quot;і5c&#181;dvЌgwђивСрА4ђћґ^p‰ћxUhЃн&#181;dvЋOb{хб†яяя!щO,...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : privdelegate.gif : The HTML tag &quot;ЎЪnЫH[u&#183;БТ&#166;ІЗ&#167;&#177;ЗШmЩЙРЭЫЯз&#169;EЄлоукмсђћ&#176;J^wтуц&#167;ј&#187;ГФф...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : privdelegate.gif : The HTML tag &quot;0`@ Є|&#169;zҐIђ.фНђЗ€H&quot;?@`…О‚r@D$E&#160;8H„ЂМA...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : privenumeration.gif : The HTML tag &quot;саЋdvЌЩїiЅЖЦкПoї&#182;&#171;cuЌ&#167;јЯёIёБТ&#171;&#183;ЛйКggwђm–зИdUhЃђћ...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : privevent.gif : The HTML tag &quot;‡@P$&quot;58#Q&#172;DR0гB•њ(€;&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : privextension.gif : The HTML tag &quot;џг&#172;гL~бЅЖЦtҐяz+{&#167;OЁјpЅ†&#176;я@lЗфжфdvЌ]o‡СjТHxЩOc|СmТъ...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : privinterface.gif : The HTML tag &quot;@ЌJ„!IW83&quot;,*MW&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : privmethod.gif : The HTML tag &quot;џыыьъ›ы•8–ЛgМџЄ&#187;|-}фжфТkУ0ЂугуУШЫрФрмТмђN‘z+{Oc|&#187;...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : privmethod.gif : The HTML tag &quot;&#167;Љ+92$,-]	Nh&quot;K)8C4I	H‚GFR3#U?‚WL...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : privproperty.gif : The HTML tag &quot;€T@`#j Тр&#167;†ѓ,DЃЃйЂ !&#176;БЉlБ4ЇP0Z$дKѓQ&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : protclass.gif : The HTML tag &quot;іЛЇuфб†И&#171;dШlЩокЮлбН&#166;…8н&#181;ћxрА4улЫхмІриЦоЫ–юх&#172;5c&#181;д...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : protdelegate.gif : The HTML tag &quot;Ўк‹лЛМЙдзоH[uЩЮжЫЯз—Ј&#173;;OiіЅРлоу“ЎєщъыСјвK_yЯП&#174;&#169;EЄ—...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3002 : warning : protdelegate.gif : The HTML tag &quot;Qk&quot; is missing a closing angle bracket. [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : protenumeration.gif : The HTML tag &quot;бУ&#183;лЫґеГYяяя!щZ,&#164;ЂZ‚ѓ!ѓЋ#:Ћѓ$...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3002 : warning : protenumeration.gif : The HTML tag &quot;U&quot; is missing a closing angle bracket. [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : protevent.gif : The HTML tag &quot;‡O!97 ‡J,K‘“D;Ј‡ќL&quot;+‘’G12‚&amp;	@/$&#39;...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : protextension.gif : The HTML tag &quot;ќоѕо]’эHxЩMдл‘мVЉуШЁћргр–R—u&#39;utҐяг&#172;гKљ*P&#160;|-}хл&#174;L...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : protinterface.gif : The HTML tag &quot;:0H;KB6!/=,A(ћK„1?E.	K9-З&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : protmethod.gif : The HTML tag &quot;&amp;&#39;ОH‚!6†ЖХ~—иЕ}~|}„};&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : protoperator.gif : The HTML tag &quot;ѓ#м?	…‚,„ч&#167;Ѓ;&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : protproperty.gif : The HTML tag &quot;	iТЃЕ(1јшС‘&amp;&quot;x PBcI,„ЁX‰cЉ&#172;)у&#166;РD†$І...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : protstructure.gif : The HTML tag &quot;;&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3002 : warning : protstructure.gif : The HTML tag &quot;x0&quot; is missing a closing angle bracket. [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : pubclass.gif : The HTML tag &quot;іха…фб†зрщктъсЛOо&#182;фЦkCsЙхб†пѕ/рА4йсщяяя!щ2,Ќ...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3002 : warning : pubdelegate.gif : The HTML tag &quot;Qk&quot; is missing a closing angle bracket. [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3002 : warning : pubenumeration.gif : The HTML tag &quot;xz3G&quot; is missing a closing angle bracket. [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : pubextension.gif : The HTML tag &quot;ќјpЅТkУжзT€р|.|ъ›ыъ™ыz+{&#169;RЄжМжиСи~0&#169;PЄЌ5Ћ&#167;OЁtҐяE...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : pubfield.gif : The HTML tag &quot;Ab$Aћ(Ѓh0 ЌAiёЏ…ЂЄІ6G)~H „vNЊNB+’—...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : pubmethod.gif : The HTML tag &quot;ћйе&#171;тауъ&#171;ы|-}ъ™ыХoХ–R—ЭЮУnФъ›ымТм&#181;&#187;&#173;Ќ5Ћ&#164;&#174;дКдвЇвл...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : pubproperty.gif : The HTML tag &quot;„/\@k[Ub&#173;71.!-Oq+?p*9sR6Yzd:^y)...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : slMobile.gif : The HTML tag &quot;с&amp;Д€(ґ‰3зО€f&lt;Щp#A~ЙSўФ&#169;ђњЙФЎВЇ&amp;Љ;&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3002 : warning : static.gif : The HTML tag &quot;D&quot; is missing a closing angle bracket. [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : xna.gif : The HTML tag &quot;‡Њ…JVЌЌCF?“Њ&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : help.png : The HTML tag &quot;ЛsОвeрдЬ&#39;гЌ9ѕЊ‘`зш№2ѕ&amp;cѓtI†@Жoд&#177;|N6(’Ь.жsSdl...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : help.png : The HTML tag &quot;™вћR‘тTАTћ&#167;ъ&#167;ЦҐѕNMЫџц)=&amp;Ѕ=—‘qTH&#166;	ы2&#181;3у2‡іМіЉ...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : help.png : The HTML tag &quot;™qM&#173;ѕS“&#177;Ј‚&#177;bЮ7&#176;’Ћ&#173;ЁкхAV$&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : help.png : The HTML tag &quot;)Хщ/кеи&#169;W™&#176;)ЃёЗЋДЃяEБ&#169;&#171;=хж;*I™Га/&#183;P&#169;Э-Ў)[й...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : branding.js : The HTML tag &quot;= tabCount)    {        var tabTemp = document...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+HHC3004 : warning : branding.js : The HTML tag &quot;= tabCount)            {                var ta...&quot; is not a valid HTML tag (it does not begin with an alphanumeric character). [C:\home\dev\Kwisatz.Haderach\Help\Working\Build1xHelpFile.proj]
+  
+  
+  
+  Compile time: 0 minutes, 5 seconds
+  
+  874	Topics
+  
+  9,679	Local links
+  
+  0	Internet links
+  
+  0	Graphics
+  
+  
+  
+  
+  
+  Created c:\home\dev\Kwisatz.Haderach\Help\Working\Output\HtmlHelp1\Kwisatz.Haderach.chm, 748,013 bytes
+  
+  Compression decreased file by 6,269,443 bytes.
+  
+    Last step completed in 00:00:05,5936
+</buildStep>
+<buildStep step="CleanIntermediates">
+Removing intermediate files...
+    Last step completed in 00:00:00,3280
+</buildStep>
+<buildStep step="Completed">
+
+Build completed successfully at 22.07.2020 15:59:36.  Total time: 00:00:24,6588
+
+</buildStep>
+</shfbBuild>

@@ -5,6 +5,7 @@ namespace Kw.Common
     /// <summary>
     /// HRESULT's severity value.
     /// </summary>
+    /// TODO refactor
     public enum SEVERITY : uint
     {
         SUCCESS = 0x00000000,

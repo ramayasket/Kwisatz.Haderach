@@ -1,5 +1,6 @@
 using Kw.Common;
 using PostSharp.Aspects;
+using PostSharp.Aspects.Dependencies;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,8 +11,8 @@ using System.Text;
 namespace Kw.Aspects
 {
     [Serializable]
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
-    [LinesOfCodeAvoided(5)]
+    [AttributeUsage(AttributeTargets.Method, Inherited = false)]
+    [ProvideAspectRole(BasicRoles.Tracing)]
     public class ExecutionTimingAttribute : MethodInterceptionAspect
     {
         private MethodBase _method;
@@ -27,7 +28,7 @@ namespace Kw.Aspects
 
             if (ExecutionTimings.ReportTimings)
             {
-                Kwisarath.WriteLine("CompileTimeValidate(): name = '{0}'", name);
+                Qizarate.Output?.WriteLine("CompileTimeValidate(): name = '{0}'", name);
             }
 
             Token = name;

@@ -53,10 +53,10 @@ namespace Kw.Networking.Communications
             }
             catch(Exception x)
             {
-                Kwisarath.WriteLine("Cannot listen to {0}: {1}", Port, x.Message);
+                Qizarate.Output?.WriteLine("Cannot listen to {0}: {1}", Port, x.Message);
             }
 
-            while (Kwisarath.Runnable)
+            while (Qizarate.Runnable)
             {
                 if (_listener.Pending())    //    проверка наличия входящего соединения
                 {
@@ -73,7 +73,7 @@ namespace Kw.Networking.Communications
 
             if(!NoAcceptMessage)
             {
-                Kwisarath.WriteLine("Accepted connection from {0}", client.Client.LocalEndPoint);
+                Qizarate.Output?.WriteLine("Accepted connection from {0}", client.Client.LocalEndPoint);
             }
 
             ExecutionThread.StartNew(RequestProc, client);
@@ -130,7 +130,7 @@ namespace Kw.Networking.Communications
                         {
                             if(!NoRequestMessage)
                             {
-                                Kwisarath.WriteLine("Request `{0}` received from {1}", request.GetType().Name, client.Client.LocalEndPoint);
+                                Qizarate.Output?.WriteLine("Request `{0}` received from {1}", request.GetType().Name, client.Client.LocalEndPoint);
                             }
 
                             //
@@ -155,7 +155,7 @@ namespace Kw.Networking.Communications
 
                     try
                     {
-                        if (!Kwisarath.Exiting)
+                        if (!Qizarate.Exiting)
                         {
                             //
                             //    Отправляем ответ

@@ -7,6 +7,7 @@ using System.Threading;
 
 namespace Kw.Common
 {
+    /// TODO XML comments + refactor
     public class InstanceTracker<T> where T:class
     {
         internal static long _instances;

@@ -1,35 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Kw.Common;
+﻿using Kw.Common;
 using PostSharp.Aspects;
-using PostSharp.Serialization;
+using PostSharp.Aspects.Dependencies;
+using System;
+using System.Reflection;
 
 namespace Kw.Aspects
 {
     [Serializable]
-    public abstract class ProtectionHandler
+    public abstract class GuardedHandler
     {
         public abstract void Catch(object source, Exception x);
     }
 
     [Serializable]
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
-    [LinesOfCodeAvoided(13)]
-    public class ProtectionAttribute : MethodInterceptionAspect
+    [AttributeUsage(AttributeTargets.Method, Inherited = false)]
+    [ProvideAspectRole(BasicRoles.Control)]
+    public class GuardedAttribute : MethodInterceptionAspect
     {
         private readonly Type _handlerType;
-        private ProtectionHandler _handler;
+        private GuardedHandler _handler;
 
-        public ProtectionAttribute(Type handlerType)
+        public GuardedAttribute(Type handlerType)
         {
             _handlerType = handlerType;
         }
 
-        public ProtectionAttribute()
+        public GuardedAttribute()
         {
         }
 
@@ -38,10 +34,10 @@ namespace Kw.Aspects
         {
             if (null != _handlerType)
             {
-                if (!typeof(ProtectionHandler).IsAssignableFrom(_handlerType))
+                if (!typeof(GuardedHandler).IsAssignableFrom(_handlerType))
                     throw new IncorrectTypeException($"Type {_handlerType.Name} isn't (but must be) derived from GuardedHandler.");
 
-                _handler = (ProtectionHandler)Activator.CreateInstance(_handlerType);
+                _handler = (GuardedHandler)Activator.CreateInstance(_handlerType);
             }
 
 

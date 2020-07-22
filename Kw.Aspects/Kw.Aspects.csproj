@@ -22,6 +22,20 @@
 
     <ItemGroup>
         <Compile Include="..\etc\Kwisatz.Haderach.cs" Link="Properties\Kwisatz.Haderach.cs" />
+
+        <Compile Remove="Admixing.AdmixedAttribute.cs" />
+        <Compile Remove="Admixing.AdmixeeAttribute.cs" />
+        <Compile Remove="Admixing.Interfaces.cs" />
+
+        <Compile Include="Admixing.AdmixedAttribute.cs">
+            <DependentUpon>Admixing.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Admixing.AdmixeeAttribute.cs">
+            <DependentUpon>Admixing.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Admixing.Interfaces.cs">
+            <DependentUpon>Admixing.cs</DependentUpon>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>

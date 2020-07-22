@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Kw.Common
 {
+    /// TODO XML comments
     public static class EnumHelper
     {
         static readonly Dictionary<Type, Enum[]> _enumses = new Dictionary<Type, Enum[]>();
@@ -51,8 +52,8 @@ namespace Kw.Common
 
         static T[] InternalGetValues<T>(Type type, object testValue, bool synchronous = false)
         {
-            if (null == type) throw new ArgumentNullException("type");
-            if(typeof(Enum) == type && null != testValue) throw new ArgumentException("Need to specify exact enum type when testValue is not null.", "type");
+            if (null == type) throw new ArgumentNullException(nameof(type));
+            if(typeof(Enum) == type && null != testValue) throw new ArgumentException("Need to specify exact enum type when testValue is not null.", nameof(type));
 
             var values = new T[0];
 

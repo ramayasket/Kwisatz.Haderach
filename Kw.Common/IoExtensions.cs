@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kw.Common
 {
+    /// TODO XML comments
     public static class IoExtensions
     {
         private static string ToFullPath(FileInfo info)

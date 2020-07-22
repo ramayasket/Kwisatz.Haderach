@@ -110,7 +110,7 @@ namespace Kw.Networking
             if (0 == waitedChannel.Client.Dialogue.ExitCode)
             {
                 bytes = waitedChannel.Client.Dialogue.OutputBytes;
-                Kwisarath.WriteLine("Request serviced by {0} in {1}", waitedChannel.Client.Dialogue.ProxyInfo, elapsed);
+                Qizarate.Output?.WriteLine("Request serviced by {0} in {1}", waitedChannel.Client.Dialogue.ProxyInfo, elapsed);
             }
             else
                 throw new Win32Exception(waitedChannel.Client.Dialogue.ExitCode);

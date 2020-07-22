@@ -33,7 +33,7 @@ namespace Kw.Common.Containers
                 second = Second.ToString();
             }
 
-            return string.Format("{{{0}, {1}}}", first, second);
+            return $"{{{first}, {second}}}";
         }
     }
 }

@@ -112,7 +112,7 @@ namespace Kw.Common.Threading
         /// </summary>
         public virtual int Start()
         {
-            if (Kwisarath.Exiting)
+            if (Qizarate.Exiting)
             {
                 _started.Happen();
                 _done.Happen();
@@ -191,7 +191,7 @@ namespace Kw.Common.Threading
         /// <returns></returns>
         public static int KillActiveTasks(int? wait = null)
         {
-            if(!Kwisarath.Exiting)
+            if(!Qizarate.Exiting)
                 throw new IncorrectOperationException("AppCore.Exiting must be True.");
 
             int i = 0;

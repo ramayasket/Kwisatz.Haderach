@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Kw.Common;
 using PostSharp.Aspects;
-using Kw.Common;
+using PostSharp.Aspects.Dependencies;
+using System;
 
 namespace Kw.Aspects
 {
@@ -9,7 +10,7 @@ namespace Kw.Aspects
     /// </summary>
     [Serializable]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
-    [LinesOfCodeAvoided(18)]
+    [ProvideAspectRole(BasicRoles.Control)]
     public class GetTotalMemoryAttribute : MethodInterceptionAspect
     {
         public sealed override void OnInvoke(MethodInterceptionArgs args)

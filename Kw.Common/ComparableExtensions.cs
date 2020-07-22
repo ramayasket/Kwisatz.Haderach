@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Kw.Common
 {
+    /// TODO XML comments
     public static class ComparableExtensions
     {
         public static bool Between<T>(this T target, T from, T to) where T : IComparable

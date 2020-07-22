@@ -1,3 +1,4 @@
+using Kw.Common.Threading;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -5,10 +6,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using Kw.Common.Threading;
 
 namespace Kw.Common
 {
+    /// TODO XML comments
     public class FormattedValue<T> where T : struct
     {
         public static string ToFormat(T value)
@@ -18,7 +19,7 @@ namespace Kw.Common
 
         public static string ToFormat(DateTime value)
         {
-            return value.ToString(Literals.RussianCulture);
+            return value.ToString(CultureInfo.GetCultureInfo("ru-RU"));
         }
 
         private static T AsT(object v)
@@ -42,7 +43,7 @@ namespace Kw.Common
                 //    We store DateTime in Russian format, but just in case:
                 //    may as well be (rarely) in InvariantCulture (using /).
                 //
-                var value = DateTime.Parse(formatted, formatted.Contains("/") ? CultureInfo.InvariantCulture : Literals.RussianCulture);
+                var value = DateTime.Parse(formatted, formatted.Contains("/") ? CultureInfo.InvariantCulture : CultureInfo.GetCultureInfo("ru-RU"));
 
                 //
                 //    This way the formatted string is compatible with the TryParse() call below.

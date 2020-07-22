@@ -1,12 +1,13 @@
+using Kw.Common.Containers;
+using Kw.Common.Threading;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Kw.Common.Containers;
-using Kw.Common.Threading;
 
 namespace Kw.Common
 {
+    /// TODO add XML comments
     public abstract class CalibratedPipe<T, K> : IDisposable where T : struct
     {
         public int Throughput { get; private set; }
@@ -14,7 +15,7 @@ namespace Kw.Common
         protected CalibratedPipe(int throughput)
         {
             if (throughput < 1)
-                throw new ArgumentOutOfRangeException("throughput", @"Expected 1 or greater (items per second).");
+                throw new ArgumentOutOfRangeException(nameof(throughput), @"Expected 1 or greater (items per second).");
 
             Throughput = throughput;
 
@@ -31,8 +32,8 @@ namespace Kw.Common
 
         public void Put(T[] data, K id)
         {
-            if (null == data) throw new ArgumentNullException("data");
-            if (!data.Any()) throw new ArgumentException(@"Expected non-empty array.", "data");
+            if (null == data) throw new ArgumentNullException(nameof(data));
+            if (!data.Any()) throw new ArgumentException(@"Expected non-empty array.", nameof(data));
 
             lock (_input)
             {
@@ -57,10 +58,7 @@ namespace Kw.Common
 
         private readonly Queue<Pair<T[], K>> _input = new Queue<Pair<T[], K>>();
 
-        private TimeSpan Tick
-        {
-            get { return TimeSpan.FromMilliseconds(_resolution); }
-        }
+        private TimeSpan Tick => TimeSpan.FromMilliseconds(_resolution);
 
         private void CalibratedTransfer()
         {

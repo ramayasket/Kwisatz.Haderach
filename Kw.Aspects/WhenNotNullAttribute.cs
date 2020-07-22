@@ -1,4 +1,5 @@
 ﻿using PostSharp.Aspects;
+using PostSharp.Aspects.Dependencies;
 using System;
 using System.Reflection;
 
@@ -7,6 +8,7 @@ namespace Kw.Aspects // ReSharper disable PossibleNullReferenceException
 {
     [Serializable]
     [AttributeUsage(AttributeTargets.Method, Inherited = false)]
+    [ProvideAspectRole(BasicRoles.Condition)]
     public class WhenNonNullAttribute : MethodInterceptionAspect
     {
         private readonly string _property;

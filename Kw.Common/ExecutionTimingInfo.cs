@@ -2,6 +2,7 @@ using System;
 
 namespace Kw.Common
 {
+    /// TODO XML comments
     public class ExecutionTimingInfo
     {
         public TimeSpan Latest { get; private set; }

@@ -1,187 +1,74 @@
+using Kw.Common;
+using Kw.Common.Containers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Kw.Common;
-using Kw.Common.Containers;
-using PostSharp.Aspects;
-using PostSharp.Aspects.Advices;
-using PostSharp.Extensibility;
-using PostSharp.Reflection;
 
 namespace Kw.Aspects
 {
     using AllocationKey = Pair<Guid, Type>;
 
     /// <summary>
-    /// Интерфейс основного объекта по отношению к подмешанному.
+    /// Action upon creation of admixee object.
     /// </summary>
-    public interface IAdmixer
+    public enum AdmixeeImmediate
     {
         /// <summary>
-        /// Возвращает ссылку на подмешанный объект.
+        /// No action.
         /// </summary>
-        object Admixed { get; }
-    }
-
-    /// <summary>
-    /// Интерфейс подмешанного объекта.
-    /// </summary>
-    public interface IAdmixed
-    {
-        /// <summary>
-        /// Возвращает слабую ссылку на основной объект.
-        /// </summary>
-        WeakReference Admixer { get; set; }
-    }
-
-    /// <summary>
-    /// Действие при создании основного объекта.
-    /// </summary>
-    public enum AdmixerImmediate
-    {
-        /// <summary/>
         None = 0,
 
         /// <summary>
-        /// Создать запись в словаре.
+        /// Create entry in the admixing map.
         /// </summary>
         Allocate = 1,
 
         /// <summary>
-        /// Создать запись в словаре и подмешанный объект.
+        /// Create entry in the admixing map and admixed object.
         /// </summary>
         Admix = 2,
     }
 
     /// <summary>
-    /// Отмечает основной тип и указывает тип подмешиваемого объекта.
+    /// Admixing engine.
     /// </summary>
-    [Serializable]
-    [AttributeUsage(AttributeTargets.Class)]
-    [MulticastAttributeUsage(MulticastTargets.Class, Inheritance = MulticastInheritance.Strict)]
-    [IntroduceInterface(typeof(IAdmixer), OverrideAction = InterfaceOverrideAction.Fail)]
-    public class AdmixerAttribute : InstanceLevelAspect, IAdmixer
-    {
-        private Type _targetType;
-        private readonly Type _admixType;
-
-        /// <summary>
-        /// Сохраняет подмешиваемый тип для последующей регистрации.
-        /// </summary>
-        /// <param name="admixType"></param>
-        public AdmixerAttribute(Type admixType)
-        {
-            _admixType = admixType;
-        }
-
-        ~AdmixerAttribute()
-        {
-            if(null != Instance)
-            {
-                Admixing.Unadmix(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Флаг подмешивания при создании объекта.
-        /// </summary>
-        public AdmixerImmediate Immediate { get; set; }
-
-        public override void CompileTimeInitialize(Type type, AspectInfo aspectInfo)
-        {
-            _targetType = type;
-
-            base.CompileTimeInitialize(type, aspectInfo);
-        }
-
-        /// <summary>
-        /// Выполняется после конструктора основного объекта.
-        /// </summary>
-        [OnMethodExitAdvice, MulticastPointcut(MemberName = ".ctor")]
-        public void OnConstructed(MethodExecutionArgs args)
-        {
-            if (Instance.GetType() == _targetType)
-            {
-                //
-                //    Зарегистрировать связку типов: основной/подмешиваемый.
-                //
-                Admixing.RegisterAdmixing(_targetType, _admixType);
-
-                if(Immediate > AdmixerImmediate.None)
-                {
-                    var allocation = Admixing.Allocate(Instance);    //    распределение ключа
-
-                    if(Immediate > AdmixerImmediate.Allocate)
-                    {
-                        allocation.Admix();    //    создание подмешанного объекта
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Добавленное свойство. Возвращает подмешанный объект.
-        /// </summary>
-        [IntroduceMember(OverrideAction = MemberOverrideAction.Fail, Visibility = Visibility.Public)]
-        public object Admixed
-        {
-            get { return Instance.Admixed(); }
-        }
-    }
-
-    /// <summary>
-    /// Отмечает основной тип и указывает тип подмешиваемого объекта.
-    /// </summary>
-    [Serializable, AttributeUsage(AttributeTargets.Class), MulticastAttributeUsage(MulticastTargets.Class, Inheritance = MulticastInheritance.Strict), IntroduceInterface(typeof(IAdmixed), OverrideAction = InterfaceOverrideAction.Fail)]
-    public class AdmixedAttribute : InstanceLevelAspect, IAdmixed
+    internal static class Admixing
     {
         /// <summary>
-        /// Добавленное свойство. Возвращает подмешанный объект.
-        /// </summary>
-        [IntroduceMember(OverrideAction = MemberOverrideAction.Fail, Visibility = Visibility.Public)]
-        public WeakReference Admixer { get; set; }
-    }
-
-    /// <summary>
-    /// Движок подмешивания.
-    /// </summary>
-    public static class Admixing
-    {
-        /// <summary>
-        /// Используется для проверки наличия атрибута AdmixerAttribute на классе основного типа.
+        /// Used to test for presence of [AdmixeeAttribute].
         /// </summary>
         private static readonly Dictionary<Type, Type> AdmixingTypes = new Dictionary<Type, Type>();
         
         /// <summary>
-        /// Словарь подмешанных объектов.
+        /// Stores information about admixed objects.
         /// </summary>
-        private static readonly Dictionary<Guid, Allocation> AdmixMap = new Dictionary<Guid, Allocation>();
+        private static readonly Dictionary<Guid, Allocation> Admixings = new Dictionary<Guid, Allocation>();
 
         /// <summary>
-        /// Регистрирует подмешиваемый тип.
+        /// Registers admixed type for an admixee type.
         /// </summary>
-        /// <param name="admixer">Основной тип.</param>
-        /// <param name="admixed">Подмешиваемый тип.</param>
-        internal static void RegisterAdmixing(Type admixer, Type admixed)
+        /// <param name="admixee">Admixee type.</param>
+        /// <param name="admixed">Admixed type.</param>
+        internal static void RegisterAdmixing(Type admixee, Type admixed)
         {
-            if (AdmixingTypes.ContainsKey(admixer))
+            if (AdmixingTypes.ContainsKey(admixee))
                 return;
 
             lock (AdmixingTypes)
             {
-                if (AdmixingTypes.ContainsKey(admixer))
+                if (AdmixingTypes.ContainsKey(admixee))
                     return;
 
-                AdmixingTypes[admixer] = admixed;
+                AdmixingTypes[admixee] = admixed;
             }
         }
 
         /// <summary>
-        /// Запрашивает подмешиваемый тип.
+        /// Tries to find admixed type for an object of admixee type.
         /// </summary>
-        internal static Type QueryAdmixing(object admixer)
+        internal static Type QueryAdmixing(object admixee)
         {
-            var type = admixer.GetType();
+            var type = admixee.GetType();
 
             if (AdmixingTypes.ContainsKey(type))
             {
@@ -192,28 +79,25 @@ namespace Kw.Aspects
         }
 
         /// <summary>
-        /// Правая часть словаря подмешанных объектов.
+        /// Right-hand side of admixed object dictionary.
         /// </summary>
         internal class Allocation
         {
-            /// <summary>
-            /// Подмешанный объект.
-            /// </summary>
             private object _admixed;
 
             public Type AdmixedType;
-            public Type AdmixerType;
+            public Type AdmixeeType;
             
             /// <summary>
-            /// Слабая ссылка на основной объект.
+            /// Weak reference to admixee object.
             /// </summary>
-            public WeakReference AdmixerPointer;
+            public WeakReference AdmixeePointer;
 
-            public Allocation(object admixer, Type admixedType)
+            public Allocation(object admixee, Type admixedType)
             {
                 AdmixedType = admixedType;
-                AdmixerType = admixer.GetType();
-                AdmixerPointer = new WeakReference(admixer);
+                AdmixeeType = admixee.GetType();
+                AdmixeePointer = new WeakReference(admixee);
             }
 
             public void Admix()
@@ -228,7 +112,7 @@ namespace Kw.Aspects
                 {
                     lock(this)
                     {
-                        return _admixed = _admixed ?? CreateAdmixed(AdmixedType);
+                        return _admixed ??= CreateAdmixed(AdmixedType);
                     }
                 }
             }
@@ -236,31 +120,30 @@ namespace Kw.Aspects
             private object CreateAdmixed(Type admixedType)
             {
                 var instance = Activator.CreateInstance(admixedType);
-                var ia = instance as IAdmixed;
 
-                if(null != ia)
+                if(instance is IAdmixed ia)
                 {
-                    ia.Admixer = AdmixerPointer;
+                    ia.Admixee = AdmixeePointer;
                 }
 
                 return instance;
             }
         }
 
-        internal static AllocationKey AllocateKey(object admixer)
+        internal static AllocationKey AllocateKey(object admixee)
         {
-            if (null == admixer)
-                throw new ArgumentNullException("admixer");
+            if (null == admixee)
+                throw new ArgumentNullException(nameof(admixee));
 
-            var admixedType = QueryAdmixing(admixer);
+            var admixedType = QueryAdmixing(admixee);
 
             if (null == admixedType)
-                throw new IncorrectTypeException(string.Format("Type {0} isn't marked as admixer.", admixer.GetType()));
+                throw new IncorrectTypeException($"Type {admixee.GetType()} isn't marked as admixee.");
 
             var acc = new List<byte>();
 
-            acc.AddRange(BitConverter.GetBytes(admixer.GetType().GetHashCode()));
-            acc.AddRange(BitConverter.GetBytes(admixer.GetHashCode()));
+            acc.AddRange(BitConverter.GetBytes(admixee.GetType().GetHashCode()));
+            acc.AddRange(BitConverter.GetBytes(admixee.GetHashCode()));
             acc.AddRange(BitConverter.GetBytes(admixedType.GetHashCode()));
             acc.AddRange(new byte[] { 8, 0, 5, 2 });
 
@@ -271,77 +154,77 @@ namespace Kw.Aspects
             return key;
         }
 
-        internal static Allocation Allocate(object admixer)
+        internal static Allocation Allocate(object admixee)
         {
-            var key = AllocateKey(admixer);
+            var key = AllocateKey(admixee);
             
             var admixedType = key.Second;
 
             Allocation allocation;
 
-            lock (AdmixMap)
+            lock (Admixings)
             {
-                if(AdmixMap.ContainsKey(key.First))
+                if(Admixings.ContainsKey(key.First))
                 {
-                    allocation = AdmixMap[key.First];
+                    allocation = Admixings[key.First];
                 }
                 else
                 {
-                    allocation = new Allocation(admixer, admixedType);
+                    allocation = new Allocation(admixee, admixedType);
 
-                    AdmixMap[key.First] = allocation;
+                    Admixings[key.First] = allocation;
                 }
             }
 
             return allocation;
         }
         
-        internal static void Unadmix(object admixer)
+        internal static void Unadmix(object admixee)
         {
-            var admixedType = QueryAdmixing(admixer);
+            var admixedType = QueryAdmixing(admixee);
 
             if (null != admixedType)
             {
-                lock(AdmixMap)
+                lock(Admixings)
                 {
-                    var key = AllocateKey(admixer);
-                    AdmixMap.Remove(key.First);
+                    var key = AllocateKey(admixee);
+                    Admixings.Remove(key.First);
                 }
             }
         }
 
-        public static object Admixed(this object admixer)
+        internal static object Admixed(this object admixee)
         {
-            if(null == admixer)
+            if(null == admixee)
                 return null;
 
-            var allocation = Allocate(admixer);
+            var allocation = Allocate(admixee);
 
             return allocation.Admixed;
         }
 
-        public static object[] Admixeds(this object[] admixers)
+        internal static object[] Admixeds(this object[] admixees)
         {
-            if (null == admixers)
-                throw new ArgumentNullException("admixers");
+            if (null == admixees)
+                throw new ArgumentNullException(nameof(admixees));
 
-            var allocations = admixers.Select(Allocate).ToArray();
+            var allocations = admixees.Select(Allocate).ToArray();
             var admixeds = allocations.Select(a => a.Admixed).ToArray();
 
             return admixeds;
         }
 
-        public static T Admixed<T>(this object admixer) where T : class
+        internal static T Admixed<T>(this object admixee) where T : class
         {
-            var untyped = Admixed(admixer);
+            var untyped = Admixed(admixee);
             var typed = Reinterpret<object>.Cast<T>(untyped);
             
             return typed;
         }
 
-        public static T[] Admixeds<T>(this object[] admixers) where T : class
+        internal static T[] Admixeds<T>(this object[] admixees) where T : class
         {
-            return admixers.Select(Admixed).Select(Reinterpret<object>.Cast<T>).ToArray();
+            return admixees.Select(Admixed).Select(Reinterpret<object>.Cast<T>).ToArray();
         }
     }
 }

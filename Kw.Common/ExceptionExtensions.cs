@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Kw.Common
 {
+    /// TODO XML comments
     public static class ExceptionExtensions
     {
         public static string GetFullMessage(this Exception x)
@@ -19,25 +20,6 @@ namespace Kw.Common
             }
 
             return string.Join(" :: ", parts.ToArray());
-        }
-
-        /// <summary>
-        /// Повторный выбос исключения с предохранением стека вызова.
-        /// </summary>
-        /// <param name="x">Объект исключения для повторного вызова.</param>
-        public static void Rethrow(this Exception x)
-        {
-            throw new RethrowException(x);
-        }
-
-        /// <summary>
-        /// Возвращает повторно-выброшенное исключение содержащееся в rethrow-исключении.
-        /// </summary>
-        /// <param name="x">Объект исключения.</param>
-        /// <returns></returns>
-        public static Exception UnwrapRethrown(this Exception x)
-        {
-            return RethrowException.IsValidRethrowException(x) ? x.InnerException : x;
         }
     }
 }

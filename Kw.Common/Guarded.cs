@@ -11,6 +11,7 @@ namespace Kw.Common
     /// </summary>
     /// ReSharper disable EmptyGeneralCatchClause
     /// ReSharper disable InconsistentNaming
+    /// TODO XML comments
     public static class Guarded
     {
         public static void SafeExecute(this Action action)

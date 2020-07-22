@@ -81,7 +81,7 @@ namespace Kw.ServiceProcess
                 ServiceBase.Run(Runner);
             }
 
-            Kwisarath.Write($"{Runner.Name} has finished with exit code {Runner.ExitCode}.");
+            Qizarate.Output?.Write($"{Runner.Name} has finished with exit code {Runner.ExitCode}.");
 
             KernelUtils.TerminateCurrentProcess((uint)Runner.ExitCode);
 
@@ -91,8 +91,8 @@ namespace Kw.ServiceProcess
 
         private void ReportFatalError(object sender, UnhandledExceptionEventArgs fatal)
         {
-            Kwisarath.WriteLine("******* FATAL ERROR  *******");
-            Kwisarath.WriteLine("{0}", ((Exception)fatal.ExceptionObject).Message);
+            Qizarate.Output?.WriteLine("******* FATAL ERROR  *******");
+            Qizarate.Output?.WriteLine("{0}", ((Exception)fatal.ExceptionObject).Message);
 
             KernelUtils.TerminateCurrentProcess();
         }

@@ -83,7 +83,7 @@ namespace Kw.Common
         public static TV Compute<TA, TV>(this FunctionNode<TA, TV> last, TA argument)
         {
             if (last == null)
-                throw new ArgumentNullException("last");
+                throw new ArgumentNullException(nameof(last));
 
             return last.ComputeFunction(argument);
         }
@@ -114,20 +114,17 @@ namespace Kw.Common
 
         internal FunctionNode(FunctionNode<TA, TV> previous, TA argument, TV value)
         {
-            if (null == previous)
-                throw new ArgumentNullException("previous");
-
             Argument = argument;
             Value = value;
 
-            Previous = previous;
+            Previous = previous ?? throw new ArgumentNullException(nameof(previous));
             previous.Next = this;
         }
 
         internal FunctionNode(FunctionNode<TA, TV> previous, TV value)
         {
             if (null == previous)
-                throw new ArgumentNullException("previous");
+                throw new ArgumentNullException(nameof(previous));
 
             if (previous.Terminating)
                 throw new ArgumentException("Function is already terminated.");
@@ -141,13 +138,7 @@ namespace Kw.Common
             Constant = true;
         }
 
-        internal FunctionNode<TA, TV> Root
-        {
-            get
-            {
-                return null != Previous ? Previous.Root : this;
-            }
-        }
+        internal FunctionNode<TA, TV> Root => null != Previous ? Previous.Root : this;
 
         internal TV ComputeFunction(TA argument)
         {
@@ -164,16 +155,13 @@ namespace Kw.Common
                 return Next.ComputeNode(argument);
 
             if (Terminating)
-                throw new ArgumentOutOfRangeException("argument", argument, "Reached end of function.");
+                throw new ArgumentOutOfRangeException(nameof(argument), argument, "Reached end of function.");
 
             return Value;
         }
 
         /* ReSharper disable once UnusedMember.Local */
-        private string Display()
-        {
-            return string.Format("{0}/{1}", Argument.AsDebuggerDisplay(), Value.AsDebuggerDisplay());
-        }
+        private string Display() => $"{Argument.AsDebuggerDisplay()}/{Value.AsDebuggerDisplay()}";
     }
 }
 

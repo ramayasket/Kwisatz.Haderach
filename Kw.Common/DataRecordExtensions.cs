@@ -7,6 +7,8 @@ using System.Text;
 
 namespace Kw.Common
 {
+    /// ReSharper disable CanBeReplacedWithTryCastAndCheckForNull
+    /// TODO XML comments
     public static class DataRecordExtensions
     {
         public static T Coalesce<T>(this IDataRecord reader, int ordinal, T empty = default(T))
@@ -26,9 +28,6 @@ namespace Kw.Common
             if (s is DBNull)
                 return 0;
 
-            //
-            //    ReSharper disable once CanBeReplacedWithTryCastAndCheckForNull
-            //
             if (s is float)
                 return (float)s;
 
@@ -42,9 +41,6 @@ namespace Kw.Common
             if (s is DBNull)
                 return null;
 
-            //
-            //    ReSharper disable once CanBeReplacedWithTryCastAndCheckForNull
-            //
             if (s is string)
                 return (string)s;
 
@@ -58,9 +54,6 @@ namespace Kw.Common
             if (s is DBNull)
                 return 0;
 
-            //
-            //    ReSharper disable once CanBeReplacedWithTryCastAndCheckForNull
-            //
             if (s is long)
                 return (long)s;
 
@@ -77,9 +70,6 @@ namespace Kw.Common
             if (s is DBNull)
                 return default(DateTime);
 
-            //
-            //    ReSharper disable once CanBeReplacedWithTryCastAndCheckForNull
-            //
             if (s is DateTime)
                 return (DateTime)s;
 

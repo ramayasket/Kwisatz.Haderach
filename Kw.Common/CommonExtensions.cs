@@ -8,6 +8,7 @@ namespace Kw.Common
     /// <summary>
     /// Разные методы расширения общего назначения.
     /// </summary>
+    /// TODO English comments
     public static class CommonExtensions
     {
         /// <summary>
@@ -105,14 +106,12 @@ namespace Kw.Common
             if(null == @object)
                 return "null";
 
-            var @string = @object as string;
-
-            if(null != @string)
+            if(@object is string @string)
                 return "\"" + @string + "\"";
 
-            if(@object is char)
+            if(@object is char c)
             {
-                return "'" + (char)@object + "'";
+                return "'" + c + "'";
             }
 
             return @object.ToString();
@@ -195,7 +194,7 @@ namespace Kw.Common
         }
 
         /// <summary>
-        /// Проверяет принадледность объекта к образцовому типу.
+        /// Проверяет принадлежность объекта к образцовому типу.
         /// </summary>
         /// <typeparam name="T">Образцовый тип.</typeparam>
         /// <param name="target">Исследуемый объект.</param>
@@ -264,10 +263,10 @@ namespace Kw.Common
 
         public static void ThrowUnless(this Type type, Type examplar, string message = null)
         {
-            if (type == null) throw new ArgumentNullException("type");
-            if (examplar == null) throw new ArgumentNullException("examplar");
+            if (type == null) throw new ArgumentNullException(nameof(type));
+            if (examplar == null) throw new ArgumentNullException(nameof(examplar));
 
-            message = message ?? string.Format("Invalid type: {0}, expected {1}.", type.FullName, examplar.FullName);
+            message ??= $"Invalid type: {type.FullName}, expected {examplar.FullName}.";
 
             if (!Is(type, examplar)) throw new IncorrectTypeException(message);
         }
@@ -333,7 +332,7 @@ namespace Kw.Common
         /// Запоминает ссылку на метод.
         /// </summary>
         /// <typeparam name="T">Тип входных данных для метода.</typeparam>
-        private struct ActionWrapper<T>
+        private readonly struct ActionWrapper<T>
         {
             /// <summary>
             /// Ссылка на метод.

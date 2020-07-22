@@ -1,5 +1,6 @@
 using Kw.Common;
 using PostSharp.Aspects;
+using PostSharp.Aspects.Dependencies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Kw.Aspects
 {
     [Serializable]
     [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-    [LinesOfCodeAvoided(6)]
+    [ProvideAspectRole(BasicRoles.Tracing)]
     public class TraceInOutAttribute : MethodInterceptionAspect
     {
         public override bool CompileTimeValidate(MethodBase method)
@@ -26,9 +27,9 @@ namespace Kw.Aspects
 
         public sealed override void OnInvoke(MethodInterceptionArgs args)
         {
-            Kwisarath.WriteLine("Entering method {0}::{1}", Type, Token);
+            Qizarate.Output?.WriteLine("Entering method {0}::{1}", Type, Token);
             args.Proceed();
-            Kwisarath.WriteLine("Exited method {0}::{1}", Type, Token);
+            Qizarate.Output?.WriteLine("Exited method {0}::{1}", Type, Token);
         }
     }
 }

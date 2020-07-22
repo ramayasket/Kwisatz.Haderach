@@ -40,7 +40,7 @@ namespace Kw.Networking
                 if(!proxy_reported)
                 {
                     proxy_reported = true;
-                    Kwisarath.WriteLine("Proxy {0}", proxy);
+                    Qizarate.Output?.WriteLine("Proxy {0}", proxy);
                 }
             }
         }
