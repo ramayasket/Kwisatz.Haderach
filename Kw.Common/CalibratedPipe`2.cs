@@ -37,7 +37,7 @@ namespace Kw.Common
 
             lock (_input)
             {
-                var pair = new Pair<T[], K> { First = data, Second = id };
+                var pair = (data, id);
                 _input.Enqueue(pair);
                 _outstanding += data.Length;
             }
@@ -56,7 +56,7 @@ namespace Kw.Common
 
         private DateTime _next;
 
-        private readonly Queue<Pair<T[], K>> _input = new Queue<Pair<T[], K>>();
+        private readonly Queue<(T[], K)> _input = new Queue<(T[], K)>();
 
         private TimeSpan Tick => TimeSpan.FromMilliseconds(_resolution);
 
@@ -101,8 +101,8 @@ namespace Kw.Common
             if (null == _buffer)
             {
                 var pair = _input.Dequeue();
-                _buffer = pair.First;
-                _id = pair.Second;
+                _buffer = pair.Item1;
+                _id = pair.Item2;
                 _bufferPosition = 0;
             }
 

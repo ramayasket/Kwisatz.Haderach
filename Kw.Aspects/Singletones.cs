@@ -17,7 +17,7 @@ using System.Collections.Concurrent;
 namespace Kw.Aspects
 {
     /// <summary>
-    /// Returns single instance for the declaring class.
+    /// Returns single instance of the declaring class.
     /// </summary>
     [Serializable]
     [AttributeUsage(AttributeTargets.Property)]

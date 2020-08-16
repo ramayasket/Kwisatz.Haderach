@@ -10,7 +10,7 @@
         <LangVersion>8.0</LangVersion>
         <NoWarn>CS1591;</NoWarn>
         <OutputPath>..\bin\</OutputPath>
-        <PostSharpDisabledMessages>LA0108;</PostSharpDisabledMessages>
+        <PostSharpDisabledMessages>PS0262;</PostSharpDisabledMessages>
         <RootNamespace>Kw.Aspects</RootNamespace>
         <SignAssembly>true</SignAssembly>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -23,17 +23,13 @@
     <ItemGroup>
         <Compile Include="..\etc\Kwisatz.Haderach.cs" Link="Properties\Kwisatz.Haderach.cs" />
 
-        <Compile Remove="Admixing.AdmixedAttribute.cs" />
-        <Compile Remove="Admixing.AdmixeeAttribute.cs" />
-        <Compile Remove="Admixing.Interfaces.cs" />
-
-        <Compile Include="Admixing.AdmixedAttribute.cs">
+        <Compile Update="Admixing.AdmixedAttribute.cs">
             <DependentUpon>Admixing.cs</DependentUpon>
         </Compile>
-        <Compile Include="Admixing.AdmixeeAttribute.cs">
+        <Compile Update="Admixing.AdmixeeAttribute.cs">
             <DependentUpon>Admixing.cs</DependentUpon>
         </Compile>
-        <Compile Include="Admixing.Interfaces.cs">
+        <Compile Update="Admixing.Interfaces.cs">
             <DependentUpon>Admixing.cs</DependentUpon>
         </Compile>
     </ItemGroup>

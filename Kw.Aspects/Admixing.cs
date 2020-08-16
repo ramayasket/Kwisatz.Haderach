@@ -6,8 +6,6 @@ using System.Linq;
 
 namespace Kw.Aspects
 {
-    using AllocationKey = Pair<Guid, Type>;
-
     /// <summary>
     /// Action upon creation of admixee object.
     /// </summary>
@@ -130,7 +128,7 @@ namespace Kw.Aspects
             }
         }
 
-        internal static AllocationKey AllocateKey(object admixee)
+        internal static (Guid Id, Type Type) AllocateKey(object admixee)
         {
             if (null == admixee)
                 throw new ArgumentNullException(nameof(admixee));
@@ -140,39 +138,36 @@ namespace Kw.Aspects
             if (null == admixedType)
                 throw new IncorrectTypeException($"Type {admixee.GetType()} isn't marked as admixee.");
 
-            var acc = new List<byte>();
+            var id = new Guid(
+                BitConverter
+                    .GetBytes(admixee.GetType().GetHashCode())
+                    .Concat(BitConverter.GetBytes(admixee.GetHashCode()))
+                    .Concat(BitConverter.GetBytes(admixedType.GetHashCode()))
+                    .Concat(new byte[] { 8, 0, 5, 2 }).ToArray()
+                );
 
-            acc.AddRange(BitConverter.GetBytes(admixee.GetType().GetHashCode()));
-            acc.AddRange(BitConverter.GetBytes(admixee.GetHashCode()));
-            acc.AddRange(BitConverter.GetBytes(admixedType.GetHashCode()));
-            acc.AddRange(new byte[] { 8, 0, 5, 2 });
-
-            var id = new Guid(acc.ToArray());
-
-            var key = new AllocationKey { Second = admixedType, First = id };
-
-            return key;
+            return (id, admixedType);
         }
 
         internal static Allocation Allocate(object admixee)
         {
             var key = AllocateKey(admixee);
             
-            var admixedType = key.Second;
+            var admixedType = key.Type;
 
             Allocation allocation;
 
             lock (Admixings)
             {
-                if(Admixings.ContainsKey(key.First))
+                if(Admixings.ContainsKey(key.Id))
                 {
-                    allocation = Admixings[key.First];
+                    allocation = Admixings[key.Id];
                 }
                 else
                 {
                     allocation = new Allocation(admixee, admixedType);
 
-                    Admixings[key.First] = allocation;
+                    Admixings[key.Id] = allocation;
                 }
             }
 
@@ -188,7 +183,7 @@ namespace Kw.Aspects
                 lock(Admixings)
                 {
                     var key = AllocateKey(admixee);
-                    Admixings.Remove(key.First);
+                    Admixings.Remove(key.Id);
                 }
             }
         }
