@@ -5,15 +5,54 @@ using System.Reflection;
 
 namespace Kw.Common
 {
-    public static class ExecutionTimings
+    /// <summary>
+    /// Measures execution timings.
+    /// </summary>
+    public static class Timings
     {
-        internal static readonly Dictionary<string, ExecutionTimingInfo> _entries = new Dictionary<string, ExecutionTimingInfo>();
+        /// <summary>
+        /// Timings information.
+        /// </summary>
+        public class Information
+        {
+            /// <summary>
+            /// Latest execution timing.
+            /// </summary>
+            public TimeSpan Latest { get; private set; }
 
-        private static ExecutionTimingInfo EnsureToken(string s)
+            /// <summary>
+            /// Average execution timing.
+            /// </summary>
+            public TimeSpan Average { get; private set; }
+
+            /// <summary>
+            /// Total execution timing.
+            /// </summary>
+            public TimeSpan Total { get; private set; }
+
+            /// <summary>
+            /// Number of measurings.
+            /// </summary>
+            public int Count { get; private set; }
+
+            internal void Take(TimeSpan ts)
+            {
+                Latest = ts;
+
+                Total += ts;
+                Count++;
+
+                Average = TimeSpan.FromTicks(Total.Ticks / Count);
+            }
+        }
+
+        internal static readonly Dictionary<string, Information> _entries = new Dictionary<string, Information>();
+
+        private static Information EnsureToken(string s)
         {
             lock (_entries)
             {
-                var entry = new ExecutionTimingInfo();
+                var entry = new Information();
 
                 if (_entries.ContainsKey(s))
                 {
@@ -28,19 +67,24 @@ namespace Kw.Common
             }
         }
 
+        /// <summary>
+        /// Returns
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static TimeSpan Get(string s)
         {
             return EnsureToken(s).Latest;
         }
 
-        public static ExecutionTimingInfo GetInfo(string s)
+        public static Information GetInfo(string s)
         {
             return EnsureToken(s);
         }
 
         public static void Set(string s, TimeSpan ts)
         {
-            EnsureToken(s).Set(ts);
+            EnsureToken(s).Take(ts);
         }
 
         public static void Reset(string s)
@@ -54,14 +98,12 @@ namespace Kw.Common
             }
         }
 
-        public static bool ReportTimings { get; set; }
-
-        public static TimeSpan MeasuredCall(Action wrapped, string token, MethodBase minfo)
+        public static TimeSpan MeasuredCall(Action wrapped, string name, MethodBase minfo)
         {
             if (wrapped == null) throw new ArgumentNullException(nameof(wrapped));
             if (minfo == null) throw new ArgumentNullException(nameof(minfo));
 
-            token = token ?? minfo.Name;
+            name ??= minfo.Name;
             var type = minfo.DeclaringType;
 
             var typeName = "<>";
@@ -76,14 +118,8 @@ namespace Kw.Common
             wrapped();
 
             sw.Stop();
-            
 
-            Set(token, sw.Elapsed);
-
-            if (ReportTimings)
-            {
-                Qizarate.Output?.WriteLine("Execution timing '{0}.{1}': {2}", typeName, token, sw.Elapsed);
-            }
+            Set(name, sw.Elapsed);
 
             return sw.Elapsed;
         }
@@ -98,17 +134,17 @@ namespace Kw.Common
             return sw.Elapsed;
         }
         
-        public static void MeasuredCall(Action method, string token = null)
+        public static void MeasuredCall(Action method, string name = null)
         {
-            MeasuredCall(method, token, method.Method);
+            MeasuredCall(method, name, method.Method);
         }
 
-        public static TResult MeasuredCall<TResult>(Func<TResult> method, string token = null)
+        public static TResult MeasuredCall<TResult>(Func<TResult> method, string name = null)
         {
             var result = default(TResult);
             Action wrapped = () => { result = method(); };
 
-            MeasuredCall(wrapped, token, method.Method);
+            MeasuredCall(wrapped, name, method.Method);
 
             return result;
         }

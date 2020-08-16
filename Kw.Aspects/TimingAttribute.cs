@@ -13,27 +13,21 @@ namespace Kw.Aspects
     [Serializable]
     [AttributeUsage(AttributeTargets.Method, Inherited = false)]
     [ProvideAspectRole(BasicRoles.Tracing)]
-    public class ExecutionTimingAttribute : MethodInterceptionAspect
+    public class TimingAttribute : MethodInterceptionAspect
     {
         private MethodBase _method;
+        private readonly string _name;
+
+        public TimingAttribute(string name = null) => _name = name;
         
         public override bool CompileTimeValidate(MethodBase method)
         {
-            var result = base.CompileTimeValidate(method);
-
             _method = method;
 
-            var name = method.Name;
-            Type = method.DeclaringType;
+            Token = _name ?? _method.Name;
+            Type = _method.DeclaringType;
 
-            if (ExecutionTimings.ReportTimings)
-            {
-                Qizarate.Output?.WriteLine("CompileTimeValidate(): name = '{0}'", name);
-            }
-
-            Token = name;
-
-            return result;
+            return base.CompileTimeValidate(method);
         }
 
         public string Token { get; private set; }
@@ -42,7 +36,7 @@ namespace Kw.Aspects
         public sealed override void OnInvoke(MethodInterceptionArgs args)
         {
             Action wrapped = args.Proceed;
-            ExecutionTimings.MeasuredCall(wrapped, Token, _method);
+            Timings.MeasuredCall(wrapped, Token, _method);
         }
     }
 }
