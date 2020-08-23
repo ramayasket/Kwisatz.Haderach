@@ -26,9 +26,13 @@ namespace Kw.Shell
         {
         }
 
+        private static string RenameOpn(string s) => s.StartsWith("Opn.") ? "Kw." + s.Substring(4) : s;
+
         [STAThread]
         public static void Main(string[] arguments)
         {
+            var renamed = TreeRenamer.Rename(@"C:\home\dev\Kwisatz.Haderach.Golden\", RenameOpn);
+
             Qizarate.Output?.WriteLine(true);
 
             ////HookManager.MouseMoveExt += HookManagerOnMouseMoveExt;
