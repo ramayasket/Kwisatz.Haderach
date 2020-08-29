@@ -38,6 +38,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.Shell.Core", "Kw.Shell.C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shell", "Shell", "{8287AC98-9E5C-4B87-9D49-2A6BDE6534BE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.Lib.Dotnet.Utils", "..\Kwisatz.Haderach.Golden\Kw.Lib.Dotnet.Utils\Kw.Lib.Dotnet.Utils.csproj", "{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +112,12 @@ Global
 		{9080EAEE-86EA-4541-AFBF-8C7A074651DC}.Neutral|Any CPU.Build.0 = Debug|Any CPU
 		{9080EAEE-86EA-4541-AFBF-8C7A074651DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9080EAEE-86EA-4541-AFBF-8C7A074651DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Neutral|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Neutral|Any CPU.Build.0 = Debug|Any CPU
+		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

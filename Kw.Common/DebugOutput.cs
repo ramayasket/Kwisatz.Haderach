@@ -10,18 +10,6 @@ namespace Kw.Common
     public static class DebugOutput
     {
         /// <summary>
-        /// Префиксная строка для идентификации вывода
-        /// </summary>
-        public static string Prefix { get; set; }
-
-        /// <summary>
-        /// Устанавливает префиксную строку по умолчанию
-        /// </summary>
-        static DebugOutput()
-        {
-        }
-
-        /// <summary>
         /// Функция API: вывод отладочной информации
         /// </summary>
         /// <param name="outputString">Строка для вывода</param>
@@ -33,7 +21,7 @@ namespace Kw.Common
         /// <param name="message"></param>
         public static void OutputDebugString(string message)
         {
-            Output(Prefix + ": " + message + Environment.NewLine);
+            Output(message + Environment.NewLine);
         }
 
         /// <summary>

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Syncfusion.Licensing;
 using System;
 using System.Windows.Forms;
+using Kw.WinAPI;
 
 namespace Kw.Shell
 {
@@ -31,6 +32,14 @@ namespace Kw.Shell
         [STAThread]
         public static void Main(string[] arguments)
         {
+            var hthread = Kernel.GetCurrentThreadId();
+
+            var y = Kernel.TerminateThread(new IntPtr(hthread), 0);
+
+            var le = Kernel.GetLastError();
+
+            Kernel.TerminateProcess(new IntPtr(Kernel.GetCurrentProcessId()), 0);
+
             var renamed = TreeRenamer.Rename(@"C:\home\dev\Kwisatz.Haderach.Golden\", RenameOpn);
 
             Qizarate.Output?.WriteLine(true);
