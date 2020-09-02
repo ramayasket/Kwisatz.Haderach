@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyCompany("Andrei Samoylov")]
+[assembly: AssemblyCompany("Andrique")]
 [assembly: AssemblyProduct("Kwisatz.Haderach")]
 [assembly: AssemblyCopyright("Copyright © Andrei Samoylov 2012-2020")]
 [assembly: ComVisible(false)]

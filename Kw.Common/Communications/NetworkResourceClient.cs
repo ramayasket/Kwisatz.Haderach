@@ -1,3 +1,4 @@
+using Kw.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,9 +8,8 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using Kw.Common;
 
-namespace Kw.Networking
+namespace Kw.Common.Communications
 {
     public interface INetworkResourceWebClient : IDisposable
     {

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 
-namespace Kw.Networking
+namespace Kw.Common.Communications
 {
     public class HttpClient : WebClient, INetworkResourceWebClient
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Kw.Networking.Communications
+namespace Kw.Common.Communications
 {
     [Serializable]
     public class VoidResponse : SerialExchangeResponse

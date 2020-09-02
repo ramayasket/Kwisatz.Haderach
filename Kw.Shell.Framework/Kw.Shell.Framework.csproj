@@ -60,10 +60,6 @@
       <Project>{f837e57e-34c4-473f-8cc8-6512acde6836}</Project>
       <Name>Kw.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Kw.Networking\Kw.Networking.csproj">
-      <Project>{a9da165c-da63-463e-b213-8625a9e1fc37}</Project>
-      <Name>Kw.Networking</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Kw.ServiceProcess\Kw.ServiceProcess.csproj">
       <Project>{70a8d3f3-7323-49ac-99cc-cf7b8e298512}</Project>
       <Name>Kw.ServiceProcess</Name>

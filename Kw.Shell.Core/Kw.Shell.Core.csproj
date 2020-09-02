@@ -28,7 +28,6 @@
     <ItemGroup>
         <ProjectReference Include="..\Kw.Aspects\Kw.Aspects.csproj" />
         <ProjectReference Include="..\Kw.Common\Kw.Common.csproj" />
-        <ProjectReference Include="..\Kw.Networking\Kw.Networking.csproj" />
         <ProjectReference Include="..\Kw.WinAPI\Kw.WinAPI.csproj" />
         <ProjectReference Include="..\Kw.Windows.Forms\Kw.Windows.Forms.csproj" />
         <ProjectReference Include="..\Kw.Windows\Kw.Windows.csproj" />

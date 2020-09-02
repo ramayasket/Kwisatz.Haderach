@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.Windows.Forms", "Kw.Wind
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.Aspects", "Kw.Aspects\Kw.Aspects.csproj", "{64BA6D17-8987-4E1B-BEE0-7347C10E5FD3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.Networking", "Kw.Networking\Kw.Networking.csproj", "{A9DA165C-DA63-463E-B213-8625A9E1FC37}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.WinAPI", "Kw.WinAPI\Kw.WinAPI.csproj", "{5CC6D2FA-6713-47B9-9675-633091841364}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.Windows", "Kw.Windows\Kw.Windows.csproj", "{936ECDCB-A2C8-4440-8B6D-3556EDB55D77}"
@@ -24,7 +22,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.Common", "Kw.Common\Kw.C
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Kw.Reference", "Kw.Reference\Kw.Reference.shfbproj", "{A8F401BB-395D-465D-A636-4FF60A03A0AC}"
 	ProjectSection(ProjectDependencies) = postProject
-		{A9DA165C-DA63-463E-B213-8625A9E1FC37} = {A9DA165C-DA63-463E-B213-8625A9E1FC37}
 		{F837E57E-34C4-473F-8CC8-6512ACDE6836} = {F837E57E-34C4-473F-8CC8-6512ACDE6836}
 	EndProjectSection
 EndProject
@@ -36,9 +33,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kw.Shell.Framework", "Kw.Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.Shell.Core", "Kw.Shell.Core\Kw.Shell.Core.csproj", "{9080EAEE-86EA-4541-AFBF-8C7A074651DC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shell", "Shell", "{8287AC98-9E5C-4B87-9D49-2A6BDE6534BE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shell", "shell", "{8287AC98-9E5C-4B87-9D49-2A6BDE6534BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kw.Lib.Dotnet.Utils", "..\Kwisatz.Haderach.Golden\Kw.Lib.Dotnet.Utils\Kw.Lib.Dotnet.Utils.csproj", "{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{78F6A9DF-4D96-419B-BAE1-551942820E7E}"
+	ProjectSection(SolutionItems) = preProject
+		Kw.Aspects\Kw.Aspects.nuspec = Kw.Aspects\Kw.Aspects.nuspec
+		Kw.Common\Kw.Common.nuspec = Kw.Common\Kw.Common.nuspec
+		Kw.WinAPI\Kw.WinAPI.nuspec = Kw.WinAPI\Kw.WinAPI.nuspec
+		Kw.Windows.Forms\Kw.Windows.Forms.nuspec = Kw.Windows.Forms\Kw.Windows.Forms.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "info", "info", "{EED656F3-3477-488E-839F-AB8509DAC89E}"
+	ProjectSection(SolutionItems) = preProject
+		Kw.Aspects\Properties\AssemblyInfo.cs = Kw.Aspects\Properties\AssemblyInfo.cs
+		Kw.Common\Properties\AssemblyInfo.cs = Kw.Common\Properties\AssemblyInfo.cs
+		Kw.WinAPI\Properties\AssemblyInfo.cs = Kw.WinAPI\Properties\AssemblyInfo.cs
+		Kw.Windows\Properties\AssemblyInfo.cs = Kw.Windows\Properties\AssemblyInfo.cs
+		Kw.Windows.Forms\Properties\AssemblyInfo.cs = Kw.Windows.Forms\Properties\AssemblyInfo.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,12 +71,6 @@ Global
 		{64BA6D17-8987-4E1B-BEE0-7347C10E5FD3}.Neutral|Any CPU.Build.0 = Release|Any CPU
 		{64BA6D17-8987-4E1B-BEE0-7347C10E5FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64BA6D17-8987-4E1B-BEE0-7347C10E5FD3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9DA165C-DA63-463E-B213-8625A9E1FC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9DA165C-DA63-463E-B213-8625A9E1FC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9DA165C-DA63-463E-B213-8625A9E1FC37}.Neutral|Any CPU.ActiveCfg = Release|Any CPU
-		{A9DA165C-DA63-463E-B213-8625A9E1FC37}.Neutral|Any CPU.Build.0 = Release|Any CPU
-		{A9DA165C-DA63-463E-B213-8625A9E1FC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9DA165C-DA63-463E-B213-8625A9E1FC37}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5CC6D2FA-6713-47B9-9675-633091841364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5CC6D2FA-6713-47B9-9675-633091841364}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CC6D2FA-6713-47B9-9675-633091841364}.Neutral|Any CPU.ActiveCfg = Release|Any CPU
@@ -112,12 +118,6 @@ Global
 		{9080EAEE-86EA-4541-AFBF-8C7A074651DC}.Neutral|Any CPU.Build.0 = Debug|Any CPU
 		{9080EAEE-86EA-4541-AFBF-8C7A074651DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9080EAEE-86EA-4541-AFBF-8C7A074651DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Neutral|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Neutral|Any CPU.Build.0 = Debug|Any CPU
-		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1DC8AD1-8AE3-4CCB-8255-AAE1C823D775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,9 +1,6 @@
 using System;
-using System.Runtime.Serialization;
-using Kw.Common;
 
-/*    ReSharper disable once CheckNamespace */
-namespace Kw.Networking
+namespace Kw.Common.Communications
 {
     /// <summary>
     /// Координаты службы, доступной по TCP/UDP

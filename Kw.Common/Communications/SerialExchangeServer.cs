@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 
-namespace Kw.Networking.Communications
+namespace Kw.Common.Communications
 {
     public abstract class SerialExchangeServer
     {

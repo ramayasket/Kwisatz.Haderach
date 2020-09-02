@@ -1,25 +1,13 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+﻿.vs/
 
-/.vs
-/bin
-/.svn
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
+bin/
+obj/
 
-/packages
+testresults/
 
+*.cache
+*.db
+*.suo
 *.user
+*.csproj.user
 *.nupkg
-/Kw.Reference/Kwisatz-Haderach.chm
-/Kw.Reference/Help

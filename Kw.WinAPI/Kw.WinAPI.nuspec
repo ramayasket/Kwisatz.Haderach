@@ -1,22 +1,23 @@
 <?xml version="1.0"?>
 <package >
     <metadata>
-        <id>Kw.WinAPI</id>
-        <version>1.3.2.1</version>
-        <title>Kw.WinAPI</title>
         <authors>Andrei Samoylov</authors>
-        <owners>Andrei Samoylov</owners>
+        <copyright>Copyright © Andrei Samoylov 2012-2020</copyright>
+        <description>WinAPI imports</description>
+        <icon>etc\Kwisatz.Haderach.png</icon>
+        <id>Kw.WinAPI</id>
         <license type="expression">LGPL-3.0-or-later</license>
+        <owners>Andrei Samoylov</owners>
         <projectUrl>https://github.com/ramayasket/Kwisatz.Haderach</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>WinAPI imports</description>
-        <!--<releaseNotes></releaseNotes>-->
-        <copyright>Copyright © Andrei Samoylov 2012-2020</copyright>
         <tags>Kwisatz.Haderach</tags>
+        <title>Kw.WinAPI</title>
+        <version>2.0.0.0</version>
         <dependencies>
-            <group targetFramework="net47">
-                <dependency id="Kw.Common" version="1.3.0.0" />
-            </group>
+            <dependency id="Kw.Common" version="2.0.0.0" />
         </dependencies>
     </metadata>
+    <files>
+        <file src="..\etc\Kwisatz.Haderach.png" target="etc\" />
+    </files>
 </package>

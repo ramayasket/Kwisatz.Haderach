@@ -1,10 +1,11 @@
+using Kw.Common.Communications;
 using System;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Kw.Networking.Communications
+namespace Kw.Common.Communications
 {
     public abstract class SerialExchangeClient
     {

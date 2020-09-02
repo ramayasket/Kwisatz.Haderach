@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
-<package >
+<package>
     <metadata>
         <authors>Andrei Samoylov</authors>
-        <copyright>Copyright © Andrei Samoylov 2012-2020</copyright>
-        <description>All purpose aspects</description>
+        <copyright>Copyright © Andrei Samoylov 2012-2019</copyright>
+        <description>WPF utility classes</description>
         <icon>etc\Kwisatz.Haderach.png</icon>
-        <id>Kw.Aspects</id>
+        <id>Kw.Windows</id>
         <license type="expression">LGPL-3.0-or-later</license>
         <owners>Andrei Samoylov</owners>
         <projectUrl>https://github.com/ramayasket/Kwisatz.Haderach</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <tags>Kwisatz.Haderach</tags>
-        <title>Kw.Aspects</title>
+        <title>Kw.Windows</title>
         <version>2.0.0.0</version>
         <dependencies>
             <dependency id="Kw.Common" version="2.0.0.0" />

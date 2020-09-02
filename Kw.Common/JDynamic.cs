@@ -66,19 +66,6 @@ namespace Kw.Common
             switch (value) {
                 case JValue jvalue: {
                         dynamic v = jvalue.Value;
-
-                        if (v is string s)
-                            try {
-                                v = Convert.FromBase64String(s);
-                            }
-                            // ReSharper disable once EmptyGeneralCatchClause
-                            catch {
-                                try {
-                                    v = Guid.Parse(s);
-                                }
-                                catch { }
-                            }
-
                         return v;
                     }
 
