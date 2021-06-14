@@ -7,7 +7,7 @@ namespace Kw.Windows.Forms
     /// Maintains a hidden main form for a Windows Forms application.
     /// </summary>
     /// <remarks>
-    /// Under the Net.Core, seems to be the only way (a proper fuck!)
+    /// Under the Net.Core, seems to be the only way (a proper fuck!).
     /// </remarks>
     public class HiddenContext : ApplicationContext
     {
