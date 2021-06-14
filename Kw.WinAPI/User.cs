@@ -106,15 +106,15 @@ namespace /* ReSharper disable once CheckNamespace */ Kw.WinAPI
         public static extern IntPtr WindowFromPoint(Point p);
 
         [DllImport("user32.dll")]
-        static extern void keybd_event(VK bVk, byte bScan, uint dwFlags, int dwExtraInfo);
+        public static extern void keybd_event(VK bVk, byte bScan, uint dwFlags, int dwExtraInfo);
 
         [return: MarshalAs(UnmanagedType.Bool)]
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        static extern bool PostMessage(IntPtr hWnd, WM Msg, uint wParam, IntPtr lParam);
+        public static extern bool PostMessage(IntPtr hWnd, WM Msg, uint wParam, IntPtr lParam);
 
         [return: MarshalAs(UnmanagedType.Bool)]
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        static extern bool SendMessage(IntPtr hWnd, WM Msg, uint wParam, IntPtr lParam);
+        public static extern bool SendMessage(IntPtr hWnd, WM Msg, uint wParam, IntPtr lParam);
     }
 }
 
