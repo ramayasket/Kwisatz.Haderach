@@ -5,7 +5,7 @@
         <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <IsPackable>false</IsPackable>
-        <LangVersion>8.0</LangVersion>
+        <LangVersion>9.0</LangVersion>
         <SignAssembly>true</SignAssembly>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <StartupObject>Kw.Common.Test.Program</StartupObject>

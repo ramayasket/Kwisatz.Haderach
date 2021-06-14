@@ -17,7 +17,7 @@ namespace Kw.Common
 
         public JDynamic(string json) : this((JObject)JsonConvert.DeserializeObject(json)) { }
 
-        public JDynamic(JObject @object) => _object = @object;
+        public JDynamic(JObject x) => _object = x;
 
         /// <inheritdoc />
         public override IEnumerable<string> GetDynamicMemberNames()
@@ -38,9 +38,6 @@ namespace Kw.Common
             var value = property.Value;
             result = TokenToObject(value);
 
-            if (result is double @double)
-                result = Convert.ToDecimal(@double);
-
             return true;
         }
 
@@ -53,6 +50,19 @@ namespace Kw.Common
             _object[binder.Name] = JToken.FromObject(value);
 
             return true;
+        }
+
+        /// <inheritdoc />
+        public override bool TryConvert(ConvertBinder binder, out object result)
+        {
+            if (binder.ReturnType.In(typeof(JObject), typeof(JToken)))
+            {
+                result = _object;
+                return true;
+            }
+
+            result = null;
+            return false;
         }
 
         /// <inheritdoc />

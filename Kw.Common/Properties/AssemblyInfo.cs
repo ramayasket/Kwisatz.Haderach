@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Kw.Common")]
-[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyVersion("2.1.0.0")]
 [assembly: AssemblyDescription("All purpose shared classes")]
 [assembly: Guid("00000000-0001-11e8-9876-00055d74a52d")]
 
@@ -31,6 +31,7 @@ using System.Runtime.InteropServices;
     28.06.2020    1.3.1.0        Dynamic -> JDynamic
     02.09.2020    2.0.0.0        Kwisatz.Haderach 2.0
                                  Added Communications
+    14.06.2021    2.1.0.0        C# 9.0
 */
 
 /// <summary>

@@ -41,6 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{78F6
 		Kw.Common\Kw.Common.nuspec = Kw.Common\Kw.Common.nuspec
 		Kw.WinAPI\Kw.WinAPI.nuspec = Kw.WinAPI\Kw.WinAPI.nuspec
 		Kw.Windows.Forms\Kw.Windows.Forms.nuspec = Kw.Windows.Forms\Kw.Windows.Forms.nuspec
+		Kw.Windows\Kw.Windows.nuspec = Kw.Windows\Kw.Windows.nuspec
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "info", "info", "{EED656F3-3477-488E-839F-AB8509DAC89E}"

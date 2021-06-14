@@ -8,7 +8,7 @@
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <DocumentationFile>..\bin\Kw.WinAPI.xml</DocumentationFile>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <LangVersion>8.0</LangVersion>
+        <LangVersion>9.0</LangVersion>
         <NoWarn>CS1591;</NoWarn>
         <OutputPath>..\bin\</OutputPath>
         <OutputType>Library</OutputType>

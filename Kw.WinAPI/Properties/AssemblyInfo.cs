@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Kw.WinAPI")]
-[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyVersion("2.1.0.0")]
 [assembly: AssemblyDescription("Windows API functions and structures")]
 [assembly: Guid("00000000-0006-11e8-9876-00055d74a52d")]
 
@@ -27,5 +27,6 @@ using System.Runtime.InteropServices;
     12.07.2020    1.3.2.0        VK as ushort and other input structures/enums
     13.07.2020    1.3.2.1        Minor changes to input types
     02.09.2020    2.0.0.0        Kwisatz.Haderach 2.0
+    14.06.2021    2.1.0.0        C# 9.0, PostMessage, SendMessage
     
 */

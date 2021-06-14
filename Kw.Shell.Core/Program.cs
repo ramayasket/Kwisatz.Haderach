@@ -32,6 +32,10 @@ namespace Kw.Shell
         [STAThread]
         public static void Main(string[] arguments)
         {
+            dynamic zlp = new SourceClass();
+
+            zlp.Name = "zlp";
+
             var hthread = Kernel.GetCurrentThreadId();
 
             var y = Kernel.TerminateThread(new IntPtr(hthread), 0);

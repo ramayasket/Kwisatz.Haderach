@@ -6,7 +6,8 @@
         <CodeAnalysisRuleSet>..\etc\Kwisatz.Haderach.ruleset</CodeAnalysisRuleSet>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <LangVersion>8.0</LangVersion>
+        <LangVersion>9.0</LangVersion>
+        <OutputPath>..\bin\</OutputPath>
         <OutputType>Exe</OutputType>
         <RootNamespace>Kw.Shell</RootNamespace>
         <SignAssembly>true</SignAssembly>

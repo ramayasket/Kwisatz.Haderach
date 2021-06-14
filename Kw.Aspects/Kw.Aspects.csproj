@@ -7,7 +7,7 @@
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <DocumentationFile>..\bin\Kw.Aspects.xml</DocumentationFile>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <LangVersion>8.0</LangVersion>
+        <LangVersion>9.0</LangVersion>
         <NoWarn>CS1591;</NoWarn>
         <OutputPath>..\bin\</OutputPath>
         <PostSharpDisabledMessages>PS0262;</PostSharpDisabledMessages>
@@ -35,7 +35,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="PostSharp" Version="6.6.10" />
+      <PackageReference Include="PostSharp" Version="6.9.6" />
     </ItemGroup>
 
     <ItemGroup>
