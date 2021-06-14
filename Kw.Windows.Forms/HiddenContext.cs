@@ -3,8 +3,12 @@ using System.Windows.Forms;
 
 namespace Kw.Windows.Forms
 {
-    // Позволяет создать форму без показа её в Windows
-    // по-другому не получается ((( a proper fuck!
+    /// <summary>
+    /// Maintains a hidden main form for a Windows Forms application.
+    /// </summary>
+    /// <remarks>
+    /// Under the Net.Core, seems to be the only way (a proper fuck!)
+    /// </remarks>
     public class HiddenContext : ApplicationContext
     {
         /// <summary>
