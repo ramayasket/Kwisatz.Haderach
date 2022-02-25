@@ -7,25 +7,27 @@ namespace Kw.Windows
 {
     /// <summary>
     /// Code Project article
-    /// http://www.codeproject.com/KB/WPF/DockSplitter.aspx
+    /// http://www.codeproject.com/KB/WPF/DockPanelSplitter.aspx
     /// 
     /// CodePlex project
     /// http://wpfcontrols.codeplex.com
     ///
+    /// DockPanelSplitter is a splitter control for DockPanels.
+    /// Add the DockPanelSplitter after the element you want to resize.
+    /// Set the DockPanel.Dock to define which edge the splitter should work on.
     /// </summary>
-
-    public class DockSplitter : Control
+    public class DockPanelSplitter : Control
     {
-        static DockSplitter()
+        static DockPanelSplitter()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(DockSplitter),
-                new FrameworkPropertyMetadata(typeof(DockSplitter)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DockPanelSplitter),
+                new FrameworkPropertyMetadata(typeof(DockPanelSplitter)));
 
             // override the Background property
-            BackgroundProperty.OverrideMetadata(typeof(DockSplitter), new FrameworkPropertyMetadata(Brushes.Transparent));
+            BackgroundProperty.OverrideMetadata(typeof(DockPanelSplitter), new FrameworkPropertyMetadata(Brushes.Transparent));
 
             // override the Dock property to get notifications when Dock is changed
-            DockPanel.DockProperty.OverrideMetadata(typeof(DockSplitter),
+            DockPanel.DockProperty.OverrideMetadata(typeof(DockPanelSplitter),
                 new FrameworkPropertyMetadata(Dock.Left, new PropertyChangedCallback(DockChanged)));
         }
 
@@ -40,7 +42,7 @@ namespace Kw.Windows
         }
 
         public static readonly DependencyProperty ProportionalResizeProperty =
-            DependencyProperty.Register("ProportionalResize", typeof(bool), typeof(DockSplitter),
+            DependencyProperty.Register("ProportionalResize", typeof(bool), typeof(DockPanelSplitter),
             new UIPropertyMetadata(true));
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace Kw.Windows
         }
 
         public static readonly DependencyProperty ThicknessProperty =
-            DependencyProperty.Register("Thickness", typeof(double), typeof(DockSplitter),
+            DependencyProperty.Register("Thickness", typeof(double), typeof(DockPanelSplitter),
             new UIPropertyMetadata(4.0, ThicknessChanged));
 
 
@@ -65,7 +67,7 @@ namespace Kw.Windows
         private double previousParentHeight;  // current height of parent element, used for proportional resize
         #endregion
 
-        public DockSplitter()
+        public DockPanelSplitter()
         {
             Loaded += DockPanelSplitterLoaded;
             Unloaded += DockPanelSplitterUnloaded;
@@ -98,15 +100,15 @@ namespace Kw.Windows
             // Unsubscribe
             dp.SizeChanged -= ParentSizeChanged;
         }
-        
+
         private static void DockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((DockSplitter)d).UpdateHeightOrWidth();
+            ((DockPanelSplitter)d).UpdateHeightOrWidth();
         }
 
         private static void ThicknessChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((DockSplitter)d).UpdateHeightOrWidth();
+            ((DockPanelSplitter)d).UpdateHeightOrWidth();
         }
 
         private void UpdateHeightOrWidth()
@@ -133,7 +135,7 @@ namespace Kw.Windows
         }
 
         /// <summary>
-        /// Update the target element (the element the DockSplitter works on)
+        /// Update the target element (the element the DockPanelSplitter works on)
         /// </summary>
         private void UpdateTargetElement()
         {
@@ -163,7 +165,7 @@ namespace Kw.Windows
             MatrixTransform t = element.TransformToAncestor(dp) as MatrixTransform;
             if (dock == Dock.Left && newWidth > dp.ActualWidth - t.Matrix.OffsetX - Thickness)
                 newWidth = dp.ActualWidth - t.Matrix.OffsetX - Thickness;
-            
+
             element.Width = newWidth;
         }
 
@@ -289,5 +291,3 @@ namespace Kw.Windows
 
     }
 }
-
-

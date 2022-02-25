@@ -8,7 +8,7 @@
         <DocumentationFile>..\bin\Kw.Windows.Forms.xml</DocumentationFile>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <LangVersion>9.0</LangVersion>
-        <NoWarn>CS1591;</NoWarn>
+        <NoWarn>CS1591;1572;1573;1584;</NoWarn>
         <OutputPath>..\bin\</OutputPath>
         <RootNamespace>Kw.Windows.Forms</RootNamespace>
         <SignAssembly>true</SignAssembly>
@@ -22,6 +22,14 @@
 
     <ItemGroup>
         <Compile Include="..\etc\Kwisatz.Haderach.cs" Link="Properties\Kwisatz.Haderach.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Fonts\notomono.ttf" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Fonts\notomono.ttf" />
     </ItemGroup>
 
     <ItemGroup>

@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Kw.Windows.Forms")]
-[assembly: AssemblyVersion("2.1.0.0")]
+[assembly: AssemblyVersion("2.1.1.0")]
 [assembly: AssemblyDescription("Windows Forms utility classes")]
 [assembly: Guid("00000000-0008-11e8-9876-00055d74a52d")]
 
@@ -17,4 +17,5 @@ using System.Runtime.InteropServices;
     24.06.2020    1.3.0.0        signing changed to .SNK
     02.09.2020    2.0.0.0        Kwisatz.Haderach 2.0
     14.06.2021    2.1.0.0        C# 9.0
+    25.06.2021    2.1.1.0        FastColoredTextBox + CSharpEditor
 */
