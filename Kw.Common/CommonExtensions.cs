@@ -1,6 +1,8 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Kw.Common
@@ -11,6 +13,23 @@ namespace Kw.Common
     /// TODO English comments
     public static class CommonExtensions
     {
+        /// <summary>
+        /// Safely dereferences a .
+        /// </summary>
+        /// <typeparam name="T">Type of object to dereference.</typeparam>
+        /// <param name="x"></param>
+        /// <param name="expression"></param>
+        /// <returns>Value of expression or null if x is null. </returns>
+        public static object? SafeTake<T>(this T? x, Expression<Func<T, object>> expression) where T : class
+        {
+            if (null == x)
+                return null;
+
+            var function = expression.Compile();
+
+            return function(x);
+        }
+
         /// <summary>
         /// Returns value of nullable if not null or default otherwise.
         /// </summary>

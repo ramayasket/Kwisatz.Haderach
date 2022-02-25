@@ -53,7 +53,7 @@ namespace Kw.Common
     }
 
     /// <summary>
-    /// Computes whether Numbereger value is prime.
+    /// Computes whether Number value is prime.
     /// </summary>
     public static class PrimeComputer
     {
@@ -64,6 +64,8 @@ namespace Kw.Common
         /// Returns a collection of known prime values.
         /// </summary>
         public static IEnumerable<Whole> KnownPrimes => _known;
+
+        public static PrimeAccumulator Accumulator => _known;
 
         /// <summary>
         /// Returns boundary below which all primes are known.
@@ -126,66 +128,80 @@ namespace Kw.Common
         /// <summary>
         /// Checks whether value is prime.
         /// </summary>
-        /// <param name="value">Numbereger to test.</param>
+        /// <param name="value">Number to test.</param>
         /// <returns>True if value is prime.</returns>
         public static bool IsPrime(this Whole value)
         {
-            //
-            //    Value is known prime?
-            //
             if (_known.Contains(value))
                 return true;
 
-            //
-            //    Value below known boundary?
-            //
             if (value <= _boundary)
                 return false;
 
-            //
-            //    Upper factor boundary.
-            //
-            var root = Math.Sqrt(value);
-            var upper = (Whole)root;
+            var upper = (Whole)Math.Sqrt(value);
 
-            //
-            //    Check result.
-            //
-            var prime = true;
+            bool result = true;
 
-            //
-            //    Iterate factors.
-            //
             for (Whole factor = 2; factor <= upper; factor++)
             {
-                //
-                //    Factor is prime?
-                //
                 if (factor.IsPrime())
                 {
-                    var remainder = value % factor;
+                    var mod = value % factor;
 
-                    if (0 == remainder)
+                    if (0 == mod)
                     {
-                        prime = false;
+                        result = false;
                         break;
                     }
                 }
             }
 
-            if (prime)
-            {
-                //
-                //    The value is prime so accept it.
-                //
+            if (result)
                 Accept(value);
-            }
+
             else
-            {
                 AdvanceBoundary(value);
+
+            return result;
+        }
+
+        public static Whole[] Factorize(this Whole value)
+        {
+            if (value.IsPrime())
+                return new Whole[0];
+
+            Whole reminder = value;
+            var factors = new List<Whole>();
+
+            var upper = (Whole)Math.Sqrt(value);
+
+            for (Whole factor = 2; factor <= upper; factor++)
+            {
+                if (factor.IsPrime())
+                {
+                    Whole mod = 0;
+
+                    while (0 == mod)
+                    {
+                        mod = reminder % factor;
+                        if (0 == mod)
+                        {
+                            reminder /= factor;
+                            factors.Add(factor);
+
+                            if (reminder.IsPrime())
+                            {
+                                if(reminder != 1)
+                                    factors.Add(reminder);
+
+                                break;
+                            }
+                        }
+                    }
+                }
             }
 
-            return prime;
+            return factors.ToArray();
         }
     }
 }

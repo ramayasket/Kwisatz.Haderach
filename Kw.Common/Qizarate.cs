@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace Kw.Common
@@ -34,6 +35,20 @@ namespace Kw.Common
         /// Text writer for library-wide outputs.
         /// </summary>
         public static TextWriter Output { get; set; } = new Writer();
+
+        /// <summary>
+        /// Returns a stream to an assembly resource.
+        /// </summary>
+        /// <param name="name">Resource name.</param>
+        /// <param name="assembly">Assembly to look in, or null for Kw.Common.</param>
+        /// <returns>Resource stream or null if not found.</returns>
+        public static Stream GetResource(string name, Assembly assembly = null)
+        {
+            assembly ??= Assembly.GetExecutingAssembly();
+
+            var fullName = assembly.GetName().Name + "." + name;
+            return assembly.GetManifestResourceStream(fullName);
+        }
     }
     
     /// <summary>

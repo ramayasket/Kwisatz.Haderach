@@ -2,7 +2,7 @@
 <package >
     <metadata>
         <authors>Andrei Samoylov</authors>
-        <copyright>Copyright © Andrei Samoylov 2012-2020</copyright>
+        <copyright>Copyright © Andrei Samoylov 2012-2022</copyright>
         <description>All purpose shared classes</description>
         <icon>etc\Kwisatz.Haderach.png</icon>
         <id>Kw.Common</id>
@@ -12,7 +12,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <tags>Kwisatz.Haderach</tags>
         <title>Kw.Common</title>
-        <version>2.1.0.0</version>
+        <version>2.1.2.0</version>
     </metadata>
     <files>
         <file src="..\etc\Kwisatz.Haderach.png" target="etc\" />

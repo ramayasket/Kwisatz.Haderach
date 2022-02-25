@@ -2,7 +2,7 @@
 <package >
     <metadata>
         <authors>Andrei Samoylov</authors>
-        <copyright>Copyright © Andrei Samoylov 2012-2020</copyright>
+        <copyright>Copyright © Andrei Samoylov 2012-2022</copyright>
         <description>All purpose aspects</description>
         <icon>etc\Kwisatz.Haderach.png</icon>
         <id>Kw.Aspects</id>
