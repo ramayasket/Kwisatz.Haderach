@@ -5,6 +5,8 @@ obj/
 
 testresults/
 
+postsharp.config
+
 *.cache
 *.db
 *.suo
