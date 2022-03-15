@@ -14,7 +14,39 @@ namespace Kw.Common
     public static class CommonExtensions
     {
         /// <summary>
-        /// Safely dereferences a .
+        /// Safely selects on a collection.
+        /// </summary>
+        /// <typeparam name="TSource">Collection type.</typeparam>
+        /// <typeparam name="TResult">Selection type.</typeparam>
+        /// <param name="source">Collection.</param>
+        /// <param name="selector">Selection function.</param>
+        /// <returns></returns>
+        public static IQueryable<TResult>? Select<TSource, TResult>(this IQueryable<TSource> source, Func<TSource, int, TResult> selector)
+        {
+            if (null == source)
+                return null;
+
+            return source.Select(selector);
+        }
+
+        /// <summary>
+        /// Safely selects on a collection.
+        /// </summary>
+        /// <typeparam name="TSource">Collection type.</typeparam>
+        /// <typeparam name="TResult">Selection type.</typeparam>
+        /// <param name="source">Collection.</param>
+        /// <param name="selector">Selection function.</param>
+        /// <returns></returns>
+        public static IEnumerable<TResult>? Select<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, int, TResult> selector)
+        {
+            if (null == source)
+                return null;
+
+            return source.Select(selector);
+        }
+
+        /// <summary>
+        /// Safely dereferences an object.
         /// </summary>
         /// <typeparam name="T">Type of object to dereference.</typeparam>
         /// <param name="x"></param>
