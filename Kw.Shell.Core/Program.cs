@@ -4,6 +4,7 @@ using Kw.Windows.Forms;
 using Newtonsoft.Json;
 using Syncfusion.Licensing;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Kw.Shell
@@ -32,7 +33,16 @@ namespace Kw.Shell
         [STAThread]
         public static void Main(string[] arguments)
         {
+            int[] ieni = { 1, 2, 3 };
+
+            //ieni = null;
+
+            var zlp = (5).Out(ieni);
+
             var mapPath = new AppSetting("mapPath");
+
+            object[] src = null;
+            var s = src.SafeSelect(x => x.ToString());
 
             for (int num = 2; num < 1000; num++)
             {

@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,41 +38,34 @@ namespace Kw.Common
             return false;
         }
 
-    /// <summary>
-        /// Проверяет вхождение заданного элемента в коллекцию.
-        /// </summary>
-        /// <typeparam name="T">Тип элемента коллекции</typeparam>
-        /// <param name="t">Элемент</param>
-        /// <param name="collection">Коллекция</param>
-        /// <returns>True если элемент входит в коллецию, иначе False</returns>
-        public static bool In<T>(this T t, IQueryable<T> collection)
+        public static bool In<T>(this T t, IQueryable<T>? collection)
         {
-            return collection.Contains(t);
+            return collection?.Contains(t) ?? false;
         }
 
-        public static bool In<T>(this T t, IEnumerable<T> collection)
+        public static bool In<T>(this T t, IEnumerable<T>? collection)
         {
-            return collection.Contains(t);
+            return collection?.Contains(t) ?? false;
         }
 
-        public static bool In<T>(this T t, params T[] collection)
+        public static bool In<T>(this T t, params T[]? collection)
         {
-            return collection.Contains(t);
+            return collection?.Contains(t) ?? false;
         }
 
-        public static bool Out<T>(this T t, IQueryable<T> collection)
+        public static bool Out<T>(this T t, IQueryable<T>? collection)
         {
-            return !collection.Contains(t);
+            return !collection?.Contains(t) ?? true;
         }
 
-        public static bool Out<T>(this T t, IEnumerable<T> collection)
+        public static bool Out<T>(this T t, IEnumerable<T>? collection)
         {
-            return !collection.Contains(t);
+            return !collection?.Contains(t) ?? true;
         }
 
-        public static bool Out<T>(this T t, params T[] collection)
+        public static bool Out<T>(this T t, params T[]? collection)
         {
-            return !collection.Contains(t);
+            return !collection?.Contains(t) ?? true;
         }
 
         /// <summary>

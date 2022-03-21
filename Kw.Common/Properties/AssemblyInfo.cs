@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Kw.Common")]
-[assembly: AssemblyVersion("2.1.3.0")]
+[assembly: AssemblyVersion("2.1.6.1")]
 [assembly: AssemblyDescription("All purpose shared classes")]
 [assembly: Guid("00000000-0001-11e8-9876-00055d74a52d")]
 
@@ -35,7 +35,8 @@ using System.Runtime.InteropServices;
     25.06.2021    2.1.1.0        Qizarate.GetResource
     25.08.2021    2.1.1.1        PrimeAccumulator visible
     25.02.2022    2.1.2.0        SafeTake extension
-    15.03.2022    2.1.3.0        SafeSelect extensions
+    15.03.2022    2.1.6.0        SafeSelect extensions
+    21.03.2022    2.1.6.1        In, Out nullable args
 */
 
 /// <summary>

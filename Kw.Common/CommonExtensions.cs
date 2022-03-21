@@ -21,23 +21,7 @@ namespace Kw.Common
         /// <param name="source">Collection.</param>
         /// <param name="selector">Selection function.</param>
         /// <returns></returns>
-        public static IQueryable<TResult>? Select<TSource, TResult>(this IQueryable<TSource> source, Func<TSource, int, TResult> selector)
-        {
-            if (null == source)
-                return null;
-
-            return source.Select(selector);
-        }
-
-        /// <summary>
-        /// Safely selects on a collection.
-        /// </summary>
-        /// <typeparam name="TSource">Collection type.</typeparam>
-        /// <typeparam name="TResult">Selection type.</typeparam>
-        /// <param name="source">Collection.</param>
-        /// <param name="selector">Selection function.</param>
-        /// <returns></returns>
-        public static IEnumerable<TResult>? Select<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, int, TResult> selector)
+        public static IEnumerable<TResult>? SafeSelect<TSource, TResult>(this IEnumerable<TSource>? source, Func<TSource, TResult> selector)
         {
             if (null == source)
                 return null;
