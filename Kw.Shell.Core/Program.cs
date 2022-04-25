@@ -1,11 +1,13 @@
-﻿using Kw.Common;
-using Kw.WinAPI;
+﻿using Kw.WinAPI;
 using Kw.Windows.Forms;
 using Newtonsoft.Json;
 using Syncfusion.Licensing;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Windows.Forms;
+using Kw.Common;
+using Kw.Common.ZSpitz;
 
 namespace Kw.Shell
 {
@@ -38,6 +40,10 @@ namespace Kw.Shell
             //ieni = null;
 
             var zlp = (5).Out(ieni);
+
+            Expression<Func<object, string>> xxx = x => x.ToString();
+
+            var xxxs = xxx.ToString("Factory methods", "C#");
 
             var mapPath = new AppSetting("mapPath");
 
