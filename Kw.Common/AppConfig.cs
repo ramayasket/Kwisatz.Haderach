@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
@@ -20,17 +19,17 @@ namespace Kw.Common
             _sources.Add(source);
         }
 
-        private static string GetSettingValue(string key)
+        private static string? GetSettingValue(string key)
         {
             var config = ConfigurationManager.AppSettings[key];
 
-            if(null == config && _sources.Any())
+            if (null == config && _sources.Any())
             {
-                foreach(var source in _sources)
+                foreach (var source in _sources)
                 {
                     config = source(key);
 
-                    if(null != config)
+                    if (null != config)
                         return config;
                 }
             }
@@ -56,7 +55,7 @@ namespace Kw.Common
         /// <param name="key">Название настройки</param>
         /// <param name="def">Значение по умолчанию</param>
         /// <returns>Значение настройки</returns>
-        public static string Setting(string key, string def = "")
+        public static string? Setting(string key, string? def = "")
         {
             return GetSettingValue(key) ?? def;
         }
@@ -119,7 +118,7 @@ namespace Kw.Common
 
         static XElement _root;
         static XElement _appSettings;
-        
+
         /// <summary>
         /// Возвращает изменяемую конфигурацию приложения в виде XElement
         /// </summary>

@@ -28,7 +28,7 @@ namespace Kw.Common.Communications
         /// <summary>
         /// Исключение при обработке запроса
         /// </summary>
-        public Exception Error { get; private set; }
+        public Exception? Error { get; private set; }
     }
 }
 

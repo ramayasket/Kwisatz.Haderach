@@ -3,12 +3,12 @@
     <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
-        <CodeAnalysisRuleSet>..\etc\Kwisatz.Haderach.ruleset</CodeAnalysisRuleSet>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <LangVersion>10.0</LangVersion>
-        <NoWarn>CS1591;</NoWarn>
+        <NoWarn>CS1591;CS8625;CS8618;CS8600;CS8601;CS8602;CS8603;CS8604;CS8629;</NoWarn>
+        <Nullable>enable</Nullable>
         <OutputPath>..\bin\</OutputPath>
         <RootNamespace>Kw.Common</RootNamespace>
         <SignAssembly>true</SignAssembly>

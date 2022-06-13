@@ -5,6 +5,7 @@ using Syncfusion.Licensing;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Windows.Forms;
 using Kw.Common;
 using Kw.Common.ZSpitz;
@@ -24,7 +25,7 @@ namespace Kw.Shell
         public SourceClass Child { get; set; }
     }
 
-    partial class Program
+    public static partial class Program
     {
         private static void OnMouseMove(object sender, MouseEventArgs e)
         {
@@ -32,9 +33,22 @@ namespace Kw.Shell
 
         private static string RenameOpn(string s) => s.StartsWith("Opn.") ? "Kw." + s.Substring(4) : s;
 
+        struct s1
+        {
+            public int i;
+        }
+
         [STAThread]
         public static void Main(string[] arguments)
         {
+            s1 s1 = new s1();
+
+            var t = typeof(s1);
+            var f = t.GetField("i")!;
+
+            f.SetValueDirect(__makeref(s1), 5);
+            f.SetFieldValue(ref s1, 7);
+
             int[] ieni = { 1, 2, 3 };
 
             //ieni = null;

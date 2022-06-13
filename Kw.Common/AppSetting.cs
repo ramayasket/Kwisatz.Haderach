@@ -51,9 +51,9 @@ namespace Kw.Common
     public class AppSetting
     {
         public string Name { get; private set; }
-        public string Default { get; set; }
+        public string? Default { get; set; }
 
-        public string Value
+        public string? Value
         {
             get
             {
@@ -62,13 +62,13 @@ namespace Kw.Common
             }
         }
 
-        public AppSetting(string name, string @default = null)
+        public AppSetting(string name, string? @default = null)
         {
             Name = name;
             Default = @default;
         }
 
-        public static implicit operator string(AppSetting that)
+        public static implicit operator string?(AppSetting that)
         {
             return that.Value;
         }

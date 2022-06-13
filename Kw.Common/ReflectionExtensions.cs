@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Kw.Common
 {
@@ -13,9 +11,14 @@ namespace Kw.Common
     /// </summary>
     public static class ReflectionExtensions
     {
+        public static void SetFieldValue<T>(this FieldInfo i, ref T target, object value) where T : struct
+        {
+            i.SetValueDirect(__makeref(target), value);
+        }
+
         public static FieldInfo[] GetFieldsFlattenHierarchy(this Type type, BindingFlags flags)
         {
-            if (type == null) throw new ArgumentNullException("type");
+            if (type == null) throw new ArgumentNullException(nameof(type));
 
             flags &= ~BindingFlags.FlattenHierarchy;
             flags |= BindingFlags.DeclaredOnly;
@@ -47,9 +50,9 @@ namespace Kw.Common
         {
             if (member == null) throw new ArgumentNullException(nameof(member));
 
-            if (member.IsDefined(typeof (TA), inherit))
+            if (member.IsDefined(typeof(TA), inherit))
             {
-                return member.GetCustomAttributes(typeof (TA), inherit).OfType<TA>().SingleOrDefault();
+                return member.GetCustomAttributes(typeof(TA), inherit).OfType<TA>().SingleOrDefault();
             }
 
             return null;
