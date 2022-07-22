@@ -13,6 +13,8 @@ namespace Kw.Common
     /// TODO English comments
     public static class CommonExtensions
     {
+        public static T SafeValue<T>(this T? nullable) where T : struct => nullable ?? default;
+
         /// <summary>
         /// Safely selects on a collection.
         /// </summary>
