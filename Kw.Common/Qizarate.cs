@@ -1,7 +1,5 @@
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Text;
 
 namespace Kw.Common
 {
@@ -47,10 +45,10 @@ namespace Kw.Common
             assembly ??= Assembly.GetExecutingAssembly();
 
             var fullName = assembly.GetName().Name + "." + name;
-            return assembly.GetManifestResourceStream(fullName);
+            return assembly.GetManifestResourceStream(fullName)!;
         }
     }
-    
+
     /// <summary>
     /// Library-wide typed storage.
     /// </summary>
