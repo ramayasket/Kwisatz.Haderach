@@ -1,37 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
-        <CodeAnalysisRuleSet>..\etc\Kwisatz.Haderach.ruleset</CodeAnalysisRuleSet>
-        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <LangVersion>9.0</LangVersion>
-        <OutputPath>..\bin\</OutputPath>
-        <OutputType>Exe</OutputType>
-        <RootNamespace>Kw.Shell</RootNamespace>
-        <SignAssembly>true</SignAssembly>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
+    <CodeAnalysisRuleSet>..\etc\Kwisatz.Haderach.ruleset</CodeAnalysisRuleSet>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>9.0</LangVersion>
+    <OutputPath>..\bin\</OutputPath>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Kw.Shell</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
+    <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DefineConstants>DEBUG;TRACE</DefineConstants>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="..\etc\Kwisatz.Haderach.cs" Link="Properties\Kwisatz.Haderach.cs" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\etc\Kwisatz.Haderach.cs" Link="Properties\Kwisatz.Haderach.cs" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Syncfusion.Licensing" Version="18.2.0.45" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Licensing" Version="18.2.0.45" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\Kw.Aspects\Kw.Aspects.csproj" />
-        <ProjectReference Include="..\Kw.Common\Kw.Common.csproj" />
-        <ProjectReference Include="..\Kw.WinAPI\Kw.WinAPI.csproj" />
-        <ProjectReference Include="..\Kw.Windows.Forms\Kw.Windows.Forms.csproj" />
-        <ProjectReference Include="..\Kw.Windows\Kw.Windows.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kw.Aspects\Kw.Aspects.csproj" />
+    <ProjectReference Include="..\Kw.Common\Kw.Common.csproj" />
+    <ProjectReference Include="..\Kw.WinAPI\Kw.WinAPI.csproj" />
+    <ProjectReference Include="..\Kw.Windows.Forms\Kw.Windows.Forms.csproj" />
+    <ProjectReference Include="..\Kw.Windows\Kw.Windows.csproj" />
+  </ItemGroup>
 
 </Project>

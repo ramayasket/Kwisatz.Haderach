@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kw.Common;
 using Kw.Common.ZSpitz;
@@ -35,21 +36,10 @@ namespace Kw.Shell
 
         private static string RenameOpn(string s) => s.StartsWith("Opn.") ? "Kw." + s.Substring(4) : s;
 
-        struct s1
-        {
-            public int i;
-        }
-
         [STAThread]
-        public static void Main(string[] arguments)
+        public static async Task Main(string[] arguments)
         {
-            s1 s1 = new s1();
-
-            var t = typeof(s1);
-            var f = t.GetField("i")!;
-
-            f.SetValueDirect(__makeref(s1), 5);
-            f.SetFieldValue(ref s1, 7);
+            var xx = await ExecutionTimings.Measure(async () => await Task.Delay(1000));
 
             int[] ieni = { 1, 2, 3 };
 

@@ -1,0 +1,24 @@
+# To learn more about .editorconfig see https://aka.ms/editorconfigdocs
+###############################
+# Core EditorConfig Options   #
+###############################
+root = true
+# All files
+[*]
+indent_style = space
+
+# 2-indent
+[*.{csproj, json}]
+indent_size = 2
+
+# Code files
+[*.{cs}]
+indent_size = 4
+insert_final_newline = true
+charset = utf-8-bom
+
+[*.{cs}]
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = none
+dotnet_diagnostic.*.severity = none

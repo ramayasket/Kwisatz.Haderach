@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Kw.Common")]
-[assembly: AssemblyVersion("2.1.8.0")]
+[assembly: AssemblyVersion("2.1.8.1")]
 [assembly: AssemblyDescription("All purpose shared classes")]
 [assembly: Guid("00000000-0001-11e8-9876-00055d74a52d")]
 
@@ -41,6 +41,7 @@ using System.Runtime.InteropServices;
     13.06.2022    2.1.7.1        SetFieldValue
     22.07.2022    2.1.7.2        SafeValue
     07.08.2022    2.1.8.0        ExecutionTiming*
+    09.08.2022    2.1.8.1        ExecutionTiming+async
 */
 
 /// <summary>
