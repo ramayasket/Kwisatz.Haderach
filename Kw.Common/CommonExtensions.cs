@@ -53,24 +53,22 @@ namespace Kw.Common
         /// </summary>
         /// <typeparam name="T">Struct type.</typeparam>
         /// <param name="nvalue">Nullabe value.</param>
-        public static T ValueOrDefault<T>(this T? nvalue) where T:struct
+        public static T ValueOrDefault<T>(this T? nvalue) where T : struct
         {
             // ReSharper disable once MergeConditionalExpression
             return nvalue.HasValue ? nvalue.Value : default(T);
         }
         
-        /// <summary>
-        /// Safely returns dictionary entry.
-        /// </summary>
-        /// <typeparam name="TK">Key type</typeparam>
-        /// <typeparam name="TV">Value type</typeparam>
-        /// <param name="map">Dictionary object</param>
-        /// <param name="key">Key object</param>
-        /// <returns>Keyed value or default</returns>
-        public static TV ValueOrDefault<TK, TV>(this IDictionary<TK, TV> map, TK key)
+        public static TV ValueOrDefault<TK, TV>(this IDictionary<TK, TV> map, TK key) where TV : struct
         {
             return map.ContainsKey(key) ? map[key] : default(TV);
         }
+
+        public static TV? ValueOrNull<TK, TV>(this IDictionary<TK, TV> map, TK key) where TV : class
+        {
+            return map.ContainsKey(key) ? map[key] : null;
+        }
+
         /// <summary>
         /// Returns new map with pairs copied from another map.
         /// </summary>
