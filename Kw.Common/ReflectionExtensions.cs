@@ -46,7 +46,7 @@ namespace Kw.Common
             return fields.ToArray();
         }
 
-        public static TA QuerySingleAttribute<TA>(this MemberInfo member, bool inherit) where TA : Attribute
+        public static TA? QuerySingleAttribute<TA>(this MemberInfo member, bool inherit) where TA : Attribute
         {
             if (member == null) throw new ArgumentNullException(nameof(member));
 
