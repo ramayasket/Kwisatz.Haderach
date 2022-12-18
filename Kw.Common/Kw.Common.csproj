@@ -1,33 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
-        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
-        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <LangVersion>10.0</LangVersion>
-        <NoWarn>CS1591;CS8625;CS8618;CS8600;CS8601;CS8602;CS8603;CS8604;CS8629;</NoWarn>
-        <Nullable>enable</Nullable>
-        <OutputPath>..\bin\</OutputPath>
-        <RootNamespace>Kw.Common</RootNamespace>
-        <SignAssembly>true</SignAssembly>
-        <TargetFramework>netstandard2.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Version>2.1.8.4</Version>
+    <LangVersion>10.0</LangVersion>
+    <NoWarn>CS1591;CS8625;CS8618;CS8600;CS8601;CS8602;CS8603;CS8604;CS8629;NU1803;</NoWarn>
+    <Nullable>enable</Nullable>
+    <OutputPath>..\bin\</OutputPath>
+    <RootNamespace>Kw.Common</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DefineConstants>DEBUG;TRACE</DefineConstants>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="..\etc\Kwisatz.Haderach.cs" Link="Properties\Kwisatz.Haderach.cs" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\etc\Kwisatz.Haderach.cs" Link="Properties\Kwisatz.Haderach.cs" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-      <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
-      <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="4.7.0" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="4.7.0" />
+  </ItemGroup>
 
 </Project>

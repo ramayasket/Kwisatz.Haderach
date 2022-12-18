@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Kw.Common")]
-[assembly: AssemblyVersion("2.1.8.3")]
+[assembly: AssemblyVersion("2.1.8.4")]
 [assembly: AssemblyDescription("All purpose shared classes")]
 [assembly: Guid("00000000-0001-11e8-9876-00055d74a52d")]
 
@@ -44,6 +44,7 @@ using System.Runtime.InteropServices;
     09.08.2022    2.1.8.1        ExecutionTiming+async
     02.08.2022    2.1.8.2        ValueOrNull
     23.11.2022    2.1.8.3        QuerySingleAttribute TA?
+    18.12.2022    2.1.8.4        GetHash()/GetLongHash()
 */
 
 /// <summary>

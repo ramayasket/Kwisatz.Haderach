@@ -39,6 +39,9 @@ namespace Kw.Shell
         [STAThread]
         public static async Task Main(string[] arguments)
         {
+            var h = "Andrique".GetHash();
+            var lh = "Andrique".GetLongHash();
+
             var xx = await ExecutionTimings.Measure(async () => await Task.Delay(1000));
 
             int[] ieni = { 1, 2, 3 };
