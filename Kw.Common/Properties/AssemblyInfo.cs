@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Kw.Common")]
-[assembly: AssemblyVersion("2.1.8.5")]
+[assembly: AssemblyVersion("2.1.8.6")]
 [assembly: AssemblyDescription("All purpose shared classes")]
 [assembly: Guid("00000000-0001-11e8-9876-00055d74a52d")]
 
@@ -46,6 +46,7 @@ using System.Runtime.InteropServices;
     23.11.2022    2.1.8.3        QuerySingleAttribute TA?
     18.12.2022    2.1.8.4        GetHash()/GetLongHash()
     18.12.2022    2.1.8.5        Newtonsoft.Json upgrade
+    06.02.2023    2.1.8.6        Select/ToArray()
 */
 
 /// <summary>

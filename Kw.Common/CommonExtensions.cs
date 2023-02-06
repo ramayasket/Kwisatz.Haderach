@@ -1,4 +1,5 @@
 #nullable enable
+using Kw.Common.OneOf.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Kw.Common
     /// TODO English comments
     public static class CommonExtensions
     {
+        public static R[] ToArray<T,R>(this IEnumerable<T> source, Func<T, R> selector) => source.Select(selector).ToArray();
+        
         public static T SafeValue<T>(this T? nullable) where T : struct => nullable ?? default;
 
         /// <summary>

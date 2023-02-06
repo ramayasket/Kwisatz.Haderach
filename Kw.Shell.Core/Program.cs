@@ -46,6 +46,8 @@ namespace Kw.Shell
 
             int[] ieni = { 1, 2, 3 };
 
+            int[] fieni = ieni.ToArray(x => x + 5);
+
             //ieni = null;
 
             var zlp = (5).Out(ieni);
