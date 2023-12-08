@@ -16,11 +16,11 @@ namespace Kw.Common.DynamicResources
     /// </remarks>
     public static class DynamicResourcePool<T> where T : class, IDisposable
     {
-        private static readonly object _guard = new object();
-        private static readonly Dictionary<T, DynamicResourceAllocator<T>> _instances = new Dictionary<T, DynamicResourceAllocator<T>>();
+        static readonly object _guard = new object();
+        static readonly Dictionary<T, DynamicResourceAllocator<T>> _instances = new Dictionary<T, DynamicResourceAllocator<T>>();
 
         [ThreadStatic]
-        private static T _resource;
+        static T _resource;
 
         /// <summary>
         /// Количество ресурсов в пуле.

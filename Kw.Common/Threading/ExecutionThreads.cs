@@ -12,11 +12,11 @@ namespace Kw.Common.Threading
     /// </summary>
     public class ExecutionThreads
     {
-        private readonly Queue<ExecutionThread> _queuedTasks = new Queue<ExecutionThread>();
-        private readonly HashSet<ExecutionThread> _activeTasks = new HashSet<ExecutionThread>();
-        private readonly ManualResetEvent _empty = new ManualResetEvent(true);
+        readonly Queue<ExecutionThread> _queuedTasks = new Queue<ExecutionThread>();
+        readonly HashSet<ExecutionThread> _activeTasks = new HashSet<ExecutionThread>();
+        readonly ManualResetEvent _empty = new ManualResetEvent(true);
 
-        private readonly List<Exception> _errors = new List<Exception>();
+        readonly List<Exception> _errors = new List<Exception>();
 
         /// <summary>
         /// Максимальное количество потоков.
@@ -213,7 +213,7 @@ namespace Kw.Common.Threading
             Join();
         }
 
-        private static int DivideUp(int divide, int divideBy)
+        static int DivideUp(int divide, int divideBy)
         {
             var division = divide / divideBy;
 
@@ -253,7 +253,7 @@ namespace Kw.Common.Threading
             Synchronous(p => p.InternalUnregister(task));
         }
 
-        private void InternalUnregister(ExecutionThread task)
+        void InternalUnregister(ExecutionThread task)
         {
             _activeTasks.Remove(task);
 
@@ -271,7 +271,7 @@ namespace Kw.Common.Threading
             }
         }
 
-        private void InternalEnqueue(ExecutionThread task)
+        void InternalEnqueue(ExecutionThread task)
         {
             _empty.Reset();
             Empty?.Invoke(false);
@@ -279,7 +279,7 @@ namespace Kw.Common.Threading
             PromoteTasks();
         }
 
-        private void PromoteTasks()
+        void PromoteTasks()
         {
             var extra = Math.Min(Capacity - _activeTasks.Count, _queuedTasks.Count);
 
@@ -292,7 +292,7 @@ namespace Kw.Common.Threading
             }
         }
 
-        private void Synchronous(Action<ExecutionThreads> deed)
+        void Synchronous(Action<ExecutionThreads> deed)
         {
             lock (this)
             {

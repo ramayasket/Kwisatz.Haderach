@@ -11,7 +11,7 @@ namespace Kw.Common.ZSpitz
     public delegate (string result, Dictionary<string, (int start, int length)>? pathSpans) Renderer(object o, OneOf<string, Language?> languageArg, bool usePathSpans);
 
     public static class Renderers {
-        private static readonly Dictionary<string, Renderer> writers =
+        static readonly Dictionary<string, Renderer> writers =
             new(StringComparer.InvariantCultureIgnoreCase) {
                 {CSharp, (o, languageArg, usePathSpans) => new CSharpWriterVisitor(o, usePathSpans).GetResult() },
                 {VisualBasic, (o, languageArg, usePathSpans) => new VBWriterVisitor(o, usePathSpans).GetResult() },

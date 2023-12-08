@@ -17,7 +17,7 @@ namespace Kw.Common.ZSpitz.Util {
             orReferenceType && !t.IsValueType || 
             t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>);
 
-        private static readonly Dictionary<Type, bool> numericTypes = new() {
+        static readonly Dictionary<Type, bool> numericTypes = new() {
             [typeof(byte)] = true,
             [typeof(short)] = true,
             [typeof(int)] = true,
@@ -37,7 +37,7 @@ namespace Kw.Common.ZSpitz.Util {
         public static bool IsNonIntegral(this Type type) => numericTypes.TryGetValue(type, out var isIntegeral) && !isIntegeral;
 
         // TODO implement some sort of caching here?
-        private static T readStaticField<T>(string name) {
+        static T readStaticField<T>(string name) {
             var fld = typeof(T).GetField(name, BindingFlags.Public | BindingFlags.Static);
             if (fld is null) { throw new InvalidOperationException($"Type '{typeof(T)}' doesn't have a '{name}' field"); }
             var value = fld.GetValue(null);
@@ -62,7 +62,7 @@ namespace Kw.Common.ZSpitz.Util {
         public static bool IsVBAnonymousDelegate(this Type type) =>
             type.HasAttribute<CompilerGeneratedAttribute>() && type.Name.Contains("VB$AnonymousDelegate");
 
-        private static readonly Dictionary<Type, string> csharpKeywordTypes = new() {
+        static readonly Dictionary<Type, string> csharpKeywordTypes = new() {
             {typeof(bool), "bool"},
             {typeof(byte), "byte"},
             {typeof(sbyte), "sbyte"},
@@ -81,7 +81,7 @@ namespace Kw.Common.ZSpitz.Util {
             {typeof(void), "void" }
         };
 
-        private static readonly Dictionary<Type, string> vbKeywordTypes = new() {
+        static readonly Dictionary<Type, string> vbKeywordTypes = new() {
             {typeof(bool), "Boolean"},
             {typeof(byte), "Byte"},
             {typeof(char), "Char"},
@@ -172,7 +172,7 @@ namespace Kw.Common.ZSpitz.Util {
             return nongenericName;
         }
 
-        private static readonly Dictionary<Type, bool> tupleTypes = new() {
+        static readonly Dictionary<Type, bool> tupleTypes = new() {
             { typeof(ValueTuple<>), true },
             {typeof(ValueTuple<,>), true },
             {typeof(ValueTuple<,,>), true },
@@ -218,7 +218,7 @@ namespace Kw.Common.ZSpitz.Util {
         public static IEnumerable<T> GetAttributes<T>(this Type type, bool inherit) where T : Attribute =>
             type.GetCustomAttributes(typeof(T), inherit).Cast<T>();
 
-        private static readonly BindingFlags defaultLookup = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static;
+        static readonly BindingFlags defaultLookup = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static;
         public static PropertyInfo[] GetIndexers(this Type type, bool inherit, BindingFlags? bindingFlags = default) {
             bindingFlags ??= defaultLookup;
             var memberName = type.GetAttributes<DefaultMemberAttribute>(inherit).FirstOrDefault()?.MemberName;
@@ -288,7 +288,7 @@ namespace Kw.Common.ZSpitz.Util {
                 !t.IsGenericTypeDefinition &&
                 (t.GetGenericTypeDefinition() == value || t.GetGenericArguments().Any(x => x.ContainsType(value)));
 
-        private static readonly Dictionary<Type, Type[]> builtinImplicitConversions = new[] {
+        static readonly Dictionary<Type, Type[]> builtinImplicitConversions = new[] {
             (typeof(sbyte), new [] {
                 typeof(short), typeof(int), typeof(long), typeof(float), typeof(double), typeof(decimal)
             }),

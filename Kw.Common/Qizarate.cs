@@ -8,7 +8,7 @@ namespace Kw.Common
     /// </summary>
     public static partial class Qizarate
     {
-        private static bool _exiting;
+        static bool _exiting;
 
         /// <summary>
         /// True when the application is being shutting down. Setting this flag is irreversible.

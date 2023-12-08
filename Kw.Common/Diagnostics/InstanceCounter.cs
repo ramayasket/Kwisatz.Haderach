@@ -9,8 +9,8 @@ namespace Kw.Common.Diagnostics
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1815:Override equals and operator equals on value types", Justification = "By design")]
     public readonly struct InstanceCounter<T>
     {
-        private readonly long _currentIndex;
-        private static long _globalIndex;
+        readonly long _currentIndex;
+        static long _globalIndex;
 
         /// <summary> Инициализирует новый экземпляр структуры <see cref="InstanceCounter{T}"/>. </summary>
         /// <param name="unused"> Неиспользуемый параметр, введённый из-за невозможности иметь конструкторы по умолчанию для структур. </param>

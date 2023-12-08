@@ -18,11 +18,11 @@ using Kw.Common.ZSpitz.Util;
 namespace Kw.Common.ZSpitz
 {
     public class FactoryMethodsWriterVisitor : BuiltinsWriterVisitor {
-        private static readonly string[] insertionPointKeys = new[] { "usings", "declarations", "" };
+        static readonly string[] insertionPointKeys = new[] { "usings", "declarations", "" };
 
-        private Dictionary<ParameterExpression, int>? ids;
+        Dictionary<ParameterExpression, int>? ids;
 
-        private void writeUsings() {
+        void writeUsings() {
             SetInsertionPoint("usings");
             var @using = language switch
             {
@@ -45,7 +45,7 @@ namespace Kw.Common.ZSpitz
 
         /// <param name="name"></param>
         /// <param name="args">The arguments to write. If a tuple of string and node type, will write as single node. If a tuple of string and property type, will write as multiple nodes.</param>
-        private void writeMethodCall(string name, IEnumerable args) {
+        void writeMethodCall(string name, IEnumerable args) {
             var isVBKeyword = language == VisualBasic && VBKeywords.Contains(name);
             if (isVBKeyword) {Write("[");}
             Write(name);
@@ -132,7 +132,7 @@ namespace Kw.Common.ZSpitz
             Write(")");
         }
 
-        private void writeMethodCall(Expression<Action> expr) {
+        void writeMethodCall(Expression<Action> expr) {
             if (expr.Body is not MethodCallExpression callExpr) { throw new ArgumentException("Not a MethodCallExpression"); }
 
             var args = NewArrayInit(
@@ -167,7 +167,7 @@ namespace Kw.Common.ZSpitz
             writeMethodCall(callExpr.Method.Name, pairs.ToList());
         }
 
-        private static readonly MethodInfo powerMethod = typeof(Math).GetMethod("Pow")!;
+        static readonly MethodInfo powerMethod = typeof(Math).GetMethod("Pow")!;
         protected override void WriteBinary(BinaryExpression expr) {
             var methodName = FactoryMethodNames[expr.NodeType];
             var args = new List<object?> {

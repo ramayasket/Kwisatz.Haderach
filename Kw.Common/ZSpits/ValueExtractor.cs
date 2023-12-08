@@ -5,8 +5,8 @@ using Kw.Common.ZSpitz.Util;
 namespace Kw.Common.ZSpitz
 {
     public class ValueExtractor : ExpressionVisitor {
-        private readonly Stack<Expression> expressionStack = new();
-        private readonly Dictionary<Expression, bool> evaluables = new();
+        readonly Stack<Expression> expressionStack = new();
+        readonly Dictionary<Expression, bool> evaluables = new();
 
         public override Expression? Visit(Expression? node) {
             if (node is null) { return null; }

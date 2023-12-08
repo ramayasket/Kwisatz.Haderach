@@ -14,7 +14,7 @@ namespace Kw.Common.ZSpitz.Util {
         public static bool IsNullOrEmpty([NotNullWhen(false)] this string? s) => string.IsNullOrEmpty(s);
         public static bool ContainsWhitespace(this string s) => s.Any(c => char.IsWhiteSpace(c));
 
-        private static readonly Regex whitespace = new(@"\s+");
+        static readonly Regex whitespace = new(@"\s+");
         public static string ReplaceWhitespace(this string s, string replacement = "") => whitespace.Replace(s, replacement);
         public static bool ContainsAny(this string s, params string[] testStrings) => testStrings.Any(x => s.Contains(x));
         public static bool StartsWithAny(this string s, params string[] testStrings) => testStrings.Any(x => s.StartsWith(x));
@@ -22,7 +22,7 @@ namespace Kw.Common.ZSpitz.Util {
         public static void AppendTo(this string? s, StringBuilder sb) => sb.Append(s);
 
         // https://stackoverflow.com/a/14502246/111794
-        private static string toCSharpLiteral(this string input) {
+        static string toCSharpLiteral(this string input) {
             var literal = new StringBuilder("\"", input.Length + 2);
             foreach (var c in input) {
                 switch (c) {
@@ -51,7 +51,7 @@ namespace Kw.Common.ZSpitz.Util {
             return literal.ToString();
         }
 
-        private static readonly char[] specialChars = new[] {
+        static readonly char[] specialChars = new[] {
             '\'','\"', '\\','\0','\a','\b','\f','\n','\r', '\t','\v'
         };
         public static bool HasSpecialCharacters(this string s) =>

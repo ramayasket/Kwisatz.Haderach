@@ -370,7 +370,7 @@ namespace Kw.Common
         /// Запоминает ссылку на метод.
         /// </summary>
         /// <typeparam name="T">Тип входных данных для метода.</typeparam>
-        private readonly struct ActionWrapper<T>
+        readonly struct ActionWrapper<T>
         {
             /// <summary>
             /// Ссылка на метод.
@@ -378,7 +378,7 @@ namespace Kw.Common
             public Action<T> Action => _action;
 
             /// <summary>Ссылка на метод.</summary>
-            private readonly Action<T> _action;
+            readonly Action<T> _action;
 
             /// <param name="action">Ссылка на метод.</param>
             public ActionWrapper(Action<T> action)

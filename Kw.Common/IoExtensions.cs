@@ -10,7 +10,7 @@ namespace Kw.Common
     /// TODO XML comments
     public static class IoExtensions
     {
-        private static string ToFullPath(FileInfo info)
+        static string ToFullPath(FileInfo info)
         {
             var sinfo = info.ToString();
 

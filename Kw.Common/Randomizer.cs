@@ -13,10 +13,10 @@ namespace Kw.Common
     public sealed class Randomizer<T>
         where T:struct, IComparable, IComparable<T>, IConvertible, IEquatable<T>
     {
-        private readonly Random _random;
-        private readonly T _low;
-        private readonly T _high;
-        private readonly Type _type;
+        readonly Random _random;
+        readonly T _low;
+        readonly T _high;
+        readonly Type _type;
 
         //// ReSharper disable StaticMemberInGenericType
         //// ===========================================
@@ -29,7 +29,7 @@ namespace Kw.Common
         /// <remarks>
         /// Int64 and UInt64 aren't supported because <seealso cref="System.Random"/> has no support for them.
         /// </remarks>
-        private static readonly Type[] WholeTypes = {
+        static readonly Type[] WholeTypes = {
             typeof(sbyte), typeof(byte),
             typeof(short), typeof(ushort),
             typeof(int), typeof(uint),
@@ -38,7 +38,7 @@ namespace Kw.Common
         /// <summary>
         /// Supported floating number types.
         /// </summary>
-        private static readonly Type[] FloatingTypes = {
+        static readonly Type[] FloatingTypes = {
             typeof(float), typeof(double), typeof(decimal)
         };
 
@@ -91,7 +91,7 @@ namespace Kw.Common
             return y;
         }
 
-        private int NextWhole()
+        int NextWhole()
         {
             var low = (int)Convert.ChangeType(_low, typeof(int));
             var high = (int)Convert.ChangeType(_high, typeof(int));
@@ -99,7 +99,7 @@ namespace Kw.Common
             return _random.Next(low, high);
         }
 
-        private double NextFloating()
+        double NextFloating()
         {
             var x = _random.NextDouble();
 

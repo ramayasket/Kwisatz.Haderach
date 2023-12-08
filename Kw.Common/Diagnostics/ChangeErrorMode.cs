@@ -13,10 +13,10 @@ namespace Kw.Common.Diagnostics
         /// <param name="uMode"> The process error mode. </param>
         /// <returns> Предыдущее значение режима. </returns>
         [DllImport("kernel32.dll")]
-        private static extern ErrorModes SetErrorMode(ErrorModes uMode);
+        static extern ErrorModes SetErrorMode(ErrorModes uMode);
 
         /// <summary> Предыдущий режим. </summary>
-        private readonly ErrorModes oldMode;
+        readonly ErrorModes oldMode;
 
         /// <summary> Инициализирует новый экземпляр структуры <see cref="ChangeErrorMode"/>, устанавливая режим обработки ошибок. </summary>
         /// <param name="mode"> Режим. </param>
@@ -29,7 +29,7 @@ namespace Kw.Common.Diagnostics
         /// <summary> Уничтожение на самом деле устанавливает старый режим. </summary>
         public void Dispose() => SetErrorModeWithCheck(oldMode);
 
-        private static ErrorModes SetErrorModeWithCheck(ErrorModes uMode)
+        static ErrorModes SetErrorModeWithCheck(ErrorModes uMode)
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 throw new PlatformNotSupportedException("Windows only feature yet");

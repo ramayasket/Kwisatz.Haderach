@@ -55,7 +55,7 @@ namespace Kw.Common
             set { _value = (_value & 0x7fffffff) | (uint)value; }
         }
 
-        private uint _value;
+        uint _value;
 
         /// <summary>
         /// Initializes a new instance of HRESULT structure with Int32 value.

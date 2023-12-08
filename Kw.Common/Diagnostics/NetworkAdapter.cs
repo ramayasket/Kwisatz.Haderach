@@ -15,7 +15,7 @@ namespace Kw.Common.Diagnostics
         /// <param name="adapterName"> Имя сетевого адаптера. </param>
         public static void Disable(string adapterName = "Ethernet") => Switch(adapterName, false);
 
-        private static void Switch(string adapterName, bool enabled)
+        static void Switch(string adapterName, bool enabled)
         {
             if (string.IsNullOrEmpty(adapterName))
                 throw new ArgumentNullException(nameof(adapterName), "Не задано имя сетевого адаптера.");

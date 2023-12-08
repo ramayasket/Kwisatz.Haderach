@@ -13,7 +13,7 @@ namespace Kw.Common.ZSpitz
         internal static void Deconstruct(this Expression expr, out ExpressionType nodeType, out Type type) =>
             (nodeType, type) = (expr.NodeType, expr.Type);
 
-        private static IEnumerable<(string path, Expression clause)> logicalCombinedClauses(string path, Expression expr, params ExpressionType[] nodeTypes) {
+        static IEnumerable<(string path, Expression clause)> logicalCombinedClauses(string path, Expression expr, params ExpressionType[] nodeTypes) {
             // The return type cannot be IEnumerable<BinaryExpression> because it might contain any bool-returning expression
             if (expr.NodeType.Outside(nodeTypes) || expr.Type != typeof(bool)) {
                 yield return (path, expr);

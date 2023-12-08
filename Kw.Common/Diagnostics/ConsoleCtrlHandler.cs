@@ -10,17 +10,17 @@ namespace Kw.Common.Diagnostics
     {
         /// <summary> Делегат для события от консоли. </summary>
         /// <param name="consoleEvent"> Возникшее событие. </param>
-        private delegate void ControlEventHandler(ConsoleEvent consoleEvent);
+        delegate void ControlEventHandler(ConsoleEvent consoleEvent);
 
         /// <summary> Установка/снятие обработчика события от консоли. </summary>
         /// <param name="e"> Обработчик. </param>
         /// <param name="add"> true для установки обработчика, false для его удаления. </param>
         /// <returns> true, если метод отработал успешно, иначе false. Причину можно получить с помощью вызова GetLastError. </returns>
         [DllImport("kernel32.dll")]
-        private static extern bool SetConsoleCtrlHandler(ControlEventHandler e, bool add);
+        static extern bool SetConsoleCtrlHandler(ControlEventHandler e, bool add);
 
-        private Action<ConsoleEvent> _action;
-        private ControlEventHandler _handler;
+        Action<ConsoleEvent> _action;
+        ControlEventHandler _handler;
 
         /// <summary> Инициализирует новый экземпляр класса <see cref="ConsoleCtrlHandler"/>. </summary>
         /// <param name="action"> Делегат-обработчик. </param>
@@ -36,7 +36,7 @@ namespace Kw.Common.Diagnostics
 
         /// <summary> Обработчик события от консоли. Обработчик должен быстро завершаться. </summary>
         /// <param name="consoleEvent"> Возникшее событие. </param>
-        private void OnControlEvent(ConsoleEvent consoleEvent) => _action(consoleEvent);
+        void OnControlEvent(ConsoleEvent consoleEvent) => _action(consoleEvent);
 
         /// <summary> Уничтожение объекта. </summary>
         public void Dispose()
@@ -46,7 +46,7 @@ namespace Kw.Common.Diagnostics
             _action = null;
         }
 
-        private static bool SetConsoleCtrlHandlerWithCheck(ControlEventHandler e, bool add)
+        static bool SetConsoleCtrlHandlerWithCheck(ControlEventHandler e, bool add)
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 throw new PlatformNotSupportedException("Windows only feature yet");

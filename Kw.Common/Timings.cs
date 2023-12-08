@@ -47,7 +47,7 @@ namespace Kw.Common
 
         internal static readonly Dictionary<string, Information> _entries = new Dictionary<string, Information>();
 
-        private static Information EnsureInformation(string s)
+        static Information EnsureInformation(string s)
         {
             lock (_entries)
             {

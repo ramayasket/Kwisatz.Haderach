@@ -46,7 +46,7 @@ namespace Kw.Common.Diagnostics
         }
 
         /// <summary> Весьма незамысловатый способ определения работы на .NET Core. </summary>
-        private static readonly bool IsNetCoreApp = typeof(bool).Assembly.GetName().Name == "System.Private.CoreLib";
+        static readonly bool IsNetCoreApp = typeof(bool).Assembly.GetName().Name == "System.Private.CoreLib";
 
         /// <summary> Порождение процесса-копии текущего процесса. </summary>
         /// <returns> Описатель порождённого процесса. </returns>

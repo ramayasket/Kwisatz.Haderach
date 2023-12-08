@@ -11,9 +11,9 @@ namespace Kw.Common.Threading
     /// </summary>
     public class Event
     {
-        private DateTime? _happened = null;
+        DateTime? _happened = null;
         protected object _state = null;
-        private readonly ManualResetEvent _waitable = new ManualResetEvent(false);
+        readonly ManualResetEvent _waitable = new ManualResetEvent(false);
         protected Type _targetType = null;
 
         public string Name { get; set; }

@@ -9,8 +9,8 @@ namespace Kw.Common.Diagnostics
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1815:Override equals and operator equals on value types", Justification = "Не нужно для этой структуры")]
     public struct Watch : IDisposable
     {
-        private readonly Action<double> _writer;
-        private long _start;
+        readonly Action<double> _writer;
+        long _start;
 
         /// <summary> Инициализирует новый экземпляр структуры <see cref="Watch"/>. </summary>
         /// <param name="writer"> Необязательный собственный делегат для вывода результатов замеров. </param>
@@ -27,11 +27,11 @@ namespace Kw.Common.Diagnostics
 
         [return: MarshalAs(UnmanagedType.Bool)]
         [DllImport("kernel32", EntryPoint = "QueryPerformanceCounter", SetLastError = true)]
-        private static extern bool QueryPerformanceCounter(ref long lPerformanceCounter);
+        static extern bool QueryPerformanceCounter(ref long lPerformanceCounter);
 
         [return: MarshalAs(UnmanagedType.Bool)]
         [DllImport("kernel32", EntryPoint = "QueryPerformanceFrequency", SetLastError = true)]
-        private static extern bool QueryPerformanceFrequency(out long frequency);
+        static extern bool QueryPerformanceFrequency(out long frequency);
 
         /// <summary> Запустить таймер. </summary>
         public void Start() => QueryPerformanceCounter(ref _start);

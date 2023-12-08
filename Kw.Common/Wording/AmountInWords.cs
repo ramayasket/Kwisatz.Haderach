@@ -8,16 +8,16 @@ namespace Kw.Common.Wording
     /// <summary> Класс с данными строкового представления числа. </summary>
     internal sealed class AmountInWords
     {
-        private static readonly object _syncCurrencyRoot = new object();
-        private static readonly object _syncUnitRoot = new object();
-        private static Dictionary<string, UnitInfo> _currencies;
-        private static Dictionary<Units, UnitInfo> _units;
+        static readonly object _syncCurrencyRoot = new object();
+        static readonly object _syncUnitRoot = new object();
+        static Dictionary<string, UnitInfo> _currencies;
+        static Dictionary<Units, UnitInfo> _units;
 
-        private readonly List<string> _result = new List<string>();
+        readonly List<string> _result = new List<string>();
 
-        private long _integralPart;
-        private long _fractalPart;
-        private UnitInfo _currencyInfo;
+        long _integralPart;
+        long _fractalPart;
+        UnitInfo _currencyInfo;
 
         /// <summary> Инициализирует новый экземпляр класса <see cref="AmountInWords"/>. </summary>
         /// <param name="val"> Число для представления. </param>
@@ -100,33 +100,33 @@ namespace Kw.Common.Wording
         /// <param name="amountInWords"> Класс с данными строкового представления. </param>
         public static implicit operator string(AmountInWords amountInWords) => amountInWords.ToString();
 
-        private UnitInfo GetCurrencyInfo(string currency)
+        UnitInfo GetCurrencyInfo(string currency)
         {
             if (!GetCurrencyInfos().ContainsKey(currency))
                 throw new ArgumentOutOfRangeException(nameof(currency), "‚Валюта \"" + currency + "\" не зарегистрирована");
             return _currencies[currency];
         }
 
-        private UnitInfo GetUnitInfo(Units unit)
+        UnitInfo GetUnitInfo(Units unit)
         {
             if (!GetUnitInfos().ContainsKey(unit))
                 throw new ArgumentOutOfRangeException(nameof(unit), "Единица измерения \"" + unit + "\" не зарегистрирована");
             return _units[unit];
         }
 
-        private void Init(decimal val, string currencyCode)
+        void Init(decimal val, string currencyCode)
         {
             _currencyInfo = GetCurrencyInfo(currencyCode);
             Init(val);
         }
 
-        private void Init(decimal val, UnitInfo currency)
+        void Init(decimal val, UnitInfo currency)
         {
             _currencyInfo = currency;
             Init(val);
         }
 
-        private void Init(decimal val)
+        void Init(decimal val)
         {
             val = Math.Abs(val);
             val = Math.Round(val, _currencyInfo.Precision, MidpointRounding.ToEven);
@@ -136,7 +136,7 @@ namespace Kw.Common.Wording
             _integralPart = (long)decIntegral;
         }
 
-        private static string IntegralInWords(long val, UnitInfo info)
+        static string IntegralInWords(long val, UnitInfo info)
         {
             var r = new StringBuilder();
             if (val == 0)
@@ -157,7 +157,7 @@ namespace Kw.Common.Wording
             return r.ToString().Trim();
         }
 
-        private Dictionary<string, UnitInfo> GetCurrencyInfos()
+        Dictionary<string, UnitInfo> GetCurrencyInfos()
         {
             if (_currencies == null)
             {
@@ -175,7 +175,7 @@ namespace Kw.Common.Wording
         }
 
         /// <summary> Получить информацию о единицах измерения. </summary>
-        private Dictionary<Units, UnitInfo> GetUnitInfos()
+        Dictionary<Units, UnitInfo> GetUnitInfos()
         {
             if (_units == null)
             {
@@ -203,7 +203,7 @@ namespace Kw.Common.Wording
 
         /// <summary> Получить настройки валют. </summary>
         /// <returns> Настройки валют. </returns>
-        private Dictionary<string, UnitInfo> LoadCurrencyInfos()
+        Dictionary<string, UnitInfo> LoadCurrencyInfos()
         {
             return new Dictionary<string, UnitInfo>
             {

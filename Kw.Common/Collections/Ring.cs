@@ -57,8 +57,8 @@ namespace Kw.Common.Collections
         {
         }
 
-        private readonly T[] _elements;
-        private int _current;
+        readonly T[] _elements;
+        int _current;
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ namespace Kw.Common.Collections
     [DebuggerDisplay("Count = {Count}")]
     public class Ring<T> : IEnumerable<T>
     {
-        private readonly T[] _elements;
+        readonly T[] _elements;
 
         /// <summary>
         /// Initializes collection from source collection.

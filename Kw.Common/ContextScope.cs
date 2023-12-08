@@ -13,7 +13,7 @@ namespace Kw.Common
     public class ContextScope<T> : IDisposable where T:class
     {
         [ThreadStatic]
-        private static T _context;
+        static T _context;
 
         public ContextScope(T context)
         {

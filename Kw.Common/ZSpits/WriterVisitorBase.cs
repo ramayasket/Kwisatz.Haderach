@@ -20,11 +20,11 @@ namespace Kw.Common.ZSpitz
     }
 
     public abstract class WriterVisitorBase {
-        private readonly List<InsertionPoint> insertionPoints;
-        private InsertionPoint ip;
+        readonly List<InsertionPoint> insertionPoints;
+        InsertionPoint ip;
         protected readonly Language? language;
-        private readonly List<string> pathSegments = new();
-        private readonly bool hasPathSpans;
+        readonly List<string> pathSegments = new();
+        readonly bool hasPathSpans;
 
         protected int CurrentIndentationLevel => ip.indentationLevel;
 

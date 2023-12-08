@@ -12,10 +12,10 @@ namespace Kw.Common
     {
         // This constant is used to determine the key size of the encryption algorithm in bits.
         // We divide this by 8 within the code below to get the equivalent number of bytes.
-        private const int KEYSIZE = 256;
+        const int KEYSIZE = 256;
 
         // This constant determines the number of iterations for the password bytes generation function.
-        private const int DerivationIterations = 1000;
+        const int DerivationIterations = 1000;
 
         public static byte[] Encrypt(byte[] input, string passPhrase)
         {
@@ -105,7 +105,7 @@ namespace Kw.Common
             }
         }
 
-        private static byte[] Generate256BitsOfRandomEntropy()
+        static byte[] Generate256BitsOfRandomEntropy()
         {
             var randomBytes = new byte[32]; // 32 Bytes will give us 256 bits.
             using (var rngCsp = new RNGCryptoServiceProvider())

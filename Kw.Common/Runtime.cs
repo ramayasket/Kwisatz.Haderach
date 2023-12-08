@@ -23,13 +23,13 @@ namespace Kw.Common
             }
         }
 
-        private static T GetNull<T>() where T : class
+        static T GetNull<T>() where T : class
         {
             return (T)null;
         }
 
         //    ReSharper disable once RedundantAssignment
-        private static void SetNull<T>(ref T o) where T : class
+        static void SetNull<T>(ref T o) where T : class
         {
             o = null;
         }

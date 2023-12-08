@@ -53,7 +53,7 @@ namespace Kw.Common.ZSpitz
             }
         }
 
-        private void writeExpression(Expression expr) {
+        void writeExpression(Expression expr) {
             switch (expr.NodeType) {
 
                 case var nodeType when nodeType.Inside(BinaryExpressionTypes):

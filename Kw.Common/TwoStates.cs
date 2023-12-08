@@ -10,7 +10,7 @@ namespace Kw.Common
 
     public class TwoStates : ITwoStates
     {
-        private bool _state = true;
+        bool _state = true;
 
         public void Flop()
         {

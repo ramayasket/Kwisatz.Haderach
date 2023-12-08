@@ -12,9 +12,9 @@ namespace Kw.Common
     {
         internal static long _instances;
 
-        private static bool? _checked;
+        static bool? _checked;
         
-        private static Type TrackingType { get; set; }
+        static Type TrackingType { get; set; }
 
         public static long Instances
         {
@@ -37,7 +37,7 @@ namespace Kw.Common
             Interlocked.Decrement(ref _instances);
         }
 
-        private bool Check()
+        bool Check()
         {
             if (_checked.HasValue)
                 return _checked.Value;
@@ -58,8 +58,8 @@ namespace Kw.Common
 
     public struct InstanceTrackingInfo
     {
-        private readonly Type _trackingType;
-        private readonly long _instances;
+        readonly Type _trackingType;
+        readonly long _instances;
 
         public Type TrackingType => _trackingType;
 
@@ -79,7 +79,7 @@ namespace Kw.Common
 
     public static class InstanceTracking
     {
-        private readonly static HashSet<Type> _trackingTypes = new HashSet<Type>();
+        readonly static HashSet<Type> _trackingTypes = new HashSet<Type>();
         
         internal static void RegisterTracker(Type trackerType)
         {

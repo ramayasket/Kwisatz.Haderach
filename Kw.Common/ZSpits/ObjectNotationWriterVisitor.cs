@@ -13,12 +13,12 @@ using static Kw.Common.ZSpitz.Functions;
 namespace Kw.Common.ZSpitz
 {
     public class ObjectNotationWriterVisitor : WriterVisitorBase {
-        private static readonly string[] insertionPointKeys = new[] { "declarations", "" };
+        static readonly string[] insertionPointKeys = new[] { "declarations", "" };
 
         public ObjectNotationWriterVisitor(object o, OneOf<string, Language?> languageArg, bool hasPathSpans = false)
             : base(o, languageArg.ResolveLanguage() ?? throw new ArgumentException("Invalid language"), insertionPointKeys, hasPathSpans) { }
 
-        private Dictionary<ParameterExpression, int>? ids;
+        Dictionary<ParameterExpression, int>? ids;
 
         protected override void WriteNodeImpl(object? o, bool parameterDeclaration = false, object? metadata = null) {
             if (o is null) {
@@ -116,7 +116,7 @@ namespace Kw.Common.ZSpitz
             }
         }
 
-        private static readonly HashSet<Type> hideNodeType = new() {
+        static readonly HashSet<Type> hideNodeType = new() {
             typeof(BlockExpression),
             typeof(ConditionalExpression),
             typeof(ConstantExpression),
@@ -139,7 +139,7 @@ namespace Kw.Common.ZSpitz
             typeof(TryExpression)
         };
 
-        private void writeCollection(IEnumerable seq, string pathSegment, bool parameterDeclaration = false) {
+        void writeCollection(IEnumerable seq, string pathSegment, bool parameterDeclaration = false) {
             writeNew(seq);
             var items = seq.Cast<object>().ToList();
             if (items.None()) {
@@ -157,7 +157,7 @@ namespace Kw.Common.ZSpitz
             Write("}");
         }
 
-        private Type writeNew(object o) {
+        Type writeNew(object o) {
             Write(
                 language == CSharp ? "new " :
                 language == VisualBasic ? "New " :

@@ -9,7 +9,7 @@ namespace Kw.Common.ZSpitz.Util {
         public static bool HasAttribute<TAttribute>(this MemberInfo mi, bool inherit = false) where TAttribute : Attribute =>
             mi.GetCustomAttributes(typeof(TAttribute), inherit).Any();
 
-        private static (bool isPublic, bool isStatic) bindingFlagsInfo(params MethodBase[] methods) {
+        static (bool isPublic, bool isStatic) bindingFlagsInfo(params MethodBase[] methods) {
             if (methods.None()) { throw new ArgumentException($"'{nameof(methods)} cannot be empty."); }
             var isStatic = false;
             var isPublic = false;
@@ -23,7 +23,7 @@ namespace Kw.Common.ZSpitz.Util {
             return (isPublic, isStatic);
         }
 
-        private static BindingFlags getBindingFlags(this MemberInfo mi) {
+        static BindingFlags getBindingFlags(this MemberInfo mi) {
             var (isPublic, isStatic) = mi switch {
                 ConstructorInfo ci => (ci.IsPublic, ci.IsStatic),
                 EventInfo ei => bindingFlagsInfo(ei.AddMethod!, ei.RemoveMethod!, ei.RaiseMethod!),
@@ -38,7 +38,7 @@ namespace Kw.Common.ZSpitz.Util {
                 (isStatic ? BindingFlags.Static : BindingFlags.Instance);
         }
 
-        private static readonly HashSet<BindingFlags> defaultLookups = new() {
+        static readonly HashSet<BindingFlags> defaultLookups = new() {
             BindingFlags.Public | BindingFlags.Instance,
             BindingFlags.Public | BindingFlags.Static
         };

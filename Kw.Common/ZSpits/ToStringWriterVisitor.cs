@@ -22,14 +22,14 @@ namespace Kw.Common.ZSpitz
 
         // Associate every unique label or anonymous parameter in the tree with an integer.
         // Labels are displayed as UnnamedLabel_#; parameters are displayed as Param_#.
-        private Dictionary<OneOf<LabelTarget, ParameterExpression>, int>? _ids;
+        Dictionary<OneOf<LabelTarget, ParameterExpression>, int>? _ids;
 
-        private int GetLabelId(LabelTarget label) => GetId(label, ref _ids, out var _);
-        private int GetParamId(ParameterExpression p) => GetId(p, ref _ids, out var _);
+        int GetLabelId(LabelTarget label) => GetId(label, ref _ids, out var _);
+        int GetParamId(ParameterExpression p) => GetId(p, ref _ids, out var _);
 
-        private static bool IsBool(Expression node) => node.Type.Inside(typeof(bool), typeof(bool?));
+        static bool IsBool(Expression node) => node.Type.Inside(typeof(bool), typeof(bool?));
 
-        private void DumpLabel(LabelTarget target) {
+        void DumpLabel(LabelTarget target) {
             if (!target.Name.IsNullOrEmpty()) {
                 Write(target.Name);
             } else {

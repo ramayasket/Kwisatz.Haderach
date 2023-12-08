@@ -7,14 +7,14 @@ namespace Kw.Common.Diagnostics
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1815:Override equals and operator equals on value types", Justification = "Не нужно для этой структуры")]
     public readonly struct ValueStopwatch
     {
-        private static readonly double TimestampToTicks = TimeSpan.TicksPerSecond / (double)Stopwatch.Frequency;
+        static readonly double TimestampToTicks = TimeSpan.TicksPerSecond / (double)Stopwatch.Frequency;
 
-        private readonly long _startTimestamp;
+        readonly long _startTimestamp;
 
         /// <summary> Защита от неправильного использования, признак корректной инициализации структуры. </summary>
         public bool IsActive => _startTimestamp != 0;
 
-        private ValueStopwatch(long startTimestamp)
+        ValueStopwatch(long startTimestamp)
         {
             _startTimestamp = startTimestamp;
         }

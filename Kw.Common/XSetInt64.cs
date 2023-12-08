@@ -10,19 +10,19 @@ namespace Kw.Common
     [DebuggerDisplay("Count = {Count}")]
     public class XSetInt64 : IEnumerable<long>
     {
-        private const string L = "l";
+        const string L = "l";
 
-        private class XSetInt64Node : XBase
+        class XSetInt64Node : XBase
         {
             public XSetInt64Node(string contents = null) : base(XRootName, contents) { }
 
-            private static XName XRootName
+            static XName XRootName
             {
                 get { return XName.Get("XSetInt64"); }
             }
         }
 
-        private readonly HashSet<long> _set = new HashSet<long>();
+        readonly HashSet<long> _set = new HashSet<long>();
 
         public XSetInt64(params long[] items)
         {

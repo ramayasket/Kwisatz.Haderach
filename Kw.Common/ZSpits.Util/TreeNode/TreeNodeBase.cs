@@ -8,7 +8,7 @@ namespace Kw.Common.ZSpitz.Util {
             where TCollectionWrapper : IReadOnlyCollection<TNode> {
         public TData? Data { get; set; }
 
-        private readonly IList<TNode> _children;
+        readonly IList<TNode> _children;
         public TCollectionWrapper Children { get; }
 
         protected abstract (IList<TNode> innerCollection, TCollectionWrapper collectionWrapper) InitWith();
@@ -19,7 +19,7 @@ namespace Kw.Common.ZSpitz.Util {
             (_children, Children) = InitWith();
         }
 
-        private TNode? _parent;
+        TNode? _parent;
         public TNode? Parent {
             get => _parent;
             set {

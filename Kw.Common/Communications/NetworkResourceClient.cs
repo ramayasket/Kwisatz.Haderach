@@ -92,7 +92,7 @@ namespace Kw.Common.Communications
             }
         }
 
-        private INetworkResourceWebClient GetClientInternal()
+        INetworkResourceWebClient GetClientInternal()
         {
             var client = WebClientAllocator.Client ?? GetClient();
             return client;

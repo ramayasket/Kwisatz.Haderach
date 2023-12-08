@@ -11,7 +11,7 @@ namespace Kw.Common.ZSpitz.Util {
         public static IEnumerable<Enum> GetIndividualFlags(this Enum value) => 
             getFlags(value, getFlagValues(value.GetType()).ToArray());
 
-        private static IEnumerable<Enum> getFlags(Enum value, Enum[] values) {
+        static IEnumerable<Enum> getFlags(Enum value, Enum[] values) {
             var bits = Convert.ToInt64(value);
             List<Enum> results = new();
             for (var i = values.Length - 1; i >= 0; i--) {
@@ -36,7 +36,7 @@ namespace Kw.Common.ZSpitz.Util {
                     Enumerable.Empty<Enum>();
         }
 
-        private static IEnumerable<Enum> getFlagValues(Type enumType) {
+        static IEnumerable<Enum> getFlagValues(Type enumType) {
             long flag = 0x1;
             foreach (var value in Enum.GetValues(enumType).Cast<Enum>()) {
                 var bits = Convert.ToInt64(value);

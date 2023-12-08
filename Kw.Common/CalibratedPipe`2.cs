@@ -43,24 +43,24 @@ namespace Kw.Common
             }
         }
 
-        private const int ONEK = 1000;
+        const int ONEK = 1000;
 
-        private readonly int _portion;
-        private readonly int _resolution;
-        private int _outstanding;
-        private bool _disposed;
+        readonly int _portion;
+        readonly int _resolution;
+        int _outstanding;
+        bool _disposed;
 
-        private T[] _buffer;
-        private K _id;
-        private int _bufferPosition;
+        T[] _buffer;
+        K _id;
+        int _bufferPosition;
 
-        private DateTime _next;
+        DateTime _next;
 
-        private readonly Queue<(T[], K)> _input = new Queue<(T[], K)>();
+        readonly Queue<(T[], K)> _input = new Queue<(T[], K)>();
 
-        private TimeSpan Tick => TimeSpan.FromMilliseconds(_resolution);
+        TimeSpan Tick => TimeSpan.FromMilliseconds(_resolution);
 
-        private void CalibratedTransfer()
+        void CalibratedTransfer()
         {
             _next = DateTime.Now;
 
@@ -96,7 +96,7 @@ namespace Kw.Common
             }
         }
 
-        private int Copy(int size)
+        int Copy(int size)
         {
             if (null == _buffer)
             {

@@ -18,7 +18,7 @@ namespace Kw.Common.ZSpitz
             base(o, (Language?)null, null, hasPathSpans) { }
 
         [Flags]
-        private enum Flow {
+        enum Flow {
             None,
             Space,
             NewLine,
@@ -26,15 +26,15 @@ namespace Kw.Common.ZSpitz
             Break = 0x8000      // newline if column > MaxColumn
         }
 
-        private const int MaxColumn = 120;
+        const int MaxColumn = 120;
 
-        private int _column;
+        int _column;
 
-        private const int Tab = 4;
-        private int Depth => CurrentIndentationLevel * Tab;
+        const int Tab = 4;
+        int Depth => CurrentIndentationLevel * Tab;
 
-        private void Out(string s, Flow after = Flow.None) => Out(Flow.None, s, after);
-        private void Out(Flow before, string s, Flow after = Flow.None) {
+        void Out(string s, Flow after = Flow.None) => Out(Flow.None, s, after);
+        void Out(Flow before, string s, Flow after = Flow.None) {
             Flow CheckBreak(Flow flow) {
                 if ((flow & Flow.Break) != 0) {
                     if (_column > (MaxColumn + Depth)) {
@@ -68,19 +68,19 @@ namespace Kw.Common.ZSpitz
             _flow = after;
         }
 
-        private void NewLine() => _flow = Flow.NewLine;
+        void NewLine() => _flow = Flow.NewLine;
 
-        private Flow _flow;
+        Flow _flow;
 
-        private Dictionary<LambdaExpression, int>? _lambdaIds;
-        private Dictionary<ParameterExpression, int>? _paramIds;
-        private Dictionary<LabelTarget, int>? _labelIds;
+        Dictionary<LambdaExpression, int>? _lambdaIds;
+        Dictionary<ParameterExpression, int>? _paramIds;
+        Dictionary<LabelTarget, int>? _labelIds;
 
-        private int GetLambdaId(LambdaExpression lmbd, out bool isNew) => GetId(lmbd, ref _lambdaIds, out isNew, 1);
-        private int GetParamId(ParameterExpression prm) => GetId(prm, ref _paramIds, out var _, 1);
-        private int GetLabelTargetId(LabelTarget target) => GetId(target, ref _labelIds, out var _, 1);
+        int GetLambdaId(LambdaExpression lmbd, out bool isNew) => GetId(lmbd, ref _lambdaIds, out isNew, 1);
+        int GetParamId(ParameterExpression prm) => GetId(prm, ref _paramIds, out var _, 1);
+        int GetLabelTargetId(LabelTarget target) => GetId(target, ref _labelIds, out var _, 1);
 
-        private static string GetDisplayName(string name) =>
+        static string GetDisplayName(string name) =>
             name.ContainsWhitespace() ?
                 $"'{name}'" :
                 name;
@@ -91,9 +91,9 @@ namespace Kw.Common.ZSpitz
             base.WriteNodeImpl(o, parameterDeclaration, metadata);
         }
 
-        private void VisitExpressions<T>(string path, char open, IReadOnlyList<T> expressions) where T : notnull => 
+        void VisitExpressions<T>(string path, char open, IReadOnlyList<T> expressions) where T : notnull => 
             VisitExpressions(path, open, ',', expressions);
-        private void VisitExpressions<T>(string path, char open, char separator, IReadOnlyList<T> expressions, bool parameterDeclaration = false) where T : notnull {
+        void VisitExpressions<T>(string path, char open, char separator, IReadOnlyList<T> expressions, bool parameterDeclaration = false) where T : notnull {
             // we can't replace this with WriteNodes, because this affects Flow, which doesn't exist in VisitorWriterBase -- 
             // but perhaps after https://github.com/zspitz/ExpressionTreeToString/issues/52
             Out(open.ToString());
@@ -125,7 +125,7 @@ namespace Kw.Common.ZSpitz
             Out(close.ToString(), Flow.Break);
         }
 
-        private string GetLabelTargetName(LabelTarget target) => 
+        string GetLabelTargetName(LabelTarget target) => 
             target.Name.IsNullOrEmpty() ?
                 $"#Label{GetLabelTargetId(target)}" :
                 GetDisplayName(target.Name);
@@ -259,7 +259,7 @@ namespace Kw.Common.ZSpitz
             }
         }
 
-        private (bool isNew, string name) WriteLambdaName(LambdaExpression lmbd) {
+        (bool isNew, string name) WriteLambdaName(LambdaExpression lmbd) {
             var isNew = false;
             var name = lmbd.Name.IsNullOrEmpty() ?
                 "#Lambda" + GetLambdaId(lmbd, out isNew) :
@@ -270,7 +270,7 @@ namespace Kw.Common.ZSpitz
             return (isNew, name);
         }
 
-        private void WriteLambdaFull(LambdaExpression expr) {
+        void WriteLambdaFull(LambdaExpression expr) {
             WriteLambdaName(expr);
             VisitExpressions("Parameters", '(', ',', expr.Parameters, true);
             Out(Flow.Space, "{", Flow.NewLine);
@@ -300,14 +300,14 @@ namespace Kw.Common.ZSpitz
             }
         }
 
-        private string GetParameterName(ParameterExpression expr) =>
+        string GetParameterName(ParameterExpression expr) =>
             expr.Name.IsNullOrEmpty() ?
                 $"$var{GetParamId(expr)}" :
                 $"${GetDisplayName(expr.Name)}";
 
         protected override void WriteParameter(ParameterExpression expr) => Out(GetParameterName(expr));
 
-        private static readonly Dictionary<Type, string> suffixes = new() {
+        static readonly Dictionary<Type, string> suffixes = new() {
             [typeof(uint)] = "U",
             [typeof(long)] = "L",
             [typeof(ulong)] = "UL",
@@ -333,7 +333,7 @@ namespace Kw.Common.ZSpitz
             );
         }
 
-        private static int GetOperatorPrecedence(Expression node) =>
+        static int GetOperatorPrecedence(Expression node) =>
             node.NodeType switch
             {
                 var x when x.Inside(
@@ -382,7 +382,7 @@ namespace Kw.Common.ZSpitz
                 _ => 14
             };
 
-        private static bool NeedsParentheses(Expression parent, Expression? child) {
+        static bool NeedsParentheses(Expression parent, Expression? child) {
             if (child == null) {
                 return false;
             }
@@ -436,7 +436,7 @@ namespace Kw.Common.ZSpitz
             return childOpPrec < parentOpPrec;
         }
 
-        private void ParenthesizedVisit(string path, Expression parent, Expression nodeToVisit) {
+        void ParenthesizedVisit(string path, Expression parent, Expression nodeToVisit) {
             if (NeedsParentheses(parent, nodeToVisit)) {
                 Out("(");
                 WriteNode(path, nodeToVisit!); // nodeToVisit is not null if NeedsParentheses returns true; TODO use attribute
@@ -446,7 +446,7 @@ namespace Kw.Common.ZSpitz
             }
         }
 
-        private void OutMember(string path, Expression node, Expression? instance, MemberInfo member) {
+        void OutMember(string path, Expression node, Expression? instance, MemberInfo member) {
             if (instance is { }) {
                 ParenthesizedVisit(path, node, instance);
                 Out("." + member.Name);

@@ -133,7 +133,7 @@ namespace Kw.Common.Threading
         /// Функция потока.
         /// </summary>
         [DebuggerNonUserCode]
-        private void ThreadProc()
+        void ThreadProc()
         {
             ManagedThreadId = Thread.CurrentThread.ManagedThreadId;
             NativeThreadId = new IntPtr(WinAPI.GetCurrentThreadId());
@@ -163,7 +163,7 @@ namespace Kw.Common.Threading
             FinalizeTask(false);
         }
 
-        private bool _finalized = false;
+        bool _finalized = false;
 
         protected void FinalizeTask(bool aborted)
         {
@@ -293,12 +293,12 @@ namespace Kw.Common.Threading
         /// <summary>
         /// Значение параметра функции потока.
         /// </summary>
-        private T _parameter = default(T);
+        T _parameter = default(T);
         
         /// <summary>
         /// Флаг установки параметра функции потока.
         /// </summary>
-        private bool _parameterSet = false;
+        bool _parameterSet = false;
 
         /// <summary>
         /// Параметр функции потока.

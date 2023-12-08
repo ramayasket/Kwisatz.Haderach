@@ -12,7 +12,7 @@ namespace Kw.Common.Communications
 {
     public abstract class SerialExchangeServer
     {
-        private TcpListener _listener;
+        TcpListener _listener;
         protected ExecutionThread _listenerTask;
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Kw.Common.Communications
             }
         }
 
-        private void Acceptor(IAsyncResult ar)
+        void Acceptor(IAsyncResult ar)
         {
             var client = _listener.EndAcceptTcpClient(ar);
 
@@ -93,7 +93,7 @@ namespace Kw.Common.Communications
         /// Метод потока общения с клиентом
         /// </summary>
         /// <param name="parameter">Клиент</param>
-        private void RequestProc(object parameter)
+        void RequestProc(object parameter)
         {
             var client = parameter as TcpClient;
 

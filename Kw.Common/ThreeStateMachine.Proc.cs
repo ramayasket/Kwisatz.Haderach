@@ -13,7 +13,7 @@ namespace Kw.Common
         /// Прерывает ожидание и сигнализирует о смене состояния.
         /// </summary>
         /// <returns></returns>
-        private bool Signal()
+        bool Signal()
         {
             return _stateChanging != null;
         }
@@ -30,7 +30,7 @@ namespace Kw.Common
         /// Поток управления логическим процессом.
         /// Переходы между состояниями выполняются в этом потоке.
         /// </summary>
-        private void MachineProc()
+        void MachineProc()
         {
             Debug.WriteLine($"Entering MachineProc thread id {Thread.CurrentThread.ManagedThreadId}");
 

@@ -8,8 +8,8 @@ namespace Kw.Common
     /// </summary>
     public class ExecutionStep
     {
-        private readonly DateTime _begins;
-        private DateTime _ends;
+        readonly DateTime _begins;
+        DateTime _ends;
 
         /// <summary>
         /// The time the step began.
@@ -64,8 +64,8 @@ namespace Kw.Common
         /// </summary>
         public IEnumerable<ExecutionStep> Steps => _steps;
 
-        private ExecutionStep _currentStep;
-        private readonly List<ExecutionStep> _steps = new List<ExecutionStep>();
+        ExecutionStep _currentStep;
+        readonly List<ExecutionStep> _steps = new List<ExecutionStep>();
 
         /// <summary>
         /// Initializes meter and creates first step.

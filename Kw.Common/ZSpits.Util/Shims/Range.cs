@@ -15,7 +15,7 @@ namespace System {
     /// </code>
     /// </remarks>
     public readonly struct Index : IEquatable<Index> {
-        private readonly int val;
+        readonly int val;
 
         /// <summary>Construct an Index using a value and indicating if the index is from the start or from the end.</summary>
         /// <param name="value">The index value. it has to be zero or positive number.</param>
@@ -32,8 +32,8 @@ namespace System {
             val = fromEnd ? ~value : value;
         }
 
-        // The following private constructors mainly created for perf reason to avoid the checks
-        private Index(int value) => val = value;
+        // The following constructors mainly created for perf reason to avoid the checks
+        Index(int value) => val = value;
 
         /// <summary>Create an Index pointing at first element.</summary>
         public static Index Start => new(0);

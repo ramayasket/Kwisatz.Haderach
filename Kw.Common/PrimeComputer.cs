@@ -15,12 +15,12 @@ namespace Kw.Common
     /// </remarks>
     public class PrimeAccumulator : IEnumerable<Whole>
     {
-        private readonly HashSet<Whole> _lower = new HashSet<Whole>();
-        private readonly HashSet<Whole> _upper = new HashSet<Whole>();
+        readonly HashSet<Whole> _lower = new HashSet<Whole>();
+        readonly HashSet<Whole> _upper = new HashSet<Whole>();
 
-        private Whole _count;
+        Whole _count;
 
-        private HashSet<Whole> this[Whole value] => value < int.MaxValue / 2 ? _lower : _upper;
+        HashSet<Whole> this[Whole value] => value < int.MaxValue / 2 ? _lower : _upper;
 
         public bool Add(Whole value)
         {
@@ -57,8 +57,8 @@ namespace Kw.Common
     /// </summary>
     public static class PrimeComputer
     {
-        private static readonly PrimeAccumulator _known = new PrimeAccumulator();
-        private static Whole _boundary;
+        static readonly PrimeAccumulator _known = new PrimeAccumulator();
+        static Whole _boundary;
 
         /// <summary>
         /// Returns a collection of known prime values.
@@ -89,7 +89,7 @@ namespace Kw.Common
         /// Advances known boundary by 1.
         /// </summary>
         /// <param name="value">Potential new boundary.</param>
-        private static void AdvanceBoundary(Whole value)
+        static void AdvanceBoundary(Whole value)
         {
             if (1 == value - _boundary)
             {
@@ -116,7 +116,7 @@ namespace Kw.Common
         /// Accepts known prime value.
         /// </summary>
         /// <param name="value"></param>
-        private static bool Accept(Whole value)
+        static bool Accept(Whole value)
         {
             var add = _known.Add(value);
 

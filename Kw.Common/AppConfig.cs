@@ -12,14 +12,14 @@ namespace Kw.Common
     /// </summary>
     public static class AppConfig
     {
-        private static HashSet<Func<string, string>> _sources = new HashSet<Func<string, string>>();
+        static HashSet<Func<string, string>> _sources = new HashSet<Func<string, string>>();
 
         public static void AddSettingSource(Func<string, string> source)
         {
             _sources.Add(source);
         }
 
-        private static string? GetSettingValue(string key)
+        static string? GetSettingValue(string key)
         {
             var config = ConfigurationManager.AppSettings[key];
 

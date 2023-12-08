@@ -276,7 +276,7 @@ namespace Kw.Common
             return _html.Substring(start, end - start);
         }
 
-        private int i = 1;
+        int i = 1;
 
         /// <summary>
         /// Moves to the start of the next tag

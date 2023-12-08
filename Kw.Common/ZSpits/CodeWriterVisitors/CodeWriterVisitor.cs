@@ -149,7 +149,7 @@ namespace Kw.Common.ZSpitz
             WriteNodes(argBasePath, keys);
             Write(IndexerIndicators.suffix);
         }
-        private void writeIndexerAccess(string instancePath, Expression instance, string argBasePath, IEnumerable<Expression> keys) =>
+        void writeIndexerAccess(string instancePath, Expression instance, string argBasePath, IEnumerable<Expression> keys) =>
             WriteIndexerAccess(instancePath, instance, argBasePath, keys.ToArray());
 
         protected override void WriteIndex(IndexExpression expr) =>

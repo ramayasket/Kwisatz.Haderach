@@ -32,7 +32,7 @@ namespace Kw.Common
             return renames;
         }
 
-        private static int Rename(string[] names, Func<string, string> renameFunction)
+        static int Rename(string[] names, Func<string, string> renameFunction)
         {
             var renames = 0;
 

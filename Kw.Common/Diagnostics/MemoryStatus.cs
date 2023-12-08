@@ -6,8 +6,8 @@ namespace Kw.Common.Diagnostics
     /// <summary> Вспомогательный класс для получения сведений о доступной памяти. </summary>
     public sealed class MemoryStatus
     {
-        private readonly bool _collect;
-        private long _prev;
+        readonly bool _collect;
+        long _prev;
 
         /// <summary> Инициализирует новый экземпляр класса <see cref="MemoryStatus"/>. </summary>
         /// <param name="collect"> Нужно ли выполнять полную сборку мусора перед получением счётчика. </param>
@@ -21,7 +21,7 @@ namespace Kw.Common.Diagnostics
             _prev = p.PrivateMemorySize64;
         }
 
-        private static void Collect()
+        static void Collect()
         {
             GC.Collect();
             GC.WaitForPendingFinalizers();

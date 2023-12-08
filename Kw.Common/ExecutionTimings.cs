@@ -10,7 +10,7 @@ namespace Kw.Common
     {
         internal static readonly Dictionary<string, ExecutionTimingInfo> _entries = new Dictionary<string, ExecutionTimingInfo>();
 
-        private static ExecutionTimingInfo EnsureToken(string s)
+        static ExecutionTimingInfo EnsureToken(string s)
         {
             lock (_entries)
             {

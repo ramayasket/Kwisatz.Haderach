@@ -18,7 +18,7 @@ namespace Kw.Common.ZSpitz
     public class VBWriterVisitor : CodeWriterVisitor {
         public VBWriterVisitor(object o, bool hasPathSpans = false) : base(o, Language.VisualBasic, hasPathSpans) { }
 
-        private static readonly Dictionary<ExpressionType, string> simpleBinaryOperators = new() {
+        static readonly Dictionary<ExpressionType, string> simpleBinaryOperators = new() {
             [Add] = "+",
             [AddChecked] = "+",
             [Modulo] = "Mod",
@@ -125,7 +125,7 @@ namespace Kw.Common.ZSpitz
             base.WriteBinary(expr);
         }
 
-        private static readonly Dictionary<Type, string> conversionFunctions = new() {
+        static readonly Dictionary<Type, string> conversionFunctions = new() {
             {typeof(bool), "CBool"},
             {typeof(byte), "CByte"},
             {typeof(char), "CChar"},
@@ -576,7 +576,7 @@ namespace Kw.Common.ZSpitz
             }
         }
 
-        private bool canInline(Expression expr) {
+        bool canInline(Expression expr) {
             switch (expr) {
                 case LambdaExpression lmbd:
                     return canInline(lmbd.Body);
@@ -728,7 +728,7 @@ namespace Kw.Common.ZSpitz
         // to verify precendence levels by level against https://docs.microsoft.com/en-us/dotnet/visual-basic/language-reference/operators/operator-precedence#precedence-order
         // use:
         //    precedence.GroupBy(kvp => kvp.Value, kvp => kvp.Key, (key, grp) => new {key, values = grp.OrderBy(x => x.ToString()).Joined(", ")}).OrderBy(x => x.key);
-        private static readonly Dictionary<ExpressionType, int> precedence = new() {
+        static readonly Dictionary<ExpressionType, int> precedence = new() {
             [Add] = 6,
             [AddAssign] = -1,
             [AddAssignChecked] = -1,
@@ -816,7 +816,7 @@ namespace Kw.Common.ZSpitz
             [Unbox] = -1,
         };
 
-        private static int getPrecedence(Expression node) => node switch {
+        static int getPrecedence(Expression node) => node switch {
             MethodCallExpression mexpr when mexpr.Method.IsStringConcat() => 7,
             MethodCallExpression mexpr when mexpr.Method.IsVBLike() => 9,
             DynamicExpression dexpr => precedence[dexpr.VirtualNodeType()],

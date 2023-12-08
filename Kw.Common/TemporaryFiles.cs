@@ -8,9 +8,9 @@ namespace Kw.Common
     /// </summary>
     public class TemporaryFolder : IDisposable
     {
-        private readonly string _name;
-        private readonly string _temp;
-        private DirectoryInfo _directory;
+        readonly string _name;
+        readonly string _temp;
+        DirectoryInfo _directory;
 
         public DirectoryInfo Directory
         {
@@ -51,7 +51,7 @@ namespace Kw.Common
             }
         }
 
-        private void CleanDirectory(DirectoryInfo dir)
+        void CleanDirectory(DirectoryInfo dir)
         {
             // Get the subdirectories for the specified directory.
             var dirs = dir.GetDirectories();
@@ -71,7 +71,7 @@ namespace Kw.Common
 
             dir.Delete();
         }
-        private void Clean()
+        void Clean()
         {
             CleanDirectory(_directory);
         }
@@ -82,8 +82,8 @@ namespace Kw.Common
     /// </summary>
     public class TemporaryFile : IDisposable
     {
-        private readonly string _name;
-        private readonly string _temp;
+        readonly string _name;
+        readonly string _temp;
 
         /// <summary>
         /// Полный путь к файлу.

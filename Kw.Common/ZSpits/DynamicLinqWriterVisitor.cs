@@ -14,7 +14,7 @@ namespace Kw.Common.ZSpitz
 {
     public class DynamicLinqWriterVisitor : BuiltinsWriterVisitor {
         public static readonly HashSet<Type> CustomAccessibleTypes = new();
-        private static readonly HashSet<Type> predefinedTypes = new() {
+        static readonly HashSet<Type> predefinedTypes = new() {
             typeof(object),
             typeof(bool),
             typeof(char),
@@ -39,7 +39,7 @@ namespace Kw.Common.ZSpitz
             typeof(Uri)
         };
 
-        private static bool isAccessibleType(Type t) =>
+        static bool isAccessibleType(Type t) =>
             t.IsNullable() ?
                 isAccessibleType(t.UnderlyingSystemType) :
                 t.Inside(predefinedTypes) || t.Inside(CustomAccessibleTypes);
@@ -54,7 +54,7 @@ namespace Kw.Common.ZSpitz
                 hasPathSpans
             ) { }
 
-        private static readonly Dictionary<ExpressionType, string> simpleBinaryOperators = new() {
+        static readonly Dictionary<ExpressionType, string> simpleBinaryOperators = new() {
             [Add] = "+",
             [AddChecked] = "+",
             [Divide] = "/",
@@ -76,7 +76,7 @@ namespace Kw.Common.ZSpitz
 
         // can be verified against https://dynamic-linq.net/expression-language#operators using:
         // precedence.GroupBy(kvp => kvp.Value, kvp => kvp.Key, (key, grp) => new {key, values = grp.OrderBy(x => x.ToString()).Joined(", ")}).OrderBy(x => x.key);
-        private static readonly Dictionary<ExpressionType, int?> precedence = new() {
+        static readonly Dictionary<ExpressionType, int?> precedence = new() {
             [Add] = 3,
             [AddChecked] = 3,
             [And] = 5,
@@ -145,7 +145,7 @@ namespace Kw.Common.ZSpitz
             [Unbox] = 0
         };
 
-        private static int getPrecedence(Expression node) {
+        static int getPrecedence(Expression node) {
             var (nodeType, _) = node;
             return nodeType switch {
                 Call when node is MethodCallExpression mcexpr && mcexpr.Method.IsStringConcat() => 3,
@@ -154,7 +154,7 @@ namespace Kw.Common.ZSpitz
             };
         }
 
-        private void parens(OneOf<Expression, int> outer, string path, Expression inner) {
+        void parens(OneOf<Expression, int> outer, string path, Expression inner) {
             var precedence = (
                 outer: outer.Match(
                     expr => getPrecedence(expr),
@@ -169,7 +169,7 @@ namespace Kw.Common.ZSpitz
             if (writeParens) { Write(")"); }
         }
 
-        private bool isEquivalent(Expression? x, Expression? y) {
+        bool isEquivalent(Expression? x, Expression? y) {
             if (x is null) { return y is null; }
             if (y is null) { return x is null; }
             var (x1, y1) = (x.SansConvert(), y.SansConvert());
@@ -293,7 +293,7 @@ namespace Kw.Common.ZSpitz
             WriteNodeTypeNotImplemented(expr.NodeType);
         }
 
-        private string escapedDoubleQuotes => language == Language.VisualBasic ? "\"\"" : "\\\"";
+        string escapedDoubleQuotes => language == Language.VisualBasic ? "\"\"" : "\\\"";
 
         protected override void WriteUnary(UnaryExpression expr) {
             switch (expr.NodeType) {
@@ -340,7 +340,7 @@ namespace Kw.Common.ZSpitz
             WriteNodeTypeNotImplemented(expr.NodeType);
         }
 
-        private bool insideLambda = false;
+        bool insideLambda = false;
         protected override void WriteLambda(LambdaExpression expr) {
             var exitLambda = false;
             if (!insideLambda) {
@@ -374,8 +374,8 @@ namespace Kw.Common.ZSpitz
             Write("it");
         }
 
-        private Dictionary<object, int>? parameterIds;
-        private int getParaneterId(object o, out bool isNew) => GetId(o, ref parameterIds, out isNew);
+        Dictionary<object, int>? parameterIds;
+        int getParaneterId(object o, out bool isNew) => GetId(o, ref parameterIds, out isNew);
 
         protected override void WriteConstant(ConstantExpression expr) {
             var value = expr.Value;
@@ -434,7 +434,7 @@ namespace Kw.Common.ZSpitz
             writeMemberUse("Expression", expr.Expression, expr.Member);
         }
 
-        private void writeDynamicLinqParameter(object key, Func<string> value) {
+        void writeDynamicLinqParameter(object key, Func<string> value) {
             var id = getParaneterId(key, out var isNew);
             if (isNew) {
                 SetInsertionPoint("parameters");
@@ -474,7 +474,7 @@ namespace Kw.Common.ZSpitz
             Write(")");
         }
 
-        private void writeIndexerAccess(string instancePath, Expression instance, string argumentsPath, IEnumerable<Expression> arguments) {
+        void writeIndexerAccess(string instancePath, Expression instance, string argumentsPath, IEnumerable<Expression> arguments) {
             var lst = arguments.ToList();
             if (instance.Type.IsArray && lst.Count > 1) {
                 WriteNotImplemented("Multidimensional array access not supported.");
@@ -487,7 +487,7 @@ namespace Kw.Common.ZSpitz
             Write("]");
         }
 
-        private void writeMemberUse(string instancePath, Expression? instance, MemberInfo mi) {
+        void writeMemberUse(string instancePath, Expression? instance, MemberInfo mi) {
             var declaringType = mi.DeclaringType!;
             if (instance is null) {
                 if (!isAccessibleType(declaringType)) {
@@ -515,7 +515,7 @@ namespace Kw.Common.ZSpitz
             Write(mi.Name);
         }
 
-        private static readonly MethodInfo[] containsMethods = IIFE(() => {
+        static readonly MethodInfo[] containsMethods = IIFE(() => {
             IEnumerable<char> e = "";
             var q = "".AsQueryable();
 
@@ -525,7 +525,7 @@ namespace Kw.Common.ZSpitz
             };
         });
 
-        private static readonly MethodInfo[] sequenceMethods = IIFE(() => {
+        static readonly MethodInfo[] sequenceMethods = IIFE(() => {
             IEnumerable<char> e = "";
             var ordered = e.OrderBy(x => x);
 
@@ -685,14 +685,14 @@ namespace Kw.Common.ZSpitz
         protected override void WriteNewArray(NewArrayExpression expr) =>
             throw new NotImplementedException();
 
-        private bool isMemberChainEqual(Expression? x, Expression? y) =>
+        bool isMemberChainEqual(Expression? x, Expression? y) =>
             x is null ? y is null :
             y is null ? x is null :
             x.SansConvert() is MemberExpression mexpr1 && y.SansConvert() is MemberExpression mexpr2 ?
                 mexpr1.Member == mexpr2.Member && isMemberChainEqual(mexpr1.Expression, mexpr2.Expression) :
                 x == y;
 
-        private bool doesTestMatchChain(Expression valueClause, Expression? testClause) {
+        bool doesTestMatchChain(Expression valueClause, Expression? testClause) {
             if (
                 testClause is not BinaryExpression bexpr ||
                 bexpr.NodeType != NotEqual
@@ -820,7 +820,7 @@ namespace Kw.Common.ZSpitz
         protected override void WriteParameterDeclaration(ParameterExpression prm) =>
             throw new NotImplementedException();
 
-        private static readonly Dictionary<Type, string> typeAliases = new() {
+        static readonly Dictionary<Type, string> typeAliases = new() {
             { typeof(int), "int" },
             { typeof(uint), "uint" },
             { typeof(short), "short" },
@@ -831,7 +831,7 @@ namespace Kw.Common.ZSpitz
             { typeof(float), "float" },
         };
 
-        private static string typeName(Type t) =>
+        static string typeName(Type t) =>
             t.IsNullable() ?
                 typeName(t.UnderlyingIfNullable()) + "?" :
                 typeAliases.TryGetValue(t, out var name) ?

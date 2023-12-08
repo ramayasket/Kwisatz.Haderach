@@ -6,7 +6,7 @@ namespace Kw.Common.ZSpitz
     public static class TypeExtensions {
         // TODO we need to distinguish between the built-in Action/Func, and one that someone else has defined
 
-        private static bool testDelegateType(Type t, string testString) =>
+        static bool testDelegateType(Type t, string testString) =>
             t.InheritsFromOrImplements<MulticastDelegate>() &&
             t.FullName is { } &&
             t.FullName.StartsWith(testString);

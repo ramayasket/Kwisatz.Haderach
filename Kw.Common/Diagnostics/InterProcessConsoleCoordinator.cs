@@ -7,10 +7,10 @@ namespace Kw.Common.Diagnostics
     /// <summary> Координатор для межпроцессного взаимодействия нескольких консольных приложений. Позволяет синхронизировать запуск/остановку работы в них. </summary>
     public sealed class InterProcessConsoleCoordinator : IDisposable
     {
-        private EventWaitHandle _pauseResumeCoorninationHandle;
-        private EventWaitHandle _exitCoordinationHandle;
-        private Thread _controlThread;
-        private bool _disposed;
+        EventWaitHandle _pauseResumeCoorninationHandle;
+        EventWaitHandle _exitCoordinationHandle;
+        Thread _controlThread;
+        bool _disposed;
 
         /// <summary> Инициализирует новый экземпляр класса <see cref="InterProcessConsoleCoordinator"/> с заданным уникальным именем. </summary>
         /// <param name="coordinationName"> Уникальное имя. Все приложения, создавшие координатора с таким именем, смогут синхронизироваться между собой. </param>
@@ -21,10 +21,10 @@ namespace Kw.Common.Diagnostics
         }
 
         /// <summary> Можно ли выполнять полезную нагрузку. </summary>
-        private bool CanExecutePayload => _pauseResumeCoorninationHandle.WaitOne(0);
+        bool CanExecutePayload => _pauseResumeCoorninationHandle.WaitOne(0);
 
         /// <summary> Запрошена остановка координатора. </summary>
-        private bool IsCancellationRequested => _exitCoordinationHandle.WaitOne(0);
+        bool IsCancellationRequested => _exitCoordinationHandle.WaitOne(0);
 
         /// <summary> Текст приглашения к продолжению работы (запуск полезной нагрузки). </summary>
         public string HelpText => $"Ожидание ввода команды: '{ResumeKey}' для продолжения, '{PauseKey}' для приостановки, '{ExitKey}' для выхода, '{SpawnKey}' для создания нового окна консоли...";
@@ -75,7 +75,7 @@ namespace Kw.Common.Diagnostics
             }
         }
 
-        private void CoordinateInput(int delayMsec)
+        void CoordinateInput(int delayMsec)
         {
             if (Console.KeyAvailable)
             {
@@ -99,7 +99,7 @@ namespace Kw.Common.Diagnostics
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Reliability", "CA2000:Dispose objects before losing scope", Justification = "By design")]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("IDisposableAnalyzers.Correctness", "IDISP004:Don't ignore created IDisposable.", Justification = "By design")]
-        private static void Spawn()
+        static void Spawn()
         {
             try
             {
@@ -113,7 +113,7 @@ namespace Kw.Common.Diagnostics
             }
         }
 
-        private void GuardDisposed()
+        void GuardDisposed()
         {
             if (_disposed)
                 throw new ObjectDisposedException(nameof(InterProcessConsoleCoordinator));

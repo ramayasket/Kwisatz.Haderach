@@ -45,7 +45,7 @@ namespace Kw.Common
         /// <summary>
         /// Заполнение матрицы переходов.
         /// </summary>
-        private void CreateTransitionMatrix()
+        void CreateTransitionMatrix()
         {
             this[MachineState.STOPPED, MachineState.RUNNING] = RunTransition;
             this[MachineState.RUNNING, MachineState.STOPPED] = StopTransition;
@@ -56,7 +56,7 @@ namespace Kw.Common
         /// <summary>
         /// Доступ к матрице переходов по MachineState.
         /// </summary>
-        private Action this[MachineState from, MachineState to]
+        Action this[MachineState from, MachineState to]
         {
             get => Transitions[(int)from, (int)to];
             set => Transitions[(int) from, (int) to] = value;
@@ -67,9 +67,9 @@ namespace Kw.Common
         /// Измерение 1 текущее состояние.
         /// Измерение 2 новое состояние.
         /// </summary>
-        private readonly Action[,] Transitions = new Action[3,3];
+        readonly Action[,] Transitions = new Action[3,3];
 
-        private void CommitTransition()
+        void CommitTransition()
         {
             Debug.Assert(null != _stateChanging);
 
@@ -86,7 +86,7 @@ namespace Kw.Common
             _stateChanged.Set();
         }
 
-        private void RollbackTransition()
+        void RollbackTransition()
         {
             Debug.Assert(null != _stateChanging);
 
@@ -95,7 +95,7 @@ namespace Kw.Common
             _stateChanged.Set();
         }
 
-        private void ConditionalTransition(Func<bool> userFunc)
+        void ConditionalTransition(Func<bool> userFunc)
         {
             bool ok;
 
@@ -118,17 +118,17 @@ namespace Kw.Common
             }
         }
 
-        private void RunTransition()
+        void RunTransition()
         {
             ConditionalTransition(Running);
         }
 
-        private void StopTransition()
+        void StopTransition()
         {
             ConditionalTransition(Stopping);
         }
 
-        private void FailTransition()
+        void FailTransition()
         {
             //
             //    Неуправляемый переход.

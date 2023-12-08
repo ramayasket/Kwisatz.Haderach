@@ -191,7 +191,7 @@ namespace Kw.Common
             return AsNonInteger(value.ToString("F", CultureInfo.InvariantCulture));
         }
 
-        private static string AsNonInteger(string s)
+        static string AsNonInteger(string s)
         {
             if (s.Contains('.'))
                 return s;
@@ -206,7 +206,7 @@ namespace Kw.Common
         //
         //    
         //
-        private static int LevenshteinDistance(string source, string target)
+        static int LevenshteinDistance(string source, string target)
         {
             //
             //    Degenerate cases.

@@ -97,14 +97,14 @@ namespace Kw.Common
     [DebuggerDisplay("{Display(), nq}")]
     public sealed class FunctionNode<TA, TV>
     {
-        private readonly TA Argument;
-        private readonly TV Value;
+        readonly TA Argument;
+        readonly TV Value;
 
-        private readonly FunctionNode<TA, TV> Previous;
-        private FunctionNode<TA, TV> Next;
+        readonly FunctionNode<TA, TV> Previous;
+        FunctionNode<TA, TV> Next;
 
-        private readonly bool Constant;
-        private bool Terminating;
+        readonly bool Constant;
+        bool Terminating;
 
         internal FunctionNode(TA argument, TV value)
         {
@@ -146,7 +146,7 @@ namespace Kw.Common
             return Root.ComputeNode(argument);
         }
 
-        private TV ComputeNode(TA argument)
+        TV ComputeNode(TA argument)
         {
             if (Equals(Argument, argument) || Constant)
                 return Value;
@@ -161,7 +161,7 @@ namespace Kw.Common
         }
 
         /* ReSharper disable once UnusedMember.Local */
-        private string Display() => $"{Argument.AsDebuggerDisplay()}/{Value.AsDebuggerDisplay()}";
+        string Display() => $"{Argument.AsDebuggerDisplay()}/{Value.AsDebuggerDisplay()}";
     }
 }
 

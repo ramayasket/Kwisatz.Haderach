@@ -8,8 +8,8 @@ namespace Kw.Common.Communications
 {
     public class HttpClient : WebClient, INetworkResourceWebClient
     {
-        private static readonly int CommonTimeout;
-        private static readonly bool Reporting;
+        static readonly int CommonTimeout;
+        static readonly bool Reporting;
 
         public string ProxyUri
         {
@@ -25,7 +25,7 @@ namespace Kw.Common.Communications
             Reporting = AppConfig.Setting("http_reporting", false);
         }
 
-        private static bool proxy_reported = false;
+        static bool proxy_reported = false;
 
         public HttpClient()
         {
@@ -91,9 +91,9 @@ namespace Kw.Common.Communications
             }
         }
 
-        private static object _this = new object();
+        static object _this = new object();
 
-        private static void ReportOperation(bool ok, TimeSpan ts, string url)
+        static void ReportOperation(bool ok, TimeSpan ts, string url)
         {
             if (!Reporting)
                 return;

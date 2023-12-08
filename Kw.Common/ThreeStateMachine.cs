@@ -41,7 +41,7 @@ namespace Kw.Common
         /// Проверка состояния для управляемого перехода.
         /// </summary>
         /// <param name="state"></param>
-        private void ValidateControlledChange(MachineState state)
+        void ValidateControlledChange(MachineState state)
         {
             //
             //    В качестве управляемого перехода допускаются только STOPPED и RUNNING.

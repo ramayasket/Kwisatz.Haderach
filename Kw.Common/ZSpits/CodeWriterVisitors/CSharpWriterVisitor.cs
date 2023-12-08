@@ -15,7 +15,7 @@ namespace Kw.Common.ZSpitz
     public class CSharpWriterVisitor : CodeWriterVisitor {
         public CSharpWriterVisitor(object o, bool hasPathSpans = false) : base(o, Language.CSharp, hasPathSpans) { }
 
-        private static readonly Dictionary<ExpressionType, string> simpleBinaryOperators = new() {
+        static readonly Dictionary<ExpressionType, string> simpleBinaryOperators = new() {
             [Add] = "+",
             [AddChecked] = "+",
             [Divide] = "/",
@@ -327,7 +327,7 @@ namespace Kw.Common.ZSpitz
             }
         }
 
-        private bool canInline(Expression expr) {
+        bool canInline(Expression expr) {
             switch (expr) {
                 case LambdaExpression lmbd:
                     return canInline(lmbd.Body);
@@ -466,7 +466,7 @@ namespace Kw.Common.ZSpitz
             return;
         }
 
-        private void writeStatementEnd(Expression expr) {
+        void writeStatementEnd(Expression expr) {
             switch (expr) {
                 case ConditionalExpression cexpr when cexpr.Type == typeof(void):
                 case BlockExpression _:
@@ -663,7 +663,7 @@ namespace Kw.Common.ZSpitz
         // to verify precendence levels by level against https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/#operator-precedence
         // use:
         //    precedence.GroupBy(kvp => kvp.Value, kvp => kvp.Key, (key, grp) => new {key, values = grp.OrderBy(x => x.ToString()).Joined(", ")}).OrderBy(x => x.key);
-        private static readonly Dictionary<ExpressionType, int> precedence = new() {
+        static readonly Dictionary<ExpressionType, int> precedence = new() {
             [Add] = 5,
             [AddAssign] = 16,
             [AddAssignChecked] = 16,
@@ -751,7 +751,7 @@ namespace Kw.Common.ZSpitz
             [Unbox] = 1, // // conversion is rendered only if the types aren't assignable
         };
 
-        private static int getPrecedence(Expression node, Type? parentType = null) {
+        static int getPrecedence(Expression node, Type? parentType = null) {
             ExpressionType nodeType;
             Type type;
             if (node is DynamicExpression dexpr) {
@@ -770,7 +770,7 @@ namespace Kw.Common.ZSpitz
             };
         }
 
-        private static readonly HashSet<ExpressionType> rightAssociatives = new() {
+        static readonly HashSet<ExpressionType> rightAssociatives = new() {
             Assign, AddAssign, AndAssign, DivideAssign, ExclusiveOrAssign, LeftShiftAssign, ModuloAssign, MultiplyAssign,
             OrAssign, PowerAssign, RightShiftAssign, SubtractAssign, AddAssignChecked, MultiplyAssignChecked, SubtractAssignChecked, PreIncrementAssign,
             PreDecrementAssign, PostIncrementAssign, PostDecrementAssign,

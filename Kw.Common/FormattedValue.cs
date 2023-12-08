@@ -22,7 +22,7 @@ namespace Kw.Common
             return value.ToString(CultureInfo.GetCultureInfo("ru-RU"));
         }
 
-        private static T AsT(object v)
+        static T AsT(object v)
         {
             return (T) v;
         }

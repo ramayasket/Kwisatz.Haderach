@@ -377,7 +377,7 @@ namespace Kw.Common
         public event Action<XBase, string, object> PropertyChanging;
         public event Action<XBase, string> PropertyChanged;
 
-        private bool _suppressEvents = false;
+        bool _suppressEvents = false;
 
         /// <summary>
         /// Создает текст XML-элемента.
@@ -385,7 +385,7 @@ namespace Kw.Common
         /// <param name="name">Имя элемента.</param>
         /// <param name="contents">Исходный XML-текст.</param>
         /// <returns>XML-строка.</returns>
-        private static string EnsureXml(XName name, string contents)
+        static string EnsureXml(XName name, string contents)
         {
             string n = name.LocalName;
 
@@ -405,9 +405,9 @@ namespace Kw.Common
 
     public static class XBaseExtensions
     {
-        private const BindingFlags STICKY_CANDIDATES = BindingFlags.Public | BindingFlags.Instance;
+        const BindingFlags STICKY_CANDIDATES = BindingFlags.Public | BindingFlags.Instance;
 
-        private static PropertyInfo[] GetStickyProperties<T>(T sticker) where T : class
+        static PropertyInfo[] GetStickyProperties<T>(T sticker) where T : class
         {
             if (null == sticker)
                 throw new ArgumentNullException("sticker");
@@ -526,7 +526,7 @@ namespace Kw.Common
     /// </summary>
     public class XTokens
     {
-        private readonly string[] _tokens;
+        readonly string[] _tokens;
 
         public string[] Tokens
         {

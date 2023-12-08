@@ -7,19 +7,19 @@ namespace Kw.Common.Wording
     /// <summary> Русские письменные числа. </summary>
     internal class RusNumber
     {
-        private static readonly string[] Hunds =
+        static readonly string[] Hunds =
         {
             string.Empty, "сто ", "двести ", "триста ", "четыреста ",
             "пятьсот ", "шестьсот ", "семьсот ", "восемьсот ", "девятьсот ",
         };
 
-        private static readonly string[] Tens =
+        static readonly string[] Tens =
         {
             string.Empty, "десять ", "двадцать ", "тридцать ", "сорок ", "пятьдесят ",
             "шестьдесят ", "семьдесят ", "восемьдесят ", "девяносто ",
         };
 
-        private static readonly string[] Numerals20 =
+        static readonly string[] Numerals20 =
         {
             "три ", "четыре ", "пять ", "шесть ",
             "семь ", "восемь ", "девять ", "десять ", "одиннадцать ",
@@ -27,7 +27,7 @@ namespace Kw.Common.Wording
             "шестнадцать ", "семнадцать ", "восемнадцать ", "девятнадцать ",
         };
 
-        private static readonly Dictionary<NounGender, string[]> DependentGenderNumerals = new Dictionary<NounGender, string[]>
+        static readonly Dictionary<NounGender, string[]> DependentGenderNumerals = new Dictionary<NounGender, string[]>
         {
             { NounGender.Masculine, new[] { string.Empty, "один ", "два " } },
             { NounGender.Feminine,  new[] { string.Empty, "одна ", "две " } },

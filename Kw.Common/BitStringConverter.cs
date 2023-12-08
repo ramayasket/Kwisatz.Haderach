@@ -10,7 +10,7 @@ namespace Kw.Common
     /// TODO add byte[]
     public static class BitStringConverter
     {
-        private static readonly Type[] AllowedTypes =
+        static readonly Type[] AllowedTypes =
         {
             typeof(sbyte),
             typeof(byte),
@@ -22,7 +22,7 @@ namespace Kw.Common
             typeof(UInt64),
         };
 
-        private static readonly Dictionary<Type, int> TypeSizes = new[]
+        static readonly Dictionary<Type, int> TypeSizes = new[]
         {
             ( typeof(sbyte), 1 ),
             ( typeof(byte), 1 ),
@@ -41,7 +41,7 @@ namespace Kw.Common
         /// <param name="x">Value to convert.</param>
         /// <param name="length">Bit form string length. Used to support types other than <seealso cref="UInt64"/>.</param>
         /// <returns>Bit (base 2) representation of value.</returns>
-        private static string ToBitString(UInt64 x, int length)
+        static string ToBitString(UInt64 x, int length)
         {
             var @var = x;
 
@@ -62,7 +62,7 @@ namespace Kw.Common
         /// </summary>
         /// <param name="buffer">Bit form characters.</param>
         /// <returns><seealso cref="UInt64"/> value.</returns>
-        private static UInt64 FromBitString(char[] buffer)
+        static UInt64 FromBitString(char[] buffer)
         {
             UInt64 v = 0;
 

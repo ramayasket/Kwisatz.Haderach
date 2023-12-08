@@ -13,7 +13,7 @@ namespace Kw.Common
     /// ReSharper disable PossibleNullReferenceException
     public class JDynamic : DynamicObject
     {
-        private readonly JObject _object;
+        readonly JObject _object;
 
         public JDynamic(string json) : this((JObject)JsonConvert.DeserializeObject(json)) { }
 
@@ -71,7 +71,7 @@ namespace Kw.Common
         /// <summary>
         /// Получает объект из токена JSON.
         /// </summary>
-        private dynamic TokenToObject(JToken value)
+        dynamic TokenToObject(JToken value)
         {
             switch (value) {
                 case JValue jvalue: {

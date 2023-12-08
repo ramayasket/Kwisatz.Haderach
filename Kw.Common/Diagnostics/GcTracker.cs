@@ -6,7 +6,7 @@ namespace Kw.Common.Diagnostics
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1815:Override equals and operator equals on value types", Justification = "By design")]
     public readonly struct GcTracker : IDisposable
     {
-        private readonly Action<GcCollections> _writer;
+        readonly Action<GcCollections> _writer;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1065:Do not raise exceptions in unexpected locations", Justification = "By design")]
         static GcTracker()

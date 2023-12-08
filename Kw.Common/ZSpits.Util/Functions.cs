@@ -352,7 +352,7 @@ namespace Kw.Common.ZSpitz.Util {
 #if NET452
             emptyArray<T>.Value;
 #pragma warning disable IDE1006 // Naming Styles
-        private static class emptyArray<T> {
+        static class emptyArray<T> {
 #pragma warning restore IDE1006 // Naming Styles
             public static readonly T[] Value = new T[0];
         }
