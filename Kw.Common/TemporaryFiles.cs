@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 
 namespace Kw.Common
@@ -93,7 +93,7 @@ namespace Kw.Common
         /// <summary>
         /// Инициализирует новый экземпляр <see cref="TemporaryFile"/>.
         /// </summary>
-        public TemporaryFile(string format = null)
+        public TemporaryFile(string? format = null)
         {
             format = format ?? "{0}.temp";
 

@@ -4,14 +4,14 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AssemblyOriginatorKeyFile>..\etc\Kwisatz.Haderach.snk</AssemblyOriginatorKeyFile>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <DocumentationFile>..\bin\Kw.Common.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Kw.Micro.xml</DocumentationFile>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-    <Version>3.0.0.2</Version>
+    <Version>1.0.0.1</Version>
     <LangVersion>12.0</LangVersion>
-    <NoWarn>CS1591;CS8625;CS8618;CS8600;CS8601;CS8602;CS8603;CS8604;CS8629;NU1803;8765;8610;8605;8622;SYSLIB0011;SYSLIB0014;SYSLIB0022;SYSLIB0023;SYSLIB0006;</NoWarn>
+    <NoWarn>CS1591;CS8625;CS8618;CS8600;CS8601;CS8602;CS8603;CS8604;CS8629;NU1803;</NoWarn>
     <Nullable>enable</Nullable>
     <OutputPath>..\bin\</OutputPath>
-    <RootNamespace>Kw.Common</RootNamespace>
+    <RootNamespace>Kw.Micro</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
@@ -34,25 +34,44 @@
   <PropertyGroup>
     <PackageIcon>Kwisatz.Haderach.png</PackageIcon>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>Kw.Common</Title>
+    <Title>Kw.Micro</Title>
     <Authors>Andrei Samoylov</Authors>
     <Company>Andrei Samoylov</Company>
     <Product>Kwisatz.Haderach</Product>
-    <Description>All purpose shared classes</Description>
+    <Description>Common microservice classes</Description>
     <Copyright>Copyright © Andrei Samoylov 2012-2026</Copyright>
     <PackageTags>Kwisatz.Haderach</PackageTags>
     <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
     <AnalysisLevel>none</AnalysisLevel>
-    <RepositoryUrl>https://github.com/ramayasket/Kwisatz.Haderach/tree/master/Kw.Common</RepositoryUrl>
+    <RepositoryUrl>https://github.com/ramayasket/Kwisatz.Haderach/tree/master/Kw.Micro</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <!--<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />-->
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="4.7.0" />
-    <PackageReference Include="System.Drawing.Common" Version="10.0.7" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
+    <PackageReference Include="AutoMapper" Version="16.1.1" />
+    <PackageReference Include="PostSharp" Version="2026.0.7" />
+    <!-- -->
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Enrichers.AspNetCore" Version="1.0.0" />
+    <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
+    <PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
+    <PackageReference Include="Serilog.Formatting.Elasticsearch" Version="9.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="9.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kw.Common\Kw.Common.csproj" />
   </ItemGroup>
 
 </Project>

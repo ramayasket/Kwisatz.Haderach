@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime.Serialization;
 
 namespace Kw.Common
@@ -13,8 +13,6 @@ namespace Kw.Common
         {
             InnerExceptions = inner;
         }
-
-        protected TolerableException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }
 

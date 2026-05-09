@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -14,7 +14,6 @@ namespace Kw.Common
     {
         public TurmoilException() { }
         public TurmoilException(string message) : base(message) { }
-        protected TurmoilException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         public TurmoilException(string message, Exception innerException) : base(message, innerException) { }
     }
 }

@@ -1,10 +1,14 @@
-#nullable enable
-using Kw.Common.OneOf.Types;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
+
+#pragma warning disable CS8714 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'notnull' constraint.
+
+// ReSharper disable UnusedMember.Local
+// ReSharper disable ConvertToAutoPropertyWhenPossible
 
 namespace Kw.Common
 {
@@ -14,6 +18,83 @@ namespace Kw.Common
     /// TODO English comments
     public static class CommonExtensions
     {
+        public static bool IsNullable(this PropertyInfo p)
+        {
+            return new NullabilityInfoContext().Create(p).WriteState is NullabilityState.Nullable;
+        }
+
+        public static string AsString(this Type x)
+        {
+            if (x.IsNullable())
+            {
+                Type trueType = Nullable.GetUnderlyingType(x)!;
+                string trueString = trueType.AsString();
+                return trueString + "?";
+            }
+
+            if (x.IsGenericType)
+            {
+                string genericTypeName = x.Name.Substring(0, x.Name.IndexOf('`'));
+                string genericArgs = string.Join(", ", x.GenericTypeArguments.Select(AsString));
+                return $"{genericTypeName}<{genericArgs}>";
+            }
+
+            return x.ToAlias() ?? x.Name;
+        }
+
+        public static string AsString(this PropertyInfo field)
+        {
+            Type pt = field.PropertyType;
+            string spt = pt.AsString();
+
+            if (!pt.IsValueType && field.IsNullable())
+                spt += "?";
+
+            string access = " ";
+            if (field.CanRead)
+                access += "get; ";
+
+            if (field.CanWrite)
+                access += "set; ";
+
+            string sfield = $"public {spt} {field.Name} {{{access}}}";
+
+            return sfield;
+        }
+
+        public static string? ToAlias(this Type x)
+        {
+            if (x == typeof(int)) return "int";
+            if (x == typeof(string)) return "string";
+            if (x == typeof(bool)) return "bool";
+            if (x == typeof(float)) return "float";
+            if (x == typeof(double)) return "double";
+            if (x == typeof(long)) return "long";
+            if (x == typeof(short)) return "short";
+            if (x == typeof(uint)) return "uint";
+            if (x == typeof(ulong)) return "ulong";
+            if (x == typeof(ushort)) return "ushort";
+            if (x == typeof(byte)) return "byte";
+            if (x == typeof(sbyte)) return "sbyte";
+            if (x == typeof(char)) return "char";
+            if (x == typeof(decimal)) return "decimal";
+            if (x == typeof(object)) return "object";
+
+            return null;
+        }
+
+        public static bool IsNullable<T>(T value) => Nullable.GetUnderlyingType(typeof(T)) != null;
+
+        public static bool IsNullable(object? x)
+        {
+            if (null == x) return false;
+
+            Type xt = x.GetType();
+
+            return IsNullable(xt);
+        }
+
+        public static bool IsNullable(this Type t) => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>);
         public static R[] ToArray<T,R>(this IEnumerable<T> source, Func<T, R> selector) => source.Select(selector).ToArray();
         
         public static T SafeValue<T>(this T? nullable) where T : struct => nullable ?? default;
@@ -303,6 +384,8 @@ namespace Kw.Common
         {
             if (type == null) throw new ArgumentNullException(nameof(type));
             if (examplar == null) throw new ArgumentNullException(nameof(examplar));
+
+            // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
 
             message ??= $"Invalid type: {type.FullName}, expected {examplar.FullName}.";
 

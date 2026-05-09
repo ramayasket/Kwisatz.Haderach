@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -57,14 +57,14 @@ namespace Kw.Common
         /// <returns>An array whose elements contain the substrings in this string that are delimited by separator.</returns>
         public static string[] Split(this string text, string separator, StringSplitOptions options = StringSplitOptions.None)
         {
-            if (null == text) throw new ArgumentNullException("text");
+            if (null == text) throw new ArgumentNullException(nameof(text));
 
             return text.Split(new[] {separator}, options);
         }
 
         public static string DeflateSpaces(this string text)
         {
-            if (null == text) throw new ArgumentNullException("text");
+            if (null == text) throw new ArgumentNullException(nameof(text));
 
             string w = text, w0 = string.Empty;
             do
@@ -89,7 +89,7 @@ namespace Kw.Common
 
         public static string FixDecode(this string text)
         {
-            if (null == text) throw new ArgumentNullException("text");
+            if (null == text) throw new ArgumentNullException(nameof(text));
 
             string @fixed;
 

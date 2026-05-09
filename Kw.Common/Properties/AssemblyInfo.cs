@@ -1,12 +1,4 @@
-using System.Reflection;
-using System.Runtime.InteropServices;
-
-[assembly: AssemblyTitle("Kw.Common")]
-[assembly: AssemblyVersion("2.1.8.6")]
-[assembly: AssemblyDescription("All purpose shared classes")]
-[assembly: Guid("00000000-0001-11e8-9876-00055d74a52d")]
-
-/*
+﻿/*
     New version scheme as of 1.5.2020:
 
     Concept.Product.Classes.Minor
@@ -47,6 +39,7 @@ using System.Runtime.InteropServices;
     18.12.2022    2.1.8.4        GetHash()/GetLongHash()
     18.12.2022    2.1.8.5        Newtonsoft.Json upgrade
     06.02.2023    2.1.8.6        Select/ToArray()
+    09.05.2026    3.0.0.2        .NET 9.0 + TaskBasedEvent + Extra extension methods
 */
 
 /// <summary>

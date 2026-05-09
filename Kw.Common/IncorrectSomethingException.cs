@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,7 +11,6 @@ namespace Kw.Common
     {
         public IncorrectEnvironmentException() { }
         public IncorrectEnvironmentException(string message) : base(message) { }
-        protected IncorrectEnvironmentException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         public IncorrectEnvironmentException(string message, Exception innerException) : base(message, innerException) { }
     }
 
@@ -20,7 +19,6 @@ namespace Kw.Common
     {
         public IncorrectDataException() {}
         public IncorrectDataException(string message) : base(message) {}
-        protected IncorrectDataException(SerializationInfo info, StreamingContext context) : base(info, context) {}
         public IncorrectDataException(string message, Exception innerException) : base(message, innerException) {}
     }
 
@@ -29,7 +27,6 @@ namespace Kw.Common
     {
         public IncorrectOperationException() { }
         public IncorrectOperationException(string message) : base(message) { }
-        protected IncorrectOperationException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         public IncorrectOperationException(string message, Exception innerException) : base(message, innerException) { }
     }
 
@@ -38,7 +35,6 @@ namespace Kw.Common
     {
         public IncorrectConfigurationException() { }
         public IncorrectConfigurationException(string message) : base(message) { }
-        protected IncorrectConfigurationException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         public IncorrectConfigurationException(string message, Exception innerException) : base(message, innerException) { }
     }
 
@@ -47,7 +43,6 @@ namespace Kw.Common
     {
         public IncorrectTypeException() { }
         public IncorrectTypeException(string message) : base(message) { }
-        protected IncorrectTypeException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         public IncorrectTypeException(string message, Exception innerException) : base(message, innerException) { }
     }
 
@@ -55,7 +50,6 @@ namespace Kw.Common
     public class NotReachableException : Exception
     {
         public NotReachableException() : base("Not supposed to reach this exception.") { }
-        protected NotReachableException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+#pragma warning disable SYSLIB0041
 
 namespace Kw.Common
 {
